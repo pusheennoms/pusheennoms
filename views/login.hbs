@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> Recipes! </title>
+</head>
+
+<body>
+
+<h2>Welcome to Recipes!</h2>
+<button onclick="login()"> Login </button>
+<button onclick="register()"> Register </button>
+
+<script>
+
+currentSavedUsers = JSON.parse(localStorage.getItem("users"));
+currentUsers = currentSavedUsers ? currentSavedUsers : [];
+
+function saveUsers() {
+	localStorage.setItem("users", JSON.stringify(currentUsers));
+}
+
+function register() {
+	var name = prompt("Please enter the name you wish to login with: ")
+	currentUsers.push(name);
+	saveUsers();
+}
+
+function login() {
+    var username = prompt("Please enter your username:");
+    if (currentUsers.indexOf(username) > -1) {
+    	window.open('recipes')
+    }
+    else {
+    	alert('Invalid Username');
+    }
+}
+</script>
+
+</body>
+</html>

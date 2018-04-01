@@ -1,0 +1,15 @@
+{
+  "name": "challenge9",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emilie Zhang",
+  "license": "ISC",
+  "dependencies": {
+    "hbs": "^4.0.1",
+    "node-localstorage": "^1.3.1"
+  }
+}
