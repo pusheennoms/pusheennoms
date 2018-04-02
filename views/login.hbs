@@ -16,24 +16,43 @@
 currentSavedUsers = JSON.parse(localStorage.getItem("users"));
 currentUsers = currentSavedUsers ? currentSavedUsers : [];
 
+currentSavedPasswords = JSON.parse(localStorage.getItem("passwords"));
+currentPasswords = currentSavedPasswords ? currentSavedPasswords : [];
+
 function saveUsers() {
 	localStorage.setItem("users", JSON.stringify(currentUsers));
 }
 
+function savePasswords() {
+    localStorage.setItem("passwords", JSON.stringify(currentPasswords));
+}
+
 function register() {
 	var name = prompt("Please enter the name you wish to login with: ")
+    var password = prompt("Please enter your password: ")
 	currentUsers.push(name);
+    currentPasswords.push(password);
+
 	saveUsers();
+    savePasswords();
 }
 
 function login() {
     var username = prompt("Please enter your username:");
     if (currentUsers.indexOf(username) > -1) {
-    	window.open('recipes')
-    }
+    	var password = prompt("Please enter your password:");
+            if (currentPasswords.indexOf(password) > -1) {
+                window.open('recipes')
+            }
+            else {
+                alert('Invalid Username and Password');
+            }
+        }
     else {
     	alert('Invalid Username');
     }
+
+
 }
 </script>
 
