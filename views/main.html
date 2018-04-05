@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Home</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<!-- TOP border -->
+	<div id="banner" >
+		<img id="logo" src="imgs/pusheats.png"> 
+		<p id="title" class="texts" ><span><u>PUSHEEN EATS</u></span></p>
+	</div>
+	
+	<!-- ctrl panel -->
+	<div id="ctrlpanel" >
+		<div id="cp-banner">
+			<p id="ur-ingredients" class="texts"> YOUR INGREDIENTS </p>
+		</div>
+		<img id="ingredients-img" src="imgs/ingredients.gif">
+		<p class="texts"> Type in what you have and select the health options you prefer. </p>
+		<div id="butt-wraps">										
+			<button id="type-butt" class="butts">TYPE</button>
+			<button id="cat-butt" class="butts">HEALTH &#38; DIET</button>				
+		</div>
+		<div class="food-divs" id="search-ingredients-div">
+			<form action="/" method="POST">														<!-- INGREDIENTS INPUT FORM -->
+				<input type="text" id="ingredient-bar" name="input-ingredient" placeholder="Add an ingredient">
+			</form>																				<!-- END OF INGREDIENTS INPUT FORM -->
+			<div id="food-list">
+			</div>
+		</div>
+		<div class="food-divs" id="cat-ingredients-div">
+			<!-- buncha ingredients dropdown -->
+			<div id='health-diet'>
+				<button class="collapsible"> HEALTH </button>
+				<div class="content">
+					<form action="/" method="POST">												<!-- HEALTH FORM -->
+						<label class="container">No Peanuts
+						<input type="checkbox">
+							<span class="checkmark"></span>
+						</label>
+						<label class="container">No Dairy
+						<input type="checkbox">
+							<span class="checkmark"></span>
+						</label>
+						<label class="container">No Soy
+						<input type="checkbox">
+							<span class="checkmark"></span>
+						</label>
+						<label class="container">No Pork
+						<input type="checkbox">
+							<span class="checkmark"></span>
+						</label>
+					</form>																		<!-- END OF HEALTH FORM -->
+				</div>
+				<button class="collapsible"> DIET </button>
+				<div class="content">
+					<form action="/" method="POST">												<!-- DIET FORM -->
+						<label class="container">Balanced
+						<input type="checkbox">
+							<span class="checkmark"></span>
+						</label>
+						<label class="container">High Fiber
+						<input type="checkbox">
+							<span class="checkmark"></span>
+						</label>
+						<label class="container">High Protein
+						<input type="checkbox">
+							<span class="checkmark"></span>
+						</label>
+						<label class="container">Low Fat
+						<input type="checkbox">
+							<span class="checkmark"></span>
+						</label>
+						<label class="container">Low Sodium
+						<input type="checkbox">
+							<span class="checkmark"></span>
+						</label>
+					</form>																		<!-- END OF DIET FORM -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- THE ACTUAL PAGE -->
+	<div id="big-page-div">
+		<img id="bg-img" src="imgs/bg.jpg">
+		<div id="welcome-div">
+			<p id="welcome-msg"> Welcome! <br><br> Just add your ingredients and we will instantly find matching recipes from the most popular cooking websites! <br><br>
+			To get started, type your ingredients from the control panel on the left.</p>
+			<p> Already have a dish in mind? </p>
+			<form action="/" method="POST">															<!-- FOOD FORM -->
+				<input type="text" id="food-search" placeholder="ie fetuccini">
+			</form>																					<!-- END OF FOOD FORM -->
+		</div>
+	</div>
+
+	<script src="js.js"></script>
+</body>
+
+</html>
