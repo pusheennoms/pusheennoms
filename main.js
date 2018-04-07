@@ -8,7 +8,7 @@ const APP_ID = '629ab869';
 const APP_KEY = '56dc21e2492074fbd86fd463a035bd73';
 
 var app = express();
-var resultRecipes;
+var resultRecipes = '';
 
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
@@ -67,7 +67,6 @@ app.post('/search', function (req, res) {
 			url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${param}`,
 			json: true
 		}, (error, response, body) => {
-			console.log(body);
 			if (error) {
 				callback("Cannot connect to API");
 			} else if (body.hits) {
@@ -81,9 +80,19 @@ app.post('/search', function (req, res) {
 	}
 
 	getRecipes(req.body.q, (error, results) => {
-		resultRecipes = results.recipes;
+		resultRecipes = JSON.stringify(results.recipes);
 	});
+
+	res.render('main.hbs', {
+		resultRecipes: resultRecipes
+	})
 })
+
+// app.get('/search', function (req, res) {
+// 	searchResults = JSON.stringify(resultRecipes);
+// 	console.log('FOOOOOOOBAAAAAAAAAR');
+	
+// })
 
 app.get('/getpass', (request, response) => {
 	console.log("lol")
