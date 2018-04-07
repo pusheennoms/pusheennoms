@@ -9,7 +9,7 @@
 <body>
 	<!-- TOP border -->
 	<div id="banner" >
-		<img id="logo" src="imgs/pusheats.png"> 
+		<img id="logo" src="pusheats.png"> 
 		<p id="title" class="texts" ><span><u>PUSHEEN EATS</u></span></p>
 	</div>
 	
@@ -21,7 +21,7 @@
 		<img id="ingredients-img" src="imgs/ingredients.gif">
 		<p class="texts"> Type in what you have and select the health options you prefer. </p>
 		<div id="butt-wraps">										
-			<button id="type-butt" class="butts">TYPE</button>
+			<button id="type-butt" class="butts" onclick="meow({{recipes}})">TYPE</button>
 			<button id="cat-butt" class="butts">HEALTH &#38; DIET</button>				
 		</div>
 		<div class="food-divs" id="search-ingredients-div">
@@ -98,6 +98,11 @@
 	</div>
 
 	<script src="js.js"></script>
+	<script type="text/javascript">
+		function meow(recipes) {
+			console.log(recipes[0].recipe);
+		}
+	</script>
 </body>
 
 </html>
