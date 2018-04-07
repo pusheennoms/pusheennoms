@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title> Recipes! </title>
+    <title> Recipes! </title>
 </head>
 
 <body>
@@ -10,17 +10,28 @@
 <h2>Welcome to Recipes!</h2>
 <button onclick="login()"> Login </button>
 <button onclick="register()"> Register </button>
+    <p> Log-in </p>
+    <form action="/getpass" method="get">
+    Username: <input type="text" name="username"><br>
+    Password: <input type="password" name="password"> <br>
+    <input type="submit" value="Submit">
+    </form>
+
+    <p> Register </p>
+    <form action="/registerchef" method="post">
+        Username: <input type="text" name="username"><br>
+        Password: <input type="password" name="password"> <br>
+    <input type="submit" value="Submit">
 
 <script>
-
 currentSavedUsers = JSON.parse(localStorage.getItem("users"));
 currentUsers = currentSavedUsers ? currentSavedUsers : [];
 
 currentSavedPasswords = JSON.parse(localStorage.getItem("passwords"));
 currentPasswords = currentSavedPasswords ? currentSavedPasswords : [];
 
-function saveUsers() {
-	localStorage.setItem("users", JSON.stringify(currentUsers));
+function saveUsers(user, pass) {
+    localStorage.setItem(JSON.stringify(user), JSON.stringify(pass));
 }
 
 function savePasswords() {
@@ -28,20 +39,25 @@ function savePasswords() {
 }
 
 function register() {
-	var name = prompt("Please enter the name you wish to login with: ")
+    var name = prompt("Please enter the name you wish to login with: ")
     var password = prompt("Please enter your password: ")
-	currentUsers.push(name);
+    currentUsers.push(name, password);
     currentPasswords.push(password);
 
-	saveUsers();
+    saveUsers(name, password);
     savePasswords();
 }
 
 function login() {
     var username = prompt("Please enter your username:");
     if (currentUsers.indexOf(username) > -1) {
-    	var password = prompt("Please enter your password:");
-            if (currentPasswords.indexOf(password) > -1) {
+        console.log("useris " + username)
+
+        var password = prompt("Please enter your password:");
+            userpass = localStorage.getItem()
+            console.log("user prompted password is " + password);
+            console.log("stored password is " + userpass);
+            if (userpass == password) {
                 window.open('recipes')
             }
             else {
@@ -49,12 +65,12 @@ function login() {
             }
         }
     else {
-    	alert('Invalid Username');
+        alert('Invalid Username');
     }
-
-
 }
-</script>
 
+
+</script>
 </body>
+
 </html>
