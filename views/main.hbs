@@ -21,12 +21,16 @@
 		<img id="ingredients-img" src="imgs/ingredients.gif">
 		<p class="texts"> Type in what you have and select the health options you prefer. </p>
 		<div id="butt-wraps">										
-			<button id="type-butt" class="butts" onclick="meow({{recipes}})">TYPE</button>
+			<button id="type-butt" class="butts">TYPE</button>
 			<button id="cat-butt" class="butts">HEALTH &#38; DIET</button>				
 		</div>
 		<div class="food-divs" id="search-ingredients-div">
-			<form action="/" method="POST">														<!-- INGREDIENTS INPUT FORM -->
-				<input type="text" id="ingredient-bar" name="input-ingredient" placeholder="Add an ingredient">
+			<form action="/search" method="POST">														<!-- INGREDIENTS INPUT FORM -->
+				<input type="text" id="ingredient-bar" name="q" placeholder="Add an ingredient">
+
+				<br>
+
+				<input type="submit" value="Submit">
 			</form>																				<!-- END OF INGREDIENTS INPUT FORM -->
 			<div id="food-list">
 			</div>
@@ -99,9 +103,11 @@
 
 	<script src="js.js"></script>
 	<script type="text/javascript">
-		function meow(recipes) {
+		function getRecipes(recipes) {
 			console.log(recipes[0].recipe);
 		}
+
+
 	</script>
 </body>
 
