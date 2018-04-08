@@ -1,23 +1,30 @@
 /*--------------variables--------------*/
 var coll = document.getElementsByClassName("collapsible");
 
+var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+var currentSearchHistory = savedSearchHistory ? savedSearchHistory : [];
+
 /*-------------foodDisplay-------------*/
 function addIngredient() {
-	var ndiv = document.createElement("div");
-	ndiv.innerHTML = foodInput;
-
-	document.getElementById("food-list").appendChild(ndiv);
-
-	document.getElementById("food-list").appendChild(ndiv).className = "added-ingredients";
-	document.getElementById("food-list").appendChild(ndiv).style.cursor = "pointer";
-
-	for(i=0; i < 26; i++) {
-		document.getElementById("food-list").appendChild(ndiv).setAttribute("id","food-"+i)
+	if (currentSearchHistory.indexOf(document.getElementById("ingredient-bar").value) < 0 ){
+		currentSearchHistory.push(document.getElementById("ingredient-bar").value)
 	}
+	localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
 }
 
-function getIngredient() {
-	foodInput = document.getElementById("ingredient-bar").value;
+function showSearchHistory() {
+	document.getElementById('searchHist').style.display = 'block';
+	for(i=0; i < currentSearchHistory.length; i++) {
+		var ndiv = document.createElement("div");
+		ndiv.innerHTML = currentSearchHistory[i];
+
+		document.getElementById("food-list").appendChild(ndiv);
+
+		document.getElementById("food-list").appendChild(ndiv).className = "added-ingredients";
+		document.getElementById("food-list").appendChild(ndiv).style.cursor = "pointer";
+
+		document.getElementById("food-list").appendChild(ndiv).setAttribute("id","food-"+i)
+	}
 }
 
 function showResults(toshow) {
@@ -36,6 +43,7 @@ function showResults(toshow) {
 	}
 	document.getElementById('ingredient-form').reset();
 }
+
 /*-----------INTERACTIONS--------------*/
 document.getElementById("type-butt").addEventListener("click",function(){
 	document.getElementById("search-ingredients-div").style.display = "block";
@@ -49,9 +57,8 @@ document.getElementById("cat-butt").addEventListener("click",function(){
 
 document.getElementById("ingredient-bar").addEventListener("keydown",function(ev){
 	if(ev.keyCode == 13) {
-		getIngredient();
 		addIngredient();
-		console.log(document.getElementById("ingredient-bar").value + 'hahahahah')
+		showSearchHistory();
 		document.getElementById('ingredient-form').submit();
 	}
 });

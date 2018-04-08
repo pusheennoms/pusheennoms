@@ -32,7 +32,9 @@
 
 				<input type="submit" value="Submit">
 			</form>																				<!-- END OF INGREDIENTS INPUT FORM -->
+			</div>
 			<div id="food-list">
+				<b id="searchHist" style="display: none;"> Search History </b>
 			</div>
 		</div>
 		<div class="food-divs" id="cat-ingredients-div">
@@ -104,9 +106,7 @@
 
 	<script src="js.js"></script>
 	<script type="text/javascript">
-		function getRecipes(recipes) {
-			console.log(recipes[0].recipe);
-		}
+		showSearchHistory();
 	</script>
 </body>
 
