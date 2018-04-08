@@ -25,7 +25,7 @@
 			<button id="cat-butt" class="butts">HEALTH &#38; DIET</button>				
 		</div>
 		<div class="food-divs" id="search-ingredients-div">
-			<form action="/search" method="POST">														<!-- INGREDIENTS INPUT FORM -->
+			<form action="/search" method="POST" id='ingredient-form'>														<!-- INGREDIENTS INPUT FORM -->
 				<input type="text" id="ingredient-bar" name="q" placeholder="Add an ingredient">
 
 				<br>
@@ -91,11 +91,11 @@
 	<!-- THE ACTUAL PAGE -->
 	<div id="big-page-div">
 		<img id="bg-img" src="imgs/bg.jpg">
+		<div id="search-results">
 		<div id="welcome-div">
 			<p id="welcome-msg"> Welcome! <br><br> Just add your ingredients and we will instantly find matching recipes from the most popular cooking websites! <br><br>
 			To get started, type your ingredients from the control panel on the left.</p>
 			<p> Already have a dish in mind? </p>
-			<div id="search-results">
 			</div>
 			<form action="/" method="POST">															<!-- FOOD FORM -->
 				<input type="text" id="food-search" placeholder="ie fetuccini">
@@ -115,7 +115,9 @@
 				node.innerHTML = toshow[i].recipe.label;
 				document.getElementById('search-results').appendChild(node);
 				document.getElementById('search-results').appendChild(document.createElement('br'));
+				document.getElementById('welcome-div').style.display = 'None';
 			}
+			document.getElementById('ingredient-form').reset();
 		}
 	</script>
 </body>
