@@ -4,6 +4,8 @@ var coll = document.getElementsByClassName("collapsible");
 var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory'));
 var currentSearchHistory = savedSearchHistory ? savedSearchHistory : [];
 
+var currentResults;
+
 /*-------------foodDisplay-------------*/
 function addIngredient() {
 	if (currentSearchHistory.indexOf(document.getElementById("ingredient-bar").value) < 0 ){
@@ -27,21 +29,36 @@ function showSearchHistory() {
 	}
 }
 
-function showResults(toshow) {
+function setCurrentResults(res) {
+	currentResults = res;
+	if (currentResults && currentResults.length > 0) {
+		showResults();
+	}
+
+}
+
+function showResults() {
 	document.getElementById('welcome-div').style.display = 'None';
 	var msg = document.createElement('h1');				
 	msg.innerHTML = 'Click + to save your recipe!'
 	document.getElementById('search-results').appendChild(msg);
 
-	for (var i = toshow.length - 1; i >= 0; i--) {
+	for (var i = currentResults.length - 1; i >= 0; i--) {
 
 		var node = document.createElement('a');
-		node.href =  toshow[i].recipe.url;
-		node.innerHTML = toshow[i].recipe.label + '[+]';
+		node.href =  currentResults[i].recipe.url;
+		node.innerHTML = currentResults[i].recipe.label;
+		node.setAttribute('target', '_new')
+
+		var addBtn = document.createElement('a');
+		addBtn.innerHTML = ' [+] ';
+		addBtn.href = node.href;
+		addBtn.setAttribute('download', encodeURIComponent(node.innerHTML) + '.html')		
+
 		document.getElementById('search-results').appendChild(node);
+		document.getElementById('search-results').appendChild(addBtn);
 		document.getElementById('search-results').appendChild(document.createElement('br'));
 	}
-	document.getElementById('ingredient-form').reset();
 }
 
 /*-----------INTERACTIONS--------------*/
