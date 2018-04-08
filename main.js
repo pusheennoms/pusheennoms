@@ -81,18 +81,12 @@ app.post('/search', function (req, res) {
 
 	getRecipes(req.body.q, (error, results) => {
 		resultRecipes = JSON.stringify(results.recipes);
+		// console.log(resultRecipes);
+		res.render('main.hbs', {
+				resultRecipes: resultRecipes
+		})	
 	});
-
-	res.render('main.hbs', {
-		resultRecipes: resultRecipes
-	})
 })
-
-// app.get('/search', function (req, res) {
-// 	searchResults = JSON.stringify(resultRecipes);
-// 	console.log('FOOOOOOOBAAAAAAAAAR');
-	
-// })
 
 app.get('/getpass', (request, response) => {
 	console.log("lol")

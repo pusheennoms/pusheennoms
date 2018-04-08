@@ -9,7 +9,7 @@
 <body>
 	<!-- TOP border -->
 	<div id="banner" >
-		<img id="logo" src="pusheats.png"> 
+		<img id="logo" src="pusheats.png" onload="showResults({{resultRecipes}})"> 
 		<p id="title" class="texts" ><span><u>PUSHEEN EATS</u></span></p>
 	</div>
 	
@@ -30,7 +30,7 @@
 
 				<br>
 
-				<input type="submit" value="Submit">
+				<input type="submit" value="Submit" >
 			</form>																				<!-- END OF INGREDIENTS INPUT FORM -->
 			<div id="food-list">
 			</div>
@@ -95,6 +95,8 @@
 			<p id="welcome-msg"> Welcome! <br><br> Just add your ingredients and we will instantly find matching recipes from the most popular cooking websites! <br><br>
 			To get started, type your ingredients from the control panel on the left.</p>
 			<p> Already have a dish in mind? </p>
+			<div id="search-results">
+			</div>
 			<form action="/" method="POST">															<!-- FOOD FORM -->
 				<input type="text" id="food-search" placeholder="ie fetuccini">
 			</form>																					<!-- END OF FOOD FORM -->
@@ -106,8 +108,15 @@
 		function getRecipes(recipes) {
 			console.log(recipes[0].recipe);
 		}
-
-
+		function showResults(toshow) {
+			for (var i = toshow.length - 1; i >= 0; i--) {
+				var node = document.createElement('a');
+				node.href =  toshow[i].recipe.url;
+				node.innerHTML = toshow[i].recipe.label;
+				document.getElementById('search-results').appendChild(node);
+				document.getElementById('search-results').appendChild(document.createElement('br'));
+			}
+		}
 	</script>
 </body>
 
