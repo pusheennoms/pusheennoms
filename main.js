@@ -57,6 +57,11 @@ app.post('/search', function (req, res) {
 	});
 })
 
+app.post('/download', function (req, res) {
+	var recipe = JSON.parse(req.body.recipe);
+	fs.writeFileSync(recipe.label.replace(' ', '-') + '.txt', req.body.recipe);
+})
+
 var chefRecords = [];
 app.post('/registerchef', (request, response) => {
 	if (fs.existsSync('userpass.json') && fs.readFileSync('userpass.json').length !== 0) {
@@ -78,8 +83,6 @@ app.post('/registerchef', (request, response) => {
 	response.render('login.hbs');
 });
 app.get('/getpass', (request, response) => {
-	console.log("lol");
-
 	function AuthenticateChef(inpUsername, inpPassword){	
 		for (var i = 0; i < chefRecords.length; i++){
 			if(chefRecords[i].username == inpUsername){
