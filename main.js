@@ -28,7 +28,6 @@ app.get('/', (request, response) => {
 })
 
 app.get('/home', (request, response) => {
-	resultRecipes = JSON.stringify(resultRecipes)
     response.render('main.hbs')
 })
 
@@ -81,9 +80,8 @@ app.post('/search', function (req, res) {
 
 	getRecipes(req.body.q, (error, results) => {
 		resultRecipes = JSON.stringify(results.recipes);
-		// console.log(resultRecipes);
 		res.render('main.hbs', {
-				resultRecipes: resultRecipes
+			resultRecipes: resultRecipes
 		})	
 	});
 })

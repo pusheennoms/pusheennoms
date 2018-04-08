@@ -30,7 +30,7 @@
 
 				<br>
 
-				<input type="submit" value="Submit" >
+				<input type="submit" value="Submit">
 			</form>																				<!-- END OF INGREDIENTS INPUT FORM -->
 			<div id="food-list">
 			</div>
@@ -42,18 +42,18 @@
 				<div class="content">
 					<form action="/" method="POST">												<!-- HEALTH FORM -->
 						<label class="container">No Peanuts
+						<input type="checkbox" name="health">
+							<span class="checkmark"></span>
+						</label>
+						<label class="container" name="health">No Dairy
 						<input type="checkbox">
 							<span class="checkmark"></span>
 						</label>
-						<label class="container">No Dairy
+						<label class="container" name="health">No Soy
 						<input type="checkbox">
 							<span class="checkmark"></span>
 						</label>
-						<label class="container">No Soy
-						<input type="checkbox">
-							<span class="checkmark"></span>
-						</label>
-						<label class="container">No Pork
+						<label class="container" name="health">No Pork
 						<input type="checkbox">
 							<span class="checkmark"></span>
 						</label>
@@ -63,22 +63,22 @@
 				<div class="content">
 					<form action="/" method="POST">												<!-- DIET FORM -->
 						<label class="container">Balanced
+						<input type="checkbox" name="diet">
+							<span class="checkmark"></span>
+						</label>
+						<label class="container" name="diet">High Fiber
 						<input type="checkbox">
 							<span class="checkmark"></span>
 						</label>
-						<label class="container">High Fiber
+						<label class="container" name="diet">High Protein
 						<input type="checkbox">
 							<span class="checkmark"></span>
 						</label>
-						<label class="container">High Protein
+						<label class="container" name="diet">Low Fat
 						<input type="checkbox">
 							<span class="checkmark"></span>
 						</label>
-						<label class="container">Low Fat
-						<input type="checkbox">
-							<span class="checkmark"></span>
-						</label>
-						<label class="container">Low Sodium
+						<label class="container" name="diet">Low Sodium
 						<input type="checkbox">
 							<span class="checkmark"></span>
 						</label>
@@ -91,15 +91,14 @@
 	<!-- THE ACTUAL PAGE -->
 	<div id="big-page-div">
 		<img id="bg-img" src="imgs/bg.jpg">
-		<div id="search-results">
+		<div id="search-results"></div>
 		<div id="welcome-div">
 			<p id="welcome-msg"> Welcome! <br><br> Just add your ingredients and we will instantly find matching recipes from the most popular cooking websites! <br><br>
 			To get started, type your ingredients from the control panel on the left.</p>
-			<p> Already have a dish in mind? </p>
-			</div>
-			<form action="/" method="POST">															<!-- FOOD FORM -->
-				<input type="text" id="food-search" placeholder="ie fetuccini">
-			</form>																					<!-- END OF FOOD FORM -->
+			<!-- <p> Already have a dish in mind? </p> -->
+			<!-- <form action="/" method="POST">															<!-- FOOD FORM -->
+				<!-- <input type="text" id="food-search" placeholder="ie fetuccini">
+			</form>	 -->	 -->																			<!-- END OF FOOD FORM -->
 		</div>
 	</div>
 
@@ -107,17 +106,6 @@
 	<script type="text/javascript">
 		function getRecipes(recipes) {
 			console.log(recipes[0].recipe);
-		}
-		function showResults(toshow) {
-			for (var i = toshow.length - 1; i >= 0; i--) {
-				var node = document.createElement('a');
-				node.href =  toshow[i].recipe.url;
-				node.innerHTML = toshow[i].recipe.label;
-				document.getElementById('search-results').appendChild(node);
-				document.getElementById('search-results').appendChild(document.createElement('br'));
-				document.getElementById('welcome-div').style.display = 'None';
-			}
-			document.getElementById('ingredient-form').reset();
 		}
 	</script>
 </body>
