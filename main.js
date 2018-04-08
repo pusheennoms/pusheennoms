@@ -77,8 +77,9 @@ app.post('/registerchef', (request, response) => {
 	AddtoFile(); 
 	response.render('login.hbs');
 });
-app.get('/getpass', (request, response) => {
-	console.log("lol");
+
+app.post('/getpass', (request, response) => {
+	console.log(request.body.username);
 
 	function AuthenticateChef(inpUsername, inpPassword){	
 		for (var i = 0; i < chefRecords.length; i++){
@@ -91,6 +92,7 @@ app.get('/getpass', (request, response) => {
 		}
 	}
 	AuthenticateChef(request.body.username, request.body.password);
+	response.render('main.hbs');
 
 });
 
