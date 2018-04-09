@@ -228,11 +228,12 @@ button {
     cursor: pointer;
     width: 8%;
     padding:2px;
-    height: 2%;
+    height: 10%;
     border: none;
     text-align: center;
-    font-size: 12px;
+    font-size: 25px;
     border-radius: 12px;
+    margin: 10px;
 }
 
 #submitbutt {
