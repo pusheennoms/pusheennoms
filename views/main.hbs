@@ -27,7 +27,7 @@
 					<div id='health-diet'>
 						<button class="collapsible"> HEALTH </button>
 						<div class="content">
-							<form action="/search" method="POST" id='ingredient-form'>
+							<form id='ingredient-form'>
 								<label class="container">No Dairy
 								<input type="checkbox" name="health" value='dairy-free'>
 									<span class="checkmark"></span>
@@ -51,23 +51,27 @@
 						</div>
 						<button class="collapsible"> DIET </button>
 						<div class="content">
-							<form action="/search" method="POST" id='ingredient-form'>
+							<form id='ingredient-form1'>
 								<label class="container">Balanced
 								<input type="checkbox" name="diet" value='balanced'>
 									<span class="checkmark"></span>
 								</label>
+
 								<label class="container">High Fiber
 								<input type="checkbox" name="diet" value='high-fiber'>
 									<span class="checkmark"></span>
 								</label>
+
 								<label class="container" name="diet" value='high-protein'>High Protein
 								<input type="checkbox" name="diet" value='high-protein'>
 									<span class="checkmark"></span>
 								</label>
+
 								<label class="container">Low Fat
 								<input type="checkbox"  name="diet" value='low-fat'>
 									<span class="checkmark"></span>
 								</label>
+
 								<label class="container">Low Sodium
 								<input type="checkbox" name="diet" value='low-sodium'>
 									<span class="checkmark"></span>
@@ -76,11 +80,11 @@
 						</div>
 					</div>
 				</div>														<!-- INGREDIENTS INPUT FORM -->
-				<form action="/search" method="POST" id='ingredient-form'>
+				<form action="/search" method="POST" id='ingredient-form2'>
 					<input type="text" id="ingredient-bar" name="q" placeholder="What do you want to make?">
 					<br>
-				<input type="submit" value="Submit">
 				</form>																				<!-- END OF INGREDIENTS INPUT FORM -->
+				<button onclick="submitForms()"> Submit </button>
 			<div id="food-list">
 				<b id="searchHist" style="display: none;"> Search History </b>
 			</div>
@@ -105,6 +109,36 @@
 	<script src="js.js"></script>
 	<script type="text/javascript">
 		showSearchHistory();
+
+		function submitForms() {
+			var healthFormElements = document.getElementById('ingredient-form').elements;
+			var dietFormElements = document.getElementById('ingredient-form1').elements;
+
+			for (var i = 0; i < healthFormElements.length; i++) {
+				if (healthFormElements[i].checked) {
+					console.log('meow');
+					addToSearchParam('health', healthFormElements[i].value)
+				}
+			}
+
+			for (var i = 0; i < dietFormElements.length; i++) {
+				if (dietFormElements[i].checked) {
+					console.log('woof');
+					addToSearchParam('diet', dietFormElements[i].value)
+				}
+			}
+			console.log(document.getElementById('ingredient-form2').elements);
+			document.getElementById('ingredient-form2').submit();
+		}
+
+		function addToSearchParam(name, value) {
+			var newInput = document.createElement('input');
+			newInput.setAttribute('type', 'hidden');
+			newInput.setAttribute('name', name);
+			newInput.setAttribute('value', value);
+
+			document.getElementById('ingredient-form2').appendChild(newInput);
+		}
 	</script>
 </body>
 

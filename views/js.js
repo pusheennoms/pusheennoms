@@ -91,7 +91,7 @@ document.getElementById("cat-ingredients-div").style.display = "block";
 document.getElementById("ingredient-bar").addEventListener("keydown",function(ev){
 	if(ev.keyCode == 13) {
 		addIngredient();
-		document.getElementById('ingredient-form').submit();
+		submitForms();
 	}
 });
 

@@ -9,6 +9,7 @@ const APP_KEY = '56dc21e2492074fbd86fd463a035bd73';
 
 var app = express();
 var resultRecipes = '';
+var searchParams = []
 
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
@@ -28,22 +29,27 @@ app.get('/', (request, response) => {
 })
 
 app.get('/home', (request, response) => {
-    response.render('main.hbs')
+    response.render('main.hbs', {
+    	resultRecipes: resultRecipes
+    })
 })
 
 app.post('/search', function (req, res) {
 	getRecipes = (params, callback) => {
-
+		console.log(params.health);
 		var paramString = '';
-
-		for (k in params) {
-			paramString += k + '=' + params[k];
+		if (params.diet) {
+			paramString += 'diet=' + params.diet + '&';
 		}
 
-		console.log(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&${paramString}`);
+		if (params.health) {
+			paramString += 'health=' + params.health;
+		}
+
+		console.log(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&dietLabels=${params.diet}&healthLabels=${params.health}`);
 
 		request({
-			url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&${paramString}`,
+			url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&dietLabels=${params.diet}&healthLabels=${params.health}`,
 			json: true
 		}, (error, response, body) => {
 			if (error) {
