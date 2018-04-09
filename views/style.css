@@ -223,7 +223,7 @@ body {
 }
 
 button {
-	background-color: #bfbfbf;
+	background-color: #7575a3;
     color: white;
     cursor: pointer;
     width: 8%;
@@ -250,7 +250,7 @@ a {
 	font-size: 15px;
 }
 a:link {
-	color:#0099cc;
+	color:#4d0099;
 }
 
 a:visited {
