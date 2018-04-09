@@ -49,7 +49,8 @@
 								</label>
 							</form>
 						</div>
-						<button class="collapsible"> DIET </button>
+							<button class="collapsible"> DIET </button>
+						<!-- <div id="enter-stuff"> -->
 						<div class="content">
 							<form id='ingredient-form1'>
 								<label class="container">Balanced
@@ -78,21 +79,20 @@
 								</label>
 							</form>
 						</div>
+
+						<button class="collapsible"> SEARCH </button>
+						<!-- <div id="enter-stuff"> -->
+						<div class="content">
+							<form action="/search" method="POST" id='ingredient-form2'>
+								<input type="text" id="ingredient-bar" name="q" placeholder="What do you have?">
+							</form>	
+							<div id="food-list">
+								<b id="searchHist" style="display: none;"> Search History </b>
+							</div>
+						</div>
+						<button id="submitbutt" onclick="submitForms()"> Submit </button>
 					</div>
 				</div>	
-
-				<!-- INGREDIENTS INPUT FORM -->
-				<form action="/search" method="POST" id='ingredient-form2'>
-					<input type="text" id="ingredient-bar" name="q" placeholder="What do you have?">
-					<br>
-				</form>		<!-- END OF INGREDIENTS INPUT FORM -->
-
-				<button id="submitbutt" onclick="submitForms()"> Submit </button>
-
-			<div id="food-list">
-				<b id="searchHist" style="display: none;"> Search History </b>
-			</div>
-
 		</div>
 		
 	</div>
