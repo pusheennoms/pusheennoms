@@ -22,12 +22,12 @@
 		<img id="ingredients-img" src="ingredients.gif">
 		<p class="texts"> Type in what you have and select the health options you prefer. </p>
 		<div class="food-divs" id="search-ingredients-div">
-			<form action="/search" method="POST" id='ingredient-form'>
 				<div class="food-divs" id="cat-ingredients-div">
 					<!-- buncha ingredients dropdown -->
 					<div id='health-diet'>
 						<button class="collapsible"> HEALTH </button>
 						<div class="content">
+							<form action="/search" method="POST" id='ingredient-form'>
 								<label class="container">No Dairy
 								<input type="checkbox" name="health" value='dairy-free'>
 									<span class="checkmark"></span>
@@ -47,9 +47,11 @@
 								<input type="checkbox" name="health" value='dairy-free'>
 									<span class="checkmark"></span>
 								</label>
+							</form>
 						</div>
 						<button class="collapsible"> DIET </button>
 						<div class="content">
+							<form action="/search" method="POST" id='ingredient-form'>
 								<label class="container">Balanced
 								<input type="checkbox" name="diet" value='balanced'>
 									<span class="checkmark"></span>
@@ -70,13 +72,15 @@
 								<input type="checkbox" name="diet" value='low-sodium'>
 									<span class="checkmark"></span>
 								</label>
+							</form>
 						</div>
 					</div>
 				</div>														<!-- INGREDIENTS INPUT FORM -->
-				<input type="text" id="ingredient-bar" name="q" placeholder="Add an ingredient">
-				<br>
-				<!-- <button type="submit" value="Submit"> Submit </button> -->
-			</form>																				<!-- END OF INGREDIENTS INPUT FORM -->
+				<form action="/search" method="POST" id='ingredient-form'>
+					<input type="text" id="ingredient-bar" name="q" placeholder="What do you want to make?">
+					<br>
+				<input type="submit" value="Submit">
+				</form>																				<!-- END OF INGREDIENTS INPUT FORM -->
 			<div id="food-list">
 				<b id="searchHist" style="display: none;"> Search History </b>
 			</div>
