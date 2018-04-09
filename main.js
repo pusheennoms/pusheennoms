@@ -16,7 +16,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/imgs'));
-app.use(bodyParser.urlencoded({
+app.use(bodyParser.urlencoded({ 
 	extended:true
 }));
 

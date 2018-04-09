@@ -1,5 +1,7 @@
 body {
+/* style of the whole website*/
 	font-family: "Verdana", sans-serif;
+	background-color: #DCDCDC;
 }
 /* classes */
 .texts {
@@ -7,6 +9,7 @@ body {
 	/*font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;*/
 }
 .added-ingredients {
+/* style of search history */
 	text-align: center;
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 	margin:3%;
@@ -16,15 +19,16 @@ body {
 	margin: 2%;
 }
 .food-divs {
+/* div of the butts */
 	top: 0.5%;
 	bottom: 0.5%;
 	height:56.5%;
 	width:95%;
 	position: relative;
 	margin: auto;
-	/*background-color: red;*/
 }
 .collapsible {
+/* style of collapsible butts */
     background-color: #777;
     color: white;
     cursor: pointer;
@@ -35,9 +39,11 @@ body {
     font-size: 15px;
 }
 .active, .collapsible:hover {
+/* makes the collapsible BE COLLAPSIBLE*/
     background-color: #555;
 }
-.content {
+.content {	
+/* transition and style of text */
     padding: 0 18px;
     margin: 1%;
     max-height: 0;
@@ -45,8 +51,8 @@ body {
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
 }
-/* The container */
-.container {
+.container {	
+/* The container of the collapsible list*/
     display: block;
     position: relative;
     padding-left: 35px;
@@ -58,14 +64,15 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
-/* Hide the browser's default checkbox */
 .container input {
+/* Hide the browser's default checkbox */
     position: absolute;
     opacity: 0;
     cursor: pointer;
 }
 /* Create a custom checkbox - CHECK BOX*/
 .checkmark {
+	/* position and style of the checkbox */
     position: absolute;
     top: 0;
     left: 0;
@@ -73,14 +80,16 @@ body {
     width: 25px;
     background-color: #eee;
 }
-.container:hover input ~ .checkmark {
+.container:hover input ~ .checkmark { 
+	/*when you hover at collapsible's checkmark, it changes color to darker gray*/
     background-color: #ccc;	
 }
 .container input:checked ~ .checkmark {
+	/*when you click at collapsible's checkmark, it changes color to blue*/
     background-color: #2196F3;
 }
 .checkmark:after {
-    content: "";
+    content: "";	/*this line shows the checkmark to be in the box*/
     position: absolute;
     display: none;
 }
