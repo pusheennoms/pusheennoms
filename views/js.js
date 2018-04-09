@@ -79,20 +79,18 @@ function showResults() {
 }
 
 /*-----------INTERACTIONS--------------*/
-document.getElementById("type-butt").addEventListener("click",function(){
-	document.getElementById("search-ingredients-div").style.display = "block";
-	document.getElementById("cat-ingredients-div").style.display = "none";
-});
 
-document.getElementById("cat-butt").addEventListener("click",function(){
-	document.getElementById("search-ingredients-div").style.display = "none";
-	document.getElementById("cat-ingredients-div").style.display = "block";
-});
+document.getElementById("search-ingredients-div").style.display = "block";
+document.getElementById("cat-ingredients-div").style.display = "block";
+
+// document.getElementById("cat-butt").addEventListener("click",function(){
+// 	document.getElementById("search-ingredients-div").style.display = "none";
+// 	document.getElementById("cat-ingredients-div").style.display = "block";
+// });
 
 document.getElementById("ingredient-bar").addEventListener("keydown",function(ev){
 	if(ev.keyCode == 13) {
 		addIngredient();
-		showSearchHistory();
 		document.getElementById('ingredient-form').submit();
 	}
 });
