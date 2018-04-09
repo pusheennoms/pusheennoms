@@ -125,7 +125,11 @@ body {
 	right:2%;
 	font-size: 270%;
 }
-
+#search-results{
+	display: inline;
+	position: relative;
+	width: 100%;
+}
 /*control panel stuff*/
 #ctrlpanel {
 	position:fixed;
@@ -179,7 +183,8 @@ body {
 	/*background-color: blue;*/
 	height: 80%;
 	margin: 0% 3% 0% 3%;
-	overflow: scroll;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 #cat-ingredients-div {
 	/*background-color: red;*/
@@ -198,7 +203,7 @@ body {
 }
 #bg-img {
 	opacity: 0.3;
-	position: absolute;
+	position: fixed;
 	width:100%;
 	height:auto;
 	bottom:0%;
@@ -210,6 +215,7 @@ body {
 	margin: auto;
 	text-align: center;
 	top:15%;
+	overflow: hidden;
 }
 #welcome-msg {
 	font-size: 225%;
