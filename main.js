@@ -32,9 +32,18 @@ app.get('/home', (request, response) => {
 })
 
 app.post('/search', function (req, res) {
-	getRecipes = (param, callback) => {
+	getRecipes = (params, callback) => {
+
+		var paramString = '';
+
+		for (k in params) {
+			paramString += k + '=' + params[k];
+		}
+
+		console.log(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&${paramString}`);
+
 		request({
-			url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${param}`,
+			url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&${paramString}`,
 			json: true
 		}, (error, response, body) => {
 			if (error) {
@@ -49,7 +58,7 @@ app.post('/search', function (req, res) {
 		})
 	}
 
-	getRecipes(req.body.q, (error, results) => {
+	getRecipes(req.body, (error, results) => {
 		resultRecipes = JSON.stringify(results.recipes);
 		res.render('main.hbs', {
 			resultRecipes: resultRecipes

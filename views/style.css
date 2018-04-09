@@ -157,7 +157,7 @@
 /*search ingredients div*/
 #search-ingredients-div {
 	/*background-color: red;*/
-	display:none;
+	display:block;
 }
 #ingredient-bar {
 	width: 90%;
