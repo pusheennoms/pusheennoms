@@ -4,8 +4,8 @@ const request = require('request');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 
-const APP_ID = 'b070a23c';
-const APP_KEY = '55d54d87820425aa905bf3f36d2b1585';
+const APP_ID = '9898d34a';
+const APP_KEY = 'df03da67ec2c0fb66e7628b0c84c9bec';
 
 var app = express();
 var resultRecipes = '';
@@ -16,7 +16,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/imgs'));
-app.use(bodyParser.urlencoded({
+app.use(bodyParser.urlencoded({ 
 	extended:true
 }));
 
