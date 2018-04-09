@@ -102,13 +102,14 @@ body {
 /*border stuff*/
 
 #banner {
-	width:80%;
+	width:100%;
 	height:15%;
 	background-color:darkgray;
 	border-bottom: 2px solid dimgray;
 	position:fixed;
 	top:0px;
 	right:0px;
+	z-index: -10;
 }
 #logo {
 	position:relative;
@@ -190,7 +191,7 @@ body {
 	width:80%;
 	height:88%;
 	right:-5px;
-	bottom:0;
+	bottom:-3%;
 	z-index:-1;
 	position: absolute;
 }
@@ -200,6 +201,7 @@ body {
 	width:100%;
 	height:auto;
 	bottom:0%;
+	z-index: -2;
 }
 #welcome-div {
 	/*background-color: yellow;*/
@@ -253,4 +255,19 @@ a:link {
 
 a:visited {
 	color:#e6005c;
+}
+
+#mainbod {
+	top:50vh;
+	left:50vw;
+	width:50vw;
+	height:80vh;
+	margin:-25vh 0 0 -25vw;
+	position:absolute;
+	text-align: center;
+}
+
+.mainbutt {
+	display:inline-block;
+	width:50%;
 }

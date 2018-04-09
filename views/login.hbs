@@ -3,6 +3,7 @@
 
 <head>
     <title> Recipes! </title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <style>
        #registerform {display:none;}
        #loginform {display:none;}
@@ -11,11 +12,17 @@
 
 <body>
 
-<h2>Welcome to Recipes!</h2>
-<button onclick="login()"> Login </button>
-<button onclick="register()"> Register </button>
+    <div id="banner" >
+        <img id="logo" src="pusheats.png"> 
+        <p id="title" class="texts" ><span><u>PUSHEEN EATS</u></span></p>
+    </div>
+
+
+<div id="mainbod">
+    <button onclick="login()" class="mainbutt"> Login </button>
+    <button onclick="register()" class="mainbutt"> Register </button>
     
-    <div id='loginform'>
+    <div id='loginform' class="mainbutt">
         <h3> Log-in </h3>
         <form action="/getpass" method="post">
         Username: <input type="text" name="username"><br>
@@ -24,13 +31,15 @@
         </form>
     </div>
 
-    <div id='registerform'>
+    <div id='registerform' >
         <h3> Register </h3>
         <form action="/registerchef" method="post">
             Username: <input type="text" name="username"><br>
             Password: <input type="password" name="password"> <br>
         <input type="submit" value="Submit"></form>
     </div>
+</div>
+
 <script>
 
 function register() {

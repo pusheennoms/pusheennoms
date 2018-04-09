@@ -69,6 +69,7 @@ function showResults() {
 
 		addBtn.onclick = function (ev) {
 			addBtnForm.submit()
+			alert('You have saved the receipe!')
 		}
 
 
