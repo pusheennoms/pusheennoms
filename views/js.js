@@ -57,6 +57,7 @@ function showResults() {
 		var node = document.createElement('a');
 		node.href =  currentResults[i].recipe.url;
 		node.innerHTML = currentResults[i].recipe.label;
+		node.style.display = 'inline-block';
 		node.setAttribute('id', i.toString());
 		node.setAttribute('target', '_new')
 
@@ -67,7 +68,11 @@ function showResults() {
 		nodeInput.value = JSON.stringify(loadRecipes[node.id].recipe, undefined, 2);
 
 		var addBtn = document.createElement('button');
-		addBtn.innerHTML = 'Save Recipe';
+		addBtn.innerHTML = 'Save';
+		addBtn.style.width = '50px';
+		addBtn.style.fontSize = '12px';
+		addBtn.style.display = 'inline-block';
+		addBtn.style.position = 'relative';
 
 		var addBtnForm = document.createElement('form');
 		addBtnForm.setAttribute('method', 'POST');
