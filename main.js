@@ -73,11 +73,6 @@ app.post('/download', function (req, res) {
 
 var chefRecords = [];
 app.post('/registerchef', (request, response) => {
-	if (fs.existsSync('userpass.json') && fs.readFileSync('userpass.json').length !== 0) {
-    	getFile = fs.readFileSync('userpass.json');
-    	chefRecords = JSON.parse(getFile);
-	}
-
 	function AddtoFile() {
 		var record = {
 			"username": request.body.username,
@@ -87,28 +82,34 @@ app.post('/registerchef', (request, response) => {
 		newChef = JSON.stringify(chefRecords);
 		fs.writeFileSync('userpass.json', newChef);
 	}; 
-
+	checkRecords();
 	AddtoFile(); 
 	response.render('login.hbs');
 });
 
 app.post('/getpass', (request, response) => {
-	console.log(request.body.username);
-
+	checkRecords()
+	inpUsername = request.body.username;
+	inpPassword = request.body.password;
 	function AuthenticateChef(inpUsername, inpPassword){	
 		for (var i = 0; i < chefRecords.length; i++){
 			if(chefRecords[i].username == inpUsername){
 				if(chefRecords[i].password == inpPassword){
-					return console.log('yay');
-				}
-			}
-			return console.log('fail');
+					response.redirect('/home');
+				} else {response.redirect('/')}
+			} 
 		}
 	}
-	AuthenticateChef(request.body.username, request.body.password);
-	response.render('main.hbs');
+	AuthenticateChef(inpUsername, inpPassword);
 
 });
+
+function checkRecords() {
+	if (fs.existsSync('userpass.json') && fs.readFileSync('userpass.json').length !== 0) {
+    	getFile = fs.readFileSync('userpass.json');
+    	chefRecords = JSON.parse(getFile);
+	}
+}
 
 app.listen(8081, () => {
     console.log('Server is up on the port 8081');
