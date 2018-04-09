@@ -31,6 +31,10 @@ function showSearchHistory() {
 
 function clearSearchHistory() {
 	localStorage.removeItem('searchHistory');
+	var ingredients = document.getElementsByClassName('added-ingredients');
+	for (i = 0; i < ingredients.length; i++) {
+		ingredients[i].parentNode.removeChild(ingredients[i]);
+	}
 }
 
 function setCurrentResults(res) {
