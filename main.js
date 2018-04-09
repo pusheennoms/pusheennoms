@@ -9,7 +9,6 @@ const APP_KEY = '55d54d87820425aa905bf3f36d2b1585';
 
 var app = express();
 var resultRecipes = '';
-var usernameDoesNotExist = false;
 var loggedIn = false;
 
 app.set('view engine', 'hbs');
@@ -26,9 +25,7 @@ hbs.registerHelper('getCopyRights', () => {
 })
 
 app.get('/', (request, response) => {
-    response.render('login.hbs', {
-    	usernameDoesNotExist: usernameDoesNotExist
-    })
+    response.render('login.hbs')
 })
 
 app.get('/home', (request, response) => {
@@ -109,7 +106,6 @@ app.post('/getpass', (request, response) => {
 		for (var i = 0; i < chefRecords.length; i++){
 			if(chefRecords[i].username == inpUsername){
 				usernameFound = true;
-				usernameDoesNotExist = false;
 				if(chefRecords[i].password == inpPassword){
 					loggedIn = true;
 					response.redirect('/home');
@@ -119,8 +115,9 @@ app.post('/getpass', (request, response) => {
 			} 
 		}
 		if (!usernameFound) {
-			usernameDoesNotExist = true;
-			response.redirect('/')
+			response.render('login.hbs', {
+				usernameDoesNotExist: true
+			})
 		}
 	}
 	AuthenticateChef(inpUsername, inpPassword);

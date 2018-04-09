@@ -29,14 +29,6 @@ function showSearchHistory() {
 	}
 }
 
-function clearSearchHistory() {
-	localStorage.removeItem('searchHistory');
-	var ingredients = document.getElementsByClassName('added-ingredients');
-	for (i = 0; i < ingredients.length; i++) {
-		ingredients[i].parentNode.removeChild(ingredients[i]);
-	}
-}
-
 function setCurrentResults(res) {
 	currentResults = res;
 	if (currentResults && currentResults.length > 0) {
@@ -52,7 +44,7 @@ function showResults() {
 	document.getElementById('search-results').appendChild(msg);
 
 	localStorage.setItem('currentRecipes', JSON.stringify(currentResults))
-	for (var i = currentResults.length - 1; i >= 0; i--) {
+	for (var i = 0; i < currentResults.length; i++) {
 
 		var node = document.createElement('a');
 		node.href =  currentResults[i].recipe.url;

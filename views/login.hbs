@@ -52,11 +52,10 @@ function login() {
 }
 
 function submitCredentials(usernameDoesNotExist) {
+    document.getElementById('credentialsForm').submit();
     if (usernameDoesNotExist) {
         alert('Username does not exist!');
-    } else {
-        document.getElementById('credentialsForm').submit();
-    }
+    } 
 }
 
 
