@@ -48,7 +48,7 @@ function setCurrentResults(res) {
 function showResults() {
 	document.getElementById('welcome-div').style.display = 'None';
 	var msg = document.createElement('h2');				
-	msg.innerHTML = 'Click the button below the URL to save your recipe!'
+	msg.innerHTML = 'Click the button below the URL to save your recipe!\n'
 	document.getElementById('search-results').appendChild(msg);
 
 	localStorage.setItem('currentRecipes', JSON.stringify(currentResults))
