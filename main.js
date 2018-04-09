@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 hbs.registerHelper('getCopyRights', () => {
-	return "Rest in Pepperonis";
+	return "Rest in Pepperoni";
 })
 
 app.get('/', (request, response) => {    
@@ -36,7 +36,6 @@ app.get('/home', (request, response) => {
 
 app.post('/search', function (req, res) {
 	getRecipes = (params, callback) => {
-		console.log(params.health);
 		var paramString = '';
 		if (params.diet) {
 			paramString += 'diet=' + params.diet + '&';
@@ -59,7 +58,7 @@ app.post('/search', function (req, res) {
 					recipes: body.hits
 				})
 			} else {
-				console.log(body + 'FOOOOOOOBAAAAAAAAAR');			
+				console.log('Error beyond control');			
 			}
 		})
 	}
@@ -78,6 +77,7 @@ app.post('/download', function (req, res) {
 })
 
 var chefRecords = [];
+
 app.post('/registerchef', (request, response) => {
 	function AddtoFile() {
 		var record = {
@@ -90,7 +90,7 @@ app.post('/registerchef', (request, response) => {
 	}; 
 	checkRecords();
 	AddtoFile(); 
-	response.render('login.hbs');
+	response.redirect('/');
 });
 
 app.post('/getpass', (request, response) => {

@@ -32,51 +32,12 @@
         <input type="submit" value="Submit"></form>
     </div>
 <script>
-    
-currentSavedUsers = JSON.parse(localStorage.getItem("users"));
-currentUsers = currentSavedUsers ? currentSavedUsers : [];
-
-currentSavedPasswords = JSON.parse(localStorage.getItem("passwords"));
-currentPasswords = currentSavedPasswords ? currentSavedPasswords : [];
-
-function saveUsers(user, pass) {
-    localStorage.setItem(JSON.stringify(user), JSON.stringify(pass));
-}
-
-function savePasswords() {
-    localStorage.setItem("passwords", JSON.stringify(currentPasswords));
-}
 
 function register() {
-    // var name = prompt("Please enter the name you wish to login with: ")
-    // var password = prompt("Please enter your password: ")
-    // currentUsers.push(name, password);
-    // currentPasswords.push(password);
-
-    // saveUsers(name, password);
-    // savePasswords();
     document.getElementById('registerform').style.display="block";
 }
 
 function login() {
-    // var username = prompt("Please enter your username:");
-    // if (currentUsers.indexOf(username) > -1) {
-    //     console.log("useris " + username)
-
-    //     var password = prompt("Please enter your password:");
-    //         userpass = localStorage.getItem()
-    //         console.log("user prompted password is " + password);
-    //         console.log("stored password is " + userpass);
-    //         if (userpass == password) {
-    //             window.open('recipes')
-    //         }
-    //         else {
-    //             alert('Invalid Username and Password');
-    //         }
-    //     }
-    // else {
-    //     alert('Invalid Username');
-    // }
     document.getElementById('loginform').style.display="block";
 }
 
