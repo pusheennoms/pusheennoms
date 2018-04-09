@@ -3,6 +3,7 @@
 
 <head>
     <title> Recipes! </title>
+    <link rel="icon" href="icon.png">
     <link href="style.css" rel="stylesheet" type="text/css" />
     <style>
        #registerform {display:none;}
@@ -22,7 +23,7 @@
     <button onclick="login()" class="mainbutt"> Login </button>
     <button onclick="register()" class="mainbutt"> Register </button>
     
-    <div id='loginform' class="mainbutt">
+    <div id='loginform' class="mainbutt" style="margin: auto;">
         <h3> Log-in </h3>
         <form action="/getpass" method="post" id='credentialsForm'>
         Username: <input type="text" name="username"><br>
@@ -36,7 +37,7 @@
         <form action="/registerchef" method="post">
             Username: <input type="text" name="username"><br>
             Password: <input type="password" name="password"> <br>
-        <input type="submit" value="Submit"></form>
+        <button type="submit" value="Submit">Submit</form>
     </div>
 </div>
 
