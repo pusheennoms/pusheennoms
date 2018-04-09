@@ -100,10 +100,11 @@ app.post('/getpass', (request, response) => {
 	inpUsername = request.body.username;
 	inpPassword = request.body.password;
 	function AuthenticateChef(inpUsername, inpPassword){
-		var usernameExists = false;	
+		var usernameFound = false;	
 		for (var i = 0; i < chefRecords.length; i++){
 			if(chefRecords[i].username == inpUsername){
-				usernameExists = true;
+				usernameFound = true;
+				usernameDoesNotExist = false;
 				if(chefRecords[i].password == inpPassword){
 					response.redirect('/home');
 				} else {
@@ -111,7 +112,7 @@ app.post('/getpass', (request, response) => {
 				}
 			} 
 		}
-		if (!usernameExists) {
+		if (!usernameFound) {
 			usernameDoesNotExist = true;
 			response.redirect('/')
 		}

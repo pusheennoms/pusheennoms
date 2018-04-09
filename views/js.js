@@ -15,7 +15,7 @@ function addIngredient() {
 }
 
 function showSearchHistory() {
-	document.getElementById('searchHist').style.display = 'block';
+	document.getElementById('searchHist').style.display = 'inline-block';
 	for(i=0; i < currentSearchHistory.length; i++) {
 		var ndiv = document.createElement("div");
 		ndiv.innerHTML = currentSearchHistory[i];
@@ -27,6 +27,10 @@ function showSearchHistory() {
 
 		document.getElementById("food-list").appendChild(ndiv).setAttribute("id","food-"+i)
 	}
+}
+
+function clearSearchHistory() {
+	localStorage.removeItem('searchHistory');
 }
 
 function setCurrentResults(res) {
