@@ -9,7 +9,7 @@ const APP_KEY = '55d54d87820425aa905bf3f36d2b1585';
 
 var app = express();
 var resultRecipes = '';
-var searchParams = []
+var usernameDoesNotExist = false;
 
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
@@ -24,8 +24,10 @@ hbs.registerHelper('getCopyRights', () => {
 	return "Rest in Pepperoni";
 })
 
-app.get('/', (request, response) => {    
-    response.render('login.hbs')
+app.get('/', (request, response) => {
+    response.render('login.hbs', {
+    	usernameDoesNotExist: usernameDoesNotExist
+    })
 })
 
 app.get('/home', (request, response) => {
@@ -97,13 +99,21 @@ app.post('/getpass', (request, response) => {
 	checkRecords()
 	inpUsername = request.body.username;
 	inpPassword = request.body.password;
-	function AuthenticateChef(inpUsername, inpPassword){	
+	function AuthenticateChef(inpUsername, inpPassword){
+		var usernameExists = false;	
 		for (var i = 0; i < chefRecords.length; i++){
 			if(chefRecords[i].username == inpUsername){
+				usernameExists = true;
 				if(chefRecords[i].password == inpPassword){
 					response.redirect('/home');
-				} else {response.redirect('/')}
+				} else {
+					response.redirect('/')
+				}
 			} 
+		}
+		if (!usernameExists) {
+			usernameDoesNotExist = true;
+			response.redirect('/')
 		}
 	}
 	AuthenticateChef(inpUsername, inpPassword);

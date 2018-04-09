@@ -24,10 +24,10 @@
     
     <div id='loginform' class="mainbutt">
         <h3> Log-in </h3>
-        <form action="/getpass" method="post">
+        <form action="/getpass" method="post" id='credentialsForm'>
         Username: <input type="text" name="username"><br>
         Password: <input type="password" name="password"> <br>
-        <input type="submit" value="Submit">
+        <button onclick="submitCredentials({{usernameDoesNotExist}})"> Submit </button>
         </form>
     </div>
 
@@ -48,6 +48,14 @@ function register() {
 
 function login() {
     document.getElementById('loginform').style.display="block";
+}
+
+function submitCredentials(usernameDoesNotExist) {
+    if (usernameDoesNotExist) {
+        alert('Username does not exist!');
+    } else {
+        document.getElementById('credentialsForm').submit();
+    }
 }
 
 
