@@ -10,6 +10,7 @@ const APP_KEY = 'df03da67ec2c0fb66e7628b0c84c9bec';
 var app = express();
 var resultRecipes = '';
 var usernameDoesNotExist = false;
+var loggedIn = false;
 
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
@@ -31,26 +32,30 @@ app.get('/', (request, response) => {
 })
 
 app.get('/home', (request, response) => {
-    response.render('main.hbs', {
-    	resultRecipes: resultRecipes
-    })
+	if (loggedIn) {
+	    response.render('main.hbs', {
+			resultRecipes: resultRecipes
+		})
+	} else {
+		response.redirect('/');
+	}
 })
 
 app.post('/search', function (req, res) {
 	getRecipes = (params, callback) => {
 		var paramString = '';
 		if (params.diet) {
-			paramString += 'diet=' + params.diet + '&';
+			paramString += 'dietLabels=' + params.diet + '&';
 		}
 
 		if (params.health) {
-			paramString += 'health=' + params.health;
+			paramString += 'healthLabels=' + params.health;
 		}
 
-		console.log(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&dietLabels=${params.diet}&healthLabels=${params.health}`);
+		console.log(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&${paramString}`);
 
 		request({
-			url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&dietLabels=${params.diet}&healthLabels=${params.health}`,
+			url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&${paramString}`,
 			json: true
 		}, (error, response, body) => {
 			if (error) {
@@ -69,7 +74,7 @@ app.post('/search', function (req, res) {
 		resultRecipes = JSON.stringify(results.recipes);
 		res.render('main.hbs', {
 			resultRecipes: resultRecipes
-		})	
+		});
 	});
 })
 
@@ -106,6 +111,7 @@ app.post('/getpass', (request, response) => {
 				usernameFound = true;
 				usernameDoesNotExist = false;
 				if(chefRecords[i].password == inpPassword){
+					loggedIn = true;
 					response.redirect('/home');
 				} else {
 					response.redirect('/')

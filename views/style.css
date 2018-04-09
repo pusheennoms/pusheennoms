@@ -193,12 +193,17 @@ body {
 	position: relative;
 	/*background-color: blue;*/
 	height: 80%;
+<<<<<<< HEAD
 	margin: 0% 3% 0% 3%;
 <<<<<<< HEAD
 	overflow-y: scroll;
 	overflow-x: hidden;
 =======
 >>>>>>> aef218a... dani added stuff
+=======
+	overflow-y: scroll;
+	overflow-x: hidden;
+>>>>>>> d6201ac7ade4229e8b716ea697aff523dc399261
 }
 #cat-ingredients-div {
 	/*background-color: red;*/

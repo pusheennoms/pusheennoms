@@ -5,8 +5,9 @@
 	<link rel="icon" href="icon.png">
 	<link href="style.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body >
+=======
+<body>
 <!-- TOP border -->
 	<div id="banner" >
 		<img id="logo" src="pusheats.png" onload="setCurrentResults({{resultRecipes}})"> 
@@ -128,7 +129,6 @@
 					addToSearchParam('diet', dietFormElements[i].value)
 				}
 			}
-			console.log(document.getElementById('ingredient-form2').elements);
 			document.getElementById('ingredient-form2').submit();
 		}
 
@@ -140,6 +140,7 @@
 
 			document.getElementById('ingredient-form2').appendChild(newInput);
 		}
+
 	</script>
 
 </body>
