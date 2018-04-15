@@ -2,6 +2,9 @@
   "name": "PusheenEats",
   "version": "1.0.1",
   "description": "",
+  "engines": {
+    "node": "8.9.1"
+  },
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,8 +22,5 @@
   },
   "devDependencies": {
     "request": "^2.85.0"
-  },
-  "engines": {
-    "node": "8.9.1"
   }
 }
