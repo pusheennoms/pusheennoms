@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-  	"start": "npm start server.js",
+  	"start": "npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Emilie Zhang, Danielle Braceros, Precidia Tom",
