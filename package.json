@@ -1,15 +1,20 @@
 {
-  "name": "challenge9",
-  "version": "1.0.0",
+  "name": "PusheenEats",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+  	"start": "npm start server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Emilie Zhang",
+  "author": "Emilie Zhang, Danielle Braceros, Precidia Tom",
   "license": "ISC",
   "dependencies": {
     "hbs": "^4.0.1",
-    "node-localstorage": "^1.3.1"
+    "node-localstorage": "^1.3.1",
+    "npm-scripts": "^1.4.0"
+  },
+  "engines": {
+    "node": "8.9.1"
   }
 }
