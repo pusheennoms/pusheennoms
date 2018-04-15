@@ -2,9 +2,8 @@
   "name": "PusheenEats",
   "version": "1.0.1",
   "description": "",
-  "main": "server.js",
   "scripts": {
-  	"start": "npm start",
+  	"start": "npm start server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Emilie Zhang, Danielle Braceros, Precidia Tom",
