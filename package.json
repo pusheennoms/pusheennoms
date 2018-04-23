@@ -6,7 +6,7 @@
     "node": "8.9.1"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Emilie Zhang, Danielle Braceros, Precidia Tom",
