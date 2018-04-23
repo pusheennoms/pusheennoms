@@ -38,61 +38,44 @@ app.get('/home', (request, response) => {
     }
 });
 
-app.get('/search', function (req, res, next) {
-    console.log(req.query);
-
+var getRecipes = (params, callback) => {
     var paramString = '';
-    if (req.query.diet) {
-        paramString += 'dietLabels=' + req.query.diet + '&';
+    if (params.diet) {
+        paramString += 'dietLabels=' + params.diet + '&';
     }
 
-    if (req.query.health) {
-        paramString += 'healthLabels=' + req.query.health;
+    if (params.health) {
+        paramString += 'healthLabels=' + params.health;
     }
 
     request({
-        url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${req.query.q}&${paramString}`,
+        url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&${paramString}`,
         json: true
     }, (error, response, body) => {
         if (error) {
+            callback("Cannot connect to API");
         } else if (body.hits) {
-            resultRecipes = JSON.stringify(body.hits);
-            res.render('home.hbs', {
-                resultRecipes: resultRecipes
-            });
+            callback(undefined, {
+                recipes: body.hits
+            })
         } else {
             console.log('Error beyond control');
         }
     })
+};
 
+app.get('/search', function (req, res, next) {
+    console.log(req.query);
+    getRecipes(req.query, (error, results) => {
+        resultRecipes = JSON.stringify(results.recipes);
+        res.render('home.hbs', {
+            resultRecipes: resultRecipes
+        });
+    });
 });
 
 app.post('/search', function (req, res) {
-    getRecipes = (params, callback) => {
-        var paramString = '';
-        if (params.diet) {
-            paramString += 'dietLabels=' + params.diet + '&';
-        }
 
-        if (params.health) {
-            paramString += 'healthLabels=' + params.health;
-        }
-
-        request({
-            url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&${paramString}`,
-            json: true
-        }, (error, response, body) => {
-            if (error) {
-                callback("Cannot connect to API");
-            } else if (body.hits) {
-                callback(undefined, {
-                    recipes: body.hits
-                })
-            } else {
-                console.log('Error beyond control');
-            }
-        })
-    };
 
     getRecipes(req.body, (error, results) => {
         resultRecipes = JSON.stringify(results.recipes);
