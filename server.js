@@ -66,7 +66,6 @@ var getRecipes = (params, callback) => {
 };
 
 app.get('/search', function (req, res, next) {
-    console.log(req.query);
     getRecipes(req.query, (error, results) => {
         resultRecipes = JSON.stringify(results.recipes);
         res.render('home.hbs', {
@@ -76,8 +75,6 @@ app.get('/search', function (req, res, next) {
 });
 
 app.post('/search', function (req, res) {
-
-
     getRecipes(req.body, (error, results) => {
         resultRecipes = JSON.stringify(results.recipes);
         res.render('home.hbs', {
@@ -88,7 +85,7 @@ app.post('/search', function (req, res) {
 
 app.post('/download', function (req, res) {
     var recipe = JSON.parse(req.body.recipe);
-    fs.writeFileSync(recipe.label.replace(' ', '-') + '.txt', req.body.recipe);
+    fs.writeFileSync(recipe.label + '.txt', req.body.recipe);
 });
 
 var chefRecords = [];
