@@ -45,9 +45,11 @@
 
 function register() {
     document.getElementById('registerform').style.display="block";
+    document.getElementById('loginform').style.display="none";   
 }
 
 function login() {
+    document.getElementById('registerform').style.display="none";
     document.getElementById('loginform').style.display="block";
 }
 
