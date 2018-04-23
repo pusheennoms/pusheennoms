@@ -30,12 +30,41 @@ app.get('/', (request, response) => {
 
 app.get('/home', (request, response) => {
     if (loggedIn) {
-        response.render('main.hbs', {
+        response.render('home.hbs', {
             resultRecipes: resultRecipes
         })
     } else {
         response.redirect('/');
     }
+});
+
+app.get('/search', function (req, res, next) {
+    console.log(req.query);
+
+    var paramString = '';
+    if (req.query.diet) {
+        paramString += 'dietLabels=' + req.query.diet + '&';
+    }
+
+    if (req.query.health) {
+        paramString += 'healthLabels=' + req.query.health;
+    }
+
+    request({
+        url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${req.query.q}&${paramString}`,
+        json: true
+    }, (error, response, body) => {
+        if (error) {
+        } else if (body.hits) {
+            resultRecipes = JSON.stringify(body.hits);
+            res.render('home.hbs', {
+                resultRecipes: resultRecipes
+            });
+        } else {
+            console.log('Error beyond control');
+        }
+    })
+
 });
 
 app.post('/search', function (req, res) {
@@ -48,8 +77,6 @@ app.post('/search', function (req, res) {
         if (params.health) {
             paramString += 'healthLabels=' + params.health;
         }
-
-        console.log(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&${paramString}`);
 
         request({
             url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&${paramString}`,
@@ -65,11 +92,11 @@ app.post('/search', function (req, res) {
                 console.log('Error beyond control');
             }
         })
-    }
+    };
 
     getRecipes(req.body, (error, results) => {
         resultRecipes = JSON.stringify(results.recipes);
-        res.render('main.hbs', {
+        res.render('home.hbs', {
             resultRecipes: resultRecipes
         });
     });
@@ -135,5 +162,5 @@ function checkRecords() {
 }
 
 app.listen(process.env.PORT || 8000, () => {
-    console.log('Server is up on the port 8081');
+    console.log('Server is up on the port 8000');
 });
