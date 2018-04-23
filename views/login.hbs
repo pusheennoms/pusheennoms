@@ -43,14 +43,30 @@
 
 <script>
 
+var active = [0,0], //[0] for register, [1] for login
+    registerform = document.getElementById('registerform'),
+    loginform = document.getElementById('loginform');
+
 function register() {
-    document.getElementById('registerform').style.display="block";
-    document.getElementById('loginform').style.display="none";   
+    if (active[0] == 0) {
+        registerform.style.display="block";
+        loginform.style.display="none";
+        active[0] = 1;
+    } else {
+        active = [0,0];
+        registerform.style.display="none";
+    }
 }
 
 function login() {
-    document.getElementById('registerform').style.display="none";
-    document.getElementById('loginform').style.display="block";
+    if (active[1] == 0) {
+        registerform.style.display="none";
+        loginform.style.display="block";
+        active[1] = 1;
+    } else {
+        loginform.style.display="none";
+        active = [0,0];
+    }
 }
 
 function submitCredentials(usernameDoesNotExist) {
