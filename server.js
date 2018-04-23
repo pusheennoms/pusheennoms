@@ -25,13 +25,13 @@ hbs.registerHelper('getCopyRights', () => {
     return "Rest in Pepperoni";
 });
 
-app.get('/getpass', (request, response) => {
+app.get('/', (request, response) => {
     response.render('login.hbs')
 });
 
 app.get('/home', (request, response) => {
     if (loggedIn) {
-        response.render('main.hbs', {
+        response.render('home.hbs', {
             resultRecipes: resultRecipes
         })
     } else {
@@ -39,38 +39,48 @@ app.get('/home', (request, response) => {
     }
 });
 
-app.post('/search', function (req, res) {
-    getRecipes = (params, callback) => {
-        var paramString = '';
-        if (params.diet) {
-            paramString += 'dietLabels=' + params.diet + '&';
-        }
-
-        if (params.health) {
-            paramString += 'healthLabels=' + params.health;
-        }
-
-        console.log(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&${paramString}`);
-
-        request({
-            url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&${paramString}`,
-            json: true
-        }, (error, response, body) => {
-            if (error) {
-                callback("Cannot connect to API");
-            } else if (body.hits) {
-                callback(undefined, {
-                    recipes: body.hits
-                })
-            } else {
-                console.log('Error beyond control');
-            }
-        })
+var getRecipes = (params, callback) => {
+    var paramString = '';
+    if (params.diet) {
+        paramString += 'dietLabels=' + params.diet + '&';
     }
+
+    if (params.health) {
+        paramString += 'healthLabels=' + params.health;
+    }
+
+    request({
+        url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&${paramString}`,
+        json: true
+    }, (error, response, body) => {
+        if (error) {
+            callback("Cannot connect to API");
+        } else if (body.hits) {
+            callback(undefined, {
+                recipes: body.hits
+            })
+        } else {
+            console.log('Error beyond control');
+        }
+    })
+};
+
+app.get('/search', function (req, res, next) {
+    console.log(req.query);
+    getRecipes(req.query, (error, results) => {
+        resultRecipes = JSON.stringify(results.recipes);
+        res.render('home.hbs', {
+            resultRecipes: resultRecipes
+        });
+    });
+});
+
+app.post('/search', function (req, res) {
+
 
     getRecipes(req.body, (error, results) => {
         resultRecipes = JSON.stringify(results.recipes);
-        res.render('main.hbs', {
+        res.render('home.hbs', {
             resultRecipes: resultRecipes
         });
     });
@@ -135,9 +145,6 @@ function checkRecords() {
     }
 }
 
-function checkInputs(user, password) {
-}
-
-app.listen(port, () => {
-    console.log('Server is up on the port 8080');
+app.listen(process.env.PORT || 8000, () => {
+    console.log('Server is up on the port 8000');
 });
