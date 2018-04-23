@@ -30,7 +30,7 @@ app.get('/', (request, response) => {
 
 app.get('/home', (request, response) => {
     if (loggedIn) {
-        response.render('main.hbs', {
+        response.render('home.hbs', {
             resultRecipes: resultRecipes
         })
     } else {
@@ -69,7 +69,7 @@ app.post('/search', function (req, res) {
 
     getRecipes(req.body, (error, results) => {
         resultRecipes = JSON.stringify(results.recipes);
-        res.render('main.hbs', {
+        res.render('home.hbs', {
             resultRecipes: resultRecipes
         });
     });
@@ -135,5 +135,5 @@ function checkRecords() {
 }
 
 app.listen(process.env.PORT || 8000, () => {
-    console.log('Server is up on the port 8081');
+    console.log('Server is up on the port 8000');
 });
