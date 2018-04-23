@@ -10,6 +10,7 @@ const APP_KEY = 'df03da67ec2c0fb66e7628b0c84c9bec';
 var app = express();
 var resultRecipes = '';
 var loggedIn = false;
+var port = process.env.PORT || 8000;
 
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
@@ -24,7 +25,7 @@ hbs.registerHelper('getCopyRights', () => {
     return "Rest in Pepperoni";
 });
 
-app.get('/', (request, response) => {
+app.get('/getpass', (request, response) => {
     response.render('login.hbs')
 });
 
@@ -146,4 +147,6 @@ function checkRecords() {
 
 app.listen(process.env.PORT || 8000, () => {
     console.log('Server is up on the port 8000');
-});
+}
+function checkInputs(user, password) {
+}
