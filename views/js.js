@@ -1,11 +1,14 @@
 /*--------------variables--------------*/
 var coll = document.getElementsByClassName("collapsible");
 
-var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory'));
-var currentSearchHistory = savedSearchHistory ? savedSearchHistory : [];
+var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
+	currentSearchHistory = savedSearchHistory ? savedSearchHistory : [];
 
 var currentResults;
 
+var ingredientBar = document.getElementById('ingredient-bar'),
+	foodList = document.getElementById('food-list'),
+	searchHist = document.getElementById('searchHist');
 /*-------------foodDisplay-------------*/
 function addIngredient(queryParams) {
     let q = queryParams.q;
@@ -33,7 +36,7 @@ function addIngredient(queryParams) {
 }
 
 function showSearchHistory() {
-    document.getElementById('food-list').style.display = 'block';
+    foodList.style.display = 'block';
     for (i = 0; i < currentSearchHistory.length; i++) {
         var ndiv = document.createElement("a");
         ndiv.innerHTML = currentSearchHistory[i].value;
@@ -42,8 +45,8 @@ function showSearchHistory() {
         ndiv.setAttribute('href', '/search?' + currentSearchHistory[i].query);
         ndiv.setAttribute("id", "food-" + i);
 
-        document.getElementById("food-list").appendChild(ndiv);
-        document.getElementById("food-list").appendChild(document.createElement("br"));
+        foodList.appendChild(ndiv);
+        foodList.appendChild(document.createElement("br"));
     }
 }
 

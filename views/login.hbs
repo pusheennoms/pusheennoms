@@ -1,67 +1,50 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title> Recipes! </title>
+        <link rel="icon" href="icon.png">
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <link href="loginStyle.css" rel="stylesheet" type="text/css" />        
+    </head>
 
-<head>
-    <title> Recipes! </title>
-    <link rel="icon" href="icon.png">
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <style>
-       #registerform {display:none;}
-       #loginform {display:none;}
-    </style>
-</head>
-
-<body>
-
-    <div id="banner" >
-        <img id="logo" src="pusheats.png"> 
-        <p id="title" class="texts" ><span><u>PUSHEEN EATS</u></span></p>
-    </div>
+    <body>
+        <div id="banner" >
+            <img id="logo" src="pusheats.png"> 
+            <p id="title" class="texts" ><span><u>PUSHEEN EATS</u></span></p>
+        </div>
 
 
-<div id="mainbod">
-    <button onclick="login()" class="mainbutt"> Login </button>
-    <button onclick="register()" class="mainbutt"> Register </button>
-    
-    <div id='loginform' class="mainbutt" style="margin: auto;">
-        <h3> Log-in </h3>
-        <form action="/getpass" method="post" id='credentialsForm'>
-        Username: <input type="text" name="username"><br>
-        Password: <input type="password" name="password"> <br>
-        <button onclick="submitCredentials({{usernameDoesNotExist}})"> Submit </button>
-        </form>
-    </div>
+        <div id="mainbod">
+            <button onclick="login()" class="mainbutt"> Login </button>
+            
+            <div id='loginform' class="forms">
+                <br>
+                <form action="/getpass" method="post" id='credentialsForm'>
+                    Username: <input type="text" name="username"><br>
+                    Password: <input type="password" name="password"><br>
+                    <div class="submitBox">
+                        <button onclick="submitCredentials({{usernameDoesNotExist}})" class="submitButton">Submit</button>
+                    </div>
+                </form>
+            </div>
 
-    <div id='registerform' >
-        <h3> Register </h3>
-        <form action="/registerchef" method="post">
-            Username: <input type="text" name="username"><br>
-            Password: <input type="password" name="password"> <br>
-        <button type="submit" value="Submit">Submit</form>
-    </div>
-</div>
+            <br><br>
+            <button onclick="register()" class="mainbutt"> Register </button>
 
-<script>
+            <div id='registerform' class="forms">
+                <br>
+                <form action="/registerchef" method="post" id='newRegister' >
+                    Username: <input type="text" name="username"><br>
+                    Password: <input type="password" name="password"><br>
+                    <div class="submitBox">
+                        <button type="submit" value="Submit" class="submitButton">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-function register() {
-    document.getElementById('registerform').style.display="block";
-    document.getElementById('loginform').style.display="none";   
-}
-
-function login() {
-    document.getElementById('registerform').style.display="none";
-    document.getElementById('loginform').style.display="block";
-}
-
-function submitCredentials(usernameDoesNotExist) {
-    document.getElementById('credentialsForm').submit();
-    if (usernameDoesNotExist) {
-        alert('Username does not exist!');
-    } 
-}
-
-
-</script>
-</body>
-
+        <script>
+        </script>
+        <script src="login.js"></script>
+    </body>
 </html>
