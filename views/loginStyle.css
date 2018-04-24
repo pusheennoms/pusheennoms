@@ -1,0 +1,26 @@
+#registerform {
+	display:none;
+}
+
+#loginform {
+	display:none;
+}
+
+.submitButton {
+	width:100px;
+}
+
+.submitBox {
+	text-align:center;
+	margin:10px;
+}
+
+.forms {
+	text-align:right;
+	margin:auto;
+	width:250px;
+}
+
+body {
+	overflow:hidden;
+}
