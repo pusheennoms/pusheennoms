@@ -1,83 +1,87 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title> Recipes! </title>
+        <link rel="icon" href="icon.png">
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <style>
+           #registerform {display:none;}
+           #loginform {display:none;}
+        </style>
+    </head>
 
-<head>
-    <title> Recipes! </title>
-    <link rel="icon" href="icon.png">
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <style>
-       #registerform {display:none;}
-       #loginform {display:none;}
-    </style>
-</head>
-
-<body>
-
-    <div id="banner" >
-        <img id="logo" src="pusheats.png"> 
-        <p id="title" class="texts" ><span><u>PUSHEEN EATS</u></span></p>
-    </div>
+    <body>
+        <div id="banner" >
+            <img id="logo" src="pusheats.png"> 
+            <p id="title" class="texts" ><span><u>PUSHEEN EATS</u></span></p>
+        </div>
 
 
-<div id="mainbod">
-    <button onclick="login()" class="mainbutt"> Login </button>
-    <button onclick="register()" class="mainbutt"> Register </button>
-    
-    <div id='loginform' class="mainbutt" style="margin: auto;">
-        <h3> Log-in </h3>
-        <form action="/getpass" method="post" id='credentialsForm'>
-        Username: <input type="text" name="username"><br>
-        Password: <input type="password" name="password"> <br>
-        <button onclick="submitCredentials({{usernameDoesNotExist}})"> Submit </button>
-        </form>
-    </div>
+        <div id="mainbod">
+            <button onclick="login()" class="mainbutt"> Login </button>
+            <button onclick="register()" class="mainbutt"> Register </button>
+            
+            <div id='loginform' class="mainbutt" style="margin: auto;">
+                <h3> Log-in </h3>
+                <form action="/getpass" method="post" id='credentialsForm'>
+                Username: <input type="text" name="username"><br>
+                Password: <input type="password" name="password"> <br>
+                <button onclick="submitCredentials({{usernameDoesNotExist}})"> Submit </button>
+                </form>
+            </div>
 
-    <div id='registerform' >
-        <h3> Register </h3>
-        <form action="/registerchef" method="post">
-            Username: <input type="text" name="username"><br>
-            Password: <input type="password" name="password"> <br>
-        <button type="submit" value="Submit">Submit</form>
-    </div>
-</div>
+            <div id='registerform' >
+                <h3> Register </h3>
+                <form action="/registerchef" method="post" id='newRegister'>
+                    Username: <input type="text" name="username"><br>
+                    Password: <input type="password" name="password"> <br>
+                <button onclick="newRegister()" type="submit" value="Submit">Submit</form>
+            </div>
+        </div>
 
-<script>
+        <script>
+            var active = [0,0], //[0] for register, [1] for login
+                regForm = document.getElementById('registerform'),
+                logForm = document.getElementById('loginform'),
+                credForm = document.getElementById('credentialsForm'),
+                newReg = document.getElementById('newRegister');
 
-var active = [0,0], //[0] for register, [1] for login
-    registerform = document.getElementById('registerform'),
-    loginform = document.getElementById('loginform');
+            // click register button to show menu, second click hide menu
+            function register() {
+                if (active[0] == 0) {
+                    regForm.style.display="block";
+                    logForm.style.display="none";
+                    active[0] = 1;
+                } else {
+                    regForm.style.display="none";
+                    active = [0,0];
+                }
+            }
 
-function register() {
-    if (active[0] == 0) {
-        registerform.style.display="block";
-        loginform.style.display="none";
-        active[0] = 1;
-    } else {
-        active = [0,0];
-        registerform.style.display="none";
-    }
-}
+            // click login button to show menu, second click hide menu
+            function login() {
+                if (active[1] == 0) {
+                    regForm.style.display="none";
+                    logForm.style.display="block";
+                    active[1] = 1;
+                } else {
+                    logForm.style.display="none";
+                    active = [0,0];
+                }
+            }
 
-function login() {
-    if (active[1] == 0) {
-        registerform.style.display="none";
-        loginform.style.display="block";
-        active[1] = 1;
-    } else {
-        loginform.style.display="none";
-        active = [0,0];
-    }
-}
+            // attempt to log in
+            function submitCredentials(usernameDoesNotExist) {
+                credForm.submit();
+                if (usernameDoesNotExist) {
+                    alert('Username does not exist!');
+                } 
+            }
 
-function submitCredentials(usernameDoesNotExist) {
-    document.getElementById('credentialsForm').submit();
-    if (usernameDoesNotExist) {
-        alert('Username does not exist!');
-    } 
-}
-
-
-</script>
-</body>
-
+            // regester new user
+            function newRegister() {
+                alert('function not implemented');
+            }
+        </script>
+    </body>
 </html>
