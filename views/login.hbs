@@ -8,7 +8,7 @@
            #registerform {display:none;}
            #loginform {display:none;}
            .submitButton {width:100px;}
-           .submitBox {text-align:center;}
+           .submitBox {text-align:center; margin:10px;}
            .forms {text-align:right; margin:auto; width:250px;}
         </style>
     </head>
@@ -29,13 +29,12 @@
                     Username: <input type="text" name="username"><br>
                     Password: <input type="password" name="password"><br>
                     <div class="submitBox">
-                        <button onclick="submitCredentials({{usernameDoesNotExist}})" class="submitButton"> Submit </button>
+                        <button onclick="submitCredentials({{usernameDoesNotExist}})" class="submitButton">Submit</button>
                     </div>
                 </form>
             </div>
 
-            <br>
-            <br>
+            <br><br>
             <button onclick="register()" class="mainbutt"> Register </button>
 
             <div id='registerform' class="forms">
@@ -44,7 +43,7 @@
                     Username: <input type="text" name="username"><br>
                     Password: <input type="password" name="password"><br>
                     <div class="submitBox">
-                        <button onclick="newRegister()" type="submit" value="Submit" class="submitButton"> Submit </button>
+                        <button onclick="newRegister()" type="submit" value="Submit" class="submitButton">Create</button>
                     </div>
                 </form>
             </div>
