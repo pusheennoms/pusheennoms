@@ -25,7 +25,7 @@ hbs.registerHelper('getCopyRights', () => {
     return "Rest in Pepperoni";
 });
 
-app.get('/getpass', (request, response) => {
+app.get('/', (request, response) => {
     response.render('login.hbs')
 });
 
@@ -145,8 +145,6 @@ function checkRecords() {
     }
 }
 
-app.listen(process.env.PORT || 8000, () => {
+app.listen(process.env.PORT || 8001, () => {
     console.log('Server is up on the port 8000');
-}
-function checkInputs(user, password) {
-}
+});
