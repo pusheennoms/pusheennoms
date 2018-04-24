@@ -1,7 +1,7 @@
 body {
 /* style of the whole website*/
-	font-family: "Verdana", sans-serif;
-	background-color: #DCDCDC;
+	font-family: "Bubblegum Sans", sans-serif;
+	background-color: #89CFF0	;
 	overflow-x: hidden;
 
 }
@@ -115,7 +115,7 @@ body {
 #banner {
 	width:100%;
 	height:15%;
-	background-color:darkgray;
+	background-color:white;
 	border-bottom: 2px solid dimgray;
 	position:fixed;
 	top:0px;
@@ -129,12 +129,14 @@ body {
 	cursor: pointer;
 }
 #title {
-	color: black;
+	color: #89CFF0;
+	font-family: Marker Felt, fantasy;
 	position: relative;
 	cursor: default;
 	text-align: right;
 	right:2%;
-	font-size: 270%;
+	font-size: 450%;
+	bottom: 55%;
 }
 #search-results{
 	display: inline;
@@ -261,7 +263,7 @@ button {
 }
 
 #submitbutt {
-	background-color: #777;
+	background-color: #7575a3;
     color: white;
     cursor: pointer;
     width: 100%;
@@ -305,6 +307,8 @@ a:visited {
 .mainbutt {
 	display:inline-block;
 	width:50%;
+	background-color:	#FF4500;
+	border: white solid 2px;
 }
 #enter-stuff {
 	/*background-color: red;*/
