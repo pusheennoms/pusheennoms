@@ -1,31 +1,39 @@
 /*--------------variables--------------*/
 var coll = document.getElementsByClassName("collapsible");
 
-var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory'));
-var currentSearchHistory = savedSearchHistory ? savedSearchHistory : [];
+var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
+	currentSearchHistory = savedSearchHistory ? savedSearchHistory : [];
 
 var currentResults;
 
+var ingredientBar = document.getElementById('ingredient-bar'),
+	foodList = document.getElementById('food-list'),
+	searchHist = document.getElementById('searchHist');
 /*-------------foodDisplay-------------*/
 function addIngredient() {
-	if (currentSearchHistory.indexOf(document.getElementById("ingredient-bar").value) < 0 ){
-		currentSearchHistory.push(document.getElementById("ingredient-bar").value)
+	if (currentSearchHistory.indexOf(ingredientBar.value) < 0) {
+		currentSearchHistory.push(ingredientBar.value)
 	}
 	localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
 }
 
 function showSearchHistory() {
-	document.getElementById('searchHist').style.display = 'inline-block';
+	searchHist.style.display = 'inline-block';
 	for(i=0; i < currentSearchHistory.length; i++) {
 		var ndiv = document.createElement("div");
 		ndiv.innerHTML = currentSearchHistory[i];
 
-		document.getElementById("food-list").appendChild(ndiv);
-
-		document.getElementById("food-list").appendChild(ndiv).className = "added-ingredients";
-		document.getElementById("food-list").appendChild(ndiv).style.cursor = "pointer";
-
-		document.getElementById("food-list").appendChild(ndiv).setAttribute("id","food-"+i)
+/*		Original code
+		foodList.appendChild(ndiv);
+		foodList.appendChild(ndiv).className = "added-ingredients";
+		foodList.appendChild(ndiv).style.cursor = "pointer";
+		foodList.appendChild(ndiv).setAttribute("id","food-"+i);
+*/
+		//This shuld be the same, but more efficient
+		ndiv.className = "added-ingredients";
+		ndiv.style.cursor = "pointer";
+		ndiv.setAttribute("id","food-"+i);
+		foodList.appendChild(ndiv);
 	}
 }
 
