@@ -8,14 +8,27 @@ var currentResults;
 
 /*-------------foodDisplay-------------*/
 function addIngredient(queryParams) {
+    let q = queryParams.q;
+    let health = queryParams.healthLabels.join(',');
+    let diet = queryParams.dietLabels.join(',');
+    let queryStr = `q=${q}&healthLabels=${health}&dietLabels=${diet}`;
+
+    // Add to search history
     // Do not add duplicate search history
-    if (Object.values(currentSearchHistory).indexOf(document.getElementById("ingredient-bar").value) < 0 ||
-        Object.values(currentSearchHistory).indexOf(queryParams) < 0) {
+    let duplicateSearch = false;
+    for (i = 0; i < currentSearchHistory.length; i++) {
+        if (currentSearchHistory[i].value === `${q} ${health}${diet}`) {
+            duplicateSearch = true;
+            break;
+        }
+    }
+    if (!duplicateSearch) {
         currentSearchHistory.push({
-            value: document.getElementById("ingredient-bar").value,
-            query: queryParams
+            value: `${q} ${health}${diet}`,
+            query: queryStr
         })
     }
+
     localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
 }
 
