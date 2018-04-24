@@ -84,9 +84,10 @@
 						<div class="content">
 							<form action="/search" method="POST" id='ingredient-form2'>
 								<input type="text" id="ingredient-bar" name="q" placeholder="What do you have?">
-							</form>	
-							<div id="food-list">
-							<b id="searchHist" style="display: none;"> Search History </b>
+							</form>
+                            <div id="food-list" style="display: none;">
+                                <b id="searchHist"> Search History </b>
+                                <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
 							</div>
 						</div>
 						<button id="submitbutt" onclick="submitForms()"> Submit </button>

@@ -18,7 +18,7 @@ function addIngredient(queryParams) {
 }
 
 function showSearchHistory() {
-    document.getElementById('searchHist').style.display = 'inline-block';
+    document.getElementById('food-list').style.display = 'block';
     for (i = 0; i < currentSearchHistory.length; i++) {
         var ndiv = document.createElement("a");
         ndiv.innerHTML = currentSearchHistory[i].value;
@@ -30,6 +30,12 @@ function showSearchHistory() {
         document.getElementById("food-list").appendChild(ndiv);
         document.getElementById("food-list").appendChild(document.createElement("br"));
     }
+}
+
+function clearSearchHist() {
+    currentSearchHistory = [];
+    localStorage.removeItem('searchHistory');
+    document.getElementById('food-list').style.display = 'none';
 }
 
 function setCurrentResults(res) {
