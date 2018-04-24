@@ -51,7 +51,7 @@
                 if (active[0] == 0) {
                     regForm.style.display="block";
                     logForm.style.display="none";
-                    active[0] = 1;
+                    active = [1,0];
                 } else {
                     regForm.style.display="none";
                     active = [0,0];
@@ -63,7 +63,7 @@
                 if (active[1] == 0) {
                     regForm.style.display="none";
                     logForm.style.display="block";
-                    active[1] = 1;
+                    active = [0,1];
                 } else {
                     logForm.style.display="none";
                     active = [0,0];
