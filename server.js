@@ -77,7 +77,7 @@ app.post('/search', function (req, res) {
     getRecipes(req.body, (error, results) => {
         resultRecipes = JSON.stringify(results.recipes);
         res.render('home.hbs', {
-            resultRecipes: resultRecipes
+            resultRecipes: resultRecipes,
         });
     });
 });

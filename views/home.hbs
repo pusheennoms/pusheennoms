@@ -10,7 +10,7 @@
 <body>
 <!-- TOP border -->
 	<div id="banner" >
-		<img id="logo" src="pusheats.png" onload="setCurrentResults({{resultRecipes}})"> 
+        <img id="logo" src="pusheats.png" onload="setCurrentResults({{resultRecipes}})">
 		<p id="title" class="texts" ><span><u>PUSHEEN EATS</u></span></p>
 	</div>
 	
@@ -114,22 +114,28 @@
 		showSearchHistory();
 
 		function submitForms() {
-			var healthFormElements = document.getElementById('ingredient-form').elements;
-			var dietFormElements = document.getElementById('ingredient-form1').elements;
+            var healthFormElements = document.getElementById('ingredient-form').elements;
+            var dietFormElements = document.getElementById('ingredient-form1').elements;
+            var paramStr = 'q=' + document.getElementById('ingredient-bar').value;
 
-			for (var i = 0; i < healthFormElements.length; i++) {
-				if (healthFormElements[i].checked) {
-					addToSearchParam('health', healthFormElements[i].value)
-				}
-			}
+            paramStr += '&healthLabels=';
+            for (var i = 0; i < healthFormElements.length; i++) {
+                if (healthFormElements[i].checked) {
+                    addToSearchParam('health', healthFormElements[i].value);
+                    paramStr += healthFormElements[i].value + ',';
+                }
+            }
 
-			for (var i = 0; i < dietFormElements.length; i++) {
-				if (dietFormElements[i].checked) {
-					addToSearchParam('diet', dietFormElements[i].value)
-				}
-			}
-			document.getElementById('ingredient-form2').submit();
-		}
+            paramStr += '&dietLabels=';
+            for (var i = 0; i < dietFormElements.length; i++) {
+                if (dietFormElements[i].checked) {
+                    addToSearchParam('diet', dietFormElements[i].value);
+                    paramStr += dietFormElements[i].value + ',';
+                }
+            }
+            addIngredient(paramStr);
+            window.location = '/search?' + paramStr;
+        }
 
 		function addToSearchParam(name, value) {
 			var newInput = document.createElement('input');
