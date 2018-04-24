@@ -1,4 +1,4 @@
-var active = [0,0], //[0] for register, [1] for login
+var active = [0,1], //[0] for register, [1] for login
     regForm = document.getElementById('registerform'),
     logForm = document.getElementById('loginform'),
     credForm = document.getElementById('credentialsForm'),
