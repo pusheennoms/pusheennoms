@@ -8,7 +8,9 @@ var currentResults;
 
 /*-------------foodDisplay-------------*/
 function addIngredient(queryParams) {
-    if (currentSearchHistory.indexOf(document.getElementById("ingredient-bar").value) < 0) {
+    // Do not add duplicate search history
+    if (Object.values(currentSearchHistory).indexOf(document.getElementById("ingredient-bar").value) < 0 ||
+        Object.values(currentSearchHistory).indexOf(queryParams) < 0) {
         currentSearchHistory.push({
             value: document.getElementById("ingredient-bar").value,
             query: queryParams
@@ -81,9 +83,9 @@ function showResults() {
         addBtnForm.appendChild(addBtn);
 
         addBtn.onclick = function (ev) {
-            addBtnForm.submit()
+            addBtnForm.submit();
             alert('You have saved the receipe!')
-        }
+        };
 
 
         document.getElementById('search-results').appendChild(node);
