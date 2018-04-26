@@ -32,7 +32,7 @@ app.get('/', (request, response) => {
 app.get('/home', (request, response) => {
     if (loggedIn) {
         response.render('home.hbs', {
-            resultRecipes: resultRecipes
+            resultRecipes: '{}'
         })
     } else {
         response.redirect('/');
@@ -78,7 +78,7 @@ app.post('/search', function (req, res) {
     getRecipes(req.body, (error, results) => {
         resultRecipes = JSON.stringify(results.recipes);
         res.render('home.hbs', {
-            resultRecipes: resultRecipes,
+            resultRecipes: resultRecipes
         });
     });
 });
@@ -142,6 +142,6 @@ function checkRecords() {
     }
 }
 
-app.listen(process.env.PORT || 8000, () => {
+app.listen(process.env.PORT || 8001, () => {
     console.log('Server is up on the port 8000');
-})
+});
