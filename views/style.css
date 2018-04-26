@@ -1,7 +1,7 @@
 body {
 /* style of the whole website*/
 	font-family: "Bubblegum Sans", sans-serif;
-	background-color: #89CFF0	;
+	/*background-color: #89CFF0	;*/
 	overflow-x: hidden;
 
 }
@@ -120,7 +120,7 @@ body {
 	position:fixed;
 	top:0px;
 	right:0px;
-	z-index: -10;
+	z-index: ;
 }
 #logo {
 	position:relative;
@@ -133,10 +133,10 @@ body {
 	font-family: Marker Felt, fantasy;
 	position: relative;
 	cursor: default;
-	text-align: right;
-	right:2%;
+	text-align: left;
+	left:22%;
 	font-size: 450%;
-	bottom: 55%;
+	bottom: 60%;
 }
 #search-results{
 	display: inline;
@@ -164,6 +164,8 @@ body {
 	margin-top: 0;
 	/*z-index: 1;*/
 	color: white;
+	font-family: Marker Felt, fantasy;
+	height: 200%;
 }
 #ingredients-img { /*pusheen image*/
 	position: relative;
@@ -172,6 +174,7 @@ body {
     margin-left: auto;
     margin-right: auto;
 	height:25%;	
+
 }
 #butt-wraps {
 	display: flex;
@@ -216,15 +219,21 @@ body {
 	right:-5px;
 	bottom:-3%;
 	z-index:-1;
-	position: absolute;
+	position: fixed;
+	overflow-y: scroll;
+
 }
 #bg-img {
 	opacity: 0.3;
-	position: fixed;
-	width:100%;
-	height:auto;
-	bottom:0%;
-	z-index: -2;
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    z-index: -2;
+    object-fit: cover;
+    overflow: hidden;
+    max-height: 100%;
+    max-width: 100%;
+    height: 100%;
 }
 #welcome-div {
 	/*background-color: yellow;*/
