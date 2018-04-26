@@ -225,7 +225,7 @@ body {
 }
 #bg-img {
 	opacity: 0.3;
-    position: absolute;
+    position: fixed;
     width: 100%;
     bottom: 0%;
     z-index: -2;
