@@ -6,9 +6,8 @@ var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
 
 var currentResults;
 
-var ingredientBar = document.getElementById('ingredient-bar'),
-	foodList = document.getElementById('food-list'),
-	searchHist = document.getElementById('searchHist');
+// var ingredientBar = document.getElementById('ingredient-bar'),
+// searchHist = document.getElementById('searchHist');
 /*-------------foodDisplay-------------*/
 function addIngredient(queryParams) {
     let q = queryParams.q;
@@ -36,9 +35,11 @@ function addIngredient(queryParams) {
 }
 
 function showSearchHistory() {
+    let foodList = document.getElementById('food-list');
     foodList.style.display = 'block';
+
     for (i = 0; i < currentSearchHistory.length; i++) {
-        var ndiv = document.createElement("a");
+        let ndiv = document.createElement("a");
         ndiv.innerHTML = currentSearchHistory[i].value;
         ndiv.className = "added-ingredients";
         ndiv.style.cursor = "pointer";
@@ -56,7 +57,7 @@ function clearSearchHist() {
     document.getElementById('food-list').style.display = 'none';
 }
 
-function setCurrentResults(res) {
+function setAttributes(res) {
     currentResults = res;
     if (currentResults && currentResults.length > 0) {
         showResults();
