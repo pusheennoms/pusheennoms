@@ -9,6 +9,11 @@ var currentResults;
 var pushleft = 1;
 
 /*-------------foodDisplay-------------*/
+/**
+ * The main function that does the API call to get the recipes
+ * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
+ * @param {results of func} callback - prints the results 
+ */
 function addIngredient(queryParams) {
     let q = queryParams.q;
     let health = queryParams.healthLabels.join(',');
@@ -45,6 +50,11 @@ function addIngredient(queryParams) {
     localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
 }
 
+/**
+ * The main function that does the API call to get the recipes
+ * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
+ * @param {results of func} callback - prints the results 
+ */
 function showSearchHistory() {
     var foodList = document.getElementById('food-list');
     foodList.style.display = 'block';
@@ -64,12 +74,22 @@ function showSearchHistory() {
     }
 }
 
+/**
+ * The main function that does the API call to get the recipes
+ * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
+ * @param {results of func} callback - prints the results 
+ */
 function clearSearchHist() {
     currentSearchHistory = [];
     localStorage.removeItem('searchHistory');
     document.getElementById('food-list').style.display = 'none';
 }
 
+/**
+ * The main function that does the API call to get the recipes
+ * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
+ * @param {results of func} callback - prints the results 
+ */
 function showResults() {
     document.getElementById('welcome-div').style.display = 'None';
     var msg = document.createElement('h2');
@@ -106,7 +126,7 @@ function showResults() {
 
         addBtn.onclick = function (ev) {
             addBtnForm.submit();
-            alert('You have saved the receipe!')
+            alert('You have saved the recipe!')
         };
 
 
@@ -140,11 +160,12 @@ for (var i = 0; i < coll.length; i++) {
 }
 ;
 
+/**
+ * FUNCTION DEFINITION
+*/
 var hiddenpush = document.getElementById("hiddenpusheen")
 
-
 hiddenpush.addEventListener("click", function () {
-
     if (pushleft == 1) {
 
         document.getElementById("ctrlpanel").style.left = "-20%"
@@ -152,18 +173,13 @@ hiddenpush.addEventListener("click", function () {
         pushleft = pushleft + 1
 
         document.getElementById("big-page-div").style.width = "100%"
-
     }
 
     else if (pushleft == 2) {
-
         document.getElementById("ctrlpanel").style.left = "0px"
         hiddenpush.style.left = "17.5%"
         pushleft = pushleft - 1
 
         document.getElementById("big-page-div").style.width = "80%"
-
     }
-
-
 });
