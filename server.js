@@ -33,8 +33,9 @@ app.get('/', (request, response) => {
 app.get('/home', (request, response) => {
     if (loggedIn) {
         response.render('home.hbs', {
-            resultRecipes: '{}',
-            user: inpUsername
+            resultRecipes: JSON.stringify([{
+                currentUser: inpUsername
+            }])
         })
     } else {
         response.redirect('/');
@@ -58,6 +59,9 @@ var getRecipes = (params, callback) => {
         if (error) {
             callback("Cannot connect to API");
         } else if (body.hits) {
+            body.hits.push({
+                currentUser: inpUsername
+            });
             callback(undefined, {
                 recipes: body.hits
             })

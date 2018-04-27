@@ -1,10 +1,12 @@
 /*--------------variables--------------*/
 var coll = document.getElementsByClassName("collapsible");
 
-var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
-	currentSearchHistory = savedSearchHistory ? savedSearchHistory : [];
-
 var currentResults;
+
+var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
+    currentSearchHistory = savedSearchHistory ? savedSearchHistory : {};
+
+var loggedInUser = JSON.parse(localStorage.getItem('currentUser'));
 
 // var ingredientBar = document.getElementById('ingredient-bar'),
 // searchHist = document.getElementById('searchHist');
@@ -25,7 +27,7 @@ function addIngredient(queryParams) {
         }
     }
     if (!duplicateSearch) {
-        currentSearchHistory.push({
+        currentSearchHistory[loggedInUser].push({
             value: `${q} ${health}${diet}`,
             query: queryStr
         })
@@ -35,15 +37,15 @@ function addIngredient(queryParams) {
 }
 
 function showSearchHistory() {
-    let foodList = document.getElementById('food-list');
+    var foodList = document.getElementById('food-list');
     foodList.style.display = 'block';
 
-    for (i = 0; i < currentSearchHistory.length; i++) {
+    for (i = 0; i < currentSearchHistory[loggedInUser].length; i++) {
         let ndiv = document.createElement("a");
-        ndiv.innerHTML = currentSearchHistory[i].value;
+        ndiv.innerHTML = currentSearchHistory[loggedInUser][i].value;
         ndiv.className = "added-ingredients";
         ndiv.style.cursor = "pointer";
-        ndiv.setAttribute('href', '/search?' + currentSearchHistory[i].query);
+        ndiv.setAttribute('href', '/search?' + currentSearchHistory[loggedInUser][i].query);
         ndiv.setAttribute("id", "food-" + i);
 
         foodList.appendChild(ndiv);
@@ -58,11 +60,17 @@ function clearSearchHist() {
 }
 
 function setAttributes(res) {
+    loggedInUser = res[res.length - 1].currentUser;
+    localStorage.setItem('currentUser', JSON.stringify(loggedInUser));
+
     currentResults = res;
     if (currentResults && currentResults.length > 0) {
         showResults();
     }
 
+    if (!currentSearchHistory[loggedInUser]) {
+        currentSearchHistory[loggedInUser] = [];
+    }
 }
 
 function showResults() {
@@ -71,7 +79,7 @@ function showResults() {
     msg.innerHTML = 'Click the button below the URL to save your recipe!\n';
     document.getElementById('search-results').appendChild(msg);
     localStorage.setItem('currentRecipes', JSON.stringify(currentResults));
-    for (var i = 0; i < currentResults.length; i++) {
+    for (var i = 0; i < currentResults.length - 1; i++) {
 
         var node = document.createElement('a');
         node.href = currentResults[i].recipe.url;
