@@ -1,10 +1,11 @@
-var active = [0,1], //[0] for register, [1] for login
+var active = [0,1], //[0] for register, [1] for login, default has login open
     regForm = document.getElementById('registerform'),
     logForm = document.getElementById('loginform'),
     credForm = document.getElementById('credentialsForm'),
     newReg = document.getElementById('newRegister');
 
-// click register button to show menu, second click hide menu
+/** click register button to show registration menu, second click hide menu
+*/
 function register() {
     if (active[0] == 0) {
         regForm.style.display="block";
@@ -16,7 +17,8 @@ function register() {
     }
 }
 
-// click login button to show menu, second click hide menu
+/** click login button to show login menu, second click hide menu
+*/
 function login() {
     if (active[1] == 0) {
         regForm.style.display="none";
@@ -28,7 +30,9 @@ function login() {
     }
 }
 
-// attempt to log in
+/** attempt to log in
+*
+*/
 function submitCredentials(usernameDoesNotExist) {
     credForm.submit();
     if (usernameDoesNotExist) {
@@ -36,7 +40,8 @@ function submitCredentials(usernameDoesNotExist) {
     } 
 }
 
-// Alert user that a Registration is completed
+/** Alert user that a Registration is completed
+*/
 function notifyuser(){
     alert('You have created a new account')
 }
