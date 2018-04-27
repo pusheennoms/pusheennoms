@@ -9,6 +9,40 @@ var currentResults;
 var pushleft = 1;
 
 /*-------------foodDisplay-------------*/
+showSearchHistory();
+
+/**
+ * Gets all the search form values and populate into object to be POSTED to the server.
+ * Also adds the search query to the search history
+ */
+function submitForms() {
+    var healthFormElements = document.getElementById('ingredient-form').elements;
+    var dietFormElements = document.getElementById('ingredient-form1').elements;
+    var params = {
+        q: document.getElementById('ingredient-bar').value,
+        healthLabels: [],
+        dietLabels: []
+    };
+    // Get healthLabels
+    for (var i = 0; i < healthFormElements.length; i++) {
+        if (healthFormElements[i].checked) {
+            params.healthLabels.append(healthFormElements[i].value);
+        }
+    }
+    // Get dietLabels
+    for (var i = 0; i < dietFormElements.length; i++) {
+        if (dietFormElements[i].checked) {
+            params.dietLabels.append(dietFormElements[i].value);
+        }
+    }
+    addIngredient(params);
+    $('#ingredient-form2').val(JSON.stringify(jQuery.param(params)))
+}
+
+/**
+ * Adds a query to search history
+ * @param {object} queryParams - the query object containing all attributes and values from search form
+ */
 function addIngredient(queryParams) {
     let q = queryParams.q;
     let health = queryParams.healthLabels.join(',');
@@ -45,6 +79,9 @@ function addIngredient(queryParams) {
     localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
 }
 
+/**
+ * Displays the search history below search bar
+ */
 function showSearchHistory() {
     var foodList = document.getElementById('food-list');
     foodList.style.display = 'block';
@@ -64,12 +101,18 @@ function showSearchHistory() {
     }
 }
 
+/**
+ * Clears the search history
+ */
 function clearSearchHist() {
     currentSearchHistory = [];
     localStorage.removeItem('searchHistory');
     document.getElementById('food-list').style.display = 'none';
 }
 
+/**
+ * Display the search results
+ */
 function showResults() {
     document.getElementById('welcome-div').style.display = 'None';
     var msg = document.createElement('h2');
@@ -106,7 +149,7 @@ function showResults() {
 
         addBtn.onclick = function (ev) {
             addBtnForm.submit();
-            alert('You have saved the receipe!')
+            alert('You have saved the recipe!')
         };
 
 
@@ -120,11 +163,6 @@ function showResults() {
 
 document.getElementById("search-ingredients-div").style.display = "block";
 document.getElementById("cat-ingredients-div").style.display = "block";
-
-// document.getElementById("cat-butt").addEventListener("click",function(){
-// 	document.getElementById("search-ingredients-div").style.display = "none";
-// 	document.getElementById("cat-ingredients-div").style.display = "block";
-// });
 
 document.getElementById("ingredient-bar").addEventListener("keydown", function (ev) {
     if (ev.keyCode == 13) {
@@ -145,11 +183,12 @@ for (var i = 0; i < coll.length; i++) {
 }
 ;
 
+/**
+ * FUNCTION DEFINITION
+*/
 var hiddenpush = document.getElementById("hiddenpusheen")
 
-
 hiddenpush.addEventListener("click", function () {
-
     if (pushleft == 1) {
 
         document.getElementById("ctrlpanel").style.left = "-20%"
@@ -157,18 +196,13 @@ hiddenpush.addEventListener("click", function () {
         pushleft = pushleft + 1
 
         document.getElementById("big-page-div").style.width = "100%"
-
     }
 
     else if (pushleft == 2) {
-
         document.getElementById("ctrlpanel").style.left = "0px"
         hiddenpush.style.left = "17.5%"
         pushleft = pushleft - 1
 
         document.getElementById("big-page-div").style.width = "80%"
-
     }
-
-
 });
