@@ -136,7 +136,7 @@ body {
 	text-align: left;
 	left:25%;
 	font-size: 450%;
-	bottom: 71%;
+	top: -9vh;
 }
 #search-results{
 	display: inline;
