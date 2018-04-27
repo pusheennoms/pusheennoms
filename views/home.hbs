@@ -10,6 +10,14 @@
             loggedInUser = res[res.length - 1].currentUser;
             localStorage.setItem('currentUser', JSON.stringify(loggedInUser));
             currentResults = res;
+
+            if (currentResults && currentResults.length > 0) {
+                showResults();
+            }
+
+            if (!currentSearchHistory[loggedInUser]) {
+                currentSearchHistory[loggedInUser] = [];
+            }
         }
 
     </script>
@@ -121,15 +129,6 @@
 <script src="js.js"></script>
 
 <script type="text/javascript">
-
-    if (currentResults && currentResults.length > 0) {
-        console.log(currentResults);
-        showResults();
-    }
-
-    if (!currentSearchHistory[loggedInUser]) {
-        currentSearchHistory[loggedInUser] = [];
-    }
 
     showSearchHistory();
 
