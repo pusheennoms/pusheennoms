@@ -1,7 +1,7 @@
 body {
 /* style of the whole website*/
 	font-family: "Bubblegum Sans", sans-serif;
-	background-color: #89CFF0	;
+	background-color: #89CFF0;
 	overflow-x: hidden;
 
 }
@@ -120,7 +120,7 @@ body {
 	position:fixed;
 	top:0px;
 	right:0px;
-	z-index: -10;
+	z-index: ;
 }
 #logo {
 	position:relative;
@@ -131,12 +131,12 @@ body {
 #title {
 	color: #89CFF0;
 	font-family: Marker Felt, fantasy;
-	position: relative;
+	position: fixed;
 	cursor: default;
-	text-align: right;
-	right:2%;
+	text-align: left;
+	left:25%;
 	font-size: 450%;
-	bottom: 55%;
+	top: -9vh;
 }
 #search-results{
 	display: inline;
@@ -154,6 +154,7 @@ body {
 	box-shadow: 3px 0px 3px #888888;
 	overflow-y: scroll;
 	overflow-x: hidden;
+	transition: left 0.5s;
 }
 #cp-banner {
 	background-color: gray;
@@ -164,6 +165,8 @@ body {
 	margin-top: 0;
 	/*z-index: 1;*/
 	color: white;
+	font-family: Marker Felt, fantasy;
+	height: 200%;
 }
 #ingredients-img { /*pusheen image*/
 	position: relative;
@@ -172,6 +175,7 @@ body {
     margin-left: auto;
     margin-right: auto;
 	height:25%;	
+
 }
 #butt-wraps {
 	display: flex;
@@ -216,15 +220,23 @@ body {
 	right:-5px;
 	bottom:-3%;
 	z-index:-1;
-	position: absolute;
+	position: fixed;
+	overflow-y: scroll;
+	transition: width .5s;
+
+
 }
 #bg-img {
 	opacity: 0.3;
-	position: fixed;
-	width:100%;
-	height:auto;
-	bottom:0%;
-	z-index: -2;
+    position: fixed;
+    width: 100%;
+    bottom: 0%;
+    z-index: -2;
+    object-fit: cover;
+    overflow: hidden;
+    max-height: 100%;
+    max-width: 100%;
+    height: 100%;
 }
 #welcome-div {
 	/*background-color: yellow;*/
@@ -316,6 +328,16 @@ a:visited {
 	top:30%;
 	height:400%;
 	width:100%;
+}
+
+
+#hiddenpusheen{
+	position: fixed;
+	top: -2%;
+	height: 12%;
+	left: 17.5%;
+	transition: left 0.5s;
+	cursor: pointer;
 }
 
 /*test */

@@ -2,47 +2,30 @@
 var coll = document.getElementsByClassName("collapsible");
 
 var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
-	currentSearchHistory = savedSearchHistory ? savedSearchHistory : [];
+    currentSearchHistory = savedSearchHistory ? savedSearchHistory : {};
 
 var currentResults;
 
-var ingredientBar = document.getElementById('ingredient-bar'),
-	foodList = document.getElementById('food-list'),
-	searchHist = document.getElementById('searchHist');
+var pushleft = 1;
+
 /*-------------foodDisplay-------------*/
-function addIngredient(queryParams) {
-    let q = queryParams.q;
-    let health = queryParams.healthLabels.join(',');
-    let diet = queryParams.dietLabels.join(',');
-    let queryStr = `q=${q}&healthLabels=${health}&dietLabels=${diet}`;
+showSearchHistory();
 
-    // Add to search history
-    // Do not add duplicate search history
-    let duplicateSearch = false;
-    for (i = 0; i < currentSearchHistory.length; i++) {
-        if (currentSearchHistory[i].value === `${q} ${health}${diet}`) {
-            duplicateSearch = true;
-            break;
-        }
-    }
-    if (!duplicateSearch) {
-        currentSearchHistory.push({
-            value: `${q} ${health}${diet}`,
-            query: queryStr
-        })
-    }
-
-    localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
-}
-
+/**
+ * Displays the search history below search bar
+ */
 function showSearchHistory() {
+    var foodList = document.getElementById('food-list');
     foodList.style.display = 'block';
-    for (i = 0; i < currentSearchHistory.length; i++) {
+
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
         var ndiv = document.createElement("a");
-        ndiv.innerHTML = currentSearchHistory[i].value;
+        ndiv.innerHTML = currentSearchHistory[currentUser][i].value;
         ndiv.className = "added-ingredients";
         ndiv.style.cursor = "pointer";
-        ndiv.setAttribute('href', '/search?' + currentSearchHistory[i].query);
+        ndiv.setAttribute('href', '/search?' + currentSearchHistory[currentUser][i].query);
         ndiv.setAttribute("id", "food-" + i);
 
         foodList.appendChild(ndiv);
@@ -50,27 +33,16 @@ function showSearchHistory() {
     }
 }
 
-function clearSearchHist() {
-    currentSearchHistory = [];
-    localStorage.removeItem('searchHistory');
-    document.getElementById('food-list').style.display = 'none';
-}
-
-function setCurrentResults(res) {
-    currentResults = res;
-    if (currentResults && currentResults.length > 0) {
-        showResults();
-    }
-
-}
-
+/**
+ * Display the search results
+ */
 function showResults() {
     document.getElementById('welcome-div').style.display = 'None';
     var msg = document.createElement('h2');
     msg.innerHTML = 'Click the button below the URL to save your recipe!\n';
     document.getElementById('search-results').appendChild(msg);
     localStorage.setItem('currentRecipes', JSON.stringify(currentResults));
-    for (var i = 0; i < currentResults.length; i++) {
+    for (var i = 0; i < currentResults.length - 1; i++) {
 
         var node = document.createElement('a');
         node.href = currentResults[i].recipe.url;
@@ -100,7 +72,7 @@ function showResults() {
 
         addBtn.onclick = function (ev) {
             addBtnForm.submit();
-            alert('You have saved the receipe!')
+            alert('You have saved the recipe!')
         };
 
 
@@ -114,11 +86,6 @@ function showResults() {
 
 document.getElementById("search-ingredients-div").style.display = "block";
 document.getElementById("cat-ingredients-div").style.display = "block";
-
-// document.getElementById("cat-butt").addEventListener("click",function(){
-// 	document.getElementById("search-ingredients-div").style.display = "none";
-// 	document.getElementById("cat-ingredients-div").style.display = "block";
-// });
 
 document.getElementById("ingredient-bar").addEventListener("keydown", function (ev) {
     if (ev.keyCode == 13) {
@@ -138,3 +105,27 @@ for (var i = 0; i < coll.length; i++) {
     });
 }
 ;
+
+/**
+ * FUNCTION DEFINITION
+*/
+var hiddenpush = document.getElementById("hiddenpusheen")
+
+hiddenpush.addEventListener("click", function () {
+    if (pushleft == 1) {
+
+        document.getElementById("ctrlpanel").style.left = "-20%"
+        hiddenpush.style.left = "-3%"
+        pushleft = pushleft + 1
+
+        document.getElementById("big-page-div").style.width = "100%"
+    }
+
+    else if (pushleft == 2) {
+        document.getElementById("ctrlpanel").style.left = "0px"
+        hiddenpush.style.left = "17.5%"
+        pushleft = pushleft - 1
+
+        document.getElementById("big-page-div").style.width = "80%"
+    }
+});

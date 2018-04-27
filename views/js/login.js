@@ -4,6 +4,10 @@ var active = [0,1], //[0] for register, [1] for login
     credForm = document.getElementById('credentialsForm'),
     newReg = document.getElementById('newRegister');
 
+/** Hally
+ * @param {list of object} params - 
+ * @param {results of func} callback - 
+ */
 // click register button to show menu, second click hide menu
 function register() {
     if (active[0] == 0) {
@@ -16,6 +20,7 @@ function register() {
     }
 }
 
+//Hally
 // click login button to show menu, second click hide menu
 function login() {
     if (active[1] == 0) {
@@ -28,6 +33,7 @@ function login() {
     }
 }
 
+//Emilie
 // attempt to log in
 function submitCredentials(usernameDoesNotExist) {
     credForm.submit();
@@ -38,5 +44,5 @@ function submitCredentials(usernameDoesNotExist) {
 
 // Alert user that a Registration is completed
 function notifyuser(){
-    alert('You have created a new account')
+    alert('You have created a new account.')
 }
