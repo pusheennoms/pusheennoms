@@ -30,6 +30,9 @@ app.get('/', (request, response) => {
     response.render('login.hbs')
 });
 
+/**
+ * Controller for the home page, passes in the current user name to the home.hbs
+ */
 app.get('/home', (request, response) => {
     if (loggedIn) {
         response.render('home.hbs', {
@@ -76,8 +79,9 @@ var getRecipes = (params, callback) => {
     })
 };
 
-/**Emilie
-**/ 
+/**
+ * Controller for queries through the address bar
+ **/
 app.get('/search', function (req, res, next) {
     getRecipes(req.query, (error, results) => {
         resultRecipes = JSON.stringify(results.recipes);
@@ -87,7 +91,8 @@ app.get('/search', function (req, res, next) {
     });
 });
 
-/**Emilie
+/**
+ * Post action for the search form results taken from home.hbs
 **/ 
 app.post('/search', function (req, res) {
     getRecipes(req.body, (error, results) => {
@@ -98,7 +103,8 @@ app.post('/search', function (req, res) {
     });
 });
 
-/**Emilie
+/**
+ * The action to download a recipe
 **/ 
 app.post('/download', function (req, res) {
     var recipe = JSON.parse(req.body.recipe);
