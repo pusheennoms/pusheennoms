@@ -7,6 +7,7 @@ var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
 var currentResults;
 
 var pushleft = 1;
+
 /*-------------foodDisplay-------------*/
 function addIngredient(queryParams) {
     let q = queryParams.q;
@@ -57,7 +58,9 @@ function clearSearchHist() {
 }
 
 function setCurrentResults(res) {
+    debugger;
     currentResults = res;
+    localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
     if (currentResults && currentResults.length > 0) {
         showResults();
     }
@@ -70,7 +73,7 @@ function showResults() {
     msg.innerHTML = 'Click the button below the URL to save your recipe!\n';
     document.getElementById('search-results').appendChild(msg);
     localStorage.setItem('currentRecipes', JSON.stringify(currentResults));
-    for (var i = 0; i < currentResults.length; i++) {
+    for (var i = 0; i < currentResults.length - 1; i++) {
 
         var node = document.createElement('a');
         node.href = currentResults[i].recipe.url;

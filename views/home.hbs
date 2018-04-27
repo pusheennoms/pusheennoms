@@ -5,6 +5,16 @@
     <link rel="icon" href="icon.png">
     <link href="style.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function setCurrentResults(res) {
+            currentResults = res;
+            localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
+            if (currentResults && currentResults.length > 0) {
+                showResults();
+            }
+
+        }
+    </script>
 </head>
 <body>
 <!-- TOP border -->
