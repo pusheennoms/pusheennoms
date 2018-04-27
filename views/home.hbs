@@ -6,6 +6,11 @@
     <link href="style.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
+        /**
+         * The main function that does the API call to get the recipes
+         * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
+         * @param {results of func} callback - prints the results 
+         */
         function setCurrentResults(res) {
             currentResults = res;
             localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
@@ -124,6 +129,12 @@
 
 <script type="text/javascript">
     showSearchHistory();
+    
+    /**
+     * The main function that does the API call to get the recipes
+     * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
+     * @param {results of func} callback - prints the results 
+    */
     function submitForms() {
         var healthFormElements = document.getElementById('ingredient-form').elements;
         var dietFormElements = document.getElementById('ingredient-form1').elements;
