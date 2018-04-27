@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Home</title>
-    <link rel="icon" href="icon.png">
-    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link rel="icon" href="imgs/icon.png">
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         /**
@@ -23,8 +23,8 @@
 <body>
 <!-- TOP border -->
 <div id="banner">
-    <img id="logo" src="pusheats.png" onload="setCurrentResults({{resultRecipes}})">
-    <img id="hiddenpusheen" src="hiddenpusheen.png">
+    <img id="logo" src="imgs/pusheats.png" onload="setCurrentResults({{resultRecipes}})">
+    <img id="hiddenpusheen" src="imgs/hiddenpusheen.png">
     <p id="title" class="texts"><span>PUSHEEN EATS</span></p>
 </div>
 
@@ -33,7 +33,7 @@
     <div id="cp-banner">
         <p id="ur-ingredients" class="texts"> YOUR INGREDIENTS </p>
     </div>
-    <img id="ingredients-img" src="ingredients.gif">
+    <img id="ingredients-img" src="imgs/ingredients.gif">
     <div class="texts"> Select the health options you prefer and type in what you have, then press Submit.</div>
     <div class="food-divs" id="search-ingredients-div">
         <div class="food-divs" id="cat-ingredients-div">
@@ -113,7 +113,7 @@
 
 <!-- THE ACTUAL PAGE -->
 <div id="big-page-div">
-    <img id="bg-img" src="bg3.jpeg">
+    <img id="bg-img" src="imgs/bg3.jpeg">
     <div id="search-results">
     </div>
     <div id="welcome-div">
@@ -123,6 +123,7 @@
         </p>
     </div>
 </div>
-<script src="js.js"></script>
+<script src="js/displays.js"></script>
+<script src="js/utils.js"></script>
 </body>
 </html>

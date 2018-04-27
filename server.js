@@ -17,7 +17,7 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
-app.use(express.static(__dirname + '/imgs'));
+// app.use(express.static(__dirname + '/imgs'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -132,13 +132,14 @@ app.post('/registerchef', (request, response) => {
     response.redirect('/');
 });
 
-/**P
-**/ 
 app.post('/getpass', (request, response) => {
     checkRecords();
     inpUsername = request.body.username;
     inpPassword = request.body.password;
-
+    
+    /**
+    *Checks if username and password are in userpass.json, if not then request user to log in again
+    **/
     function AuthenticateChef(inpUsername, inpPassword) {
         var usernameFound = false;
         for (var i = 0; i < chefRecords.length; i++) {
@@ -162,12 +163,11 @@ app.post('/getpass', (request, response) => {
             })
         }
     }
-
     AuthenticateChef(inpUsername, inpPassword);
-
 });
 
-/**P
+/**
+*See if userpass.json exists on drive, if not create file, if so read contents into var chefRecords
 **/ 
 function checkRecords() {
     if (fs.existsSync('userpass.json') && fs.readFileSync('userpass.json').length !== 0) {
