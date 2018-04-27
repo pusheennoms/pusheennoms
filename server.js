@@ -42,6 +42,11 @@ app.get('/home', (request, response) => {
     }
 });
 
+/**
+ * The main function that does the API call to get the recipes
+ * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
+ * @param {results of func} callback - prints the results 
+ */
 var getRecipes = (params, callback) => {
     var paramString = '';
     if (params.diet) {
@@ -71,6 +76,8 @@ var getRecipes = (params, callback) => {
     })
 };
 
+/**Emilie
+**/ 
 app.get('/search', function (req, res, next) {
     getRecipes(req.query, (error, results) => {
         resultRecipes = JSON.stringify(results.recipes);
@@ -80,6 +87,8 @@ app.get('/search', function (req, res, next) {
     });
 });
 
+/**Emilie
+**/ 
 app.post('/search', function (req, res) {
     getRecipes(req.body, (error, results) => {
         resultRecipes = JSON.stringify(results.recipes);
@@ -89,6 +98,8 @@ app.post('/search', function (req, res) {
     });
 });
 
+/**Emilie
+**/ 
 app.post('/download', function (req, res) {
     var recipe = JSON.parse(req.body.recipe);
     fs.writeFileSync(recipe.label + '.txt', req.body.recipe);
@@ -97,6 +108,9 @@ app.post('/download', function (req, res) {
 var chefRecords = [];
 
 app.post('/registerchef', (request, response) => {
+    /**
+     * The function adds the username & password to a JSON file 'userpass.json'
+     */
     function AddtoFile() {
         var record = {
             "username": request.body.username,
@@ -112,6 +126,8 @@ app.post('/registerchef', (request, response) => {
     response.redirect('/');
 });
 
+/**P
+**/ 
 app.post('/getpass', (request, response) => {
     checkRecords();
     inpUsername = request.body.username;
@@ -145,6 +161,8 @@ app.post('/getpass', (request, response) => {
 
 });
 
+/**P
+**/ 
 function checkRecords() {
     if (fs.existsSync('userpass.json') && fs.readFileSync('userpass.json').length !== 0) {
         getFile = fs.readFileSync('userpass.json');
