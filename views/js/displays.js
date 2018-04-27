@@ -9,42 +9,11 @@ var currentResults;
 var pushleft = 1;
 
 /*-------------foodDisplay-------------*/
-function addIngredient(queryParams) {
-    let q = queryParams.q;
-    let health = queryParams.healthLabels.join(',');
-    let diet = queryParams.dietLabels.join(',');
-    let queryStr = `q=${q}&healthLabels=${health}&dietLabels=${diet}`;
+showSearchHistory();
 
-
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
-    // Add to search history
-    // Do not add duplicate search history
-    if (currentSearchHistory[currentUser]) {
-        let duplicateSearch = false;
-        for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
-            if (currentSearchHistory[currentUser][i].value === `${q} ${health}${diet}`) {
-                duplicateSearch = true;
-                break;
-            }
-        }
-        if (!duplicateSearch) {
-            currentSearchHistory[currentUser].push({
-                value: `${q} ${health}${diet}`,
-                query: queryStr
-            })
-        }
-    } else {
-        currentSearchHistory[currentUser] = [{
-            value: `${q} ${health}${diet}`,
-            query: queryStr
-        }]
-    }
-
-
-    localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
-}
-
+/**
+ * Displays the search history below search bar
+ */
 function showSearchHistory() {
     var foodList = document.getElementById('food-list');
     foodList.style.display = 'block';
@@ -64,12 +33,9 @@ function showSearchHistory() {
     }
 }
 
-function clearSearchHist() {
-    currentSearchHistory = [];
-    localStorage.removeItem('searchHistory');
-    document.getElementById('food-list').style.display = 'none';
-}
-
+/**
+ * Display the search results
+ */
 function showResults() {
     document.getElementById('welcome-div').style.display = 'None';
     var msg = document.createElement('h2');
@@ -139,11 +105,6 @@ function showResults() {
 document.getElementById("search-ingredients-div").style.display = "block";
 document.getElementById("cat-ingredients-div").style.display = "block";
 
-// document.getElementById("cat-butt").addEventListener("click",function(){
-// 	document.getElementById("search-ingredients-div").style.display = "none";
-// 	document.getElementById("cat-ingredients-div").style.display = "block";
-// });
-
 document.getElementById("ingredient-bar").addEventListener("keydown", function (ev) {
     if (ev.keyCode == 13) {
         submitForms();
@@ -163,30 +124,28 @@ for (var i = 0; i < coll.length; i++) {
 }
 ;
 
+/**
+ * FUNCTION DEFINITION
+*/
 var hiddenpush = document.getElementById("hiddenpusheen");
 
-
 hiddenpush.addEventListener("click", function () {
-
     if (pushleft == 1) {
 
         document.getElementById("ctrlpanel").style.left = "-20%";
         hiddenpush.style.left = "-3%";
         pushleft = pushleft + 1;
 
-        document.getElementById("big-page-div").style.width = "100%";
-
+        document.getElementById("big-page-div").style.width = "100%"
+;
     }
 
     else if (pushleft == 2) {
-
         document.getElementById("ctrlpanel").style.left = "0px";
         hiddenpush.style.left = "17.5%";
         pushleft = pushleft - 1;
 
-        document.getElementById("big-page-div").style.width = "80%";
-
+        document.getElementById("big-page-div").style.width = "80%"
+;
     }
-
-
 });
