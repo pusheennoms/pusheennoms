@@ -5,15 +5,29 @@
     <link rel="icon" href="icon.png">
     <link href="style.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function setCurrentResults(res) {
+            currentResults = res;
+            localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
+            if (currentResults && currentResults.length > 0) {
+                showResults();
+            }
+
+        }
+    </script>
 </head>
-<body>
-=======
 <body>
 <!-- TOP border -->
 <div id="banner">
     <img id="logo" src="pusheats.png" onload="setCurrentResults({{resultRecipes}})">
+<<<<<<< HEAD
     <p id="title" class="texts"><span>PUSHEEN NomNoms</span></p>
+=======
+    <img id="hiddenpusheen" src="hiddenpusheen.png">
+    <p id="title" class="texts"><span>PUSHEEN EATS</span></p>
+>>>>>>> 78d260c651220d68e5627103b0b0a7b12f4231c2
 </div>
+
 <!-- ctrl panel -->
 <div id="ctrlpanel">
     <div id="cp-banner">
@@ -99,7 +113,7 @@
 
 <!-- THE ACTUAL PAGE -->
 <div id="big-page-div">
-    <img id="bg-img" src="bg.jpg">
+    <img id="bg-img" src="bg3.jpeg">
     <div id="search-results">
     </div>
     <div id="welcome-div">
@@ -109,30 +123,25 @@
         </p>
     </div>
 </div>
- 
+
 <script src="js.js"></script>
 
 <script type="text/javascript">
     showSearchHistory();
-
     function submitForms() {
         var healthFormElements = document.getElementById('ingredient-form').elements;
         var dietFormElements = document.getElementById('ingredient-form1').elements;
-
         var params = {
             q: document.getElementById('ingredient-bar').value,
             healthLabels: [],
             dietLabels: []
-
         };
-
         // Get healthLabels
         for (var i = 0; i < healthFormElements.length; i++) {
             if (healthFormElements[i].checked) {
                 params.healthLabels.append(healthFormElements[i].value);
             }
         }
-
         // Get dietLabels
         for (var i = 0; i < dietFormElements.length; i++) {
             if (dietFormElements[i].checked) {
@@ -142,7 +151,6 @@
         addIngredient(params);
         $('#ingredient-form2').val(JSON.stringify(jQuery.param(params)))
     }
-
 </script>
 
 </body>
