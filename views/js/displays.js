@@ -9,51 +9,10 @@ var currentResults;
 var pushleft = 1;
 
 /*-------------foodDisplay-------------*/
-/**
- * The main function that does the API call to get the recipes
- * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
- * @param {results of func} callback - prints the results 
- */
-function addIngredient(queryParams) {
-    let q = queryParams.q;
-    let health = queryParams.healthLabels.join(',');
-    let diet = queryParams.dietLabels.join(',');
-    let queryStr = `q=${q}&healthLabels=${health}&dietLabels=${diet}`;
-
-
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
-    // Add to search history
-    // Do not add duplicate search history
-    if (currentSearchHistory[currentUser]) {
-        let duplicateSearch = false;
-        for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
-            if (currentSearchHistory[currentUser][i].value === `${q} ${health}${diet}`) {
-                duplicateSearch = true;
-                break;
-            }
-        }
-        if (!duplicateSearch) {
-            currentSearchHistory[currentUser].push({
-                value: `${q} ${health}${diet}`,
-                query: queryStr
-            })
-        }
-    } else {
-        currentSearchHistory[currentUser] = [{
-            value: `${q} ${health}${diet}`,
-            query: queryStr
-        }]
-    }
-
-
-    localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
-}
+showSearchHistory();
 
 /**
- * The main function that does the API call to get the recipes
- * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
- * @param {results of func} callback - prints the results 
+ * Displays the search history below search bar
  */
 function showSearchHistory() {
     var foodList = document.getElementById('food-list');
@@ -81,6 +40,7 @@ function showSearchHistory() {
 }
 
 /**
+<<<<<<< HEAD:views/js.js
  * The main function that does the API call to get the recipes
  * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
  * @param {results of func} callback - prints the results 
@@ -96,6 +56,9 @@ function clearSearchHist() {
  * The main function that does the API call to get the recipes
  * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
  * @param {results of func} callback - prints the results 
+=======
+ * Display the search results
+>>>>>>> 275f64fb8acc43bb4a594c203247574d9f92ee6b:views/js/displays.js
  */
 function showResults() {
     document.getElementById('welcome-div').style.display = 'None';
@@ -147,11 +110,6 @@ function showResults() {
 
 document.getElementById("search-ingredients-div").style.display = "block";
 document.getElementById("cat-ingredients-div").style.display = "block";
-
-// document.getElementById("cat-butt").addEventListener("click",function(){
-// 	document.getElementById("search-ingredients-div").style.display = "none";
-// 	document.getElementById("cat-ingredients-div").style.display = "block";
-// });
 
 document.getElementById("ingredient-bar").addEventListener("keydown", function (ev) {
     if (ev.keyCode == 13) {

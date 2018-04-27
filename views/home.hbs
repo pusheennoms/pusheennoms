@@ -2,14 +2,13 @@
 <html>
 <head>
     <title>Home</title>
-    <link rel="icon" href="icon.png">
-    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link rel="icon" href="imgs/icon.png">
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         /**
-         * The main function that does the API call to get the recipes
-         * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
-         * @param {results of func} callback - prints the results 
+         * Set the results taken from the server after the search and calls the function to show results on page
+         * @param {string} res- the stringified JSON object from the search results
          */
         function setCurrentResults(res) {
             currentResults = res;
@@ -24,10 +23,16 @@
 <body>
 <!-- TOP border -->
 <div id="banner">
+<<<<<<< HEAD
     <img id="logo" src="pusheats.png" onload="setCurrentResults({{resultRecipes}})">
 
     <p id="title" class="texts"><span>PUSHEEN NomNoms</span></p>
 
+=======
+    <img id="logo" src="imgs/pusheats.png" onload="setCurrentResults({{resultRecipes}})">
+    <img id="hiddenpusheen" src="imgs/hiddenpusheen.png">
+    <p id="title" class="texts"><span>PUSHEEN EATS</span></p>
+>>>>>>> 275f64fb8acc43bb4a594c203247574d9f92ee6b
 </div>
 
 <!-- ctrl panel -->
@@ -35,7 +40,7 @@
     <div id="cp-banner">
         <p id="ur-ingredients" class="texts"> YOUR INGREDIENTS </p>
     </div>
-    <img id="ingredients-img" src="ingredients.gif">
+    <img id="ingredients-img" src="imgs/ingredients.gif">
     <div class="texts"> Select the health options you prefer and type in what you have, then press Submit.</div>
     <div class="food-divs" id="search-ingredients-div">
         <div class="food-divs" id="cat-ingredients-div">
@@ -115,7 +120,7 @@
 
 <!-- THE ACTUAL PAGE -->
 <div id="big-page-div">
-    <img id="bg-img" src="bg3.jpeg">
+    <img id="bg-img" src="imgs/bg3.jpeg">
     <div id="search-results">
     </div>
     <div id="welcome-div">
@@ -125,41 +130,7 @@
         </p>
     </div>
 </div>
-
-<script src="js.js"></script>
-
-<script type="text/javascript">
-    showSearchHistory();
-    
-    /**
-     * The main function that does the API call to get the recipes
-     * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
-     * @param {results of func} callback - prints the results 
-    */
-    function submitForms() {
-        var healthFormElements = document.getElementById('ingredient-form').elements;
-        var dietFormElements = document.getElementById('ingredient-form1').elements;
-        var params = {
-            q: document.getElementById('ingredient-bar').value,
-            healthLabels: [],
-            dietLabels: []
-        };
-        // Get healthLabels
-        for (var i = 0; i < healthFormElements.length; i++) {
-            if (healthFormElements[i].checked) {
-                params.healthLabels.append(healthFormElements[i].value);
-            }
-        }
-        // Get dietLabels
-        for (var i = 0; i < dietFormElements.length; i++) {
-            if (dietFormElements[i].checked) {
-                params.dietLabels.append(dietFormElements[i].value);
-            }
-        }
-        addIngredient(params);
-        $('#ingredient-form2').val(JSON.stringify(jQuery.param(params)))
-    }
-</script>
-
+<script src="js/displays.js"></script>
+<script src="js/utils.js"></script>
 </body>
 </html>

@@ -17,7 +17,7 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
-app.use(express.static(__dirname + '/imgs'));
+// app.use(express.static(__dirname + '/imgs'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -30,6 +30,9 @@ app.get('/', (request, response) => {
     response.render('login.hbs')
 });
 
+/**
+ * Controller for the home page, passes in the current user name to the home.hbs
+ */
 app.get('/home', (request, response) => {
     if (loggedIn) {
         response.render('home.hbs', {
@@ -76,8 +79,9 @@ var getRecipes = (params, callback) => {
     })
 };
 
-/**Emilie
-**/ 
+/**
+ * Controller for queries through the address bar
+ **/
 app.get('/search', function (req, res, next) {
     getRecipes(req.query, (error, results) => {
         resultRecipes = JSON.stringify(results.recipes);
@@ -87,7 +91,8 @@ app.get('/search', function (req, res, next) {
     });
 });
 
-/**Emilie
+/**
+ * Post action for the search form results taken from home.hbs
 **/ 
 app.post('/search', function (req, res) {
     getRecipes(req.body, (error, results) => {
@@ -98,7 +103,8 @@ app.post('/search', function (req, res) {
     });
 });
 
-/**Emilie
+/**
+ * The action to download a recipe
 **/ 
 app.post('/download', function (req, res) {
     var recipe = JSON.parse(req.body.recipe);
@@ -126,13 +132,14 @@ app.post('/registerchef', (request, response) => {
     response.redirect('/');
 });
 
-/**P
-**/ 
 app.post('/getpass', (request, response) => {
     checkRecords();
     inpUsername = request.body.username;
     inpPassword = request.body.password;
-
+    
+    /**
+    *Checks if username and password are in userpass.json, if not then request user to log in again
+    **/
     function AuthenticateChef(inpUsername, inpPassword) {
         var usernameFound = false;
         for (var i = 0; i < chefRecords.length; i++) {
@@ -156,12 +163,11 @@ app.post('/getpass', (request, response) => {
             })
         }
     }
-
     AuthenticateChef(inpUsername, inpPassword);
-
 });
 
-/**P
+/**
+*See if userpass.json exists on drive, if not create file, if so read contents into var chefRecords
 **/ 
 function checkRecords() {
     if (fs.existsSync('userpass.json') && fs.readFileSync('userpass.json').length !== 0) {
