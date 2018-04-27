@@ -57,7 +57,13 @@ function addIngredient(queryParams) {
  */
 function showSearchHistory() {
     var foodList = document.getElementById('food-list');
+    if (foodList.innerHTML = ''){
+    	document.getElementById('clearbutt').style.display = 'none';
+    }else if (foodList.length > 0){
+    	document.getElementById('clearbutt').style.display = 'block';
+    }
     foodList.style.display = 'block';
+    
 
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -82,7 +88,8 @@ function showSearchHistory() {
 function clearSearchHist() {
     currentSearchHistory = [];
     localStorage.removeItem('searchHistory');
-    document.getElementById('food-list').style.display = 'none';
+	document.getElementById('food-list').style.display = 'none';
+
 }
 
 /**
@@ -187,11 +194,9 @@ hiddenpush.addEventListener("click", function () {
 
         document.getElementById("big-page-div").style.width = "80%"
     }
-<<<<<<< HEAD
-
 
 });
 
-=======
-});
->>>>>>> 691e4380782eee386f4ed6635189ebb22f29ae70
+
+
+
