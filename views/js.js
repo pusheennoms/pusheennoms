@@ -121,11 +121,6 @@ function showResults() {
 document.getElementById("search-ingredients-div").style.display = "block";
 document.getElementById("cat-ingredients-div").style.display = "block";
 
-// document.getElementById("cat-butt").addEventListener("click",function(){
-// 	document.getElementById("search-ingredients-div").style.display = "none";
-// 	document.getElementById("cat-ingredients-div").style.display = "block";
-// });
-
 document.getElementById("ingredient-bar").addEventListener("keydown", function (ev) {
     if (ev.keyCode == 13) {
         submitForms();
