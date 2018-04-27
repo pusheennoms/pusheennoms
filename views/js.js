@@ -9,10 +9,39 @@ var currentResults;
 var pushleft = 1;
 
 /*-------------foodDisplay-------------*/
+showSearchHistory();
+
 /**
- * The main function that does the API call to get the recipes
- * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
- * @param {results of func} callback - prints the results 
+ * Gets all the search form values and populate into object to be POSTED to the server.
+ * Also adds the search query to the search history
+ */
+function submitForms() {
+    var healthFormElements = document.getElementById('ingredient-form').elements;
+    var dietFormElements = document.getElementById('ingredient-form1').elements;
+    var params = {
+        q: document.getElementById('ingredient-bar').value,
+        healthLabels: [],
+        dietLabels: []
+    };
+    // Get healthLabels
+    for (var i = 0; i < healthFormElements.length; i++) {
+        if (healthFormElements[i].checked) {
+            params.healthLabels.append(healthFormElements[i].value);
+        }
+    }
+    // Get dietLabels
+    for (var i = 0; i < dietFormElements.length; i++) {
+        if (dietFormElements[i].checked) {
+            params.dietLabels.append(dietFormElements[i].value);
+        }
+    }
+    addIngredient(params);
+    $('#ingredient-form2').val(JSON.stringify(jQuery.param(params)))
+}
+
+/**
+ * Adds a query to search history
+ * @param {object} queryParams - the query object containing all attributes and values from search form
  */
 function addIngredient(queryParams) {
     let q = queryParams.q;
@@ -51,9 +80,7 @@ function addIngredient(queryParams) {
 }
 
 /**
- * The main function that does the API call to get the recipes
- * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
- * @param {results of func} callback - prints the results 
+ * Displays the search history below search bar
  */
 function showSearchHistory() {
     var foodList = document.getElementById('food-list');
@@ -75,9 +102,7 @@ function showSearchHistory() {
 }
 
 /**
- * The main function that does the API call to get the recipes
- * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
- * @param {results of func} callback - prints the results 
+ * Clears the search history
  */
 function clearSearchHist() {
     currentSearchHistory = [];
@@ -86,9 +111,7 @@ function clearSearchHist() {
 }
 
 /**
- * The main function that does the API call to get the recipes
- * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
- * @param {results of func} callback - prints the results 
+ * Display the search results
  */
 function showResults() {
     document.getElementById('welcome-div').style.display = 'None';
@@ -140,11 +163,6 @@ function showResults() {
 
 document.getElementById("search-ingredients-div").style.display = "block";
 document.getElementById("cat-ingredients-div").style.display = "block";
-
-// document.getElementById("cat-butt").addEventListener("click",function(){
-// 	document.getElementById("search-ingredients-div").style.display = "none";
-// 	document.getElementById("cat-ingredients-div").style.display = "block";
-// });
 
 document.getElementById("ingredient-bar").addEventListener("keydown", function (ev) {
     if (ev.keyCode == 13) {
