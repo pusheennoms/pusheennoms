@@ -59,20 +59,6 @@ function clearSearchHist() {
     document.getElementById('food-list').style.display = 'none';
 }
 
-function setAttributes(res) {
-    loggedInUser = res[res.length - 1].currentUser;
-    localStorage.setItem('currentUser', JSON.stringify(loggedInUser));
-
-    currentResults = res;
-    if (currentResults && currentResults.length > 0) {
-        showResults();
-    }
-
-    if (!currentSearchHistory[loggedInUser]) {
-        currentSearchHistory[loggedInUser] = [];
-    }
-}
-
 function showResults() {
     document.getElementById('welcome-div').style.display = 'None';
     var msg = document.createElement('h2');
