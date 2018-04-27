@@ -5,22 +5,6 @@
     <link rel="icon" href="icon.png">
     <link href="style.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        function setAttributes(res) {
-            loggedInUser = res[res.length - 1].currentUser;
-            localStorage.setItem('currentUser', JSON.stringify(loggedInUser));
-            currentResults = res;
-
-            if (currentResults && currentResults.length > 0) {
-                showResults();
-            }
-
-            if (!currentSearchHistory[loggedInUser]) {
-                currentSearchHistory[loggedInUser] = [];
-            }
-        }
-
-    </script>
 </head>
 <body>
 <!-- TOP border -->
@@ -129,27 +113,21 @@
 <script src="js.js"></script>
 
 <script type="text/javascript">
-
     showSearchHistory();
-
     function submitForms() {
         var healthFormElements = document.getElementById('ingredient-form').elements;
         var dietFormElements = document.getElementById('ingredient-form1').elements;
-
         var params = {
             q: document.getElementById('ingredient-bar').value,
             healthLabels: [],
             dietLabels: []
-
         };
-
         // Get healthLabels
         for (var i = 0; i < healthFormElements.length; i++) {
             if (healthFormElements[i].checked) {
                 params.healthLabels.append(healthFormElements[i].value);
             }
         }
-
         // Get dietLabels
         for (var i = 0; i < dietFormElements.length; i++) {
             if (dietFormElements[i].checked) {
@@ -159,7 +137,6 @@
         addIngredient(params);
         $('#ingredient-form2').val(JSON.stringify(jQuery.param(params)))
     }
-
 </script>
 
 </body>

@@ -9,7 +9,6 @@ const APP_KEY = 'df03da67ec2c0fb66e7628b0c84c9bec';
 
 var app = express();
 var resultRecipes = '';
-var inpUsername = '';
 var loggedIn = false;
 var port = process.env.PORT || 8000;
 
@@ -33,9 +32,7 @@ app.get('/', (request, response) => {
 app.get('/home', (request, response) => {
     if (loggedIn) {
         response.render('home.hbs', {
-            resultRecipes: JSON.stringify([{
-                currentUser: inpUsername
-            }])
+            resultRecipes: '{}'
         })
     } else {
         response.redirect('/');
@@ -59,9 +56,6 @@ var getRecipes = (params, callback) => {
         if (error) {
             callback("Cannot connect to API");
         } else if (body.hits) {
-            body.hits.push({
-                currentUser: inpUsername
-            });
             callback(undefined, {
                 recipes: body.hits
             })
