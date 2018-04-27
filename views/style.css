@@ -1,7 +1,7 @@
 body {
 /* style of the whole website*/
 	font-family: "Bubblegum Sans", sans-serif;
-	/*background-color: #89CFF0	;*/
+	background-color: #89CFF0;
 	overflow-x: hidden;
 
 }
@@ -131,12 +131,12 @@ body {
 #title {
 	color: #89CFF0;
 	font-family: Marker Felt, fantasy;
-	position: relative;
+	position: fixed;
 	cursor: default;
 	text-align: left;
-	left:22%;
+	left:25%;
 	font-size: 450%;
-	bottom: 60%;
+	top: -9vh;
 }
 #search-results{
 	display: inline;
@@ -154,6 +154,7 @@ body {
 	box-shadow: 3px 0px 3px #888888;
 	overflow-y: scroll;
 	overflow-x: hidden;
+	transition: left 0.5s;
 }
 #cp-banner {
 	background-color: gray;
@@ -221,6 +222,8 @@ body {
 	z-index:-1;
 	position: fixed;
 	overflow-y: scroll;
+	transition: width .5s;
+
 
 }
 #bg-img {
@@ -325,6 +328,16 @@ a:visited {
 	top:30%;
 	height:400%;
 	width:100%;
+}
+
+
+#hiddenpusheen{
+	position: fixed;
+	top: -2%;
+	height: 12%;
+	left: 17.5%;
+	transition: left 0.5s;
+	cursor: pointer;
 }
 
 /*test */
