@@ -35,3 +35,8 @@ function submitCredentials(usernameDoesNotExist) {
         alert('Username does not exist!');
     } 
 }
+
+// Alert user that a Registration is completed
+function notifyuser(){
+    alert('You have created a new account')
+}
