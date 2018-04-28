@@ -12,7 +12,9 @@
          */
         function setCurrentResults(res) {
             currentResults = res;
-            localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
+            if (res[res.length - 1].currentUser) {
+                localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
+            }
             if (currentResults && currentResults.length > 0) {
                 showResults();
             }
