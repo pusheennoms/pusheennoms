@@ -58,12 +58,18 @@ function addIngredient(queryParams) {
         if (!duplicateSearch) {
             currentSearchHistory[currentUser].push({
                 value: `${queryParams.q}`,
+                healthLabels: `${queryParams.healthLabels}`,
+                dietLabels: `${queryParams.dietLabels}`,
+                excluded: `exclude ${queryParams.excluded}`,
                 query: queryStr
             })
         }
     } else {
         currentSearchHistory[currentUser] = [{
-            value: `${q}`,
+            value: `${queryParams.q}`,
+            healthLabels: `${queryParams.healthLabels}`,
+            dietLabels: `${queryParams.dietLabels}`,
+            excluded: `exclude ${queryParams.excluded}`,
             query: queryStr
         }]
     }
