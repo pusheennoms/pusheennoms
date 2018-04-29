@@ -12,7 +12,9 @@
          */
         function setCurrentResults(res) {
             currentResults = res;
-            localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
+            if (res[res.length - 1].currentUser) {
+                localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
+            }
             if (currentResults && currentResults.length > 0) {
                 showResults();
             }
@@ -93,17 +95,23 @@
                         </label>
                     </form>
                 </div>
-
+                <button class="collapsible"> ALLERGIES/RESTRICTIONS</button>
+                <div class="content">
+                    <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
+                </div>
                 <button class="collapsible"> SEARCH</button>
                 <div class="content">
-                    <form action="/search" method="POST" id='ingredient-form2'>
-                        <input type="text" id="ingredient-bar" name="q" placeholder="What do you have?">
-                    </form>
+                    <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
                     <div id="food-list" style="display: none;">
                         <b id="searchHist"> Search History </b>
                         <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
                     </div>
                 </div>
+
+                <!-- Place holder for the final combination of all forms -->
+                <form id="final-form" method="get" action="/search">
+                    <input id="final-search-query" type="hidden" name="query">
+                </form>
                 <button id="submitbutt" onclick="submitForms()"> Submit</button>
             </div>
         </div>
