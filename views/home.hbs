@@ -95,11 +95,16 @@
                         </label>
                     </form>
                 </div>
-
+                <button class="collapsible"> ALLERGIES/RESTRICTIONS</button>
+                <div class="content">
+                    <form id='ingredient-form3'>
+                        <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
+                    </form>
+                </div>
                 <button class="collapsible"> SEARCH</button>
                 <div class="content">
                     <form action="/search" method="POST" id='ingredient-form2'>
-                        <input type="text" id="ingredient-bar" name="q" placeholder="What do you have?">
+                        <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
                     </form>
                     <div id="food-list" style="display: none;">
                         <b id="searchHist"> Search History </b>

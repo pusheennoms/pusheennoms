@@ -2,7 +2,7 @@ const fs = require('fs');
 const request = require('request');
 const APP_ID = '9898d34a';
 const APP_KEY = 'df03da67ec2c0fb66e7628b0c84c9bec';
-
+const querystring = require('querystring');
 
 var chefRecords = [];
 
@@ -59,14 +59,9 @@ module.exports.authenticateChef = (inpUsername, inpPassword) => {
  * @param {results of func} callback - prints the results
  */
 module.exports.getRecipes = (params, callback) => {
-    var paramString = '';
-    if (params.diet) {
-        paramString += 'dietLabels=' + params.diet + '&';
-    }
-
-    if (params.health) {
-        paramString += 'healthLabels=' + params.health;
-    }
+    console.log(params);
+    var paramString = querystring.stringify(params);
+    console.log(paramString);
 
     request({
         url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&${paramString}`,
