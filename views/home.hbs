@@ -97,20 +97,21 @@
                 </div>
                 <button class="collapsible"> ALLERGIES/RESTRICTIONS</button>
                 <div class="content">
-                    <form id='ingredient-form3'>
-                        <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
-                    </form>
+                    <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
                 </div>
                 <button class="collapsible"> SEARCH</button>
                 <div class="content">
-                    <form action="/search" method="POST" id='ingredient-form2'>
-                        <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
-                    </form>
+                    <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
                     <div id="food-list" style="display: none;">
                         <b id="searchHist"> Search History </b>
                         <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
                     </div>
                 </div>
+
+                <!-- Place holder for the final combination of all forms -->
+                <form id="final-form" method="get" action="/search">
+                    <input id="final-search-query" type="hidden" name="query">
+                </form>
                 <button id="submitbutt" onclick="submitForms()"> Submit</button>
             </div>
         </div>

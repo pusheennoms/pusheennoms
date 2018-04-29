@@ -59,12 +59,12 @@ module.exports.authenticateChef = (inpUsername, inpPassword) => {
  * @param {results of func} callback - prints the results
  */
 module.exports.getRecipes = (params, callback) => {
-    console.log(params);
-    var paramString = querystring.stringify(params);
-    console.log(paramString);
+
+    // Stringify the params if it is not already a query string
+    var paramStr = params.query ? params.query : querystring.stringify(params);
 
     request({
-        url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&${paramString}`,
+        url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&${paramStr}`,
         json: true
     }, (error, response, body) => {
         if (error) {

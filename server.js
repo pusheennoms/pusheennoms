@@ -53,18 +53,6 @@ app.get('/search', function (req, res, next) {
 });
 
 /**
- * Post action for the search form results taken from home.hbs
- **/
-app.post('/search', function (req, res) {
-    utils.getRecipes(req.body, (error, results) => {
-        resultRecipes = JSON.stringify(results.recipes);
-        res.render('home.hbs', {
-            resultRecipes: resultRecipes
-        });
-    });
-});
-
-/**
  * The action to download a recipe
  **/
 app.post('/download', function (req, res) {

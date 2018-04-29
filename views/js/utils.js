@@ -28,9 +28,13 @@ function submitForms() {
             params.dietLabels.append(dietFormElements[i].value);
         }
     }
+
+    // Add search parameters to search history
     addIngredient(params);
-    $('#ingredient-form2').val(jQuery.param(params))
-}
+
+    // Submit final search form
+    document.getElementById('final-search-query').value = jQuery.param(params);
+    document.getElementById('final-form').submit();
 
 /**
  * Adds a query to search history
