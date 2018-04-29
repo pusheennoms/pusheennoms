@@ -6,38 +6,17 @@ const utils = require('./serverUtils');
 
 var app = express();
 var resultRecipes = '';
-var loggedIn = false;
 var inpUsername;
 
 app.set('view engine', 'hbs');
-hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/controllers'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-hbs.registerHelper('getCopyRights', () => {
-    return "Rest in Pepperoni";
-});
-
 app.get('/', (request, response) => {
     response.render('login.hbs')
-});
-
-/**
- * Controller for the home page, passes in the current user name to the home.hbs
- */
-app.get('/home', (request, response) => {
-    if (loggedIn) {
-        response.render('home.hbs', {
-            resultRecipes: JSON.stringify([{
-                currentUser: inpUsername
-            }])
-        })
-    } else {
-        response.redirect('/');
-    }
 });
 
 /**
