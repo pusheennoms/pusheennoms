@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const utils = require('../serverUtils');
+const utils = require('../middlewares/loginUtils');
 
 router.get('/', function (req, res, next) {
     res.render('login.hbs')
@@ -11,8 +11,19 @@ router.get('/', function (req, res, next) {
  * After adding a new chef to the chef file, redirects to home page
  */
 router.post('/registerchef', (request, response) => {
-    utils.addToChefFile(request.body.username, request.body.password);
-    response.redirect('/');
+    var valid = utils.validateInput(request.body.username, request.body.password);
+
+    if (valid == true) {
+        utils.addToChefFile(request.body.username, request.body.password);
+        response.render('login.hbs', {
+            status: true
+        });
+    }
+    else if (valid == false) {
+        response.render('login.hbs', {
+            status: false
+        });
+    }
 });
 
 /**
