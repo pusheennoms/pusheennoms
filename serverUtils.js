@@ -30,6 +30,15 @@ module.exports.addToChefFile = (username, password) => {
     fs.writeFileSync('userpass.json', newChef);
 };
 
+module.exports.validateInput = (userInp, passInp) => {
+    if ((userInp.length<=3)|(passInp.length<=3)){
+        return false;
+    }
+    else {
+        return true;
+    }
+};
+
 /**
  *Checks if username and password are in userpass.json, if not then request user to log in again
  **/

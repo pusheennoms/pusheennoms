@@ -43,8 +43,20 @@ app.post('/download', function (req, res) {
  * After adding a new chef to the chef file, redirects to home page
  */
 app.post('/registerchef', (request, response) => {
-    utils.addToChefFile(request.body.username, request.body.password);
-    response.redirect('/');
+    var valid = utils.validateInput(request.body.username, request.body.password);
+
+    if (valid == true) {
+        utils.addToChefFile(request.body.username, request.body.password);
+        response.render('login.hbs', {
+            status: true
+        });
+    } 
+    else if(valid == false) {
+        response.render('login.hbs', {
+            status: false
+        });
+        //response.redirect('/')
+    }
 });
 
 /**
