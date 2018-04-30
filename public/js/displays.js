@@ -1,9 +1,6 @@
 /*--------------variables--------------*/
 var coll = document.getElementsByClassName("collapsible");
 
-var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
-    currentSearchHistory = savedSearchHistory ? savedSearchHistory : {};
-
 var currentResults;
 
 var pushleft = 1;
@@ -15,7 +12,11 @@ showSearchHistory();
  * Displays the search history below search bar
  */
 function showSearchHistory() {
+    var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
+        currentSearchHistory = savedSearchHistory ? savedSearchHistory : {};
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     var foodList = document.getElementById('food-list');
+<<<<<<< HEAD:views/js/displays.js
     if (foodList.innerHTML = ''){
     	document.getElementById('clearbutt').style.display = 'none';
     }else if (foodList.length > 0){
@@ -23,12 +24,24 @@ function showSearchHistory() {
     }
     foodList.style.display = 'block';
     
+=======
+>>>>>>> 55e98f189ab7d9ea3da1efd2bcc065c211e3f3c1:public/js/displays.js
 
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentSearchHistory[currentUser]) {
+        currentSearchHistory[currentUser] = [];
+    }
+
+    foodList.style.display = 'block';
 
     for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
         var ndiv = document.createElement("a");
+
         ndiv.innerHTML = currentSearchHistory[currentUser][i].value;
+        var tags = Object.values(currentSearchHistory[currentUser][i]);
+        for (j = 1; j < tags.length - 1; j++) {
+            ndiv.innerHTML += ` ${tags[j]} `;
+        }
+
         ndiv.className = "added-ingredients";
         ndiv.style.cursor = "pointer";
         ndiv.setAttribute('href', '/search?' + currentSearchHistory[currentUser][i].query);
@@ -126,11 +139,8 @@ function showResults() {
 
 /*-----------INTERACTIONS--------------*/
 
-document.getElementById("search-ingredients-div").style.display = "block";
-document.getElementById("cat-ingredients-div").style.display = "block";
-
 document.getElementById("ingredient-bar").addEventListener("keydown", function (ev) {
-    if (ev.keyCode == 13) {
+    if (ev.keyCode === 13) {
         submitForms();
     }
 });

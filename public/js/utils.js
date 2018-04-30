@@ -13,22 +13,28 @@ function submitForms() {
     var params = {
         q: document.getElementById('ingredient-bar').value,
         healthLabels: [],
-        dietLabels: []
+        dietLabels: [],
+        excluded: document.getElementById('allergies-bar').value
     };
     // Get healthLabels
     for (var i = 0; i < healthFormElements.length; i++) {
         if (healthFormElements[i].checked) {
-            params.healthLabels.append(healthFormElements[i].value);
+            params.healthLabels.push(healthFormElements[i].value);
         }
     }
     // Get dietLabels
     for (var i = 0; i < dietFormElements.length; i++) {
         if (dietFormElements[i].checked) {
-            params.dietLabels.append(dietFormElements[i].value);
+            params.dietLabels.push(dietFormElements[i].value);
         }
     }
+
+    // Add search parameters to search history
     addIngredient(params);
-    $('#ingredient-form2').val(JSON.stringify(jQuery.param(params)))
+
+    // Submit final search form
+    document.getElementById('final-search-query').value = jQuery.param(params);
+    document.getElementById('final-form').submit();
 }
 
 /**
@@ -36,12 +42,7 @@ function submitForms() {
  * @param {object} queryParams - the query object containing all attributes and values from search form
  */
 function addIngredient(queryParams) {
-    let q = queryParams.q;
-    let health = queryParams.healthLabels.join(',');
-    let diet = queryParams.dietLabels.join(',');
-    let queryStr = `q=${q}&healthLabels=${health}&dietLabels=${diet}`;
-
-
+    let queryStr = jQuery.param(queryParams);
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
     // Add to search history
@@ -49,20 +50,26 @@ function addIngredient(queryParams) {
     if (currentSearchHistory[currentUser]) {
         let duplicateSearch = false;
         for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
-            if (currentSearchHistory[currentUser][i].value === `${q} ${health}${diet}`) {
+            if (currentSearchHistory[currentUser][i].query === `${queryStr}`) {
                 duplicateSearch = true;
                 break;
             }
         }
         if (!duplicateSearch) {
             currentSearchHistory[currentUser].push({
-                value: `${q} ${health}${diet}`,
+                value: `${queryParams.q}`,
+                healthLabels: `${queryParams.healthLabels}`,
+                dietLabels: `${queryParams.dietLabels}`,
+                excluded: `exclude ${queryParams.excluded}`,
                 query: queryStr
             })
         }
     } else {
         currentSearchHistory[currentUser] = [{
-            value: `${q} ${health}${diet}`,
+            value: `${queryParams.q}`,
+            healthLabels: `${queryParams.healthLabels}`,
+            dietLabels: `${queryParams.dietLabels}`,
+            excluded: `exclude ${queryParams.excluded}`,
             query: queryStr
         }]
     }
