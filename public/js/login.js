@@ -42,7 +42,12 @@ function submitCredentials(usernameDoesNotExist) {
     } 
 }
 
-// Alert user that a Registration is completed
-function notifyuser(){
-    alert('You have created a new account.')
+// Alert user of registration status
+function notifyuser(state){
+    if (state){
+        alert('You have created a new account.')
+    }
+    else{
+        alert('You have entered invalid username or password.')
+    }
 }
