@@ -137,6 +137,7 @@ body {
 	padding-top: 10px;
 	right: -10%;
 	margin: auto;
+	font-family: Marker Felt, fantasy;
 }
 
 #logoutbutt {
@@ -149,6 +150,9 @@ body {
 	background-color: #555555;
 	width: 100px;
 	font-size: 20px;
+	cursor: pointer;
+	font-family: Marker Felt, fantasy;
+	color: #DCDCDC;
 }
 
 #title {
