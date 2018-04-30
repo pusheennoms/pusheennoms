@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const utils = require('../serverUtils');
+const utils = require('../middlewares/recipeUtils');
 
 var resultRecipes = '';
 
