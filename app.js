@@ -17,12 +17,7 @@ app.use(bodyParser.urlencoded({
 app.use('/', loginRouter);
 app.use('/search', homeRouter);
 
-<<<<<<< HEAD
-app.listen(process.env.PORT || 8001, () => {
-    console.log('Server is up on the port 8000');
 
-});
 
-=======
 module.exports = app;
->>>>>>> 55e98f189ab7d9ea3da1efd2bcc065c211e3f3c1
+
