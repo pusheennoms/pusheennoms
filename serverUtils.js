@@ -2,16 +2,18 @@ const fs = require('fs');
 const request = require('request');
 const APP_ID = '9898d34a';
 const APP_KEY = 'df03da67ec2c0fb66e7628b0c84c9bec';
+const querystring = require('querystring');
 
-
+const userpassFile = __dirname + '/userpass.json';
 var chefRecords = [];
 
 /**
  *See if userpass.json exists on drive, if not create file, if so read contents into var chefRecords
  **/
 function checkRecords() {
-    if (fs.existsSync('userpass.json') && fs.readFileSync('userpass.json').length !== 0) {
-        getFile = fs.readFileSync('userpass.json');
+    console.log(userpassFile);
+    if (fs.existsSync(userpassFile) && fs.readFileSync(userpassFile).length !== 0) {
+        getFile = fs.readFileSync(userpassFile);
         chefRecords = JSON.parse(getFile);
     }
 }
@@ -27,7 +29,7 @@ module.exports.addToChefFile = (username, password) => {
     };
     chefRecords.push(record);
     var newChef = JSON.stringify(chefRecords);
-    fs.writeFileSync('userpass.json', newChef);
+    fs.writeFileSync(userpassFile, newChef);
 };
 
 /**
@@ -38,10 +40,10 @@ module.exports.authenticateChef = (inpUsername, inpPassword) => {
 
     var usernameFound = false;
     for (var i = 0; i < chefRecords.length; i++) {
+        console.log(chefRecords[i].username);
         if (chefRecords[i].username == inpUsername) {
             usernameFound = true;
             if (chefRecords[i].password == inpPassword) {
-                loggedIn = true;
                 return 'logged in';
             } else {
                 return 'authentication failure';
@@ -59,17 +61,12 @@ module.exports.authenticateChef = (inpUsername, inpPassword) => {
  * @param {results of func} callback - prints the results
  */
 module.exports.getRecipes = (params, callback) => {
-    var paramString = '';
-    if (params.diet) {
-        paramString += 'dietLabels=' + params.diet + '&';
-    }
 
-    if (params.health) {
-        paramString += 'healthLabels=' + params.health;
-    }
+    // Stringify the params if it is not already a query string
+    var paramStr = params.query ? params.query : querystring.stringify(params);
 
     request({
-        url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&q=${params.q}&${paramString}`,
+        url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&${paramStr}`,
         json: true
     }, (error, response, body) => {
         if (error) {
