@@ -4,8 +4,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 var app = express();
-var loginRouter = require('./routes/login');
-var homeRouter = require('./routes/home');
+var loginRouter = require('./controllers/login');
+var homeRouter = require('./controllers/home');
 
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));

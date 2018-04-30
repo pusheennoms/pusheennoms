@@ -2,12 +2,12 @@
   "name": "PusheenEats",
   "version": "1.0.1",
   "description": "",
-  "main": "server.js",
+  "main": "bin/www.js",
   "engines": {
     "node": "8.9.1"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node bin/www.js",
     "test": "jest"
   },
   "author": "Emilie Zhang, Danielle Braceros, Precidia Tom",
