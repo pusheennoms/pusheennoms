@@ -17,7 +17,4 @@ app.use(bodyParser.urlencoded({
 app.use('/', loginRouter);
 app.use('/search', homeRouter);
 
-
-
 module.exports = app;
-

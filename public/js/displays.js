@@ -16,16 +16,6 @@ function showSearchHistory() {
         currentSearchHistory = savedSearchHistory ? savedSearchHistory : {};
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     var foodList = document.getElementById('food-list');
-<<<<<<< HEAD:views/js/displays.js
-    if (foodList.innerHTML = ''){
-    	document.getElementById('clearbutt').style.display = 'none';
-    }else if (foodList.length > 0){
-    	document.getElementById('clearbutt').style.display = 'block';
-    }
-    foodList.style.display = 'block';
-    
-=======
->>>>>>> 55e98f189ab7d9ea3da1efd2bcc065c211e3f3c1:public/js/displays.js
 
     if (!currentSearchHistory[currentUser]) {
         currentSearchHistory[currentUser] = [];
@@ -53,25 +43,7 @@ function showSearchHistory() {
 }
 
 /**
-<<<<<<< HEAD:views/js.js
- * The main function that does the API call to get the recipes
- * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
- * @param {results of func} callback - prints the results 
- */
-function clearSearchHist() {
-    currentSearchHistory = [];
-    localStorage.removeItem('searchHistory');
-	document.getElementById('food-list').style.display = 'none';
-
-}
-
-/**
- * The main function that does the API call to get the recipes
- * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
- * @param {results of func} callback - prints the results 
-=======
  * Display the search results
->>>>>>> 275f64fb8acc43bb4a594c203247574d9f92ee6b:views/js/displays.js
  */
 function showResults() {
     document.getElementById('welcome-div').style.display = 'None';
@@ -182,9 +154,4 @@ hiddenpush.addEventListener("click", function () {
         document.getElementById("big-page-div").style.width = "80%"
 ;
     }
-
 });
-
-
-
-
