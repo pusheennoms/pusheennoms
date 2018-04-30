@@ -86,3 +86,4 @@ function clearSearchHist() {
     localStorage.removeItem('searchHistory');
     document.getElementById('food-list').style.display = 'none';
 }
+
