@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Emilie Zhang, Danielle Braceros, Precidia Tom",
   "license": "ISC",
@@ -24,6 +24,8 @@
     "require": "^2.4.20"
   },
   "devDependencies": {
+    "jest": "^22.4.3",
+    "path": "^0.12.7",
     "request": "^2.85.0"
   }
 }

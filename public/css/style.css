@@ -209,7 +209,7 @@ body {
 }
 #cat-ingredients-div {
 	/*background-color: red;*/
-	display:none;
+	display: block;
 }
 
 /*actual page */
