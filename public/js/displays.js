@@ -2,11 +2,20 @@
 var coll = document.getElementsByClassName("collapsible");
 
 var currentResults;
+var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
 var pushleft = 1;
 
 /*-------------foodDisplay-------------*/
+showWelcomeUserMsg();
 showSearchHistory();
+
+/**
+ * Displays the welcome user msg at the top right banner
+ */
+function showWelcomeUserMsg() {
+    document.getElementById('welcome-user-msg').innerHTML = `Welcome, ${currentUser}!`;
+}
 
 /**
  * Displays the search history below search bar
@@ -14,7 +23,6 @@ showSearchHistory();
 function showSearchHistory() {
     var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
         currentSearchHistory = savedSearchHistory ? savedSearchHistory : {};
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     var foodList = document.getElementById('food-list');
 
     if (!currentSearchHistory[currentUser]) {
