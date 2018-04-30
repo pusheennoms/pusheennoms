@@ -1,23 +1,22 @@
 const express = require('express');
 const hbs = require('hbs');
+const path = require('path');
 const bodyParser = require('body-parser');
 
-const utils = require('./serverUtils');
+// const utils = require('./serverUtils');
 
 var app = express();
+var loginRouter = require('./routers/login');
 var resultRecipes = '';
-var inpUsername;
 
 app.set('view engine', 'hbs');
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/controllers'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.get('/', (request, response) => {
-    response.render('login.hbs')
-});
+app.use('/', loginRouter);
 
 /**
  * Controller for queries through the address bar
@@ -39,38 +38,40 @@ app.post('/download', function (req, res) {
     fs.writeFileSync(recipe.label + '.txt', req.body.recipe);
 });
 
-/**
- * After adding a new chef to the chef file, redirects to home page
- */
-app.post('/registerchef', (request, response) => {
-    utils.addToChefFile(request.body.username, request.body.password);
-    response.redirect('/');
-});
+// /**
+//  * After adding a new chef to the chef file, redirects to home page
+//  */
+// app.post('/registerchef', (request, response) => {
+//     utils.addToChefFile(request.body.username, request.body.password);
+//     response.redirect('/');
+// });
+//
+// /**
+//  * Handles logging in the user
+//  */
+// app.post('/getpass', (request, response) => {
+//     inpUsername = request.body.username;
+//     inpPassword = request.body.password;
+//
+//     var authenticationResult = utils.authenticateChef(inpUsername, inpPassword);
+//
+//     if (authenticationResult === 'authentication failure') {
+//         response.redirect('/')
+//     } else if (authenticationResult === 'logged in') {
+//         response.render('home.hbs', {
+//             resultRecipes: JSON.stringify([{
+//                 currentUser: inpUsername
+//             }])
+//         })
+//     } else if (authenticationResult === 'no username') {
+//         response.render('login.hbs', {
+//             usernameDoesNotExist: true
+//         })
+//     }
+// });
 
-/**
- * Handles logging in the user
- */
-app.post('/getpass', (request, response) => {
-    inpUsername = request.body.username;
-    inpPassword = request.body.password;
+// app.listen(process.env.PORT || 8001, () => {
+//     console.log('Server is up on the port 8000');
+// });
 
-    var authenticationResult = utils.authenticateChef(inpUsername, inpPassword);
-
-    if (authenticationResult === 'authentication failure') {
-        response.redirect('/')
-    } else if (authenticationResult === 'logged in') {
-        response.render('home.hbs', {
-            resultRecipes: JSON.stringify([{
-                currentUser: inpUsername
-            }])
-        })
-    } else if (authenticationResult === 'no username') {
-        response.render('login.hbs', {
-            usernameDoesNotExist: true
-        })
-    }
-});
-
-app.listen(process.env.PORT || 8001, () => {
-    console.log('Server is up on the port 8000');
-});
+module.exports = app;
