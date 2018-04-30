@@ -1,0 +1,143 @@
+#fridgeBG {
+    background-image:url(imgs/fridge11.png);
+    background-size:contain;
+    background-repeat:no-repeat;
+    width:100%;
+    height:100%;
+}
+
+#topDoor {
+    position:absolute;  
+    background-image:url(imgs/topdoor.png);
+    background-size:contain;
+    background-repeat:no-repeat;
+    width:125px;
+    height:182px;
+    left:430px;
+    top:35px;
+    cursor:pointer;
+}
+
+#botDoor {
+    position:absolute;
+    background-image:url(imgs/botdoor.png);
+    background-size:contain;
+    background-repeat:no-repeat;
+    width:119px;
+    height:293px;    
+    left:410px;
+    top:210px;
+    cursor:pointer;
+}
+
+#display {
+    position:absolute;
+    top:10vh;
+    left:20vw;
+    width:700px;
+    height:507px;
+}
+
+.contents {
+    position:absolute;
+    background-size:contain;
+    background-repeat:no-repeat;
+    opacity:0.2;
+}
+
+#potato {
+    top:410px;
+    left:260px;
+    background-image:url(imgs/potato.png);
+    height:50px;
+    width:50px;
+}
+
+#carrot {
+    top:305px;
+    left:310px;
+    background-image:url(imgs/carrot.png);
+    height:80px;
+    width:30px;
+}
+
+#tomato {
+    top:235px;
+    left:220px;
+    background-image:url(imgs/tomato.png);
+    height:50px;
+    width:50px;
+}
+
+#bellPepper {
+    top:235px;
+    left:360px;
+    background-image:url(imgs/bellpepper.png);
+    height:50px;
+    width:50px;
+}
+
+#garlic {
+    top:245px;
+    left:290px;
+    background-image:url(imgs/garlic.png);
+    height:40px;
+    width:40px;
+}
+
+#eggplant {
+    top:310px;
+    left:360px;
+    background-image:url(imgs/eggplant.png);
+    height:80px;
+    width:55px;
+}
+
+#corn {
+    top:310px;
+    left:235px;
+    background-image:url(imgs/corn.png);
+    height:80px;
+    width:50px;
+}
+
+#cucumber {
+    top:410px;
+    left:325px;
+    background-image:url(imgs/cucumber.png);
+    height:55px;
+    width:80px;
+}
+
+#topClose, #botClose {
+    position:absolute;
+    left:170px;
+    width:280px;
+    cursor:pointer;
+    display:none;
+}
+
+#topClose {
+    height:210px;
+}
+
+#botClose {
+    top:215px;
+    height:290px;
+}
+
+#beef {
+    top:95px;
+    left:210px;
+    background-image:url(imgs/beef.png);
+    height:30px;
+    width:60px;    
+}
+
+#chicken {
+    top:85px;
+    left:280px;
+    background-image:url(imgs/chicken.png);
+    height:40px;
+    width:60px;    
+}
