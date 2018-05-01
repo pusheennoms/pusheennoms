@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Home</title>
-    <link rel="icon" href="imgs/icon.png">
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <link rel="icon" href="../imgs/icon.png">
+    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         /**
@@ -12,7 +12,9 @@
          */
         function setCurrentResults(res) {
             currentResults = res;
-            localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
+            if (res[res.length - 1].currentUser) {
+                localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
+            }
             if (currentResults && currentResults.length > 0) {
                 showResults();
             }
@@ -23,8 +25,10 @@
 <body>
 <!-- TOP border -->
 <div id="banner">
-    <img id="logo" src="imgs/pusheats.png" onload="setCurrentResults({{resultRecipes}})">
-    <img id="hiddenpusheen" src="imgs/hiddenpusheen.png">
+    <img id="logo" src="../imgs/pusheats.png" onload="setCurrentResults({{resultRecipes}})">
+    <input type="button" id="logoutbutt" onclick="window.location.href='/'" value="Log Out">
+    <div id="current-user"><h2 id="welcome-user-msg"></h2></div>
+    <img id="hiddenpusheen" src="../imgs/hiddenpusheen.png">
     <p id="title" class="texts"><span>PUSHEEN EATS</span></p>
 </div>
 
@@ -33,7 +37,7 @@
     <div id="cp-banner">
         <p id="ur-ingredients" class="texts"> YOUR INGREDIENTS </p>
     </div>
-    <img id="ingredients-img" src="imgs/ingredients.gif">
+    <img id="ingredients-img" src="../imgs/ingredients.gif">
     <div class="texts"> Select the health options you prefer and type in what you have, then press Submit.</div>
     <div class="food-divs" id="search-ingredients-div">
         <div class="food-divs" id="cat-ingredients-div">
@@ -93,17 +97,23 @@
                         </label>
                     </form>
                 </div>
-
+                <button class="collapsible"> EXCLUDE INGREDIENTS</button>
+                <div class="content">
+                    <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
+                </div>
                 <button class="collapsible"> SEARCH</button>
                 <div class="content">
-                    <form action="/search" method="POST" id='ingredient-form2'>
-                        <input type="text" id="ingredient-bar" name="q" placeholder="What do you have?">
-                    </form>
+                    <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
                     <div id="food-list" style="display: none;">
                         <b id="searchHist"> Search History </b>
                         <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
                     </div>
                 </div>
+
+                <!-- Place holder for the final combination of all forms -->
+                <form id="final-form" method="get" action="/search">
+                    <input id="final-search-query" type="hidden" name="query">
+                </form>
                 <button id="submitbutt" onclick="submitForms()"> Submit</button>
             </div>
         </div>
@@ -113,7 +123,7 @@
 
 <!-- THE ACTUAL PAGE -->
 <div id="big-page-div">
-    <img id="bg-img" src="imgs/bg3.jpeg">
+    <img id="bg-img" src="../imgs/bg3.jpeg">
     <div id="search-results">
     </div>
     <div id="welcome-div">
@@ -123,7 +133,7 @@
         </p>
     </div>
 </div>
-<script src="js/displays.js"></script>
-<script src="js/utils.js"></script>
+<script src="../js/displays.js"></script>
+<script src="../js/utils.js"></script>
 </body>
 </html>
