@@ -25,16 +25,17 @@
 <body>
 <!-- TOP border -->
 <div id="banner">
-    <img id="logo" src="../imgs/pusheats.png" onload="setCurrentResults({{resultRecipes}})">
-    <input type="button" id="logoutbutt" onclick="window.location.href='/'" value="Log Out">
+    <img id="logo" src="../imgs/pusheats.png" onload="setCurrentResults({{resultRecipes}})"
     <div id="current-user"><h2 id="welcome-user-msg"></h2></div>
-    <img id="hiddenpusheen" src="../imgs/hiddenpusheen.png">
-    <p id="title" class="texts"><span>PUSHEEN NOMNOMS</span></p>
+    <p id="title" class="texts"><span>PUSHEEN EATS</span></p>
 </div>
 
 <!-- ctrl panel -->
+<img id="hiddenpusheen" src="../imgs/hiddenpusheen.png">
+
 <div id="ctrlpanel">
     <div id="cp-banner">
+        <img src="http://simpleicon.com/wp-content/uploads/powe-symbol-4.png" type="button" id="logoutbutt" onclick="window.location.href='/'" value="Log Out">
         <p id="ur-ingredients" class="texts"> YOUR INGREDIENTS </p>
     </div>
     <img id="ingredients-img" src="../imgs/ingredients.gif">
@@ -97,7 +98,7 @@
                         </label>
                     </form>
                 </div>
-                <button class="collapsible"> EXCLUDE INGREDIENTS</button>
+                <button class="collapsible"> ALLERGIES/RESTRICTIONS</button>
                 <div class="content">
                     <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
                 </div>

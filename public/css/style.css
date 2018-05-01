@@ -1,7 +1,7 @@
 body {
 /* style of the whole website*/
 	font-family: "Bubblegum Sans", sans-serif;
-	background-color: #89CFF0;
+	/*background-color: #89CFF0;*/
 	overflow-x: hidden;
 
 }
@@ -118,9 +118,9 @@ body {
 	background-color:white;
 	border-bottom: 2px solid dimgray;
 	position:fixed;
-	top:0px;
-	right:0px;
-	z-index: ;
+	top:0;
+	right:0;
+	z-index: -5;
 }
 #logo {
 	position:relative;
@@ -141,18 +141,15 @@ body {
 }
 
 #logoutbutt {
-	position: relative;
-	height: 30%;
-	float: right;
-	right: 10px;
-	top: 70%;
+	position: absolute;
+	height: 3%;
+	top:0.5%;
+	left:0.5%;
 	margin: auto;
-	background-color: #555555;
-	width: 100px;
-	font-size: 20px;
 	cursor: pointer;
 	font-family: Marker Felt, fantasy;
 	color: #DCDCDC;
+	z-index: 10;
 }
 
 #title {
@@ -161,9 +158,10 @@ body {
 	position: fixed;
 	cursor: default;
 	text-align: left;
-	left:25%;
+	left:5%;
 	font-size: 450%;
 	top: -9vh;
+	transition: left 0.5s;
 }
 #search-results{
 	display: inline;
@@ -171,17 +169,31 @@ body {
 	width: 100%;
 }
 /*control panel stuff*/
+#hiddenpusheen{
+	position: absolute;
+	height:150px;
+	left:-5%;
+	transition: left 0.5s;
+	cursor: pointer;
+	z-index: 3;
+}
+
 #ctrlpanel {
 	position:fixed;
 	height:100%;
-	width:20%;
+	width:50.5%;
+	/*resize:horizontal;*/
 	background-color: white;
-	top:0px;
-	left:0px;
-	box-shadow: 3px 0px 3px #888888;
+	top:0;
+	left:-50%;
+	box-shadow: 3px 0 3px #888888;
 	overflow-y: scroll;
 	overflow-x: hidden;
+	/*direction : rtl;*/
 	transition: left 0.5s;
+	z-index: 6;
+	/*max-width: 40%;*/
+	min-width: 20%;
 }
 #cp-banner {
 	background-color: gray;
@@ -218,7 +230,7 @@ body {
 	box-sizing: border-box;
 	border-radius: 5%;
 	text-align: left;
-	font-size: 20%;
+	font-size: 20%;
 	background-color: white;
 	padding:5%;
 	position: relative;
@@ -228,9 +240,7 @@ body {
 	position: relative;
 	/*background-color: blue;*/
 	height: 80%;
-	margin: 0% 3% 0% 3%;
-	overflow-y: scroll;
-	overflow-x: hidden;
+	margin: 0 3% 0 3%;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
@@ -242,7 +252,7 @@ body {
 /*actual page */
 #big-page-div {
 	background-color: #DCDCDC;
-	width:80%;
+	width:100%;
 	height:88%;
 	right:-5px;
 	bottom:-3%;
@@ -257,7 +267,7 @@ body {
 	opacity: 0.3;
     position: fixed;
     width: 100%;
-    bottom: 0%;
+    bottom: 0;
     z-index: -2;
     object-fit: cover;
     overflow: hidden;
@@ -348,23 +358,6 @@ a:visited {
 	width:50%;
 	background-color:	#FF4500;
 	border: white solid 2px;
-}
-#enter-stuff {
-	/*background-color: red;*/
-	position: relative;
-	top:30%;
-	height:400%;
-	width:100%;
-}
-
-
-#hiddenpusheen{
-	position: fixed;
-	top: -2%;
-	height: 12%;
-	left: 17.5%;
-	transition: left 0.5s;
-	cursor: pointer;
 }
 
 /*test */
