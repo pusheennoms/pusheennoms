@@ -3,6 +3,10 @@ var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
 
 var currentResults;
 
+if (currentResults && currentResults.length > 1) {
+    showResults();
+}
+
 /**
  * Gets all the search form values and populate into object to be POSTED to the server.
  * Also adds the search query to the search history
