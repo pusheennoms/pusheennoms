@@ -143,23 +143,26 @@ for (var i = 0; i < coll.length; i++) {
 */
 var hiddenpush = document.getElementById("hiddenpusheen");
 
+    //show ctrlpanel
 hiddenpush.addEventListener("click", function () {
     if (pushleft == 1) {
 
-        document.getElementById("ctrlpanel").style.left = "-20%";
-        hiddenpush.style.left = "-3%";
+        document.getElementById("ctrlpanel").style.left = "0";
+        hiddenpush.style.left = "45%";
         pushleft = pushleft + 1;
 
-        document.getElementById("big-page-div").style.width = "100%"
-;
+        document.getElementById("title").style.left = "55%";
+        document.getElementById("big-page-div").style.width = "50%";
     }
 
+    //hiding ctrlpanel
     else if (pushleft == 2) {
-        document.getElementById("ctrlpanel").style.left = "0px";
-        hiddenpush.style.left = "17.5%";
+        document.getElementById("ctrlpanel").style.left = "-50%";
+        hiddenpush.style.left = "-5%";
         pushleft = pushleft - 1;
 
-        document.getElementById("big-page-div").style.width = "80%"
+        document.getElementById("title").style.left = "5%";
+        document.getElementById("big-page-div").style.width = "100%"
 ;
     }
 });
