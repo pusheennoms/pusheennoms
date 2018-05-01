@@ -1,8 +1,6 @@
 var active = [0,1], //[0] for register, [1] for login
     regForm = document.getElementById('registerform'),
-    logForm = document.getElementById('loginform'),
-    credForm = document.getElementById('credentialsForm'),
-    newReg = document.getElementById('newRegister');
+    logForm = document.getElementById('loginform');
 
 /** Hally
  * @param {list of object} params - 
@@ -33,15 +31,20 @@ function login() {
     }
 }
 
-//Emilie
-// attempt to log in
+/**
+ * Function to check whether a username exists. If the username does not exist, alert the user.
+ * @param {boolean} usernameDoesNotExist - variable indicating whether a username exists
+ */
 function checkCredentials(usernameDoesNotExist) {
     if (usernameDoesNotExist) {
         alert('Username does not exist!');
     } 
 }
 
-// Alert user of registration status
+/**
+ * Function to check whether the user has entered valid username and password when registering for an account
+ * @param {boolean} state - variable indicating whether the registered username and passwords are valid
+ */
 function notifyuser(state){
     if (state){
         alert('You have created a new account.')
