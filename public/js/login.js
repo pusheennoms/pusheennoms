@@ -46,10 +46,10 @@ function checkCredentials(usernameDoesNotExist) {
  * @param {boolean} state - variable indicating whether the registered username and passwords are valid
  */
 function notifyuser(state){
-    if (state){
+    if (state) {
         alert('You have created a new account.')
     }
     else if (state === false) {
-        alert('Username and password must have more than 3 characters.')
+        alert('Username and password must have more than 3 characters or username already exists')
     }
 }
