@@ -24,7 +24,7 @@
                     Username: <input type="text" name="username"><br>
                     Password: <input type="password" name="password"><br>
                     <div class="submitBox">
-                        <button onclick="submitCredentials({{usernameDoesNotExist}})" class="submitButton">Submit</button>
+                        <button type="submit" value="Submit" class="submitButton">Submit</button>
                     </div>
                 </form>
             </div>
@@ -48,5 +48,6 @@
         </script>
         <script src="../js/login.js"></script>
         <script> notifyuser({{status}})</script>
+        <script> checkCredentials({{usernameDoesNotExist}})</script>
     </body>
 </html>

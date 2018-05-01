@@ -35,8 +35,7 @@ function login() {
 
 //Emilie
 // attempt to log in
-function submitCredentials(usernameDoesNotExist) {
-    credForm.submit();
+function checkCredentials(usernameDoesNotExist) {
     if (usernameDoesNotExist) {
         alert('Username does not exist!');
     } 
@@ -47,7 +46,7 @@ function notifyuser(state){
     if (state){
         alert('You have created a new account.')
     }
-    else{
-        alert('You have entered invalid username or password.')
+    else if (state === false) {
+        alert('Username and password must have more than 3 characters.')
     }
 }
