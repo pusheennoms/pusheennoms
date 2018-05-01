@@ -25,8 +25,8 @@
 <body>
 <!-- TOP border -->
 <div id="banner">
-    <img id="logo" src="../imgs/pusheats.png" onload="setCurrentResults({{resultRecipes}})">
-
+    <img id="logo" src="../imgs/pusheats.png" onload="setCurrentResults({{resultRecipes}})"
+    <div id="current-user"><h2 id="welcome-user-msg"></h2></div>
     <p id="title" class="texts"><span>PUSHEEN EATS</span></p>
 </div>
 
@@ -35,6 +35,7 @@
 
 <div id="ctrlpanel">
     <div id="cp-banner">
+        <img src="http://simpleicon.com/wp-content/uploads/powe-symbol-4.png" type="button" id="logoutbutt" onclick="window.location.href='/'" value="Log Out">
         <p id="ur-ingredients" class="texts"> YOUR INGREDIENTS </p>
     </div>
     <img id="ingredients-img" src="../imgs/ingredients.gif">
@@ -68,6 +69,7 @@
                     </form>
                 </div>
                 <button class="collapsible"> DIET</button>
+                <!-- <div id="enter-stuff"> -->
                 <div class="content">
                     <form id='ingredient-form1'>
                         <label class="container">Balanced
