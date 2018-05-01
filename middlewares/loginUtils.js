@@ -45,9 +45,9 @@ module.exports.authenticateChef = (inpUsername, inpPassword) => {
 
     var usernameFound = false;
     for (var i = 0; i < chefRecords.length; i++) {
-        if (chefRecords[i].username == inpUsername) {
+        if (chefRecords[i].username === inpUsername) {
             usernameFound = true;
-            if (chefRecords[i].password == inpPassword) {
+            if (chefRecords[i].password === inpPassword) {
                 return 'logged in';
             } else {
                 return 'authentication failure';

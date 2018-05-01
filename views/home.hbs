@@ -4,7 +4,10 @@
     <title>Home</title>
     <link rel="icon" href="../imgs/icon.png">
     <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/favStyles.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         /**
          * Set the results taken from the server after the search and calls the function to show results on page
@@ -133,6 +136,35 @@
         </p>
     </div>
 </div>
+
+<div class="container">
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#favModal" id="favbutt">
+        Favourites
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="favModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" id="favModalClose" data-dismiss="modal">&times;</button>
+                    <h4 id="favModalTitle">My Favourite Recipes</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closeFavButt" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
 <script src="../js/displays.js"></script>
 <script src="../js/utils.js"></script>
 </body>

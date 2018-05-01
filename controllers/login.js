@@ -12,7 +12,6 @@ router.get('/', function (req, res, next) {
  */
 router.post('/registerchef', (request, response) => {
     var valid = utils.validateInput(request.body.username, request.body.password);
-
     if (valid === true) {
         utils.addToChefFile(request.body.username, request.body.password);
         response.render('login.hbs', {

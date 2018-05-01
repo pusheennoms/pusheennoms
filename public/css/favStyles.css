@@ -1,0 +1,33 @@
+#favbutt {
+    width: 130px;
+    font-size: 18px;
+    float: left;
+    background-color: #7575a3;
+    border-color: #7575a3;
+    top: 100px;
+    left: 160px;
+    position: relative;
+}
+
+#favModal {
+
+}
+
+#favModalClose {
+    width: 30px;
+    background-color: white;
+    border-color: #555555;
+    float: right;
+}
+
+#favModalTitle {
+    font-family: Marker Felt, fantasy;
+    font-size: 25px;
+}
+
+#closeFavButt {
+    width: 80px;
+    color: white;
+    font-size: 15px;
+    font-family: Marker Felt, fantasy;
+}
