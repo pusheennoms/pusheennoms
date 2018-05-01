@@ -29,7 +29,7 @@ module.exports.addToChefFile = (username, password) => {
 };
 
 module.exports.validateInput = (userInp, passInp) => {
-    if ((userInp.length <= 3) | (passInp.length <= 3)) {
+    if ((userInp.length <= 3) || (passInp.length <= 3)) {
         return false;
     }
     else {
