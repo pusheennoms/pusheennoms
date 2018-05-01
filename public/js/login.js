@@ -44,10 +44,11 @@ function submitCredentials(usernameDoesNotExist) {
 
 // Alert user of registration status
 function notifyuser(state){
-    if (state){
+    console.log("state is", state);
+    if (state == "true") {
         alert('You have created a new account.')
     }
     else{
-        alert('You have entered invalid username or password.')
+        alert('Your username and password needs to be greater than 3 characters.')
     }
 }
