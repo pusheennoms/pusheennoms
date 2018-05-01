@@ -31,6 +31,7 @@ function showSearchHistory() {
 
     foodList.style.display = 'block';
 
+
     for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
         var ndiv = document.createElement("a");
 
@@ -44,6 +45,7 @@ function showSearchHistory() {
         ndiv.style.cursor = "pointer";
         ndiv.setAttribute('href', '/search?' + currentSearchHistory[currentUser][i].query);
         ndiv.setAttribute("id", "food-" + i);
+
 
         foodList.appendChild(ndiv);
         foodList.appendChild(document.createElement("br"));

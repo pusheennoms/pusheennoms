@@ -84,6 +84,8 @@ function addIngredient(queryParams) {
 function clearSearchHist() {
     currentSearchHistory = [];
     localStorage.removeItem('searchHistory');
-    document.getElementById('food-list').style.display = 'none';
+    /*document.getElementById('food-list').style.display = 'none';*/
+       
+    
 }
 
