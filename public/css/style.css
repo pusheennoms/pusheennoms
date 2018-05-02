@@ -1,7 +1,7 @@
 body {
 /* style of the whole website*/
 	font-family: "Bubblegum Sans", sans-serif;
-	/*background-color: #89CFF0;*/
+	background-color: #89CFF0;
 	overflow-x: hidden;
 
 }
@@ -56,7 +56,8 @@ body {
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
 }
-.container {	
+
+.listcontainer {
 /* The container of the collapsible list*/
     display: block;
     position: relative;
@@ -69,7 +70,8 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
-.container input {
+
+.listcontainer input {
 /* Hide the browser's default checkbox */
     position: absolute;
     opacity: 0;
@@ -85,11 +87,13 @@ body {
     width: 25px;
     background-color: #eee;
 }
-.container:hover input ~ .checkmark { 
+
+.listcontainer:hover input ~ .checkmark {
 	/*when you hover at collapsible's checkmark, it changes color to darker gray*/
     background-color: #ccc;	
 }
-.container input:checked ~ .checkmark {
+
+.listcontainer input:checked ~ .checkmark {
 	/*when you click at collapsible's checkmark, it changes color to blue*/
     background-color: #2196F3;
 }
@@ -98,10 +102,12 @@ body {
     position: absolute;
     display: none;
 }
-.container input:checked ~ .checkmark:after {
+
+.listcontainer input:checked ~ .checkmark:after {
     display: block;
 }
-.container .checkmark:after {
+
+.listcontainer .checkmark:after {
     left: 9px;
     top: 5px;
     width: 5px;
@@ -121,9 +127,9 @@ body {
 	background-color:white;
 	border-bottom: 2px solid dimgray;
 	position:fixed;
-	top:0;
-	right:0;
-	z-index: -5;
+	top:0px;
+	right:0px;
+	z-index: ;
 }
 #logo {
 	position:relative;
@@ -132,71 +138,48 @@ body {
 	cursor: pointer;
 }
 
-#current-user {
-	position: relative;
-	height: 50%;
-	float: right;
-	padding-right: 50px;
-	padding-top: 10px;
-	right: -10%;
-	margin: auto;
-	font-family: Marker Felt, fantasy;
-}
-
-#logoutbutt {
-	position: absolute;
-	height: 3%;
-	top:0.5%;
-	left:0.5%;
-	margin: auto;
-	cursor: pointer;
-	font-family: Marker Felt, fantasy;
-	color: #DCDCDC;
-	z-index: 10;
-}
-
 #title {
 	color: #89CFF0;
 	font-family: Marker Felt, fantasy;
 	position: fixed;
 	cursor: default;
 	text-align: left;
-	left:5%;
+	left:25%;
 	font-size: 450%;
-	top: -9vh;
-	transition: left 0.5s;
 }
 #search-results{
 	display: inline;
-	position: relative;
+    position: absolute;
 	width: 100%;
-}
-/*control panel stuff*/
-#hiddenpusheen{
-	position: absolute;
-	height:150px;
-	left:-5%;
-	transition: left 0.5s;
-	cursor: pointer;
-	z-index: 3;
+    font-family: "Trebuchet MS";
+    padding: 20px 20px;
 }
 
+.searchResultsLink {
+    display: inline-block;
+    width: 100%;
+}
+
+.searchResultsImgs {
+    width: auto;
+    height: 40%;
+    position: relative;
+    left: 0;
+
+}
+
+/*control panel stuff*/
 #ctrlpanel {
 	position:fixed;
 	height:100%;
-	width:50.5%;
-	/*resize:horizontal;*/
+    width: 50%;
 	background-color: white;
-	top:0;
-	left:-50%;
-	box-shadow: 3px 0 3px #888888;
+	top:0px;
+    left: 0;
+	box-shadow: 3px 0px 3px #888888;
 	overflow-y: scroll;
 	overflow-x: hidden;
-	/*direction : rtl;*/
 	transition: left 0.5s;
-	z-index: 6;
-	/*max-width: 40%;*/
-	min-width: 20%;
 }
 #cp-banner {
 	background-color: gray;
@@ -213,7 +196,6 @@ body {
 #ingredients-img { /*pusheen image*/
 	position: relative;
 	display: block;
-	margin-top: -10%;
     margin-left: auto;
     margin-right: auto;
 	height:25%;	
@@ -233,7 +215,7 @@ body {
 	box-sizing: border-box;
 	border-radius: 5%;
 	text-align: left;
-	font-size: 20%;
+	font-size: 20%;
 	background-color: white;
 	padding:5%;
 	position: relative;
@@ -243,7 +225,9 @@ body {
 	position: relative;
 	/*background-color: blue;*/
 	height: 80%;
-	margin: 0 3% 0 3%;
+	margin: 0% 3% 0% 3%;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
@@ -255,7 +239,7 @@ body {
 /*actual page */
 #big-page-div {
 	background-color: #DCDCDC;
-	width:100%;
+	width:80%;
 	height:88%;
 	right:-5px;
 	bottom:-3%;
@@ -270,7 +254,7 @@ body {
 	opacity: 0.3;
     position: fixed;
     width: 100%;
-    bottom: 0;
+    bottom: 0%;
     z-index: -2;
     object-fit: cover;
     overflow: hidden;
@@ -288,6 +272,7 @@ body {
 }
 #welcome-msg {
 	font-size: 225%;
+    font-family: Impact;
 }
 #food-search {
 	width: 25%;
@@ -299,21 +284,6 @@ body {
 }
 #searchHist {
 	text-align: center;
-}
-.savebutt {
-	width: 50px;
-    font-size: 12px;
-    display: inline-block;
-    position: relative;
-	background-color: #7575a3;
-    color: white;
-    cursor: pointer;
-    padding:2px;
-    height: 10%;
-    border: none;
-    text-align: center;
-    border-radius: 12px;
-    margin: 10px;
 }
 
 #submitbutt {
@@ -341,6 +311,7 @@ body {
 	padding:2px;
     border-radius: 12px;
     margin: 10px;
+    padding: 1px 5px;
 }
 
 a {
@@ -377,6 +348,60 @@ a:visited {
     font-size: 25px;
     border-radius: 12px;
     margin: 10px;
+}
+#enter-stuff {
+	/*background-color: red;*/
+	position: relative;
+	top:30%;
+	height:400%;
+	width:100%;
+}
+
+
+#hiddenpusheen{
+	position: fixed;
+	top: -2%;
+	height: 12%;
+    left: 47.5%;
+	transition: left 0.5s;
+	cursor: pointer;
+}
+
+.saveFavBtn {
+    background-color: #7575a3;
+    color: white;
+    cursor: pointer;
+	width: 180px;
+    height: 20px;
+    border: none;
+    text-align: center;
+    font-size: 15px;
+    padding: 2px;
+    border-radius: 12px;
+    margin: 10px;
+}
+
+#current-user {
+    position: relative;
+    height: 50%;
+    float: right;
+    padding-right: 50px;
+    padding-top: 10px;
+    right: 10%;
+    margin: auto;
+    font-family: Marker Felt, fantasy;
+}
+
+#logoutbutt {
+    position: absolute;
+    height: 3%;
+    top: 0.5%;
+    left: 0.5%;
+    margin: auto;
+    cursor: pointer;
+    font-family: Marker Felt, fantasy;
+    color: #DCDCDC;
+    z-index: 10;
 }
 
 /*test */

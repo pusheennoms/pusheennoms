@@ -4,7 +4,7 @@ var coll = document.getElementsByClassName("collapsible");
 var currentResults;
 var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-var pushleft = 1;
+var pushleft = false;
 
 /*-------------foodDisplay-------------*/
 showWelcomeUserMsg();
@@ -31,6 +31,10 @@ function showSearchHistory() {
 
     foodList.style.display = 'block';
 
+    var ndiv2 = document.createElement('div');
+    ndiv2.setAttribute('id', 'searchlist');
+
+
     for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
         var ndiv = document.createElement("a");
 
@@ -45,8 +49,11 @@ function showSearchHistory() {
         ndiv.setAttribute('href', '/search?' + currentSearchHistory[currentUser][i].query);
         ndiv.setAttribute("id", "food-" + i);
 
-        foodList.appendChild(ndiv);
-        foodList.appendChild(document.createElement("br"));
+        foodList.appendChild(ndiv2);
+        ndiv2.appendChild(ndiv);
+        ndiv2.appendChild(document.createElement('br'));
+        //foodList.appendChild(ndiv);
+        //foodList.appendChild(document.createElement("br"));
     }
 }
 
@@ -54,61 +61,45 @@ function showSearchHistory() {
  * Display the search results
  */
 function showResults() {
+    hidePusheen();
     document.getElementById('welcome-div').style.display = 'None';
-    var msg = document.createElement('h2');
-    msg.innerHTML = 'Click the button below the URL to save your recipe!\n';
-    document.getElementById('search-results').appendChild(msg);
     localStorage.setItem('currentRecipes', JSON.stringify(currentResults));
     for (var i = 0; i < currentResults.length - 1; i++) {
 
         var node = document.createElement('a');
         var nodeLABELS = document.createElement('div');
         var nodeIMAGE = document.createElement('img');
+
         node.href = currentResults[i].recipe.url;
         node.innerHTML = currentResults[i].recipe.label;
         nodeLABELS.innerHTML = "<br> HEALTH: " + currentResults[i].recipe.healthLabels + "<br> DIET: " + currentResults[i].recipe.dietLabels +
             "<br> INGREDIENTS: " + currentResults[i].recipe.ingredientLines;
 
-        node.style.display = 'inline-block';
         node.setAttribute('id', i.toString());
         node.setAttribute('target', '_new');
-        node.style.width = '30%';
-
-        var nodeInput = document.createElement('input');
-        nodeInput.setAttribute('type', 'hidden');
-        nodeInput.setAttribute('name', 'recipe');
-        var loadRecipes = JSON.parse(localStorage.getItem('currentRecipes'));
-        nodeInput.value = JSON.stringify(loadRecipes[node.id].recipe, undefined, 2);
-
-        var addBtn = document.createElement('button');
-        addBtn.innerHTML = 'Save';
-        addBtn.className = 'savebutt'
-
+        node.className = 'searchResultsLink';
 
         nodeLABELS.style.width = '50%';
-        nodeIMAGE.style.width = 'auto';
-        nodeIMAGE.style.height = '40%';
-        nodeIMAGE.style.position = 'relative';
-        nodeIMAGE.style.left = '0';
-        nodeIMAGE.setAttribute("src", currentResults[i].recipe.image );
+        nodeIMAGE.className = 'searchResultsImgs';
+        nodeIMAGE.setAttribute("src", currentResults[i].recipe.image);
 
-        var addBtnForm = document.createElement('form');
-        addBtnForm.setAttribute('method', 'POST');
-        addBtnForm.setAttribute('action', '/download');
-        addBtnForm.appendChild(nodeInput);
-        addBtnForm.appendChild(addBtn);
+        var saveFavBtn = document.createElement('button');
+        saveFavBtn.onclick = (function (recipe) {
+            return function () {
+                addRecipeLabelBtn(recipe);
+                swal(`Added ${recipe.label} to Favourites!`);
+            }
+        })(currentResults[i].recipe);
 
-        addBtn.onclick = function (ev) {
-            addBtnForm.submit();
-            alert('You have saved the recipe!')
-        };
+        saveFavBtn.className = 'saveFavBtn';
+        saveFavBtn.innerHTML = 'Save to Favourites';
 
 
         document.getElementById('search-results').appendChild(node);
         document.getElementById('search-results').appendChild(document.createElement('br'));
         document.getElementById('search-results').appendChild(nodeIMAGE);
         document.getElementById('search-results').appendChild(nodeLABELS);
-        document.getElementById('search-results').appendChild(addBtnForm);
+        document.getElementById('search-results').appendChild(saveFavBtn);
         document.getElementById('search-results').appendChild(document.createElement('br'));
         document.getElementById('search-results').appendChild(document.createElement('br'));
     }
@@ -135,31 +126,35 @@ for (var i = 0; i < coll.length; i++) {
 }
 ;
 
-/**
- * FUNCTION DEFINITION
-*/
 var hiddenpush = document.getElementById("hiddenpusheen");
 
-    //show ctrlpanel
-hiddenpush.addEventListener("click", function () {
-    if (pushleft == 1) {
+/**
+ * Opens the search panel
+ */
 
-        document.getElementById("ctrlpanel").style.left = "0";
-        hiddenpush.style.left = "45%";
-        pushleft = pushleft + 1;
+function showPusheen() {
+    document.getElementById("ctrlpanel").style.left = '0px';
+    hiddenpush.style.left = "47.5%";
+    document.getElementById("big-page-div").style.width = "50%";
+    pushleft = 0;
+}
 
-        document.getElementById("title").style.left = "55%";
-        document.getElementById("big-page-div").style.width = "50%";
+/**
+ * Closes the search pangel
+ */
+function hidePusheen() {
+    document.getElementById("ctrlpanel").style.left = '-50%';
+    hiddenpush.style.left = "0%";
+    document.getElementById("big-page-div").style.width = "100%";
+    pushleft = 1
+}
+
+hiddenpush.onclick = function () {
+    pushleft = !pushleft;
+
+    if (pushleft) {
+        hidePusheen();
+    } else if (!pushleft) {
+        showPusheen();
     }
-
-    //hiding ctrlpanel
-    else if (pushleft == 2) {
-        document.getElementById("ctrlpanel").style.left = "-50%";
-        hiddenpush.style.left = "-5%";
-        pushleft = pushleft - 1;
-
-        document.getElementById("title").style.left = "5%";
-        document.getElementById("big-page-div").style.width = "100%"
-;
-    }
-});
+};

@@ -3,6 +3,10 @@ var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
 
 var currentResults;
 
+if (currentResults && currentResults.length > 1) {
+    showResults();
+}
+
 /**
  * Gets all the search form values and populate into object to be POSTED to the server.
  * Also adds the search query to the search history
@@ -84,6 +88,14 @@ function addIngredient(queryParams) {
 function clearSearchHist() {
     currentSearchHistory = [];
     localStorage.removeItem('searchHistory');
-    document.getElementById('food-list').style.display = 'none';
+    /*document.getElementById('food-list').style.display = 'none';*/
+    var list = document.getElementById('searchlist');
+    while(list.hasChildNodes()){
+        list.removeChild(list.firstChild);
+    }    
 }
 
+function logout() {
+    localStorage.removeItem('currentUser');
+    window.location.href = '/'
+}
