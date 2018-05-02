@@ -36,16 +36,16 @@ function login() {
 function submitCredentials(usernameDoesNotExist) {
     credForm.submit();
     if (usernameDoesNotExist) {
-        alert('Username does not exist!');
+        swal('Error','Username does not exist!','error');
     } 
 }
 
 // Alert user of registration status
 function notifyuser(state){
     if (state) {
-        alert('You have created a new account.')
+        swal('Success','You have created a new account.','success')
     }
     else if (state === false) {
-        alert('Username and password must have more than 3 characters or username already exists')
+        swal('Error','Username and password must have more than 3 characters or username already exists','error')
     }
 }
