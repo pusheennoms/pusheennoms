@@ -31,6 +31,9 @@ function showSearchHistory() {
 
     foodList.style.display = 'block';
 
+    var ndiv2 = document.createElement('div');
+    ndiv2.setAttribute('id','searchlist');
+
 
     for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
         var ndiv = document.createElement("a");
@@ -46,9 +49,11 @@ function showSearchHistory() {
         ndiv.setAttribute('href', '/search?' + currentSearchHistory[currentUser][i].query);
         ndiv.setAttribute("id", "food-" + i);
 
-
-        foodList.appendChild(ndiv);
-        foodList.appendChild(document.createElement("br"));
+        foodList.appendChild(ndiv2);
+        ndiv2.appendChild(ndiv);
+        ndiv2.appendChild(document.createElement('br'));
+        //foodList.appendChild(ndiv);
+        //foodList.appendChild(document.createElement("br"));
     }
 }
 
