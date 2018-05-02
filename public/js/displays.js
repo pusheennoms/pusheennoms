@@ -4,7 +4,7 @@ var coll = document.getElementsByClassName("collapsible");
 var currentResults;
 var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-var pushleft = 1;
+var pushleft = 0;
 
 /*-------------foodDisplay-------------*/
 showWelcomeUserMsg();
@@ -32,7 +32,7 @@ function showSearchHistory() {
     foodList.style.display = 'block';
 
     var ndiv2 = document.createElement('div');
-    ndiv2.setAttribute('id','searchlist');
+    ndiv2.setAttribute('id', 'searchlist');
 
 
     for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
@@ -61,6 +61,7 @@ function showSearchHistory() {
  * Display the search results
  */
 function showResults() {
+    hidePusheen();
     document.getElementById('welcome-div').style.display = 'None';
     localStorage.setItem('currentRecipes', JSON.stringify(currentResults));
     for (var i = 0; i < currentResults.length - 1; i++) {
@@ -80,7 +81,7 @@ function showResults() {
 
         nodeLABELS.style.width = '50%';
         nodeIMAGE.className = 'searchResultsImgs';
-        nodeIMAGE.setAttribute("src", currentResults[i].recipe.image );
+        nodeIMAGE.setAttribute("src", currentResults[i].recipe.image);
 
         var saveFavBtn = document.createElement('button');
         saveFavBtn.onclick = (function (recipe) {
@@ -125,28 +126,33 @@ for (var i = 0; i < coll.length; i++) {
 }
 ;
 
-/**
- * FUNCTION DEFINITION
-*/
 var hiddenpush = document.getElementById("hiddenpusheen");
 
+/**
+ * Opens the search panel
+ */
+
+function showPusheen() {
+    document.getElementById("ctrlpanel").style.left = '0px';
+    hiddenpush.style.left = "18%";
+    document.getElementById("big-page-div").style.width = "80%"
+    pushleft = 0;
+}
+
+/**
+ * Closes the search pangel
+ */
+function hidePusheen() {
+    document.getElementById("ctrlpanel").style.left = '-20%';
+    hiddenpush.style.left = "0%";
+    document.getElementById("big-page-div").style.width = "100%";
+    pushleft = 1
+}
+
 hiddenpush.addEventListener("click", function () {
-    if (pushleft == 1) {
-
-        document.getElementById("ctrlpanel").style.left = "-20%";
-        hiddenpush.style.left = "-3%";
-        pushleft = pushleft + 1;
-
-        document.getElementById("big-page-div").style.width = "100%"
-;
-    }
-
-    else if (pushleft == 2) {
-        document.getElementById("ctrlpanel").style.left = "0px";
-        hiddenpush.style.left = "17.5%";
-        pushleft = pushleft - 1;
-
-        document.getElementById("big-page-div").style.width = "80%"
-;
+    if (pushleft === 1) {
+        showPusheen();
+    } else if (pushleft === 0) {
+        hidePusheen();
     }
 });

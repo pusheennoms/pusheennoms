@@ -172,7 +172,6 @@ body {
 	text-align: left;
 	left:25%;
 	font-size: 450%;
-	top: -9vh;
 }
 #search-results{
 	display: inline;
@@ -202,7 +201,7 @@ body {
 	width:20%;
 	background-color: white;
 	top:0px;
-	left:0px;
+    left: 0;
 	box-shadow: 3px 0px 3px #888888;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -338,6 +337,7 @@ body {
 	padding:2px;
     border-radius: 12px;
     margin: 10px;
+    padding: 1px 5px;
 }
 
 a {
