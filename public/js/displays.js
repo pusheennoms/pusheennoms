@@ -4,7 +4,7 @@ var coll = document.getElementsByClassName("collapsible");
 var currentResults;
 var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-var pushleft = 0;
+var pushleft = false;
 
 /*-------------foodDisplay-------------*/
 showWelcomeUserMsg();
@@ -134,8 +134,8 @@ var hiddenpush = document.getElementById("hiddenpusheen");
 
 function showPusheen() {
     document.getElementById("ctrlpanel").style.left = '0px';
-    hiddenpush.style.left = "18%";
-    document.getElementById("big-page-div").style.width = "80%"
+    hiddenpush.style.left = "47.5%";
+    document.getElementById("big-page-div").style.width = "50%";
     pushleft = 0;
 }
 
@@ -143,16 +143,18 @@ function showPusheen() {
  * Closes the search pangel
  */
 function hidePusheen() {
-    document.getElementById("ctrlpanel").style.left = '-20%';
+    document.getElementById("ctrlpanel").style.left = '-50%';
     hiddenpush.style.left = "0%";
     document.getElementById("big-page-div").style.width = "100%";
     pushleft = 1
 }
 
-hiddenpush.addEventListener("click", function () {
-    if (pushleft === 1) {
-        showPusheen();
-    } else if (pushleft === 0) {
+hiddenpush.onclick = function () {
+    pushleft = !pushleft;
+
+    if (pushleft) {
         hidePusheen();
+    } else if (!pushleft) {
+        showPusheen();
     }
-});
+};
