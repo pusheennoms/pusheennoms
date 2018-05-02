@@ -37,7 +37,7 @@ function login() {
  */
 function checkCredentials(usernameDoesNotExist) {
     if (usernameDoesNotExist) {
-        swal('Username does not exist!');
+        swal('Error','Username does not exist!','error');
     } 
 }
 
@@ -47,9 +47,9 @@ function checkCredentials(usernameDoesNotExist) {
  */
 function notifyuser(state){
     if (state) {
-        swal('You have created a new account.')
+        swal('Success','You have created a new account.','success')
     }
     else if (state === false) {
-        swal('Username and password must have more than 3 characters or username already exists')
+        swal('Error','Username and password must have more than 3 characters or username already exists','error')
     }
 }
