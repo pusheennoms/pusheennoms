@@ -82,10 +82,7 @@ function showResults() {
 
         var addBtn = document.createElement('button');
         addBtn.innerHTML = 'Save';
-        addBtn.style.width = '50px';
-        addBtn.style.fontSize = '12px';
-        addBtn.style.display = 'inline-block';
-        addBtn.style.position = 'relative';
+        addBtn.className = 'savebutt'
 
 
         nodeLABELS.style.width = '50%';
