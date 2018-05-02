@@ -7,6 +7,8 @@
     top: 90px;
     right: 20px;
     position: absolute;
+    color: white;
+    font-family: Marker Felt, fantasy;
 }
 
 #favModalClose {
