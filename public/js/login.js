@@ -42,10 +42,10 @@ function submitCredentials(usernameDoesNotExist) {
 
 // Alert user of registration status
 function notifyuser(state){
-    if (state){
+    if (state) {
         alert('You have created a new account.')
     }
-    else{
-        alert('You have entered invalid username or password.')
+    else if (state === false) {
+        alert('Username and password must have more than 3 characters or username already exists')
     }
 }
