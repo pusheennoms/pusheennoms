@@ -95,23 +95,23 @@ function showResults() {
         nodeIMAGE.style.left = '0';
         nodeIMAGE.setAttribute("src", currentResults[i].recipe.image );
 
-        var addBtnForm = document.createElement('form');
-        addBtnForm.setAttribute('method', 'POST');
-        addBtnForm.setAttribute('action', '/download');
-        addBtnForm.appendChild(nodeInput);
-        addBtnForm.appendChild(addBtn);
+        var saveFavBtn = document.createElement('button');
+        saveFavBtn.onclick = (function (recipe) {
+            return function () {
+                addRecipeLabelBtn(recipe);
+                swal(`Added ${recipe.label} to Favourites!`);
+            }
+        })(currentResults[i].recipe);
 
-        addBtn.onclick = function (ev) {
-            addBtnForm.submit();
-            alert('You have saved the recipe!')
-        };
+        saveFavBtn.className = 'saveFavBtn';
+        saveFavBtn.innerHTML = 'Save to Favourites';
 
 
         document.getElementById('search-results').appendChild(node);
         document.getElementById('search-results').appendChild(document.createElement('br'));
         document.getElementById('search-results').appendChild(nodeIMAGE);
         document.getElementById('search-results').appendChild(nodeLABELS);
-        document.getElementById('search-results').appendChild(addBtnForm);
+        document.getElementById('search-results').appendChild(saveFavBtn);
         document.getElementById('search-results').appendChild(document.createElement('br'));
         document.getElementById('search-results').appendChild(document.createElement('br'));
     }

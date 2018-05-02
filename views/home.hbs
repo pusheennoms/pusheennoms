@@ -6,6 +6,7 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     <link href="../css/favStyles.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
@@ -19,6 +20,9 @@
                 localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
             }
 
+            if (currentResults && currentResults.length > 1) {
+                showResults();
+            }
         }
     </script>
 </head>
@@ -150,22 +154,18 @@
                     <h4 id="favModalTitle">My Favourite Recipes</h4>
                 </div>
                 <div class="modal-body" id="favModal">
-                    <div class="favRecipeLabel">
-                        <button class="recipeLabelLinks"></button>
-                    </div>
-
-                    <div class="favRecipeContent"> foo</div>
+                    <div id="favRecipeLabel"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="closeFavButt" data-dismiss="modal">Close</button>
                 </div>
             </div>
-
         </div>
     </div>
 
 </div>
 
+<script src="../js/favourites.js"></script>
 <script src="../js/displays.js"></script>
 <script src="../js/utils.js"></script>
 </body>

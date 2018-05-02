@@ -367,4 +367,9 @@ a:visited {
 	cursor: pointer;
 }
 
+.saveFavBtn {
+	height: 20px;
+	width: 180px;
+}
+
 /*test */
