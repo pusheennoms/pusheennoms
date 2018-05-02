@@ -62,41 +62,24 @@ function showSearchHistory() {
  */
 function showResults() {
     document.getElementById('welcome-div').style.display = 'None';
-    var msg = document.createElement('h2');
-    msg.innerHTML = 'Click the button below the URL to save your recipe!\n';
-    document.getElementById('search-results').appendChild(msg);
     localStorage.setItem('currentRecipes', JSON.stringify(currentResults));
     for (var i = 0; i < currentResults.length - 1; i++) {
 
         var node = document.createElement('a');
         var nodeLABELS = document.createElement('div');
         var nodeIMAGE = document.createElement('img');
+
         node.href = currentResults[i].recipe.url;
         node.innerHTML = currentResults[i].recipe.label;
         nodeLABELS.innerHTML = "<br> HEALTH: " + currentResults[i].recipe.healthLabels + "<br> DIET: " + currentResults[i].recipe.dietLabels +
             "<br> INGREDIENTS: " + currentResults[i].recipe.ingredientLines;
 
-        node.style.display = 'inline-block';
         node.setAttribute('id', i.toString());
         node.setAttribute('target', '_new');
-        node.style.width = '30%';
-
-        var nodeInput = document.createElement('input');
-        nodeInput.setAttribute('type', 'hidden');
-        nodeInput.setAttribute('name', 'recipe');
-        var loadRecipes = JSON.parse(localStorage.getItem('currentRecipes'));
-        nodeInput.value = JSON.stringify(loadRecipes[node.id].recipe, undefined, 2);
-
-        var addBtn = document.createElement('button');
-        addBtn.innerHTML = 'Save';
-        addBtn.className = 'savebutt'
-
+        node.className = 'searchResultsLink';
 
         nodeLABELS.style.width = '50%';
-        nodeIMAGE.style.width = 'auto';
-        nodeIMAGE.style.height = '40%';
-        nodeIMAGE.style.position = 'relative';
-        nodeIMAGE.style.left = '0';
+        nodeIMAGE.className = 'searchResultsImgs';
         nodeIMAGE.setAttribute("src", currentResults[i].recipe.image );
 
         var saveFavBtn = document.createElement('button');

@@ -51,22 +51,22 @@
                 <button class="collapsible"> HEALTH</button>
                 <div class="content">
                     <form id='ingredient-form'>
-                        <label class="container">No Dairy
+                        <label class="listcontainer">No Dairy
                             <input type="checkbox" name="health" value='dairy-free'>
                             <span class="checkmark"></span>
                         </label>
 
-                        <label class="container">No Peanuts
+                        <label class="listcontainer">No Peanuts
                             <input type="checkbox" name="health" value='peanut-free'>
                             <span class="checkmark"></span>
                         </label>
 
-                        <label class="container">No Soy
+                        <label class="listcontainer">No Soy
                             <input type="checkbox" name="health" value='soy-free'>
                             <span class="checkmark"></span>
                         </label>
 
-                        <label class="container">No Pork
+                        <label class="listcontainer">No Pork
                             <input type="checkbox" name="health" value='dairy-free'>
                             <span class="checkmark"></span>
                         </label>
@@ -76,27 +76,27 @@
                 <!-- <div id="enter-stuff"> -->
                 <div class="content">
                     <form id='ingredient-form1'>
-                        <label class="container">Balanced
+                        <label class="listcontainer">Balanced
                             <input type="checkbox" name="diet" value='balanced'>
                             <span class="checkmark"></span>
                         </label>
 
-                        <label class="container">High Fiber
+                        <label class="listcontainer">High Fiber
                             <input type="checkbox" name="diet" value='high-fiber'>
                             <span class="checkmark"></span>
                         </label>
 
-                        <label class="container" name="diet" value='high-protein'>High Protein
+                        <label class="listcontainer" name="diet" value='high-protein'>High Protein
                             <input type="checkbox" name="diet" value='high-protein'>
                             <span class="checkmark"></span>
                         </label>
 
-                        <label class="container">Low Fat
+                        <label class="listcontainer">Low Fat
                             <input type="checkbox" name="diet" value='low-fat'>
                             <span class="checkmark"></span>
                         </label>
 
-                        <label class="container">Low Sodium
+                        <label class="listcontainer">Low Sodium
                             <input type="checkbox" name="diet" value='low-sodium'>
                             <span class="checkmark"></span>
                         </label>
@@ -129,7 +129,7 @@
 <!-- THE ACTUAL PAGE -->
 <div id="big-page-div">
     <img id="bg-img" src="../imgs/bg3.jpeg">
-    <div id="search-results"></div>
+    <div id="search-results" class="container"></div>
     <div id="welcome-div">
         <p id="welcome-msg"> Welcome! <br><br>Add your ingredients and we will find matching recipes from the most
             popular cooking websites! <br><br>
@@ -138,7 +138,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="listcontainer">
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#favModal" id="favbutt">
         Favourites
@@ -156,7 +156,8 @@
                 </div>
                 <div class="modal-body" id="favModal">
                     <div id="favRecipeLabel"></div>
-                    <div id="favModalRecipe"></div>
+                    <div id="favModalRecipe" class="container row">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="closeFavButt" data-dismiss="modal">Close</button>

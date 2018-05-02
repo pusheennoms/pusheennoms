@@ -56,7 +56,8 @@ body {
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
 }
-.container {	
+
+.listcontainer {
 /* The container of the collapsible list*/
     display: block;
     position: relative;
@@ -69,7 +70,8 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
-.container input {
+
+.listcontainer input {
 /* Hide the browser's default checkbox */
     position: absolute;
     opacity: 0;
@@ -85,11 +87,13 @@ body {
     width: 25px;
     background-color: #eee;
 }
-.container:hover input ~ .checkmark { 
+
+.listcontainer:hover input ~ .checkmark {
 	/*when you hover at collapsible's checkmark, it changes color to darker gray*/
     background-color: #ccc;	
 }
-.container input:checked ~ .checkmark {
+
+.listcontainer input:checked ~ .checkmark {
 	/*when you click at collapsible's checkmark, it changes color to blue*/
     background-color: #2196F3;
 }
@@ -98,10 +102,12 @@ body {
     position: absolute;
     display: none;
 }
-.container input:checked ~ .checkmark:after {
+
+.listcontainer input:checked ~ .checkmark:after {
     display: block;
 }
-.container .checkmark:after {
+
+.listcontainer .checkmark:after {
     left: 9px;
     top: 5px;
     width: 5px;
@@ -170,9 +176,25 @@ body {
 }
 #search-results{
 	display: inline;
-	position: relative;
+    position: absolute;
 	width: 100%;
+    font-family: "Trebuchet MS";
+    padding: 20px 20px;
 }
+
+.searchResultsLink {
+    display: inline-block;
+    width: 100%;
+}
+
+.searchResultsImgs {
+    width: auto;
+    height: 40%;
+    position: relative;
+    left: 0;
+
+}
+
 /*control panel stuff*/
 #ctrlpanel {
 	position:fixed;
@@ -290,21 +312,6 @@ body {
 #searchHist {
 	text-align: center;
 }
-.savebutt {
-	width: 50px;
-    font-size: 12px;
-    display: inline-block;
-    position: relative;
-	background-color: #7575a3;
-    color: white;
-    cursor: pointer;
-    padding:2px;
-    height: 10%;
-    border: none;
-    text-align: center;
-    border-radius: 12px;
-    margin: 10px;
-}
 
 #submitbutt {
 	background-color: #7575a3;
@@ -387,8 +394,17 @@ a:visited {
 }
 
 .saveFavBtn {
-	height: 20px;
+    background-color: #7575a3;
+    color: white;
+    cursor: pointer;
 	width: 180px;
+    height: 20px;
+    border: none;
+    text-align: center;
+    font-size: 15px;
+    padding: 2px;
+    border-radius: 12px;
+    margin: 10px;
 }
 
 /*test */

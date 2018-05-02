@@ -1,16 +1,12 @@
 #favbutt {
     width: 130px;
     font-size: 18px;
-    float: left;
+    float: right;
     background-color: #7575a3;
     border-color: #7575a3;
-    top: 100px;
-    left: 160px;
-    position: relative;
-}
-
-#favModal {
-
+    top: 90px;
+    right: 20px;
+    position: absolute;
 }
 
 #favModalClose {
@@ -27,9 +23,11 @@
 
 #closeFavButt {
     width: 80px;
-    color: white;
+    color: black;
     font-size: 15px;
     font-family: Marker Felt, fantasy;
+    background-color: white;
+    border-radius: 10px;
 }
 
 /* Style the tab */
@@ -41,43 +39,55 @@
     height: 300px;
 }
 
-/* Style the buttons inside the tab */
 #favRecipeLabel button {
     display: block;
     background-color: inherit;
     color: black;
-    padding: 22px 16px;
+    padding: 5px 5px;
+    height: auto;
     width: 100%;
     border: none;
     outline: none;
     text-align: left;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 17px;
+    font-size: 12px;
 }
 
-/* Change background color of buttons on hover */
 #favRecipeLabel button:hover {
     background-color: #ddd;
 }
 
-/* Create an active/current "tab button" class */
 #favRecipeLabel button.active {
     background-color: #ccc;
 }
 
-/* Style the tab content */
 .favRecipeContent {
     float: left;
-    padding: 0px 12px;
+    padding: 10px 5px;
     border: 1px solid #ccc;
     width: 100%;
     border-left: none;
     height: 300px;
+    font-size: 15px;
+    font-family: "Trebuchet MS";
+
 }
 
 #favModalRecipe {
     width: 70%;
     height: 70%;
     display: inline-block;
+}
+
+.favImages {
+    height: auto;
+    width: 100%;
+    position: relative;
+    left: 0;
+    display: inline-block;
+}
+
+.favIngredients {
+    padding-top: 20px;
 }

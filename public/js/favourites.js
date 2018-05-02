@@ -18,19 +18,28 @@ function showRecipe(ev, recipe) {
 
     var node = document.createElement('a');
     var nodeLABELS = document.createElement('div');
+    var nodeIMAGE = document.createElement('img');
+    var nodeIngredients = document.createElement('p');
+    nodeIngredients.className = 'favIngredients col-md-12';
+
+    nodeIMAGE.className = 'favImages col-md-6';
+    nodeIMAGE.setAttribute("src", recipe.image);
+
     node.href = recipe.url;
     node.innerHTML = "Link to recipe";
-    nodeLABELS.innerHTML = "HEALTH: " + recipe.healthLabels + "<br> DIET: " + recipe.dietLabels;
+    nodeLABELS.className = 'col-md-6';
+    nodeLABELS.innerHTML = `<b>HEALTH: </b> ${recipe.healthLabels } <br> <b>DIET: </b> ${recipe.dietLabels}<br>`;
+    nodeIngredients.innerHTML = `<b> INGREDIENTS: </b> ${recipe.ingredientLines}`;
 
     node.style.display = 'inline-block';
     node.setAttribute('id', i.toString());
     node.setAttribute('target', '_new');
     node.style.width = '100%';
 
-    nodeLABELS.style.width = '50%';
-
-    recipeDiv.appendChild(node);
+    recipeDiv.appendChild(nodeIMAGE);
     recipeDiv.appendChild(nodeLABELS);
+    nodeLABELS.appendChild(node);
+    recipeDiv.appendChild(nodeIngredients);
     document.getElementById("favModalRecipe").appendChild(recipeDiv);
 }
 
