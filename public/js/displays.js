@@ -33,10 +33,10 @@ function showSearchHistory() {
 
     for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
         var ndiv = document.createElement("a");
-
         ndiv.innerHTML = currentSearchHistory[currentUser][i].value;
         var tags = Object.values(currentSearchHistory[currentUser][i]);
         for (j = 1; j < tags.length - 1; j++) {
+            if(` ${tags[j]} `.trim() == "exclude") {break;}
             ndiv.innerHTML += ` ${tags[j]} `;
         }
 
