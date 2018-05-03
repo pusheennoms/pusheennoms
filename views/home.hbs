@@ -32,7 +32,7 @@
     <img id="logo" src="../imgs/pusheats.png" onload="setCurrentResults({{resultRecipes}})">
     <input type="button" id="logoutbutt" onclick="window.location.href='/'" value="Log Out">
     <div id="current-user"><h2 id="welcome-user-msg"></h2></div>
-    <p id="title" class="texts"><span>PUSHEEN NOMNOMS</span></p>
+    <p id="title" class="texts"><img id="titleLogo" src="../imgs/logo.png"></p>
 
 </div>
 
@@ -131,7 +131,9 @@
 <!-- THE ACTUAL PAGE -->
 <div id="big-page-div">
     <img id="bg-img" src="../imgs/bg3.jpeg">
-    <div id="search-results" class="container"></div>
+    <div id="search-results" class="container-fluid">
+        <div id="search-row" class="row"></div>
+    </div>
     <div id="welcome-div">
         <p id="welcome-msg"> Welcome! <br><br>Add your ingredients and we will find matching recipes from the most
             popular cooking websites! <br><br>
