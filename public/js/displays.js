@@ -41,7 +41,8 @@ function showSearchHistory() {
         ndiv.innerHTML = currentSearchHistory[currentUser][i].value;
         var tags = Object.values(currentSearchHistory[currentUser][i]);
         for (j = 1; j < tags.length - 1; j++) {
-            ndiv.innerHTML += ` ${tags[j]} `;
+            if (` ${tags[j]} `.trim() == "exclude") {break;}
+                ndiv.innerHTML += ` ${tags[j]} `;
         }
 
         ndiv.className = "added-ingredients";
