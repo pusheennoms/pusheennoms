@@ -4,8 +4,6 @@ var vegList = [], // object list
     /* ------------------- to be changed to blank when merged with hbs ----------------- */
     // list of items saved from elsewhere; currently just a default list of items
     vegListSaved = ["potato","carrot","tomato","bellPepper","garlic","eggplant","corn","cucumber","beef","chicken"],
-    // all predefined images are in default list
-    defaultList = ["potato","carrot","tomato","bellPepper","garlic","eggplant","corn","cucumber","beef","chicken"],
     emptySlot = []; // un-occupied slots after delete is used
 
 /* ---------- temporary input box for testing, to be changed when merged with hbs ------------- */
@@ -166,12 +164,14 @@ function populate(list) {
         item.className = "contents";
         item.dataset.tag = list[i];
 
-        // item is in default images
-        if (defaultList.indexOf(list[i]) != -1) {
-            item.style.backgroundImage = "url(../imgs/" + list[i] + ".png)";
-        } else { // item is not in default images
-            item.style.backgroundImage = "url(../imgs/box.png)";            
-        }
+        // check if image file exist
+        var img = new Image();
+        img.src = "../imgs/" + list[i] + ".png";
+
+        item.style.backgroundImage = "url(../imgs/" + list[i] + ".png)";
+
+        // default image when it does not exist
+        img.onerror = () => {item.style.backgroundImage = "url(../imgs/box.png)";};
                 
         item.style.display = "block";
         
