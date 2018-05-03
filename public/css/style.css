@@ -144,7 +144,7 @@ body {
 	position: fixed;
 	cursor: default;
 	text-align: left;
-	left:25%;
+	left:10%;
 	font-size: 450%;
 }
 #search-results{
@@ -387,7 +387,6 @@ a:visited {
     float: right;
     padding-right: 50px;
     padding-top: 10px;
-    right: 10%;
     margin: auto;
     font-family: Marker Felt, fantasy;
 }
