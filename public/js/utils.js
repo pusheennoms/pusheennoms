@@ -97,5 +97,6 @@ function clearSearchHist() {
 
 function logout() {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentRecipes');
     window.location.href = '/'
 }
