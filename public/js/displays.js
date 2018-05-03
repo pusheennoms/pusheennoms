@@ -69,6 +69,7 @@ function showResults() {
         var node = document.createElement('a');
         var nodeLABELS = document.createElement('div');
         var nodeIMAGE = document.createElement('img');
+        var nDiv = document.createElement('div');
 
         node.href = currentResults[i].recipe.url;
         node.innerHTML = currentResults[i].recipe.label;
@@ -79,7 +80,8 @@ function showResults() {
         node.setAttribute('target', '_new');
         node.className = 'searchResultsLink';
 
-        nodeLABELS.style.width = '50%';
+        nodeLABELS.style.maxHeight = "30vh"
+        nodeLABELS.style.overflowY = "scroll"
         nodeIMAGE.className = 'searchResultsImgs';
         nodeIMAGE.setAttribute("src", currentResults[i].recipe.image);
 
@@ -95,13 +97,20 @@ function showResults() {
         saveFavBtn.innerHTML = 'Save to Favourites';
 
 
-        document.getElementById('search-results').appendChild(node);
-        document.getElementById('search-results').appendChild(document.createElement('br'));
-        document.getElementById('search-results').appendChild(nodeIMAGE);
-        document.getElementById('search-results').appendChild(nodeLABELS);
-        document.getElementById('search-results').appendChild(saveFavBtn);
-        document.getElementById('search-results').appendChild(document.createElement('br'));
-        document.getElementById('search-results').appendChild(document.createElement('br'));
+        nDiv.appendChild(node);
+        nDiv.appendChild(document.createElement('br'));
+        nDiv.appendChild(nodeIMAGE);
+        nDiv.appendChild(nodeLABELS);
+        nDiv.appendChild(saveFavBtn);
+        nDiv.appendChild(document.createElement('br'));
+        nDiv.appendChild(document.createElement('br'));
+
+        nDiv.className = "col-md-4";
+        nDiv.style.display = "inline-block"
+        nDiv.style.float = "none"
+        nDiv.style.verticalAlign = "top"
+
+        document.getElementById('search-row').appendChild(nDiv);
     }
 }
 

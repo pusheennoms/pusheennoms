@@ -77,7 +77,7 @@ function addIngredient(queryParams) {
             query: queryStr
         }]
     }
-
+    
     localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
 }
 
