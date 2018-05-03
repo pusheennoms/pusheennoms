@@ -106,8 +106,9 @@ function showResults() {
         nDiv.appendChild(document.createElement('br'));
 
         nDiv.className = "col-md-4";
-        nDiv.style.maxHeight = "500px"
-        nDiv.style.marginBottom = "50px"
+        nDiv.style.display = "inline-block"
+        nDiv.style.float = "none"
+        nDiv.style.verticalAlign = "top"
 
         document.getElementById('search-row').appendChild(nDiv);
     }
