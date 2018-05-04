@@ -30,7 +30,6 @@ var addToFavFile = (recipe) => {
         }
 
         var newRecord = JSON.stringify(favRecords, undefined, 2);
-        console.log(newRecord);
         fs.writeFileSync(favouritesFile, newRecord);
     }
 };
