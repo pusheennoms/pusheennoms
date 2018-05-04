@@ -5,7 +5,7 @@
 }
 .added-ingredients {
 	text-align: center;
-	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font:"Comic Sans MS", "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 	margin:3%;
 }
 .butts {
