@@ -148,11 +148,23 @@ botDoor.onclick = () => {changeDoor(1);};
 topClose.onclick = () => {changeDoor(0);};
 botClose.onclick = () => {changeDoor(1);};
 
+/**
+ * Check if an image file exists
+ * @param {string} source - name of the image file
+ */
+function check_img(source) {
+    var img = new Image();
+    img.src = "../imgs/" + source + ".png";
+    img.onload = () => {return true;}
+    img.onerror = () => {return false;}
+}
+
 /** 
-* Auto generate objects for each fridge item and store in VegList
-* @param {list} list - list of names of fridge contents
-*/
+ * Auto generate objects for each fridge item and store in VegList
+ * @param {list} list - list of names of fridge contents
+ */
 function populate(list) {
+    console.log(list);
     var extra = vegList.length; // slot shift
     for (var i = 0; i < list.length; i+= 1) {
         if (vegList.length >= 15) {  // fridge full
@@ -165,13 +177,11 @@ function populate(list) {
         item.dataset.tag = list[i];
 
         // check if image file exist
-        var img = new Image();
-        img.src = "../imgs/" + list[i] + ".png";
-
-        item.style.backgroundImage = "url(../imgs/" + list[i] + ".png)";
-
-        // default image when it does not exist
-        img.onerror = () => {item.style.backgroundImage = "url(../imgs/box.png)";};
+        if (check_img(list[i])) {
+            item.style.backgroundImage = "url(../imgs/" + list[i] + ".png)";            
+        } else {
+            item.style.backgroundImage = "url(../imgs/box.png)";
+        }
                 
         item.style.display = "block";
         
@@ -204,9 +214,9 @@ freezer.onmouseout = (ev) => {hoverVeg(ev.target,1);};
 /* -------- formatted output to be sent back to hbs --------- */
 var ingBar = document.getElementById("ingredient-bar");
 /**
-* format a string to be sent to search box
-* currently just display the string on the screen and return nothing
-*/
+ * format a string to be sent to search box
+ * currently just display the string on the screen and return nothing
+ */
 function print_list() {
     temp = "";
     for (var i = 0; i < vegList.length; i+=1) {
