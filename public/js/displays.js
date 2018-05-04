@@ -2,11 +2,20 @@
 var coll = document.getElementsByClassName("collapsible");
 
 var currentResults;
+var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
 var pushleft = 1;
 
 /*-------------foodDisplay-------------*/
+showWelcomeUserMsg();
 showSearchHistory();
+
+/**
+ * Displays the welcome user msg at the top right banner
+ */
+function showWelcomeUserMsg() {
+    document.getElementById('welcome-user-msg').innerHTML = `Welcome, ${currentUser}!`;
+}
 
 /**
  * Displays the search history below search bar
@@ -14,7 +23,6 @@ showSearchHistory();
 function showSearchHistory() {
     var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
         currentSearchHistory = savedSearchHistory ? savedSearchHistory : {};
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     var foodList = document.getElementById('food-list');
 
     if (!currentSearchHistory[currentUser]) {
@@ -22,6 +30,10 @@ function showSearchHistory() {
     }
 
     foodList.style.display = 'block';
+
+    var ndiv2 = document.createElement('div');
+    ndiv2.setAttribute('id','searchlist');
+
 
     for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
         var ndiv = document.createElement("a");
@@ -37,8 +49,11 @@ function showSearchHistory() {
         ndiv.setAttribute('href', '/search?' + currentSearchHistory[currentUser][i].query);
         ndiv.setAttribute("id", "food-" + i);
 
-        foodList.appendChild(ndiv);
-        foodList.appendChild(document.createElement("br"));
+        foodList.appendChild(ndiv2);
+        ndiv2.appendChild(ndiv);
+        ndiv2.appendChild(document.createElement('br'));
+        //foodList.appendChild(ndiv);
+        //foodList.appendChild(document.createElement("br"));
     }
 }
 
@@ -74,10 +89,7 @@ function showResults() {
 
         var addBtn = document.createElement('button');
         addBtn.innerHTML = 'Save';
-        addBtn.style.width = '50px';
-        addBtn.style.fontSize = '12px';
-        addBtn.style.display = 'inline-block';
-        addBtn.style.position = 'relative';
+        addBtn.className = 'savebutt'
 
 
         nodeLABELS.style.width = '50%';
