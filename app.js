@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 var app = express();
 var loginRouter = require('./controllers/login');
 var homeRouter = require('./controllers/home');
+var errorRouter = require('./controllers/error');
 
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -16,5 +17,6 @@ app.use(bodyParser.urlencoded({
 
 app.use('/', loginRouter);
 app.use('/search', homeRouter);
+app.use('*', errorRouter);
 
 module.exports = app;

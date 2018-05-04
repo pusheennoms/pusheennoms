@@ -131,6 +131,33 @@
         </p>
     </div>
 </div>
+
+<div class="listcontainer">
+        <button type="button" data-toggle="modal" data-target="#favModal" id="favbutt">
+        Favourites
+    </button>
+
+    <div class="modal fade" id="favModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="favModalTitle">My Favourite Recipes</h4>
+                </div>
+                <div class="modal-body" id="favModal">
+                    <div id="favRecipeLabel"></div>
+                    <div id="favModalRecipe" class="container row">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closeFavButt" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="../js/favourites.js"></script>
 <script src="../js/displays.js"></script>
 <script src="../js/utils.js"></script>
 </body>

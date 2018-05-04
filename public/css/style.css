@@ -3,7 +3,6 @@ body {
 	font-family: "Bubblegum Sans", sans-serif;
 	background-color: #89CFF0;
 	overflow-x: hidden;
-
 }
 /* classes */
 .texts {
@@ -113,14 +112,13 @@ body {
 /*border stuff*/
 
 #banner {
-	width:100%;
-	height:15%;
-	background-color:white;
-	border-bottom: 2px solid dimgray;
-	position:fixed;
-	top:0px;
-	right:0px;
-	z-index: ;
+    width: 100%;
+    height: 15%;
+    background-color: white;
+    border-bottom: 2px solid dimgray;
+    position: fixed;
+    top: 0;
+    right: 0;
 }
 #logo {
 	position:relative;
@@ -149,9 +147,9 @@ body {
 	height:100%;
 	width:20%;
 	background-color: white;
-	top:0px;
-	left:0px;
-	box-shadow: 3px 0px 3px #888888;
+	top:0;
+    left: 0;
+	box-shadow: 3px 0 3px #888888;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	transition: left 0.5s;
@@ -181,6 +179,14 @@ body {
 	display: flex;
 	justify-content: center;
 }
+#hiddenpusheen{
+    position: fixed;
+    top: -2%;
+    height: 12%;
+    left: 47.5%;
+    transition: left 0.5s;
+    cursor: pointer;
+}
 /*search ingredients div*/
 #search-ingredients-div {
 	/*background-color: red;*/
@@ -191,7 +197,7 @@ body {
 	box-sizing: border-box;
 	border-radius: 5%;
 	text-align: left;
-	font-size: 20%;
+	font-size: 20%;
 	background-color: white;
 	padding:5%;
 	position: relative;
@@ -202,8 +208,6 @@ body {
 	/*background-color: blue;*/
 	height: 80%;
 	margin: 0% 3% 0% 3%;
-	overflow-y: scroll;
-	overflow-x: hidden;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
@@ -230,7 +234,7 @@ body {
 	opacity: 0.3;
     position: fixed;
     width: 100%;
-    bottom: 0%;
+    bottom: 0;
     z-index: -2;
     object-fit: cover;
     overflow: hidden;
@@ -293,6 +297,9 @@ button {
 	border: none;
 	text-align: center;
 	font-size: 15px;
+    border-radius: 12px;
+    margin: 10px;
+    padding: 1px 5px;
 }
 
 a {
@@ -330,14 +337,40 @@ a:visited {
 	width:100%;
 }
 
+.saveFavBtn {
+    background-color: #7575a3;
+    color: white;
+    cursor: pointer;
+	width: 180px;
+    height: 20px;
+    border: none;
+    text-align: center;
+    font-size: 15px;
+    padding: 2px;
+    border-radius: 12px;
+    margin: 10px;
+}
 
-#hiddenpusheen{
-	position: fixed;
-	top: -2%;
-	height: 12%;
-	left: 17.5%;
-	transition: left 0.5s;
-	cursor: pointer;
+#current-user {
+    position: relative;
+    height: 50%;
+    float: right;
+    padding-right: 50px;
+    padding-top: 10px;
+    margin: auto;
+    font-family: Marker Felt, fantasy;
+}
+
+#logoutbutt {
+    position: absolute;
+    height: 3%;
+    top: 0.5%;
+    left: 0.5%;
+    margin: auto;
+    cursor: pointer;
+    font-family: Marker Felt, fantasy;
+    color: #DCDCDC;
+    z-index: 10;
 }
 
 /*test */
