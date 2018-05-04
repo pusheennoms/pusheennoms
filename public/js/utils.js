@@ -88,7 +88,6 @@ function addIngredient(queryParams) {
 function clearSearchHist() {
     currentSearchHistory = [];
     localStorage.removeItem('searchHistory');
-    /*document.getElementById('food-list').style.display = 'none';*/
     var list = document.getElementById('searchlist');
     while(list.hasChildNodes()){
         list.removeChild(list.firstChild);
@@ -97,5 +96,6 @@ function clearSearchHist() {
 
 function logout() {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentRecipes');
     window.location.href = '/'
 }

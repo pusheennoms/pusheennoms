@@ -1,74 +1,74 @@
 #fridgeBG {
-    background-image:url(../imgs/fridge11.png);
-    background-size:contain;
-    background-repeat:no-repeat;
-    width:100%;
-    height:100%;
+    background-image: url(../imgs/fridge11.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
 }
 
 #topDoor {
-    position:absolute;  
-    background-image:url(../imgs/topdoor.png);
-    background-size:contain;
-    background-repeat:no-repeat;
-    width:125px;
-    height:182px;
-    left:430px;
-    top:35px;
-    cursor:pointer;
+    position: absolute;
+    background-image: url(../imgs/topdoor.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 125px;
+    height: 182px;
+    left: 430px;
+    top: 35px;
+    cursor: pointer;
 }
 
 #botDoor {
-    position:absolute;
-    background-image:url(../imgs/botdoor.png);
-    background-size:contain;
-    background-repeat:no-repeat;
-    width:119px;
-    height:293px;    
-    left:410px;
-    top:210px;
-    cursor:pointer;
+    position: absolute;
+    background-image: url(../imgs/botdoor.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 119px;
+    height: 293px;
+    left: 410px;
+    top: 210px;
+    cursor: pointer;
 }
 
 #fridgeDisplay {
-    position:absolute;
-    top:50px;
-    left:20px;
-    width:700px;
-    height:507px;
-    background-color:pink;
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    width: 700px;
+    height: 507px;
+    background-color: pink;
 }
 
 .contents {
-    position:absolute;
-    background-size:contain;
-    background-repeat:no-repeat;
-    opacity:0.2;    
-    display:none;
-    height:50px;
-    width:50px;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    display: none;
+    height: 50px;
+    width: 50px;
 }
 
 #topClose, #botClose {
-    position:absolute;
-    left:170px;
-    width:280px;
-    cursor:pointer;
-    display:none;
+    position: absolute;
+    left: 170px;
+    width: 280px;
+    cursor: pointer;
+    display: none;
 }
 
 #topClose {
-    height:210px;
+    height: 210px;
 }
 
 #botClose {
-    top:215px;
-    height:290px;
+    top: 215px;
+    height: 290px;
 }
 
 #fridge {
-    position:relative;
-    background-color:pink;
-    height:600px;
-    display:none;
+    position: relative;
+    background-color: pink;
+    height: 600px;
+    display: none;
 }
