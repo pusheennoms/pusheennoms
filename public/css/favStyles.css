@@ -1,3 +1,6 @@
+#favModal {
+    cursor:default;
+}
 #favbutt {
     width: 130px;
     font-size: 18px;
@@ -9,20 +12,12 @@
     position: absolute;
     color: white;
     font-family: Marker Felt, fantasy;
+    cursor:pointer;
 }
-
-#favModalClose {
-    width: 30px;
-    background-color: white;
-    border-color: #555555;
-    float: right;
-}
-
 #favModalTitle {
     font-family: Marker Felt, fantasy;
     font-size: 25px;
 }
-
 #closeFavButt {
     width: 80px;
     color: black;
@@ -30,6 +25,9 @@
     font-family: Marker Felt, fantasy;
     background-color: white;
     border-radius: 10px;
+    right: 3%;
+    bottom:2%;
+    position: absolute;
 }
 
 /* Style the tab */
@@ -40,7 +38,6 @@
     width: 30%;
     height: 300px;
 }
-
 #favRecipeLabel button {
     display: block;
     background-color: inherit;
@@ -51,7 +48,6 @@
     border: none;
     outline: none;
     text-align: left;
-    cursor: pointer;
     transition: 0.3s;
     font-size: 12px;
 }
@@ -73,13 +69,13 @@
     height: 300px;
     font-size: 15px;
     font-family: "Trebuchet MS";
-
 }
 
 #favModalRecipe {
     width: 70%;
     height: 70%;
     display: inline-block;
+    cursor:default;
 }
 
 .favImages {
