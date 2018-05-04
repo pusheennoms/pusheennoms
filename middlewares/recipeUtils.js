@@ -19,14 +19,11 @@ module.exports.getRecipes = (params, callback) => {
     }, (error, response, body) => {
         if (error) {
             callback("Cannot connect to API");
-        } else if (body && body.hits) {
+        } else if (body.hits) {
             callback(undefined, {
                 recipes: body.hits
             })
         } else {
-            callback(undefined, {
-                recipes: {}
-            });
             console.log('Error beyond control');
         }
     })

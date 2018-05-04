@@ -17,4 +17,12 @@ router.get('/', function (req, res, next) {
     });
 });
 
+/**
+ * The action to download a recipe
+ **/
+router.post('/download', function (req, res) {
+    var recipe = JSON.parse(req.body.recipe);
+    fs.writeFileSync(recipe.label + '.txt', req.body.recipe);
+});
+
 module.exports = router;

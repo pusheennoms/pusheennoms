@@ -15,11 +15,9 @@ function checkRecords() {
 }
 
 /**
- * Add username and password to userpass.json
- * @param username
- * @param password
+ * The function adds the username & password to a JSON file 'userpass.json'
  */
-var addToChefFile = (username, password) => {
+module.exports.addToChefFile = (username, password) => {
     checkRecords();
     var record = {
         "username": username,
@@ -29,14 +27,9 @@ var addToChefFile = (username, password) => {
     var newChef = JSON.stringify(chefRecords);
     fs.writeFileSync(userpassFile, newChef);
 };
-/**
- * Ensure that username and password are greater than 3 characters
- * @param userInp the username
- * @param passInp the password
- * @returns {boolean}
- */
-var validateInput = (userInp, passInp) => {
-    if ((userInp.length <= 3) || (passInp.length <= 3)) {
+
+module.exports.validateInput = (userInp, passInp) => {
+    if ((userInp.length <= 3) | (passInp.length <= 3)) {
         return false;
     }
     else {
@@ -45,31 +38,16 @@ var validateInput = (userInp, passInp) => {
 };
 
 /**
- * Check to see no duplicate username
- * @param newUser
- * @returns false if user already exists
- */
-var noRepeatUsers = (newUser) => {
-    checkRecords()
-    for (var i = 0; i < chefRecords.length; i++) {
-        if (chefRecords[i].username.indexOf(newUser) === 0) {
-            return false
-        }
-    }
-    return true
-};
-
-/**
  *Checks if username and password are in userpass.json, if not then request user to log in again
  **/
-var authenticateChef = (inpUsername, inpPassword) => {
+module.exports.authenticateChef = (inpUsername, inpPassword) => {
     checkRecords();
 
     var usernameFound = false;
     for (var i = 0; i < chefRecords.length; i++) {
-        if (chefRecords[i].username === inpUsername) {
+        if (chefRecords[i].username == inpUsername) {
             usernameFound = true;
-            if (chefRecords[i].password === inpPassword) {
+            if (chefRecords[i].password == inpPassword) {
                 return 'logged in';
             } else {
                 return 'authentication failure';
@@ -79,11 +57,4 @@ var authenticateChef = (inpUsername, inpPassword) => {
     if (!usernameFound) {
         return 'no username';
     }
-};
-
-module.exports = {
-    addToChefFile,
-    validateInput,
-    authenticateChef,
-    noRepeatUsers
 };

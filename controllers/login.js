@@ -12,15 +12,14 @@ router.get('/', function (req, res, next) {
  */
 router.post('/registerchef', (request, response) => {
     var valid = utils.validateInput(request.body.username, request.body.password);
-    var noRepeat = utils.noRepeatUsers(request.body.username);
 
-    if (valid === true && noRepeat === true) {
+    if (valid == true) {
         utils.addToChefFile(request.body.username, request.body.password);
         response.render('login.hbs', {
             status: true
         });
     }
-    else if (valid === false || noRepeat === false) {
+    else if (valid == false) {
         response.render('login.hbs', {
             status: false
         });

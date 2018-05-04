@@ -1,17 +1,9 @@
 // contents inside fridge
 var vegList = [], // object list
     vegListImport = []; // record of created objects for faster processing
-<<<<<<< HEAD
     /* ------------------- to be changed to blank when merged with hbs ----------------- */
     // list of items saved from elsewhere; currently just a default list of items
-    vegListSaved = ["potato","carrot","tomato","bellPepper","garlic","eggplant","corn","cucumber","beef","chicken"],
-=======
-/* ------------------- to be changed to blank when merged with hbs ----------------- */
-// list of items saved from elsewhere; currently just a default list of items
-vegListSaved = ["potato", "carrot", "tomato", "bellPepper", "garlic", "eggplant", "corn", "cucumber", "beef", "chicken"],
-    // all predefined images are in default list
-    defaultList = ["potato", "carrot", "tomato", "bellPepper", "garlic", "eggplant", "corn", "cucumber", "beef", "chicken"],
->>>>>>> fecbb7793b14dabee2ff3d74abfbf89dd3edaf08
+    vegListSaved = ["potato","carrot","tomato","bellPepper","garlic","eggplant","corn","cucumber","beef","chicken"];
     emptySlot = []; // un-occupied slots after delete is used
 
 /* ---------- temporary input box for testing, to be changed when merged with hbs ------------- */
@@ -153,7 +145,21 @@ function changeDoor(door) {
 }
 
 // fridge door event listeners
-<<<<<<< HEAD
+topDoor.onclick = () => {
+    changeDoor(0);
+};
+botDoor.onclick = () => {
+    changeDoor(1);
+};
+topClose.onclick = () => {
+    changeDoor(0);
+};
+botClose.onclick = () => {
+    changeDoor(1);
+};
+
+/**
+=======
 topDoor.onclick = () => {changeDoor(0);};
 botDoor.onclick = () => {changeDoor(1);};
 topClose.onclick = () => {changeDoor(0);};
@@ -171,22 +177,7 @@ function check_img(source) {
 }
 
 /** 
-=======
-topDoor.onclick = () => {
-    changeDoor(0);
-};
-botDoor.onclick = () => {
-    changeDoor(1);
-};
-topClose.onclick = () => {
-    changeDoor(0);
-};
-botClose.onclick = () => {
-    changeDoor(1);
-};
-
-/**
->>>>>>> fecbb7793b14dabee2ff3d74abfbf89dd3edaf08
+>>>>>>> c306932f68795077a241204aa40cd054980f5f33
  * Auto generate objects for each fridge item and store in VegList
  * @param {list} list - list of names of fridge contents
  */
@@ -203,17 +194,10 @@ function populate(list) {
         item.className = "contents";
         item.dataset.tag = list[i];
 
-<<<<<<< HEAD
         // check if image file exist
         if (check_img(list[i])) {
             item.style.backgroundImage = "url(../imgs/" + list[i] + ".png)";            
         } else {
-=======
-        // item is in default images
-        if (defaultList.indexOf(list[i]) != -1) {
-            item.style.backgroundImage = "url(../imgs/" + list[i] + ".png)";
-        } else { // item is not in default images
->>>>>>> fecbb7793b14dabee2ff3d74abfbf89dd3edaf08
             item.style.backgroundImage = "url(../imgs/box.png)";
         }
 

@@ -3,10 +3,6 @@ var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
 
 var currentResults;
 
-if (currentResults && currentResults.length > 1) {
-    showResults();
-}
-
 /**
  * Gets all the search form values and populate into object to be POSTED to the server.
  * Also adds the search query to the search history
@@ -77,7 +73,7 @@ function addIngredient(queryParams) {
             query: queryStr
         }]
     }
-    
+
     localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
 }
 
@@ -88,14 +84,5 @@ function addIngredient(queryParams) {
 function clearSearchHist() {
     currentSearchHistory = [];
     localStorage.removeItem('searchHistory');
-    var list = document.getElementById('searchlist');
-    while(list.hasChildNodes()){
-        list.removeChild(list.firstChild);
-    }    
-}
-
-function logout() {
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('currentRecipes');
-    window.location.href = '/'
+    document.getElementById('food-list').style.display = 'none';
 }
