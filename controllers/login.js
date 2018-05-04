@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
  */
 router.post('/registerchef', (request, response) => {
     var valid = utils.validateInput(request.body.username, request.body.password);
-    var noRepeat = utils.noRepeatUsers(request.body.username)
+    var noRepeat = utils.noRepeatUsers(request.body.username);
 
     if (valid === true && noRepeat === true) {
         utils.addToChefFile(request.body.username, request.body.password);
