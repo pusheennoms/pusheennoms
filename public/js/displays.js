@@ -96,8 +96,15 @@ function showResults() {
         saveFavBtn.onclick = (function (recipe) {
             return function () {
                 addRecipeLabelBtn(recipe);
-                recipe.currentUser = currentUser;
-                hiddenFavInp.value = JSON.stringify(recipe);
+                hiddenFavInp.value = JSON.stringify({
+                    uri: recipe.uri,
+                    label: recipe.label,
+                    dietLabels: recipe.dietLabels,
+                    healthLabels: recipe.healthLabels,
+                    image: recipe.image,
+                    ingredientLines: recipe.ingredientLines,
+                    currentUser: currentUser
+                });
                 swal(`Added ${recipe.label} to Favourites!`);
                 hiddenFavForm.submit();
             }

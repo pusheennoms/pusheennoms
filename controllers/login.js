@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const utils = require('../middlewares/loginUtils');
+const favUtils = require('../middlewares/favUtils');
 
 router.get('/', function (req, res, next) {
     res.render('login.hbs')
@@ -43,10 +44,12 @@ router.post('/getpass', (request, response) => {
     if (authenticationResult === 'authentication failure') {
         response.redirect('/')
     } else if (authenticationResult === 'logged in') {
+        favRecipes = JSON.stringify(favUtils.getFavRecipesForUser(inpUsername));
         response.render('home.hbs', {
             resultRecipes: JSON.stringify([{
                 currentUser: inpUsername
-            }])
+            }]),
+            favRecipes: favRecipes
         })
     } else if (authenticationResult === 'no username') {
         response.render('login.hbs', {

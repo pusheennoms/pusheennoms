@@ -3,8 +3,6 @@ var router = express.Router();
 
 const utils = require('../middlewares/recipeUtils');
 
-var resultRecipes = '';
-
 /**
  * Controller for queries through the address bar
  **/
