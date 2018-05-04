@@ -46,10 +46,13 @@ function checkCredentials(usernameDoesNotExist) {
  * @param {boolean} state - variable indicating whether the registered username and passwords are valid
  */
 function notifyuser(state){
-    if (state) {
-        swal('Success','You have created a new account.','success')
+    if (state === 0) {
+        swal('Congratulations!', 'You have created a new account.', 'success')
     }
-    else if (state === false) {
-        swal('Error','Username and password must have more than 3 characters or username already exists','error')
+    else if (state === 1) {
+        swal('Error', 'Username and password must have more than 3 characters.', 'error')
+    }
+    else if (state === 2) {
+        swal('Error', 'Username already exists.', 'error')
     }
 }
