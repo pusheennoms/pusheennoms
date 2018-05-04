@@ -1,11 +1,11 @@
-var active = [0,1], //[0] for register, [1] for login, default has login open
+var active = [0, 1], //[0] for register, [1] for login, default has login open
     regForm = document.getElementById('registerform'),
     logForm = document.getElementById('loginform'),
     credForm = document.getElementById('credentialsForm'),
     newReg = document.getElementById('newRegister');
 
 /** click register button to show registration menu, second click hide menu
-*/
+ */
 function register() {
     if (active[0] == 0) {
         regForm.style.display="block";
@@ -18,7 +18,7 @@ function register() {
 }
 
 /** click login button to show login menu, second click hide menu
-*/
+ */
 function login() {
     if (active[1] == 0) {
         regForm.style.display="none";
@@ -31,10 +31,9 @@ function login() {
 }
 
 /** attempt to log in
-*
-*/
-function submitCredentials(usernameDoesNotExist) {
-    credForm.submit();
+ *
+ */
+function checkCredentials(usernameDoesNotExist) {
     if (usernameDoesNotExist) {
         swal('Error','Username does not exist!','error');
     } 

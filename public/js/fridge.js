@@ -1,17 +1,27 @@
 // contents inside fridge
 var vegList = [], // object list
     vegListImport = []; // record of created objects for faster processing
+<<<<<<< HEAD
     /* ------------------- to be changed to blank when merged with hbs ----------------- */
     // list of items saved from elsewhere; currently just a default list of items
     vegListSaved = ["potato","carrot","tomato","bellPepper","garlic","eggplant","corn","cucumber","beef","chicken"],
+=======
+/* ------------------- to be changed to blank when merged with hbs ----------------- */
+// list of items saved from elsewhere; currently just a default list of items
+vegListSaved = ["potato", "carrot", "tomato", "bellPepper", "garlic", "eggplant", "corn", "cucumber", "beef", "chicken"],
+    // all predefined images are in default list
+    defaultList = ["potato", "carrot", "tomato", "bellPepper", "garlic", "eggplant", "corn", "cucumber", "beef", "chicken"],
+>>>>>>> fecbb7793b14dabee2ff3d74abfbf89dd3edaf08
     emptySlot = []; // un-occupied slots after delete is used
 
 /* ---------- temporary input box for testing, to be changed when merged with hbs ------------- */
 var fridgeInput = document.getElementById("inputBox");
 
-inputBox.onkeyup = function(ev) {
+inputBox.onkeyup = function (ev) {
     if (ev.keyCode == 13) {
-        if (this.value == "") {return;} // disallow blank entry
+        if (this.value == "") {
+            return;
+        } // disallow blank entry
         var temp = this.value.split(','); // convert input into an array
         temp = temp.filter(x => !vegListImport.includes(x)); // find all non-duplicate entries
         vegListImport = vegListImport.concat(temp); // add non-duplicate entries into existing array
@@ -21,7 +31,7 @@ inputBox.onkeyup = function(ev) {
 
 /* ----------- allow for loading previous saved configurations, currently just a default button --------- */
 var saved = document.getElementById("default");
-saved.onclick = function() {
+saved.onclick = function () {
     vegList = [];
     freezer.innerHTML = "";
     contents.innerHTML = "";
@@ -41,13 +51,13 @@ var bgImg = document.getElementById("fridgeBG"),
     tempBox = document.getElementById("tempBox");
 
 // fridge door control switch    
-var doorState = [1,1]; // slot 0 top door, slot 1 bottom door, default open
+var doorState = [1, 1]; // slot 0 top door, slot 1 bottom door, default open
 
 // delete controller
 var delState = 0,
     delButton = document.getElementById("fridgeDelete");
 
-delButton.addEventListener("click", function() {
+delButton.addEventListener("click", function () {
     if (delState == 0) {
         delState = 1;
         this.style.backgroundColor = "red";
@@ -66,7 +76,7 @@ function movePosition(object) {
     index = vegList.findIndex(x => x.id == object.dataset.tag);
     row = Math.floor(vegList[index].slot / 3);
     column = vegList[index].slot % 3;
-    switch(row) {
+    switch (row) {
         case 0:
         case 1:
         case 2:
@@ -77,7 +87,7 @@ function movePosition(object) {
             object.style.top = String(row * 80 - 170) + "px";
 
     }
-    
+
     object.style.left = String(230 + column * 65) + "px";
 }
 
@@ -86,7 +96,7 @@ function movePosition(object) {
  * @param {list} list of DOM objects to be deselected
  */
 function hideItems(list) {
-    for (var i = 0; i < list.length; i+= 1) {
+    for (var i = 0; i < list.length; i += 1) {
         var index = vegList.findIndex(x => x.id == list[i].dataset.tag);
         vegList[index].active = 1;
         list[i].style.opacity = 0.2;
@@ -97,10 +107,10 @@ function hideItems(list) {
  * Display the fridge based on door open/close state
  */
 function displayDoor() {
-    bgImg.style.backgroundImage = "url(../imgs/fridge" + doorState[0] + doorState[1] +".png)";
-    
+    bgImg.style.backgroundImage = "url(../imgs/fridge" + doorState[0] + doorState[1] + ".png)";
+
     // top door
-    switch(doorState[0]) {
+    switch (doorState[0]) {
         case 0: // door closed
             freezer.style.display = "none";
             topDoor.style.display = "none";
@@ -108,13 +118,13 @@ function displayDoor() {
             hideItems(freezer.children);
             break;
         case 1: // door open
-            freezer.style.display = "block";    
+            freezer.style.display = "block";
             topDoor.style.display = "block";
             topClose.style.display = "none";
     }
-    
+
     // bottom door
-    switch(doorState[1]) {
+    switch (doorState[1]) {
         case 0: // door closed
             contents.style.display = "none";
             botDoor.style.display = "none";
@@ -125,7 +135,7 @@ function displayDoor() {
             contents.style.display = "block";
             botDoor.style.display = "block";
             botClose.style.display = "none";
-        }
+    }
     print_list();
 }
 
@@ -137,12 +147,13 @@ function changeDoor(door) {
     if (doorState[door] == 0) {
         doorState[door] = 1;
     } else {
-        doorState[door] = 0;        
+        doorState[door] = 0;
     }
     displayDoor();
 }
 
 // fridge door event listeners
+<<<<<<< HEAD
 topDoor.onclick = () => {changeDoor(0);};
 botDoor.onclick = () => {changeDoor(1);};
 topClose.onclick = () => {changeDoor(0);};
@@ -160,31 +171,54 @@ function check_img(source) {
 }
 
 /** 
+=======
+topDoor.onclick = () => {
+    changeDoor(0);
+};
+botDoor.onclick = () => {
+    changeDoor(1);
+};
+topClose.onclick = () => {
+    changeDoor(0);
+};
+botClose.onclick = () => {
+    changeDoor(1);
+};
+
+/**
+>>>>>>> fecbb7793b14dabee2ff3d74abfbf89dd3edaf08
  * Auto generate objects for each fridge item and store in VegList
  * @param {list} list - list of names of fridge contents
  */
 function populate(list) {
     console.log(list);
     var extra = vegList.length; // slot shift
-    for (var i = 0; i < list.length; i+= 1) {
+    for (var i = 0; i < list.length; i += 1) {
         if (vegList.length >= 15) {  // fridge full
             vegListImport = vegListImport.slice(0, 15);
             return;
         }
-        
+
         var item = document.createElement('div');
         item.className = "contents";
         item.dataset.tag = list[i];
 
+<<<<<<< HEAD
         // check if image file exist
         if (check_img(list[i])) {
             item.style.backgroundImage = "url(../imgs/" + list[i] + ".png)";            
         } else {
+=======
+        // item is in default images
+        if (defaultList.indexOf(list[i]) != -1) {
+            item.style.backgroundImage = "url(../imgs/" + list[i] + ".png)";
+        } else { // item is not in default images
+>>>>>>> fecbb7793b14dabee2ff3d74abfbf89dd3edaf08
             item.style.backgroundImage = "url(../imgs/box.png)";
         }
-                
+
         item.style.display = "block";
-        
+
         // switch to freezer if fridge is full
         var slots = 0;
         if (emptySlot.length == 0) {
@@ -194,32 +228,49 @@ function populate(list) {
             emptySlot.shift();
         }
 
-        if (slots < 9) {contents.appendChild(item);}
-        else {freezer.appendChild(item);}
+        if (slots < 9) {
+            contents.appendChild(item);
+        }
+        else {
+            freezer.appendChild(item);
+        }
 
-        vegList.push({id:list[i], active:1, slot:slots});
+        vegList.push({id: list[i], active: 1, slot: slots});
         movePosition(item);
     }
 }
 
 // event listeners for all created objects
-contents.onclick = (ev) => {selectVeg(ev.target);};
-contents.onmouseover = (ev) => {hoverVeg(ev.target);};
-contents.onmouseout = (ev) => {hoverVeg(ev.target,1);};
+contents.onclick = (ev) => {
+    selectVeg(ev.target);
+};
+contents.onmouseover = (ev) => {
+    hoverVeg(ev.target);
+};
+contents.onmouseout = (ev) => {
+    hoverVeg(ev.target, 1);
+};
 
-freezer.onclick = (ev) => {selectVeg(ev.target);};
-freezer.onmouseover = (ev) => {hoverVeg(ev.target);};
-freezer.onmouseout = (ev) => {hoverVeg(ev.target,1);};
+freezer.onclick = (ev) => {
+    selectVeg(ev.target);
+};
+freezer.onmouseover = (ev) => {
+    hoverVeg(ev.target);
+};
+freezer.onmouseout = (ev) => {
+    hoverVeg(ev.target, 1);
+};
 
 /* -------- formatted output to be sent back to hbs --------- */
 var ingBar = document.getElementById("ingredient-bar");
+
 /**
  * format a string to be sent to search box
  * currently just display the string on the screen and return nothing
  */
 function print_list() {
     temp = "";
-    for (var i = 0; i < vegList.length; i+=1) {
+    for (var i = 0; i < vegList.length; i += 1) {
         if (vegList[i].active == 2) {
             if (temp == "") { // no comma for first item
                 temp += vegList[i].id;
@@ -228,15 +279,16 @@ function print_list() {
             }
         }
     }
-    
+
     // replace special cases involving spaces
-    temp = temp.replace("bellPepper","bell pepper");   
+    temp = temp.replace("bellPepper", "bell pepper");
 
     // formatted output to be sent to search box
     ingBar.value = temp;
 }
 
 /*--------------- delete feature insertion here ---------------------------*/
+
 // slice vegList, vegListImport, delete DOM object
 /**
  * @param {object} object - the JSON object to be deleted
@@ -244,14 +296,14 @@ function print_list() {
  */
 function delObject(object, index) {
     temp = vegListImport.indexOf(vegList[index].id);
-    vegListImport.splice(temp,1);
+    vegListImport.splice(temp, 1);
     emptySlot.push(vegList[index].slot);
     if (vegList[index].slot < 9) {
         contents.removeChild(object);
     } else {
         freezer.removeChild(object);
     }
-    vegList.splice(index,1);
+    vegList.splice(index, 1);
 }
 
 /**
@@ -261,9 +313,9 @@ function delObject(object, index) {
 function selectVeg(object) {
     // find the index of this item in vegList
     index = vegList.findIndex(x => x.id == object.dataset.tag);
-    
+
     if (delState == 0) { // delete is inactive, select items
-        if (vegList[index].active == 1){
+        if (vegList[index].active == 1) {
             object.style.opacity = 1.0;
             vegList[index].active = 2;
         } else {
@@ -281,12 +333,12 @@ function selectVeg(object) {
  * @param {object} object - modify JSON object when the corresponding div is hovered on
  * @param {integer} exit - 0 (default) for mouseenter, 1 for mouseexit
  */
-function hoverVeg(object,exit=0) {
+function hoverVeg(object, exit = 0) {
     // find the index of this item in vegList   
     index = vegList.findIndex(x => x.id == object.dataset.tag);
 
     object.style.cursor = "pointer";
-    if (vegList[index].active == 1){
+    if (vegList[index].active == 1) {
         if (exit == 0) {
             object.style.opacity = 0.5;
         } else {

@@ -52,8 +52,6 @@ function showSearchHistory() {
         foodList.appendChild(ndiv2);
         ndiv2.appendChild(ndiv);
         ndiv2.appendChild(document.createElement('br'));
-        //foodList.appendChild(ndiv);
-        //foodList.appendChild(document.createElement("br"));
     }
 }
 
@@ -80,34 +78,46 @@ function showResults() {
         node.setAttribute('target', '_new');
         node.className = 'searchResultsLink';
 
-        nodeLABELS.style.maxHeight = "30vh"
-        nodeLABELS.style.overflowY = "scroll"
+        nodeLABELS.style.maxHeight = "30vh";
+        nodeLABELS.style.overflowY = "auto";
         nodeIMAGE.className = 'searchResultsImgs';
         nodeIMAGE.setAttribute("src", currentResults[i].recipe.image);
+
+        var hiddenFavInp = document.createElement('input');
+        hiddenFavInp.setAttribute('type', 'hidden');
+        hiddenFavInp.setAttribute('name', 'favRecipe');
+
+        var hiddenFavForm = document.createElement('form');
+        hiddenFavForm.setAttribute('method', 'POST');
+        hiddenFavForm.setAttribute('action', '/favourite');
+        hiddenFavForm.appendChild(hiddenFavInp);
 
         var saveFavBtn = document.createElement('button');
         saveFavBtn.onclick = (function (recipe) {
             return function () {
                 addRecipeLabelBtn(recipe);
+                recipe.currentUser = currentUser;
+                hiddenFavInp.value = JSON.stringify(recipe);
                 swal(`Added ${recipe.label} to Favourites!`);
+                hiddenFavForm.submit();
             }
         })(currentResults[i].recipe);
-
         saveFavBtn.className = 'saveFavBtn';
         saveFavBtn.innerHTML = 'Save to Favourites';
-
 
         nDiv.appendChild(node);
         nDiv.appendChild(document.createElement('br'));
         nDiv.appendChild(nodeIMAGE);
         nDiv.appendChild(nodeLABELS);
+        nDiv.appendChild(hiddenFavForm);
         nDiv.appendChild(saveFavBtn);
         nDiv.appendChild(document.createElement('br'));
         nDiv.appendChild(document.createElement('br'));
 
         nDiv.className = "col-md-4";
-        nDiv.style.maxHeight = "500px"
-        nDiv.style.marginBottom = "50px"
+        nDiv.style.display = "inline-block";
+        nDiv.style.float = "none";
+        nDiv.style.verticalAlign = "top";
 
         document.getElementById('search-row').appendChild(nDiv);
     }

@@ -5,6 +5,7 @@
     <link rel="icon" href="../imgs/icon.png">
     <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     <link href="../css/favStyles.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/fridge.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -30,10 +31,15 @@
 <!-- TOP border -->
 <div id="banner">
     <img id="logo" src="../imgs/pusheats.png" onload="setCurrentResults({{resultRecipes}})">
+<<<<<<< HEAD
     <input type="button" id="logoutbutt" onclick="window.location.href='/'" value="Log Out">
     <div id="current-user"><h2 id="welcome-user-msg"></h2></div>
     <p id="title" class="texts"><img id="titleLogo" src="../imgs/logo.png"></p>
 
+=======
+    <div id="current-user"><h2 id="welcome-user-msg"></h2></div>
+    <p id="title" class="texts"><img id="titleLogo" src="../imgs/logo.png"></p>
+>>>>>>> fecbb7793b14dabee2ff3d74abfbf89dd3edaf08
 </div>
 
 <!-- ctrl panel -->
@@ -122,6 +128,30 @@
                     <input id="final-search-query" type="hidden" name="query">
                 </form>
                 <button id="submitbutt" onclick="submitForms()"> Submit</button>
+
+                <button class="collapsible" onclick="fridgeToggle()"> FRIDGE</button>
+
+                <div id="fridge">
+                    <div id="tempBox"></div>
+                    <input type="text" id="inputBox">
+                    <button id="default">Default</button>
+                    <button id="fridgeDelete">Delete</button>
+
+                    <div id="fridgeDisplay">
+                        <div id="fridgeBG">
+                            <div id="topDoor"></div>
+                            <div id="botDoor"></div>
+                            <div id="topClose"></div>
+                            <div id="botClose"></div>
+                        </div>
+                        <div id="freezer">
+
+                        </div>
+                        <div id="contents">
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -170,6 +200,7 @@
 
 <script src="../js/favourites.js"></script>
 <script src="../js/displays.js"></script>
+<script src="../js/fridge.js"></script>
 <script src="../js/utils.js"></script>
 </body>
 </html>
