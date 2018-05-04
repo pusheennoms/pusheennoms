@@ -57,7 +57,7 @@ var noRepeatUsers = (newUser) => {
         }
     }
     return true
-}
+};
 
 /**
  *Checks if username and password are in userpass.json, if not then request user to log in again
@@ -79,11 +79,11 @@ var authenticateChef = (inpUsername, inpPassword) => {
     if (!usernameFound) {
         return 'no username';
     }
-}
+};
 
 module.exports = {
     addToChefFile,
     validateInput,
     authenticateChef,
     noRepeatUsers
-}
+};
