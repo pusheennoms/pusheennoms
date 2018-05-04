@@ -1,0 +1,80 @@
+body {
+    /* style of the whole website*/
+    font-family: "Bubblegum Sans", sans-serif;
+    overflow-x: hidden;
+}
+/* classes */
+.texts {
+    text-align: center;
+    /*font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;*/
+}
+
+/*border stuff*/
+#banner {
+    width: 100%;
+    height: 15%;
+    background-color: white;
+    border-bottom: 2px solid dimgray;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+#logo {
+    position:relative;
+    height:100%;
+    float:right;
+    cursor: pointer;
+}
+#title {
+    color: #89CFF0;
+    font-family: Marker Felt, fantasy;
+    position: fixed;
+    cursor: default;
+    text-align: left;
+    left:10%;
+    top:-7.5%;
+    font-size: 450%;
+}
+
+/*actual page */
+#big-page-div {
+    background-color: #DCDCDC;
+    width:100%;
+    height:88%;
+    right:-5px;
+    bottom:-3%;
+    z-index:-1;
+    position: fixed;
+    overflow-y: scroll;
+    transition: width .5s;
+
+
+}
+#bg-img {
+    opacity: 0.3;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: -2;
+    object-fit: cover;
+    overflow: hidden;
+    max-height: 100%;
+    max-width: 100%;
+    height: 100%;
+}
+#welcome-div {
+    /*background-color: yellow;*/
+    position: relative;
+    margin: auto;
+    text-align: center;
+    top:15%;
+    overflow: hidden;
+}
+#welcome-msg {
+    font-size: 225%;
+    font-family: Impact;
+}
+#err-img {
+    margin-top:-3%;
+    width:10%;
+}
