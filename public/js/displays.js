@@ -81,7 +81,7 @@ function showResults() {
         node.className = 'searchResultsLink';
 
         nodeLABELS.style.maxHeight = "30vh"
-        nodeLABELS.style.overflowY = "scroll"
+        nodeLABELS.style.overflowY = "auto"
         nodeIMAGE.className = 'searchResultsImgs';
         nodeIMAGE.setAttribute("src", currentResults[i].recipe.image);
 
