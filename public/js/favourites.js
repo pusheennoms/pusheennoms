@@ -2,11 +2,11 @@ var favRecipes;
 
 function setFavouriteRecipes(fr) {
     let decodedRecipe = fr.replace(/&quot;/g, '\"');
-    if (!userFavRecipes) {
+    favRecipes = JSON.parse(localStorage.getItem('favRecipes'));
+    if (!favRecipes) {
         localStorage.setItem('favRecipes', decodedRecipe);
+        favRecipes = JSON.parse(localStorage.getItem('favRecipes'));
     }
-    var userFavRecipes = JSON.parse(localStorage.getItem('favRecipes'));
-    favRecipes = userFavRecipes ? userFavRecipes : [];
     showFavRecipes();
 }
 
