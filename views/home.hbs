@@ -17,12 +17,12 @@
          */
         function setCurrentResults(res) {
             currentResults = res;
-            if (res[res.length - 1].currentUser) {
-                currentUser = res[res.length - 1].currentUser;
+            if (res && res.length > 0 && res[res.length - 1].currentUser) {
                 localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
             }
+            currentUser = JSON.parse(localStorage.getItem('currentUser'));
             document.getElementById('welcome-user-msg').innerHTML =
-                    `Welcome, ${JSON.parse(localStorage.getItem('currentUser'))}!`;
+                    `Welcome, ${currentUser}!`;
             showSearchHistory();
 
             if (currentResults && currentResults.length > 1) {
