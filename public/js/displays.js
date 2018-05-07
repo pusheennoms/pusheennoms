@@ -1,6 +1,6 @@
 /*--------------variables--------------*/
 var coll = document.getElementsByClassName("collapsible");
-var currentResults;
+var currentResults, currentUser;
 var pushleft = false;
 
 /*-------------foodDisplay-------------*/
@@ -10,7 +10,6 @@ var pushleft = false;
 function showSearchHistory() {
     var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
         currentSearchHistory = savedSearchHistory ? savedSearchHistory : {};
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     var foodList = document.getElementById('food-list');
 
     if (!currentSearchHistory[currentUser]) {
@@ -49,7 +48,6 @@ function showSearchHistory() {
 function showResults() {
     hidePusheen();
     document.getElementById('welcome-div').style.display = 'None';
-    // localStorage.setItem('currentRecipes', JSON.stringify(currentResults));
     for (var i = 0; i < currentResults.length - 1; i++) {
 
         var node = document.createElement('a');
