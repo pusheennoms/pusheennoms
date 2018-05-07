@@ -20,6 +20,8 @@
             if (res[res.length - 1].currentUser) {
                 localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
             }
+            document.getElementById('welcome-user-msg').innerHTML =
+                    `Welcome, ${JSON.parse(localStorage.getItem('currentUser'))}!`;
 
             if (currentResults && currentResults.length > 1) {
                 showResults();
