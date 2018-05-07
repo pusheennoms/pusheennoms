@@ -1,5 +1,5 @@
 function setFavouriteRecipes(fr) {
-    let decodedRecipe = decodeURI(fr).replace(/&quot;/g, '\"');
+    let decodedRecipe = fr.replace(/&quot;/g, '\"');
     var favRecipes = JSON.parse(decodedRecipe);
 
     for (var i = 0; i < favRecipes.length; i++) {
