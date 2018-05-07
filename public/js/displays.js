@@ -11,10 +11,15 @@ showSearchHistory();
  */
 function showSearchHistory() {
     currentSearchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+
     if (!currentSearchHistory) {
-        localStorage.setItem('searchHistory', JSON.stringify({}));
+        currentSearchHistory = {};
+        currentSearchHistory[currentUser] = [];
+
+        localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
         currentSearchHistory = JSON.parse(localStorage.getItem('searchHistory'));
     }
+
     var foodList = document.getElementById('food-list');
 
     if (!currentSearchHistory[currentUser]) {
