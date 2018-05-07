@@ -1,3 +1,21 @@
+var favRecipes;
+
+function setFavouriteRecipes(fr) {
+    let decodedRecipe = fr.replace(/&quot;/g, '\"');
+    favRecipes = JSON.parse(localStorage.getItem('favRecipes'));
+    if (!favRecipes) {
+        localStorage.setItem('favRecipes', decodedRecipe);
+        favRecipes = JSON.parse(localStorage.getItem('favRecipes'));
+    }
+    showFavRecipes();
+}
+
+function showFavRecipes() {
+    for (var i = 0; i < favRecipes.length; i++) {
+        addRecipeLabelBtn(favRecipes[i]);
+    }
+}
+
 function openRecipe(ev, recipe) {
     var content = document.getElementsByClassName("favRecipeContent");
     for (i = 0; i < content.length; i++) {
@@ -41,6 +59,11 @@ function showRecipe(ev, recipe) {
     nodeLABELS.appendChild(node);
     recipeDiv.appendChild(nodeIngredients);
     document.getElementById("favModalRecipe").appendChild(recipeDiv);
+}
+
+function addToFavoritesList(recipe) {
+    favRecipes.push(recipe);
+    localStorage.setItem('favRecipes', JSON.stringify(favRecipes));
 }
 
 function addRecipeLabelBtn(recipe) {

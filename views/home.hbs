@@ -18,8 +18,12 @@
         function setCurrentResults(res) {
             currentResults = res;
             if (res[res.length - 1].currentUser) {
+                currentUser = res[res.length - 1].currentUser;
                 localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
             }
+            document.getElementById('welcome-user-msg').innerHTML =
+                    `Welcome, ${JSON.parse(localStorage.getItem('currentUser'))}!`;
+            showSearchHistory();
 
             if (currentResults && currentResults.length > 1) {
                 showResults();
@@ -194,5 +198,6 @@
 <script src="../js/displays.js"></script>
 <script src="../js/fridge.js"></script>
 <script src="../js/utils.js"></script>
+<script> setFavouriteRecipes("{{favRecipes}}")</script>
 </body>
 </html>

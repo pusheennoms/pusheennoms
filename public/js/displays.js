@@ -1,22 +1,9 @@
 /*--------------variables--------------*/
 var coll = document.getElementsByClassName("collapsible");
-
-var currentResults;
-var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
+var currentResults, currentUser;
 var pushleft = false;
 
 /*-------------foodDisplay-------------*/
-showWelcomeUserMsg();
-showSearchHistory();
-
-/**
- * Displays the welcome user msg at the top right banner
- */
-function showWelcomeUserMsg() {
-    document.getElementById('welcome-user-msg').innerHTML = `Welcome, ${currentUser}!`;
-}
-
 /**
  * Displays the search history below search bar
  */
@@ -61,7 +48,6 @@ function showSearchHistory() {
 function showResults() {
     hidePusheen();
     document.getElementById('welcome-div').style.display = 'None';
-    localStorage.setItem('currentRecipes', JSON.stringify(currentResults));
     for (var i = 0; i < currentResults.length - 1; i++) {
 
         var node = document.createElement('a');
@@ -96,8 +82,16 @@ function showResults() {
         saveFavBtn.onclick = (function (recipe) {
             return function () {
                 addRecipeLabelBtn(recipe);
-                recipe.currentUser = currentUser;
-                hiddenFavInp.value = JSON.stringify(recipe);
+                addToFavoritesList(recipe);
+                hiddenFavInp.value = JSON.stringify({
+                    uri: recipe.uri,
+                    label: recipe.label,
+                    dietLabels: recipe.dietLabels,
+                    healthLabels: recipe.healthLabels,
+                    image: recipe.image,
+                    ingredientLines: recipe.ingredientLines,
+                    currentUser: currentUser
+                });
                 swal(`Added ${recipe.label} to Favourites!`);
                 hiddenFavForm.submit();
             }
