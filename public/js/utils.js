@@ -46,33 +46,23 @@ function addIngredient(queryParams) {
 
     // Add to search history
     // Do not add duplicate search history
-    if (currentSearchHistory[currentUser]) {
-        let duplicateSearch = false;
-        for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
-            if (currentSearchHistory[currentUser][i].query === `${queryStr}`) {
-                duplicateSearch = true;
-                break;
-            }
+    let duplicateSearch = false;
+    for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
+        if (currentSearchHistory[currentUser][i].query === `${queryStr}`) {
+            duplicateSearch = true;
+            break;
         }
-        if (!duplicateSearch) {
-            currentSearchHistory[currentUser].push({
-                value: `${queryParams.q}`,
-                healthLabels: `${queryParams.healthLabels}`,
-                dietLabels: `${queryParams.dietLabels}`,
-                excluded: `exclude ${queryParams.excluded}`,
-                query: queryStr
-            })
-        }
-    } else {
-        currentSearchHistory[currentUser] = [{
+    }
+    if (!duplicateSearch) {
+        currentSearchHistory[currentUser].push({
             value: `${queryParams.q}`,
             healthLabels: `${queryParams.healthLabels}`,
             dietLabels: `${queryParams.dietLabels}`,
             excluded: `exclude ${queryParams.excluded}`,
             query: queryStr
-        }]
+        })
     }
-    
+
     localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
 }
 
@@ -81,12 +71,14 @@ function addIngredient(queryParams) {
  * Clears the search history
  */
 function clearSearchHist() {
-    currentSearchHistory = [];
-    localStorage.removeItem('searchHistory');
+    if (currentSearchHistory[currentUser]) {
+        currentSearchHistory[currentUser] = []
+    }
+    localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
     var list = document.getElementById('searchlist');
-    while(list.hasChildNodes()){
+    while (list.hasChildNodes()) {
         list.removeChild(list.firstChild);
-    }    
+    }
 }
 
 function logout() {
