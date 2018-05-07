@@ -61,7 +61,7 @@ function showSearchHistory() {
 function showResults() {
     hidePusheen();
     document.getElementById('welcome-div').style.display = 'None';
-    localStorage.setItem('currentRecipes', JSON.stringify(currentResults));
+    // localStorage.setItem('currentRecipes', JSON.stringify(currentResults));
     for (var i = 0; i < currentResults.length - 1; i++) {
 
         var node = document.createElement('a');
@@ -96,6 +96,7 @@ function showResults() {
         saveFavBtn.onclick = (function (recipe) {
             return function () {
                 addRecipeLabelBtn(recipe);
+                addToFavoritesList(recipe);
                 hiddenFavInp.value = JSON.stringify({
                     uri: recipe.uri,
                     label: recipe.label,

@@ -1,7 +1,17 @@
+var userFavRecipes = JSON.parse(localStorage.getItem('favRecipes'));
+var favRecipes = userFavRecipes ? userFavRecipes : [];
+
 function setFavouriteRecipes(fr) {
     let decodedRecipe = fr.replace(/&quot;/g, '\"');
-    var favRecipes = JSON.parse(decodedRecipe);
+    if (!userFavRecipes) {
+        localStorage.setItem('favRecipes', decodedRecipe);
+    } else {
 
+    }
+    showFavRecipes();
+}
+
+function showFavRecipes() {
     for (var i = 0; i < favRecipes.length; i++) {
         addRecipeLabelBtn(favRecipes[i]);
     }
@@ -50,6 +60,11 @@ function showRecipe(ev, recipe) {
     nodeLABELS.appendChild(node);
     recipeDiv.appendChild(nodeIngredients);
     document.getElementById("favModalRecipe").appendChild(recipeDiv);
+}
+
+function addToFavoritesList(recipe) {
+    favRecipes.push(recipe);
+    localStorage.setItem('favRecipes', JSON.stringify(favRecipes));
 }
 
 function addRecipeLabelBtn(recipe) {
