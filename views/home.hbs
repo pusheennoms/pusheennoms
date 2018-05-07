@@ -10,6 +10,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Swanky and Moo Moo' rel='stylesheet'>
 
     <script>
@@ -50,13 +51,6 @@
     <div class="food-divs" id="search-ingredients-div">
         <div class="food-divs" id="cat-ingredients-div">
             <!-- buncha ingredients dropdown -->
-            <div id="searchHistory">
-                <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
-                <div id="food-list" style="display: none;">
-                    <b id="searchHist"> Search History </b>
-                    <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
-                </div>
-            </div>
             <div id='health-diet'>
                 <button class="collapsible"> HEALTH</button>
                 <div class="content">
@@ -116,7 +110,14 @@
                 <div class="content">
                     <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
                 </div>
-                
+                <button class="collapsible"> SEARCH</button>
+                <div class="content">
+                    <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
+                    <div id="food-list" style="display: none;">
+                        <b id="searchHist"> Search History </b>
+                        <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
+                    </div>
+                </div>
 
                 <!-- Place holder for the final combination of all forms -->
                 <form id="final-form" method="get" action="/search">
@@ -196,6 +197,5 @@
 <script src="../js/displays.js"></script>
 <script src="../js/fridge.js"></script>
 <script src="../js/utils.js"></script>
-<script> setFavouriteRecipes("{{favRecipes}}")</script>
 </body>
 </html>
