@@ -1,8 +1,3 @@
-var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
-    currentSearchHistory = savedSearchHistory ? savedSearchHistory : {};
-
-var currentResults;
-
 if (currentResults && currentResults.length > 1) {
     showResults();
 }

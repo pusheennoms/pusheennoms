@@ -1,15 +1,20 @@
 /*--------------variables--------------*/
 var coll = document.getElementsByClassName("collapsible");
-var currentResults, currentUser;
+var currentResults, currentUser, currentSearchHistory;
 var pushleft = true;
 
 /*-------------foodDisplay-------------*/
+showSearchHistory();
+
 /**
  * Displays the search history below search bar
  */
 function showSearchHistory() {
-    var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
-        currentSearchHistory = savedSearchHistory ? savedSearchHistory : {};
+    currentSearchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+    if (!currentSearchHistory) {
+        localStorage.setItem('searchHistory', JSON.stringify({}));
+        currentSearchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+    }
     var foodList = document.getElementById('food-list');
 
     if (!currentSearchHistory[currentUser]) {
@@ -27,7 +32,9 @@ function showSearchHistory() {
         ndiv.innerHTML = currentSearchHistory[currentUser][i].value;
         var tags = Object.values(currentSearchHistory[currentUser][i]);
         for (j = 1; j < tags.length - 1; j++) {
-            if(` ${tags[j]} `.trim() == "exclude") {break;}
+            if (` ${tags[j]} `.trim() == "exclude") {
+                break;
+            }
             ndiv.innerHTML += ` ${tags[j]} `;
         }
 
