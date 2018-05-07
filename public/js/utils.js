@@ -33,8 +33,6 @@ function submitForms() {
         }
     }
 
-    params.currentUser = currentUser;
-
     // Add search parameters to search history
     addIngredient(params);
 
