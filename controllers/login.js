@@ -18,12 +18,17 @@ router.post('/registerchef', (request, response) => {
     if (valid === true && noRepeat === true) {
         utils.addToChefFile(request.body.username, request.body.password);
         response.render('login.hbs', {
-            status: true
+            status: 0
         });
     }
-    else if (valid === false || noRepeat === false) {
+    else if (valid === false) {
         response.render('login.hbs', {
-            status: false
+            status: 1
+        });
+    }
+    else if (noRepeat === false) {
+        response.render('login.hbs', {
+            status: 2
         });
     }
 });

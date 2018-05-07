@@ -121,7 +121,7 @@ function showResults() {
         nDiv.appendChild(document.createElement('br'));
         nDiv.appendChild(document.createElement('br'));
 
-        nDiv.className = "col-md-4";
+        nDiv.className = "col-sm-6 col-md-4";
         nDiv.style.display = "inline-block";
         nDiv.style.float = "none";
         nDiv.style.verticalAlign = "top";
