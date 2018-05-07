@@ -22,6 +22,7 @@
             }
             document.getElementById('welcome-user-msg').innerHTML =
                     `Welcome, ${JSON.parse(localStorage.getItem('currentUser'))}!`;
+            showSearchHistory();
 
             if (currentResults && currentResults.length > 1) {
                 showResults();

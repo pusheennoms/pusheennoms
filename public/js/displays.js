@@ -4,9 +4,6 @@ var currentResults;
 var pushleft = false;
 
 /*-------------foodDisplay-------------*/
-showSearchHistory();
-
-
 /**
  * Displays the search history below search bar
  */
