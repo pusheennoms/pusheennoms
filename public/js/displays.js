@@ -1,7 +1,7 @@
 /*--------------variables--------------*/
 var coll = document.getElementsByClassName("collapsible");
 var currentResults, currentUser;
-var pushleft = false;
+var pushleft = true;
 
 /*-------------foodDisplay-------------*/
 /**
@@ -146,8 +146,7 @@ var hiddenpush = document.getElementById("hiddenpusheen");
 
 function showPusheen() {
     document.getElementById("ctrlpanel").style.left = '0px';
-    hiddenpush.style.left = "47.5%";
-    document.getElementById("big-page-div").style.width = "50%";
+    hiddenpush.style.left = "77.5%";
     pushleft = 0;
 }
 
@@ -155,9 +154,8 @@ function showPusheen() {
  * Closes the search pangel
  */
 function hidePusheen() {
-    document.getElementById("ctrlpanel").style.left = '-50%';
+    document.getElementById("ctrlpanel").style.left = '-80%';
     hiddenpush.style.left = "0%";
-    document.getElementById("big-page-div").style.width = "100%";
     pushleft = 1
 }
 
