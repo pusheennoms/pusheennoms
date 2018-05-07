@@ -7,15 +7,8 @@ var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 var pushleft = false;
 
 /*-------------foodDisplay-------------*/
-showWelcomeUserMsg();
 showSearchHistory();
 
-/**
- * Displays the welcome user msg at the top right banner
- */
-function showWelcomeUserMsg() {
-    document.getElementById('welcome-user-msg').innerHTML = `Welcome, ${currentUser}!`;
-}
 
 /**
  * Displays the search history below search bar
