@@ -4,7 +4,7 @@ var coll = document.getElementsByClassName("collapsible");
 var currentResults;
 var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-var pushleft = 1;
+var pushleft = false;
 
 /*-------------foodDisplay-------------*/
 showWelcomeUserMsg();
@@ -31,12 +31,16 @@ function showSearchHistory() {
 
     foodList.style.display = 'block';
 
+    var ndiv2 = document.createElement('div');
+    ndiv2.setAttribute('id', 'searchlist');
+
+
     for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
         var ndiv = document.createElement("a");
-
         ndiv.innerHTML = currentSearchHistory[currentUser][i].value;
         var tags = Object.values(currentSearchHistory[currentUser][i]);
         for (j = 1; j < tags.length - 1; j++) {
+            if(` ${tags[j]} `.trim() == "exclude") {break;}
             ndiv.innerHTML += ` ${tags[j]} `;
         }
 
@@ -45,8 +49,9 @@ function showSearchHistory() {
         ndiv.setAttribute('href', '/search?' + currentSearchHistory[currentUser][i].query);
         ndiv.setAttribute("id", "food-" + i);
 
-        foodList.appendChild(ndiv);
-        foodList.appendChild(document.createElement("br"));
+        foodList.appendChild(ndiv2);
+        ndiv2.appendChild(ndiv);
+        ndiv2.appendChild(document.createElement('br'));
     }
 }
 
@@ -54,66 +59,75 @@ function showSearchHistory() {
  * Display the search results
  */
 function showResults() {
+    hidePusheen();
     document.getElementById('welcome-div').style.display = 'None';
-    var msg = document.createElement('h2');
-    msg.innerHTML = 'Click the button below the URL to save your recipe!\n';
-    document.getElementById('search-results').appendChild(msg);
-    localStorage.setItem('currentRecipes', JSON.stringify(currentResults));
+    // localStorage.setItem('currentRecipes', JSON.stringify(currentResults));
     for (var i = 0; i < currentResults.length - 1; i++) {
 
         var node = document.createElement('a');
         var nodeLABELS = document.createElement('div');
         var nodeIMAGE = document.createElement('img');
+        var nDiv = document.createElement('div');
+
         node.href = currentResults[i].recipe.url;
         node.innerHTML = currentResults[i].recipe.label;
         nodeLABELS.innerHTML = "<br> HEALTH: " + currentResults[i].recipe.healthLabels + "<br> DIET: " + currentResults[i].recipe.dietLabels +
             "<br> INGREDIENTS: " + currentResults[i].recipe.ingredientLines;
 
-        node.style.display = 'inline-block';
         node.setAttribute('id', i.toString());
         node.setAttribute('target', '_new');
-        node.style.width = '30%';
+        node.className = 'searchResultsLink';
 
-        var nodeInput = document.createElement('input');
-        nodeInput.setAttribute('type', 'hidden');
-        nodeInput.setAttribute('name', 'recipe');
-        var loadRecipes = JSON.parse(localStorage.getItem('currentRecipes'));
-        nodeInput.value = JSON.stringify(loadRecipes[node.id].recipe, undefined, 2);
+        nodeLABELS.style.maxHeight = "30vh";
+        nodeLABELS.style.overflowY = "auto";
+        nodeIMAGE.className = 'searchResultsImgs';
+        nodeIMAGE.setAttribute("src", currentResults[i].recipe.image);
 
-        var addBtn = document.createElement('button');
-        addBtn.innerHTML = 'Save';
-        addBtn.style.width = '50px';
-        addBtn.style.fontSize = '12px';
-        addBtn.style.display = 'inline-block';
-        addBtn.style.position = 'relative';
+        var hiddenFavInp = document.createElement('input');
+        hiddenFavInp.setAttribute('type', 'hidden');
+        hiddenFavInp.setAttribute('name', 'favRecipe');
 
+        var hiddenFavForm = document.createElement('form');
+        hiddenFavForm.setAttribute('method', 'POST');
+        hiddenFavForm.setAttribute('action', '/favourite');
+        hiddenFavForm.appendChild(hiddenFavInp);
 
-        nodeLABELS.style.width = '50%';
-        nodeIMAGE.style.width = 'auto';
-        nodeIMAGE.style.height = '40%';
-        nodeIMAGE.style.position = 'relative';
-        nodeIMAGE.style.left = '0';
-        nodeIMAGE.setAttribute("src", currentResults[i].recipe.image );
+        var saveFavBtn = document.createElement('button');
+        saveFavBtn.onclick = (function (recipe) {
+            return function () {
+                addRecipeLabelBtn(recipe);
+                addToFavoritesList(recipe);
+                hiddenFavInp.value = JSON.stringify({
+                    uri: recipe.uri,
+                    label: recipe.label,
+                    dietLabels: recipe.dietLabels,
+                    healthLabels: recipe.healthLabels,
+                    image: recipe.image,
+                    ingredientLines: recipe.ingredientLines,
+                    currentUser: currentUser
+                });
+                swal(`Added ${recipe.label} to Favourites!`);
+                hiddenFavForm.submit();
+            }
+        })(currentResults[i].recipe);
+        saveFavBtn.className = 'saveFavBtn';
+        saveFavBtn.innerHTML = 'Save to Favourites';
 
-        var addBtnForm = document.createElement('form');
-        addBtnForm.setAttribute('method', 'POST');
-        addBtnForm.setAttribute('action', '/download');
-        addBtnForm.appendChild(nodeInput);
-        addBtnForm.appendChild(addBtn);
+        nDiv.appendChild(node);
+        nDiv.appendChild(document.createElement('br'));
+        nDiv.appendChild(nodeIMAGE);
+        nDiv.appendChild(nodeLABELS);
+        nDiv.appendChild(hiddenFavForm);
+        nDiv.appendChild(saveFavBtn);
+        nDiv.appendChild(document.createElement('br'));
+        nDiv.appendChild(document.createElement('br'));
 
-        addBtn.onclick = function (ev) {
-            addBtnForm.submit();
-            alert('You have saved the recipe!')
-        };
+        nDiv.className = "col-sm-6 col-md-4";
+        nDiv.style.display = "inline-block";
+        nDiv.style.float = "none";
+        nDiv.style.verticalAlign = "top";
 
-
-        document.getElementById('search-results').appendChild(node);
-        document.getElementById('search-results').appendChild(document.createElement('br'));
-        document.getElementById('search-results').appendChild(nodeIMAGE);
-        document.getElementById('search-results').appendChild(nodeLABELS);
-        document.getElementById('search-results').appendChild(addBtnForm);
-        document.getElementById('search-results').appendChild(document.createElement('br'));
-        document.getElementById('search-results').appendChild(document.createElement('br'));
+        document.getElementById('search-row').appendChild(nDiv);
     }
 }
 
@@ -138,28 +152,35 @@ for (var i = 0; i < coll.length; i++) {
 }
 ;
 
-/**
- * FUNCTION DEFINITION
-*/
 var hiddenpush = document.getElementById("hiddenpusheen");
 
-hiddenpush.addEventListener("click", function () {
-    if (pushleft == 1) {
+/**
+ * Opens the search panel
+ */
 
-        document.getElementById("ctrlpanel").style.left = "-20%";
-        hiddenpush.style.left = "-3%";
-        pushleft = pushleft + 1;
+function showPusheen() {
+    document.getElementById("ctrlpanel").style.left = '0px';
+    hiddenpush.style.left = "47.5%";
+    document.getElementById("big-page-div").style.width = "50%";
+    pushleft = 0;
+}
 
-        document.getElementById("big-page-div").style.width = "100%"
-;
+/**
+ * Closes the search pangel
+ */
+function hidePusheen() {
+    document.getElementById("ctrlpanel").style.left = '-50%';
+    hiddenpush.style.left = "0%";
+    document.getElementById("big-page-div").style.width = "100%";
+    pushleft = 1
+}
+
+hiddenpush.onclick = function () {
+    pushleft = !pushleft;
+
+    if (pushleft) {
+        hidePusheen();
+    } else if (!pushleft) {
+        showPusheen();
     }
-
-    else if (pushleft == 2) {
-        document.getElementById("ctrlpanel").style.left = "0px";
-        hiddenpush.style.left = "17.5%";
-        pushleft = pushleft - 1;
-
-        document.getElementById("big-page-div").style.width = "80%"
-;
-    }
-});
+};

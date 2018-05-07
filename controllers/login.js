@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const utils = require('../middlewares/loginUtils');
+const favUtils = require('../middlewares/favUtils');
 
 router.get('/', function (req, res, next) {
     res.render('login.hbs')
@@ -12,16 +13,22 @@ router.get('/', function (req, res, next) {
  */
 router.post('/registerchef', (request, response) => {
     var valid = utils.validateInput(request.body.username, request.body.password);
+    var noRepeat = utils.noRepeatUsers(request.body.username);
 
-    if (valid === true) {
+    if (valid === true && noRepeat === true) {
         utils.addToChefFile(request.body.username, request.body.password);
         response.render('login.hbs', {
-            status: true
+            status: 0
         });
     }
     else if (valid === false) {
         response.render('login.hbs', {
-            status: false
+            status: 1
+        });
+    }
+    else if (noRepeat === false) {
+        response.render('login.hbs', {
+            status: 2
         });
     }
 });
@@ -37,10 +44,12 @@ router.post('/getpass', (request, response) => {
     if (authenticationResult === 'authentication failure') {
         response.redirect('/')
     } else if (authenticationResult === 'logged in') {
+        favRecipes = JSON.stringify(favUtils.getFavRecipesForUser(inpUsername));
         response.render('home.hbs', {
             resultRecipes: JSON.stringify([{
                 currentUser: inpUsername
-            }])
+            }]),
+            favRecipes: favRecipes
         })
     } else if (authenticationResult === 'no username') {
         response.render('login.hbs', {

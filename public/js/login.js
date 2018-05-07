@@ -1,12 +1,11 @@
-var active = [0,1], //[0] for register, [1] for login
+var active = [0, 1], //[0] for register, [1] for login, default has login open
     regForm = document.getElementById('registerform'),
-    logForm = document.getElementById('loginform');
+    logForm = document.getElementById('loginform'),
+    credForm = document.getElementById('credentialsForm'),
+    newReg = document.getElementById('newRegister');
 
-/** Hally
- * @param {list of object} params - 
- * @param {results of func} callback - 
+/** click register button to show registration menu, second click hide menu
  */
-// click register button to show menu, second click hide menu
 function register() {
     if (active[0] == 0) {
         regForm.style.display="block";
@@ -18,8 +17,8 @@ function register() {
     }
 }
 
-//Hally
-// click login button to show menu, second click hide menu
+/** click login button to show login menu, second click hide menu
+ */
 function login() {
     if (active[1] == 0) {
         regForm.style.display="none";
@@ -31,25 +30,24 @@ function login() {
     }
 }
 
-/**
- * Function to check whether a username exists. If the username does not exist, alert the user.
- * @param {boolean} usernameDoesNotExist - variable indicating whether a username exists
+/** attempt to log in
+ *
  */
 function checkCredentials(usernameDoesNotExist) {
     if (usernameDoesNotExist) {
-        alert('Username does not exist!');
+        swal('Error','Username does not exist!','error');
     } 
 }
 
-/**
- * Function to check whether the user has entered valid username and password when registering for an account
- * @param {boolean} state - variable indicating whether the registered username and passwords are valid
- */
+// Alert user of registration status
 function notifyuser(state){
-    if (state){
-        alert('You have created a new account.')
+    if (state === 0) {
+        swal('Congratulations!', 'You have created a new account.', 'success')
     }
-    else if (state === false) {
-        alert('Username and password must have more than 3 characters.')
+    else if (state === 1) {
+        swal('Error', 'Username and password must have more than 3 characters.', 'error')
+    }
+    else if (state === 2) {
+        swal('Error', 'Username already exists.', 'error')
     }
 }

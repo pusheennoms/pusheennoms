@@ -3,7 +3,6 @@ body {
 	font-family: "Bubblegum Sans", sans-serif;
 	background-color: #89CFF0;
 	overflow-x: hidden;
-
 }
 /* classes */
 .texts {
@@ -39,6 +38,9 @@ body {
     border: none;
     text-align: center;
     font-size: 15px;
+    height: 10%;
+    border-radius: 12px;
+    margin: 10px;
 }
 .active, .collapsible:hover {
 /* makes the collapsible BE COLLAPSIBLE*/
@@ -53,7 +55,8 @@ body {
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
 }
-.container {	
+
+.listcontainer {
 /* The container of the collapsible list*/
     display: block;
     position: relative;
@@ -66,7 +69,8 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
-.container input {
+
+.listcontainer input {
 /* Hide the browser's default checkbox */
     position: absolute;
     opacity: 0;
@@ -82,11 +86,13 @@ body {
     width: 25px;
     background-color: #eee;
 }
-.container:hover input ~ .checkmark { 
+
+.listcontainer:hover input ~ .checkmark {
 	/*when you hover at collapsible's checkmark, it changes color to darker gray*/
     background-color: #ccc;	
 }
-.container input:checked ~ .checkmark {
+
+.listcontainer input:checked ~ .checkmark {
 	/*when you click at collapsible's checkmark, it changes color to blue*/
     background-color: #2196F3;
 }
@@ -95,10 +101,12 @@ body {
     position: absolute;
     display: none;
 }
-.container input:checked ~ .checkmark:after {
+
+.listcontainer input:checked ~ .checkmark:after {
     display: block;
 }
-.container .checkmark:after {
+
+.listcontainer .checkmark:after {
     left: 9px;
     top: 5px;
     width: 5px;
@@ -113,14 +121,13 @@ body {
 /*border stuff*/
 
 #banner {
-	width:100%;
-	height:15%;
-	background-color:white;
-	border-bottom: 2px solid dimgray;
-	position:fixed;
-	top:0px;
-	right:0px;
-	z-index: ;
+    width: 100%;
+    height: 15%;
+    background-color: white;
+    border-bottom: 2px solid dimgray;
+    position: fixed;
+    top: 0;
+    right: 0;
 }
 #logo {
 	position:relative;
@@ -129,56 +136,45 @@ body {
 	cursor: pointer;
 }
 
-#current-user {
-	position: relative;
-	height: 50%;
-	float: right;
-	padding-right: 50px;
-	padding-top: 10px;
-	right: -10%;
-	margin: auto;
-	font-family: Marker Felt, fantasy;
-}
-
-#logoutbutt {
-	position: relative;
-	height: 30%;
-	float: right;
-	right: 10px;
-	top: 70%;
-	margin: auto;
-	background-color: #555555;
-	width: 100px;
-	font-size: 20px;
-	cursor: pointer;
-	font-family: Marker Felt, fantasy;
-	color: #DCDCDC;
-}
-
 #title {
 	color: #89CFF0;
 	font-family: Marker Felt, fantasy;
 	position: fixed;
 	cursor: default;
 	text-align: left;
-	left:25%;
+	left:10%;
 	font-size: 450%;
-	top: -9vh;
 }
 #search-results{
 	display: inline;
-	position: relative;
+    position: absolute;
 	width: 100%;
+    font-family: "Trebuchet MS";
+    padding: 20px 20px;
 }
+
+.searchResultsLink {
+    display: inline-block;
+    width: 100%;
+}
+
+.searchResultsImgs {
+    width: auto;
+    height: 40%;
+    position: relative;
+    left: 0;
+
+}
+
 /*control panel stuff*/
 #ctrlpanel {
 	position:fixed;
 	height:100%;
-	width:20%;
+    width: 50%;
 	background-color: white;
-	top:0px;
-	left:0px;
-	box-shadow: 3px 0px 3px #888888;
+	top:0;
+    left: 0;
+	box-shadow: 3px 0 3px #888888;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	transition: left 0.5s;
@@ -198,7 +194,6 @@ body {
 #ingredients-img { /*pusheen image*/
 	position: relative;
 	display: block;
-	margin-top: -10%;
     margin-left: auto;
     margin-right: auto;
 	height:25%;	
@@ -207,6 +202,14 @@ body {
 #butt-wraps {
 	display: flex;
 	justify-content: center;
+}
+#hiddenpusheen{
+    position: fixed;
+    top: -2%;
+    height: 12%;
+    left: 47.5%;
+    transition: left 0.5s;
+    cursor: pointer;
 }
 /*search ingredients div*/
 #search-ingredients-div {
@@ -218,7 +221,7 @@ body {
 	box-sizing: border-box;
 	border-radius: 5%;
 	text-align: left;
-	font-size: 20%;
+	font-size: 20px;
 	background-color: white;
 	padding:5%;
 	position: relative;
@@ -229,8 +232,6 @@ body {
 	/*background-color: blue;*/
 	height: 80%;
 	margin: 0% 3% 0% 3%;
-	overflow-y: scroll;
-	overflow-x: hidden;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
@@ -257,7 +258,7 @@ body {
 	opacity: 0.3;
     position: fixed;
     width: 100%;
-    bottom: 0%;
+    bottom: 0;
     z-index: -2;
     object-fit: cover;
     overflow: hidden;
@@ -275,6 +276,7 @@ body {
 }
 #welcome-msg {
 	font-size: 225%;
+    font-family: Impact;
 }
 #food-search {
 	width: 25%;
@@ -287,19 +289,6 @@ body {
 #searchHist {
 	text-align: center;
 }
-button {
-	background-color: #7575a3;
-    color: white;
-    cursor: pointer;
-    width: 50%;
-    padding:2px;
-    height: 10%;
-    border: none;
-    text-align: center;
-    font-size: 25px;
-    border-radius: 12px;
-    margin: 10px;
-}
 
 #submitbutt {
 	background-color: #7575a3;
@@ -310,6 +299,9 @@ button {
     border: none;
     text-align: center;
     font-size: 15px;
+    border-radius: 12px;
+    margin: 10px;
+    padding:2px;
    }
 #clearbutt {
 	background-color: #777;
@@ -320,6 +312,9 @@ button {
 	border: none;
 	text-align: center;
 	font-size: 15px;
+    border-radius: 12px;
+    margin: 10px;
+    padding: 1px 5px;
 }
 
 a {
@@ -348,6 +343,14 @@ a:visited {
 	width:50%;
 	background-color:	#FF4500;
 	border: white solid 2px;
+    color: white;
+    cursor: pointer;
+    padding:2px;
+    height: 10%;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 12px;
+    margin: 10px;
 }
 #enter-stuff {
 	/*background-color: red;*/
@@ -357,14 +360,40 @@ a:visited {
 	width:100%;
 }
 
+.saveFavBtn {
+    background-color: #7575a3;
+    color: white;
+    cursor: pointer;
+	width: 180px;
+    height: 20px;
+    border: none;
+    text-align: center;
+    font-size: 15px;
+    padding: 2px;
+    border-radius: 12px;
+    margin: 10px;
+}
 
-#hiddenpusheen{
-	position: fixed;
-	top: -2%;
-	height: 12%;
-	left: 17.5%;
-	transition: left 0.5s;
-	cursor: pointer;
+#current-user {
+    position: relative;
+    height: 50%;
+    float: right;
+    padding-right: 50px;
+    padding-top: 10px;
+    margin: auto;
+    font-family: Marker Felt, fantasy;
+}
+
+#logoutbutt {
+    position: absolute;
+    height: 3%;
+    top: 0.5%;
+    left: 0.5%;
+    margin: auto;
+    cursor: pointer;
+    font-family: Marker Felt, fantasy;
+    color: #DCDCDC;
+    z-index: 10;
 }
 
 /*test */
