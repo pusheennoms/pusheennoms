@@ -1,9 +1,6 @@
 /*--------------variables--------------*/
 var coll = document.getElementsByClassName("collapsible");
-
 var currentResults;
-var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
 var pushleft = false;
 
 /*-------------foodDisplay-------------*/
@@ -16,6 +13,7 @@ showSearchHistory();
 function showSearchHistory() {
     var savedSearchHistory = JSON.parse(localStorage.getItem('searchHistory')),
         currentSearchHistory = savedSearchHistory ? savedSearchHistory : {};
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     var foodList = document.getElementById('food-list');
 
     if (!currentSearchHistory[currentUser]) {
