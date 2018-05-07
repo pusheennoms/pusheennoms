@@ -1,0 +1,100 @@
+/* classes */
+.texts {
+	text-align: center;
+	/*font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;*/
+}
+.added-ingredients {
+	text-align: center;
+	font:"Comic Sans MS", "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	margin:3%;
+}
+.butts {
+	width: 100%;
+	margin: 2%;
+}
+.food-divs {
+	top: 0.5%;
+	bottom: 0.5%;
+	height:56.5%;
+	width:95%;
+	position: relative;
+	margin: auto;
+	/*background-color: red;*/
+}
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 6%;
+    width: 100%;
+    border: none;
+    text-align: center;
+    font-size: 15px;
+}
+.active, .collapsible:hover {
+    background-color: #555;
+}
+.content {
+    padding: 0 18px;
+    margin: 1%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+}
+/*border stuff*/
+
+#banner {
+	width:100%;
+	height:15%;
+	background-color:darkgray;
+	border-bottom: 2px solid dimgray;
+	position:fixed;
+	top:0px;
+	right:0px;
+}
+#logo {
+	position:relative;
+	height:100%;
+	float:right;
+	cursor: pointer;
+}
+#title {
+	color: black;
+	position: relative;
+	cursor: default;
+	text-align: right;
+	right:2%;
+	font-size: 270%;
+}
+
+/*actual page */
+#big-page-div {
+	background-color: #DCDCDC;
+	width:100%;
+	height:91%;
+	right:0;
+	bottom:0;
+	z-index:-1;
+	position: absolute;
+}
+#bg-img {
+	opacity: 0.3;
+	position: absolute;
+	width:100%;
+	height:auto;
+	bottom:0%;
+}
+#err-div {
+	/*background-color: yellow;*/
+	position: relative;
+	margin: auto;
+	text-align: center;
+	top:15%;
+}
+#err-msg {
+	font-size: 225%;
+}
+#error-img {
+	width:20%;
+}
