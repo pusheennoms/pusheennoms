@@ -53,6 +53,12 @@ var noRepeatFavs = (recipe, user) => {
     return !found;
 };
 
+
+/**
+ * Get the favourite recipes of a user
+ * @param {string} currentUser - username of current user
+ * @returns {Array} - the favourite recipes of current user
+ */
 var getFavRecipesForUser = (currentUser) => {
     return favRecords[currentUser] ? favRecords[currentUser] : [];
 };

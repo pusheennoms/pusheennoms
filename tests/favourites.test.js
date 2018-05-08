@@ -5,7 +5,7 @@ const path = require('path');
 
 const favFile = path.join(__dirname, '../data/favourites.json');
 
-var favRecords = [];
+var favRecords = {};
 getFile = fs.readFileSync(favFile);
 favRecords = JSON.parse(getFile);
 
