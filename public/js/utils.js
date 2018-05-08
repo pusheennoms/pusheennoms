@@ -84,5 +84,6 @@ function clearSearchHist() {
 function logout() {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('currentRecipes');
+    localStorage.removeItem('favRecipes');
     window.location.href = '/'
 }
