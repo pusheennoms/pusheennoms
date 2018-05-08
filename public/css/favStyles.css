@@ -43,6 +43,8 @@
     background-color: #f1f1f1;
     width: 30%;
     height: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 #favRecipeLabel button {
     display: block;
