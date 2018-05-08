@@ -12,7 +12,8 @@ body {
 .added-ingredients {
 /* style of search history */
 	text-align: center;
-	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-family: 'Swanky and Moo Moo';
+	font-size: 30px;
 	margin:3%;
 }
 .butts {
@@ -213,7 +214,6 @@ body {
 }
 /*search ingredients div*/
 #search-ingredients-div {
-	/*background-color: red;*/
 	display:block;
 }
 #ingredient-bar {
@@ -279,7 +279,7 @@ body {
     font-family: Impact;
 }
 #food-search {
-    width: 80%;
+	width: 25%;
 	border-radius: 5%;
 	text-align: left;
     font-size: 20%;
