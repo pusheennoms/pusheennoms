@@ -59,5 +59,6 @@ var getFavRecipesForUser = (currentUser) => {
 
 module.exports = {
     addToFavFile,
-    getFavRecipesForUser
+    getFavRecipesForUser,
+    noRepeatFavs
 };
