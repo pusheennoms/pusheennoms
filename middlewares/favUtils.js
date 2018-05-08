@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const favouritesFile = path.join(__dirname, '../data/favourites.json');
-var favRecords = [];
+var favRecords = {};
 
 /**
  *See if favourites.json exists on drive, if not create file, if so read contents into var chefRecords
