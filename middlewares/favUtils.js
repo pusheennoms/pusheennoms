@@ -37,7 +37,7 @@ var addToFavFile = (recipe) => {
 /**
  * Check to see no duplicate favourite recipe
  * @param recipe
- * @returns false if user already exists
+ * @returns false if recipe already exists
  */
 var noRepeatFavs = (recipe, user) => {
     checkFavRecords();
@@ -52,6 +52,5 @@ var noRepeatFavs = (recipe, user) => {
 };
 
 module.exports = {
-    noRepeatFavs,
     addToFavFile
 };

@@ -13,17 +13,17 @@ chefRecords = JSON.parse(getFile);
 describe("testing validating registration", () => {
     test("valid input", () => {
         expect(utils.validateInput("username", "password")).toBeTruthy();
-    })
+    });
 
     test("username 4 chars", () => {
     	expect(utils.validateInput("123","password")).toBeFalsy();
     	expect(utils.validateInput("1234","password")).toBeTruthy();
-    })
+    });
 
     test("password 4 chars", () => {
     	expect(utils.validateInput("username", "123")).toBeFalsy();
     	expect(utils.validateInput("username", "1234")).toBeTruthy();
-    })
+    });
 
     test("user and pass empty", () => {
     	expect(utils.validateInput("", "")).toBeFalsy();
@@ -64,3 +64,6 @@ describe("testing authenticate chef", () => {
 
 
 
+=======
+});
+>>>>>>> bad0b633eb3d49eaf046a8b133c8f8f544dccc82
