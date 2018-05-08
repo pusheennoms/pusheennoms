@@ -104,11 +104,11 @@ function showResults() {
                         ingredientLines: recipe.ingredientLines,
                         currentUser: currentUser
                     });
-                    swal(`Added ${recipe.label} to Favourites!`).then((value) => {
+                    swal('Saved to Favourites!', `${recipe.label}`, 'success').then((value) => {
                         hiddenFavForm.submit();
                     });
                 } else {
-                    swal(`${recipe.label} is already in Favourites!`);
+                    swal(`${recipe.label} is already in Favourites!`, '', 'error');
                 }
             }
         })(currentResults[i].recipe);
