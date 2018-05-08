@@ -104,8 +104,9 @@ function showResults() {
                         ingredientLines: recipe.ingredientLines,
                         currentUser: currentUser
                     });
-                    swal(`Added ${recipe.label} to Favourites!`);
-                    hiddenFavForm.submit();
+                    swal(`Added ${recipe.label} to Favourites!`).then((value) => {
+                        hiddenFavForm.submit();
+                    });
                 } else {
                     swal(`${recipe.label} is already in Favourites!`);
                 }
