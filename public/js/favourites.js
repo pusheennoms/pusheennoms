@@ -7,10 +7,10 @@ function setFavouriteRecipes(fr) {
         localStorage.setItem('favRecipes', decodedRecipe);
         favRecipes = JSON.parse(localStorage.getItem('favRecipes'));
     }
-    showFavRecipes();
+    showSavedFavRecipes();
 }
 
-function showFavRecipes() {
+function showSavedFavRecipes() {
     for (var i = 0; i < favRecipes.length; i++) {
         addRecipeLabelBtn(favRecipes[i]);
     }
@@ -64,6 +64,7 @@ function showRecipe(ev, recipe) {
 function addToFavoritesList(recipe) {
     favRecipes.push(recipe);
     localStorage.setItem('favRecipes', JSON.stringify(favRecipes));
+    addRecipeLabelBtn(recipe);
 }
 
 function addRecipeLabelBtn(recipe) {
@@ -77,4 +78,14 @@ function addRecipeLabelBtn(recipe) {
     };
 
     recipeTab.appendChild(recipeLabelBtn);
+}
+
+function noRepeat(recipe) {
+    var repeat = false;
+    for (var i = 0; i < favRecipes.length; i++) {
+        if (favRecipes[i].uri === recipe.uri) {
+            repeat = true;
+        }
+    }
+    return !repeat
 }

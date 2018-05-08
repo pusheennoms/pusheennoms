@@ -2,16 +2,14 @@ const fs = require('fs');
 const path = require('path');
 
 const favouritesFile = path.join(__dirname, '../data/favourites.json');
-var favRecords = {};
+var favRecords = [];
 
 /**
  *See if favourites.json exists on drive, if not create file, if so read contents into var chefRecords
  **/
-function checkFavRecords() {
-    if (fs.existsSync(favouritesFile) && fs.readFileSync(favouritesFile).length !== 0) {
-        getFile = fs.readFileSync(favouritesFile);
-        favRecords = JSON.parse(getFile);
-    }
+if (fs.existsSync(favouritesFile) && fs.readFileSync(favouritesFile).length !== 0) {
+    getFile = fs.readFileSync(favouritesFile);
+    favRecords = JSON.parse(getFile);
 }
 
 /**
@@ -20,13 +18,14 @@ function checkFavRecords() {
  */
 var addToFavFile = (recipe) => {
     recipe = JSON.parse(recipe);
-    var user = recipe.currentUser;
+    var currentUser = recipe.currentUser;
 
-    if (noRepeatFavs(recipe, user)) {
-        if (favRecords[user]) {
-            favRecords[user].push(recipe);
+
+    if (noRepeatFavs(recipe, currentUser)) {
+        if (favRecords[currentUser]) {
+            favRecords[currentUser].push(recipe);
         } else {
-            favRecords[user] = [recipe];
+            favRecords[currentUser] = [recipe];
         }
 
         var newRecord = JSON.stringify(favRecords, undefined, 2);
@@ -37,20 +36,28 @@ var addToFavFile = (recipe) => {
 /**
  * Check to see no duplicate favourite recipe
  * @param recipe
- * @returns false if recipe already exists
+ * @param user
+ * @returns false if user already exists
  */
 var noRepeatFavs = (recipe, user) => {
-    checkFavRecords();
+    var found = false;
+
     if (favRecords[user]) {
         for (var i = 0; i < favRecords[user].length; i++) {
             if (favRecords[user][i].uri === recipe.uri) {
-                return false
+                found = true
             }
         }
     }
-    return true
+
+    return !found;
+};
+
+var getFavRecipesForUser = (currentUser) => {
+    return favRecords[currentUser] ? favRecords[currentUser] : [];
 };
 
 module.exports = {
-    addToFavFile
+    addToFavFile,
+    getFavRecipesForUser
 };
