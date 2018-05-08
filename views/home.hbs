@@ -6,10 +6,12 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     <link href="../css/favStyles.css" rel="stylesheet" type="text/css"/>
     <link href="../css/fridge.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Swanky and Moo Moo' rel='stylesheet'>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script>
         /**
          * Set the results taken from the server after the search and calls the function to show results on page
@@ -17,12 +19,12 @@
          */
         function setCurrentResults(res) {
             currentResults = res;
-            if (res[res.length - 1].currentUser) {
-                currentUser = res[res.length - 1].currentUser;
+            if (res && res.length > 0 && res[res.length - 1].currentUser) {
                 localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
             }
+            currentUser = JSON.parse(localStorage.getItem('currentUser'));
             document.getElementById('welcome-user-msg').innerHTML =
-                    `Welcome, ${JSON.parse(localStorage.getItem('currentUser'))}!`;
+                    `Welcome, ${currentUser}!`;
             showSearchHistory();
 
             if (currentResults && currentResults.length > 1) {

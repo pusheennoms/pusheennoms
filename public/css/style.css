@@ -12,7 +12,8 @@ body {
 .added-ingredients {
 /* style of search history */
 	text-align: center;
-	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-family: 'Swanky and Moo Moo';
+	font-size: 30px;
 	margin:3%;
 }
 .butts {
@@ -170,10 +171,10 @@ body {
 #ctrlpanel {
 	position:fixed;
 	height:100%;
-    width: 50%;
+    width: 80%;
 	background-color: white;
 	top:0;
-    left: 0;
+    left: -80%;
 	box-shadow: 3px 0 3px #888888;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -207,13 +208,12 @@ body {
     position: fixed;
     top: -2%;
     height: 12%;
-    left: 47.5%;
+    left: 0;
     transition: left 0.5s;
     cursor: pointer;
 }
 /*search ingredients div*/
 #search-ingredients-div {
-	/*background-color: red;*/
 	display:block;
 }
 #ingredient-bar {
@@ -243,7 +243,7 @@ body {
 /*actual page */
 #big-page-div {
 	background-color: #DCDCDC;
-	width:80%;
+    width: 100%;
 	height:88%;
 	right:-5px;
 	bottom:-3%;
