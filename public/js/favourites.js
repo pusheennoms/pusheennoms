@@ -1,5 +1,9 @@
 var favRecipes;
 
+/**
+ * Sets and shows favourite recipes for the current signed in user
+ * @param {list} fr - Favourite recipes of the user passed from server
+ */
 function setFavouriteRecipes(fr) {
     let decodedRecipe = fr.replace(/&quot;/g, '\"');
     favRecipes = JSON.parse(localStorage.getItem('favRecipes') ? localStorage.getItem('favRecipes') : '[]');
@@ -7,15 +11,24 @@ function setFavouriteRecipes(fr) {
         localStorage.setItem('favRecipes', decodedRecipe);
         favRecipes = JSON.parse(localStorage.getItem('favRecipes'));
     }
-    showFavRecipes();
+    showSavedFavRecipes();
 }
 
-function showFavRecipes() {
+/**
+ * Shows saved favourite recipes to the favourites modal
+ */
+function showSavedFavRecipes() {
     for (var i = 0; i < favRecipes.length; i++) {
         addRecipeLabelBtn(favRecipes[i]);
     }
 }
 
+/**
+ * Opens the favourite recipe in the favourites modal when its label is clicked.
+ * Hides the rest of the recipes while the one recipe is opened
+ * @param {Event} ev - the mouse click event
+ * @param {object} recipe - the recipe being opened
+ */
 function openRecipe(ev, recipe) {
     var content = document.getElementsByClassName("favRecipeContent");
     for (i = 0; i < content.length; i++) {
@@ -29,6 +42,11 @@ function openRecipe(ev, recipe) {
     showRecipe(ev, recipe);
 }
 
+/**
+ * Shows the opened recipe
+ * @param {Event} ev - mouse clicking evetn
+ * @param {Object} recipe - the recipe being shown
+ */
 function showRecipe(ev, recipe) {
     var recipeDiv = document.createElement('div');
     recipeDiv.className = "favRecipeContent";
@@ -61,11 +79,20 @@ function showRecipe(ev, recipe) {
     document.getElementById("favModalRecipe").appendChild(recipeDiv);
 }
 
+/**
+ * Adds a recipe to the list of favourites
+ * @param {object} recipe - the recipe being added
+ */
 function addToFavoritesList(recipe) {
     favRecipes.push(recipe);
     localStorage.setItem('favRecipes', JSON.stringify(favRecipes));
+    addRecipeLabelBtn(recipe);
 }
 
+/**
+ * Adds the recipe button label to the favourites modal
+ * @param {object} recipe - the recipe being added
+ */
 function addRecipeLabelBtn(recipe) {
     var recipeTab = document.getElementById('favRecipeLabel');
 
@@ -77,4 +104,19 @@ function addRecipeLabelBtn(recipe) {
     };
 
     recipeTab.appendChild(recipeLabelBtn);
+}
+
+/**
+ * Checks whether the recipe has been added to the front end
+ * @param {object} recipe - the recipe that is being checked
+ * @returns {boolean} - whether the recipe has already been added
+ */
+function noRepeat(recipe) {
+    var repeat = false;
+    for (var i = 0; i < favRecipes.length; i++) {
+        if (favRecipes[i].uri === recipe.uri) {
+            repeat = true;
+        }
+    }
+    return !repeat
 }

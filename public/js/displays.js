@@ -93,19 +93,23 @@ function showResults() {
         var saveFavBtn = document.createElement('button');
         saveFavBtn.onclick = (function (recipe) {
             return function () {
-                addRecipeLabelBtn(recipe);
-                addToFavoritesList(recipe);
-                hiddenFavInp.value = JSON.stringify({
-                    uri: recipe.uri,
-                    label: recipe.label,
-                    dietLabels: recipe.dietLabels,
-                    healthLabels: recipe.healthLabels,
-                    image: recipe.image,
-                    ingredientLines: recipe.ingredientLines,
-                    currentUser: currentUser
-                });
-                swal(`Added ${recipe.label} to Favourites!`);
-                hiddenFavForm.submit();
+                if (noRepeat(recipe)) {
+                    addToFavoritesList(recipe);
+                    hiddenFavInp.value = JSON.stringify({
+                        uri: recipe.uri,
+                        label: recipe.label,
+                        dietLabels: recipe.dietLabels,
+                        healthLabels: recipe.healthLabels,
+                        image: recipe.image,
+                        ingredientLines: recipe.ingredientLines,
+                        currentUser: currentUser
+                    });
+                    swal('Saved to Favourites!', `${recipe.label}`, 'success').then((value) => {
+                        hiddenFavForm.submit();
+                    });
+                } else {
+                    swal(`${recipe.label} is already in Favourites!`, '', 'error');
+                }
             }
         })(currentResults[i].recipe);
         saveFavBtn.className = 'saveFavBtn';
