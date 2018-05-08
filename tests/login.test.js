@@ -1,5 +1,14 @@
 const utils = require('../middlewares/loginUtils');
 
+const fs = require('fs');
+const path = require('path');
+
+const userpassFile = path.join(__dirname, '../data/userpass.json');
+
+var chefRecords = [];
+getFile = fs.readFileSync(userpassFile);
+chefRecords = JSON.parse(getFile);
+
 
 describe("testing validating registration", () => {
     test("valid input", () => {
@@ -23,7 +32,35 @@ describe("testing validating registration", () => {
 
 describe("testing no repeat users", () => {
 	test("repeat user", () => {
-		expect(utils.noRepeatUsers("carson")).toBeFalsy();
-		expect(utils.noRepeatUsers("there's no way you'll pick this username")).toBeTruthy();
+		expect(utils.noRepeatUsers(chefRecords[0].username)).toBeFalsy();
 	})
+    
+    test("different user", () => {
+		expect(utils.noRepeatUsers("there's no way you'll pick this username")).toBeTruthy();
+    })
 })
+
+describe("testing authenticate chef", () => {
+    test("existing user", () => {
+        expect(utils.authenticateChef(chefRecords[0].username, chefRecords[0].password)).toBe("logged in")
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
