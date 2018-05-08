@@ -36,7 +36,7 @@ describe("testing no repeat users", () => {
 	})
     
     test("different user", () => {
-		expect(utils.noRepeatUsers("there's no way you'll pick this username")).toBeTruthy();
+		expect(utils.noRepeatUsers("123")).toBeTruthy();
     })
 })
 
@@ -44,26 +44,12 @@ describe("testing authenticate chef", () => {
     test("existing user", () => {
         expect(utils.authenticateChef(chefRecords[0].username, chefRecords[0].password)).toBe("logged in")
     })
+    
+    test("wrong password", () => {
+        expect(utils.authenticateChef(chefRecords[0].username, "123")).toBe("authentication failure")
+    })
+    
+    test("nonexisting user", () => {
+        expect(utils.authenticateChef("123", "123")).toBe("no username")
+    })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-});
->>>>>>> bad0b633eb3d49eaf046a8b133c8f8f544dccc82
