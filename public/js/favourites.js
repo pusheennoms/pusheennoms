@@ -30,6 +30,14 @@ function showSavedFavRecipes() {
  * @param {object} recipe - the recipe being opened
  */
 function openRecipe(ev, recipe) {
+    hideAllContents();
+    showRecipe(ev, recipe);
+}
+
+/**
+ * Hide all contents of the favourites modal
+ */
+function hideAllContents() {
     var content = document.getElementsByClassName("favRecipeContent");
     for (i = 0; i < content.length; i++) {
         content[i].style.display = "none";
@@ -39,7 +47,6 @@ function openRecipe(ev, recipe) {
         links[i].className = links[i].className.replace(" active", "");
     }
 
-    showRecipe(ev, recipe);
 }
 
 /**
@@ -96,14 +103,82 @@ function addToFavoritesList(recipe) {
 function addRecipeLabelBtn(recipe) {
     var recipeTab = document.getElementById('favRecipeLabel');
 
+    // The label on the side
     var recipeLabelBtn = document.createElement('button');
     recipeLabelBtn.className = "recipeLabelLinks";
     recipeLabelBtn.innerHTML = recipe.label;
+    recipeLabelBtn.id = recipe.uri;
     recipeLabelBtn.onclick = function (ev) {
         openRecipe(ev, recipe)
     };
 
+    // The hidden form for deleting the recipe
+    var delForm = document.createElement('form');
+    let id = recipe.uri.toString().split('#');
+    delForm.id = 'del-' + id[1];
+
+    var delRecipeBtn = document.createElement('a');
+    delRecipeBtn.className = "delFavBtn";
+    delRecipeBtn.innerHTML = " delete";
+    delRecipeBtn.onclick = function (ev) {
+        deleteRecipe(ev, recipe);
+        hideAllContents();
+    };
+
+    var hiddenDel = document.createElement('input');
+    hiddenDel.setAttribute('type', 'hidden');
+    hiddenDel.setAttribute('name', 'uri');
+    hiddenDel.setAttribute('value', recipe.uri);
+    delForm.appendChild(hiddenDel);
+
+    var hiddenUser = document.createElement('input');
+    hiddenUser.setAttribute('type', 'hidden');
+    hiddenUser.setAttribute('name', 'user');
+    hiddenUser.setAttribute('value', JSON.parse(localStorage.getItem('currentUser')));
+    delForm.appendChild(hiddenUser);
+
+    // Append all children
+    recipeLabelBtn.appendChild(delRecipeBtn);
+    recipeTab.appendChild(delForm);
     recipeTab.appendChild(recipeLabelBtn);
+}
+
+/**
+ * Deletes the favourite recipe
+ * @param {Event} ev - the mouseclick event
+ * @param {object} recipe - the recipe to be deleted
+ */
+function deleteRecipe(ev, recipe) {
+    for (var i = 0; i < favRecipes.length; i++) {
+        if (favRecipes[i].uri === recipe.uri) {
+
+            // Delete from local storage
+            favRecipes.splice(i, 1);
+            localStorage.setItem('favRecipes', JSON.stringify(favRecipes));
+
+            // Delete label from modal
+            let elmt = document.getElementById(recipe.uri);
+            elmt.parentNode.removeChild(elmt);
+
+            let id = recipe.uri.toString().split('#');
+            let delForm = $('#del-' + id[1]);
+            delForm.on('submit', function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/favourite/delete',
+                    data: delForm.serialize(),
+                    success: function () {
+                        swal('deleted');
+                    }
+                })
+            });
+            delForm.submit();
+
+            break;
+        }
+    }
 }
 
 /**

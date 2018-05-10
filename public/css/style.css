@@ -405,6 +405,10 @@ a:visited {
     z-index: 10;
 }
 
+#delFavBtn {
+    
+}
+
 #searchlist {
     text-align: center;
     position: relative;
