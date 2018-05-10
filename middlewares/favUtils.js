@@ -57,10 +57,10 @@ var noRepeatFavs = (recipe, user) => {
  * @param recipe - the recipe to be deleted
  * @param user - the user the recipe is deleting for
  */
-var deleteFavRecipeForUser = (recipe, user) => {
-    for (var i = 0; i < favRecords[user].length; i++) {
-        if (favRecords[user][i].uri === recipe.uri) {
-            favRecords[user].splice(i, 1);
+var deleteFavRecipeForUser = (deleting) => {
+    for (var i = 0; i < favRecords[deleting.user].length; i++) {
+        if (favRecords[deleting.user][i].uri === deleting.uri) {
+            favRecords[deleting.user].splice(i, 1);
             fs.writeFileSync(favouritesFile, JSON.stringify(favRecords, undefined, 2));
             break;
         }

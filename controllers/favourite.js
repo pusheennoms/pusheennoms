@@ -9,4 +9,7 @@ router.post('/', function (req, res) {
     res.redirect('back');
 });
 
+router.post('/delete', function (req, res) {
+    utils.deleteFavRecipeForUser(req.body);
+});
 module.exports = router;

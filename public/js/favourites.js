@@ -103,6 +103,7 @@ function addToFavoritesList(recipe) {
 function addRecipeLabelBtn(recipe) {
     var recipeTab = document.getElementById('favRecipeLabel');
 
+    // The label on the side
     var recipeLabelBtn = document.createElement('button');
     recipeLabelBtn.className = "recipeLabelLinks";
     recipeLabelBtn.innerHTML = recipe.label;
@@ -111,16 +112,34 @@ function addRecipeLabelBtn(recipe) {
         openRecipe(ev, recipe)
     };
 
+    // The hidden form for deleting the recipe
+    var delForm = document.createElement('form');
+    let id = recipe.uri.toString().split('#');
+    delForm.id = 'del-' + id[1];
+
     var delRecipeBtn = document.createElement('a');
     delRecipeBtn.className = "delFavBtn";
     delRecipeBtn.innerHTML = " delete";
     delRecipeBtn.onclick = function (ev) {
         deleteRecipe(ev, recipe);
-        $(`#${recipe.uri}`).replaceWith($(`#${recipe.uri}`).clone());
         hideAllContents();
     };
 
+    var hiddenDel = document.createElement('input');
+    hiddenDel.setAttribute('type', 'hidden');
+    hiddenDel.setAttribute('name', 'uri');
+    hiddenDel.setAttribute('value', recipe.uri);
+    delForm.appendChild(hiddenDel);
+
+    var hiddenUser = document.createElement('input');
+    hiddenUser.setAttribute('type', 'hidden');
+    hiddenUser.setAttribute('name', 'user');
+    hiddenUser.setAttribute('value', JSON.parse(localStorage.getItem('currentUser')));
+    delForm.appendChild(hiddenUser);
+
+    // Append all children
     recipeLabelBtn.appendChild(delRecipeBtn);
+    recipeTab.appendChild(delForm);
     recipeTab.appendChild(recipeLabelBtn);
 }
 
@@ -140,6 +159,22 @@ function deleteRecipe(ev, recipe) {
             // Delete label from modal
             let elmt = document.getElementById(recipe.uri);
             elmt.parentNode.removeChild(elmt);
+
+            let id = recipe.uri.toString().split('#');
+            let delForm = $('#del-' + id[1]);
+            delForm.on('submit', function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/favourite/delete',
+                    data: delForm.serialize(),
+                    success: function () {
+                        swal('deleted');
+                    }
+                })
+            });
+            delForm.submit();
 
             break;
         }
