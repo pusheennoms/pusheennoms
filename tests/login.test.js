@@ -14,7 +14,7 @@ describe("testing validating registration", () => {
     test("valid input", () => {
         expect(utils.validateInput("username", "password")).toBeTruthy();
     });
-
+  
     test("username 4 chars", () => {
     	expect(utils.validateInput("123","password")).toBeFalsy();
     	expect(utils.validateInput("1234","password")).toBeTruthy();
@@ -53,3 +53,4 @@ describe("testing authenticate chef", () => {
         expect(utils.authenticateChef("123", "123")).toBe("no username")
     })
 });
+
