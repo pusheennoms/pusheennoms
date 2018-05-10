@@ -52,6 +52,11 @@ var noRepeatFavs = (recipe, user) => {
     return !found;
 };
 
+/**
+ * Delete a recipes from the favourites for a user
+ * @param recipe - the recipe to be deleted
+ * @param user - the user the recipe is deleting for
+ */
 var deleteFavRecipeForUser = (recipe, user) => {
     for (var i = 0; i < favRecords[user].length; i++) {
         if (favRecords[user][i].uri === recipe.uri) {
