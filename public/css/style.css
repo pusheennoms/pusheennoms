@@ -1,20 +1,24 @@
 body {
 /* style of the whole website*/
-	font-family: "Bubblegum Sans", sans-serif;
+	font-family: 'Swanky and Moo Moo';
+    font-weight: bold;
 	background-color: #89CFF0;
 	overflow-x: hidden;
 }
 /* classes */
 .texts {
 	text-align: center;
+    font-family: 'Swanky and Moo Moo';
+    font-size: 25px;
 	/*font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;*/
 }
 .added-ingredients {
 /* style of search history */
 	text-align: center;
 	font-family: 'Swanky and Moo Moo';
-	font-size: 30px;
-	margin:3%;
+	font-size: 25px;
+	margin:1%;
+    height: 1vh;
 }
 .butts {
 	width: 100%;
@@ -223,17 +227,16 @@ body {
 	text-align: left;
 	font-size: 20px;
 	background-color: white;
-	padding:5%;
+	padding:2%;
 	position: relative;
-	margin: 5% 5% 5%;
+	margin: 2% 2% 2%;
 }
 #food-list {
 	position: relative;
 	/*background-color: blue;*/
 	height: 80%;
 	margin: 0% 3% 0% 3%;
-	overflow-y: scroll;
-	overflow-x: hidden;
+	
 }
 #cat-ingredients-div {
 	/*background-color: red;*/
@@ -276,7 +279,13 @@ body {
 }
 #welcome-msg {
 	font-size: 225%;
-    font-family: Impact;
+    font-family: "Swanky and Moo Moo";
+    font-weight: bold;
+}
+
+#welcome-user-msg {
+    font-family: "Swanky and Moo Moo";
+    font-weight: bold;
 }
 #food-search {
 	width: 25%;
@@ -400,4 +409,10 @@ a:visited {
     
 }
 
-/*test */
+#searchlist {
+    text-align: center;
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 20vh;
+}
