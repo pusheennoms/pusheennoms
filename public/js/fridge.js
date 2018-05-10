@@ -6,17 +6,46 @@ var vegList = [], // object list
     vegListSaved = ["potato","carrot","tomato","bellPepper","garlic","eggplant","corn","cucumber","beef","chicken"];
     emptySlot = []; // un-occupied slots after delete is used
 
-/* ---------- temporary input box for testing, to be changed when merged with hbs ------------- */
+/* ---------- fridge input box ------------- */
 var fridgeInput = document.getElementById("inputBox");
 
-inputBox.onkeyup = function (ev) {
+/**
+ * check if the input string is blank or white space only
+ * @param {str} string - the input string
+ * returns true if blank
+ * returns false if it has content
+ */
+function checkBlank(str) {
+    if (str.trim() == "") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * change a non-blank input into an arrary format
+ * @param {text} string - the input string
+ * @param {list} array - the array that contains existing inputs
+ * returns the formatted string with duplicate entries removed as an array
+ */
+function formatInput(text, list) {
+    var temp = text.split(',');
+    temp = temp.map(str => str.trim()); // remove all leading and trailing spaces
+    temp = temp.filter(x => !list.includes(x)); // remove duplicate entries    
+    return temp;
+}
+
+// fridge input box event listener
+fridgeInput.onkeyup = function (ev) {
     if (ev.keyCode == 13) {
-        if (this.value == "") {
+         // disallow blank entry
+        if (checkBlank(this.value)) {
             return;
-        } // disallow blank entry
-        var temp = this.value.split(','); // convert input into an array
-        temp = temp.filter(x => !vegListImport.includes(x)); // find all non-duplicate entries
-        vegListImport = vegListImport.concat(temp); // add non-duplicate entries into existing array
+        }
+        // add non-duplicate entries into existing array
+        var temp = formatInput(this.value, vegListImport);
+        vegListImport = vegListImport.concat(temp);
         populate(temp); // create objects associated with non-duplicate entries
     }
 };
@@ -42,22 +71,55 @@ var bgImg = document.getElementById("fridgeBG"),
     botClose = document.getElementById("botClose"),
     tempBox = document.getElementById("tempBox");
 
-// fridge door control switch    
-var doorState = [1, 1]; // slot 0 top door, slot 1 bottom door, default open
-
+/* ------------------------------ delete button -------------------------------- */
 // delete controller
-var delState = 0,
+var delState = false,
     delButton = document.getElementById("fridgeDelete");
 
-delButton.addEventListener("click", function () {
-    if (delState == 0) {
-        delState = 1;
-        this.style.backgroundColor = "red";
+/**
+ * toggle background color of a dom object based on a boolean variable
+ * @param {state} boolean - the boolean variable in question
+ * @param {object} object - the dom object to be manipulated
+ * returns the flipped boolean state
+ */
+function delToggle(state, object) {
+    if (!state) {
+        object.style.backgroundColor = "red";
+        return true;
     } else {
-        delState = 0;
-        this.style.backgroundColor = "";
+        object.style.backgroundColor = "";
+        return false;
     }
-});
+}
+
+// delete button event listener
+delButton.onclick = () => {
+    delState = delToggle(delState,delButton);
+};
+
+
+/* ------------------------------ fridge content -------------------------------- */
+
+/**
+ * find the index of the object in an object array that matches a custom variable in a dom object
+ * @param {object} object - the target dom object
+ * @param {objList} array - the object data array to search through
+ * returns the index of the dom object data in the object array
+ */
+function searchIndex(object, objList) {
+    return objList.findIndex(x => x.id == object.dataset.tag);
+}
+
+/**
+ * determine the row and column slots of an object based on the slot number assigned
+ * @param {slot} integer - the slot number of the object
+ * returns the row and column number of this slot
+ */
+function findPosition(slot) {
+    var row = Math.floor(slot / 3);
+    var column = slot % 3;
+    return [row, column];
+}
 
 /**
  * move created fridge contents to the correct position
@@ -65,9 +127,11 @@ delButton.addEventListener("click", function () {
  */
 function movePosition(object) {
     // find the index of this item in vegList
-    index = vegList.findIndex(x => x.id == object.dataset.tag);
-    row = Math.floor(vegList[index].slot / 3);
-    column = vegList[index].slot % 3;
+    var index = searchIndex(object,vegList);
+    // determine the row and column number
+    [row, column] = findPosition(vegList[index].slot);
+
+    // row position
     switch (row) {
         case 0:
         case 1:
@@ -80,8 +144,11 @@ function movePosition(object) {
 
     }
 
+    // column position
     object.style.left = String(230 + column * 65) + "px";
 }
+
+/*------------------------------------------- fridge doors -------------------------------- */
 
 /**
  * Deselect all items in the list in fridge
@@ -89,11 +156,14 @@ function movePosition(object) {
  */
 function hideItems(list) {
     for (var i = 0; i < list.length; i += 1) {
-        var index = vegList.findIndex(x => x.id == list[i].dataset.tag);
+        var index = searchIndex(list[i],vegList);
         vegList[index].active = 1;
         list[i].style.opacity = 0.2;
     }
 }
+
+// fridge door control switch    
+var doorState = [true, true]; // slot 0 top door, slot 1 bottom door, default open
 
 /**
  * Display the fridge based on door open/close state
@@ -103,13 +173,13 @@ function displayDoor() {
 
     // top door
     switch (doorState[0]) {
-        case 0: // door closed
+        case false: // door closed
             freezer.style.display = "none";
             topDoor.style.display = "none";
             topClose.style.display = "block";
             hideItems(freezer.children);
             break;
-        case 1: // door open
+        case true: // door open
             freezer.style.display = "block";
             topDoor.style.display = "block";
             topClose.style.display = "none";
@@ -117,13 +187,13 @@ function displayDoor() {
 
     // bottom door
     switch (doorState[1]) {
-        case 0: // door closed
+        case false: // door closed
             contents.style.display = "none";
             botDoor.style.display = "none";
             botClose.style.display = "block";
             hideItems(contents.children);
             break;
-        case 1: // door open
+        case true: // door open
             contents.style.display = "block";
             botDoor.style.display = "block";
             botClose.style.display = "none";
@@ -136,10 +206,10 @@ function displayDoor() {
  * @param {integer} door - 0 refer to top door, 1 refer to bottom door
  */
 function changeDoor(door) {
-    if (doorState[door] == 0) {
-        doorState[door] = 1;
+    if (doorState[door] == false) {
+        doorState[door] = true;
     } else {
-        doorState[door] = 0;
+        doorState[door] = false;
     }
     displayDoor();
 }
@@ -148,41 +218,36 @@ function changeDoor(door) {
 topDoor.onclick = () => {
     changeDoor(0);
 };
+
 botDoor.onclick = () => {
     changeDoor(1);
 };
+
 topClose.onclick = () => {
     changeDoor(0);
 };
+
 botClose.onclick = () => {
     changeDoor(1);
 };
 
 /**
-=======
-topDoor.onclick = () => {changeDoor(0);};
-botDoor.onclick = () => {changeDoor(1);};
-topClose.onclick = () => {changeDoor(0);};
-botClose.onclick = () => {changeDoor(1);};
-
-/**
  * Check if an image file exists
- * @param {string} source - name of the image file
+ * @param {source} string - name of the image file
+ * @param {item} object - the dom object to attach image to
  */
-function check_img(source) {
+function checkImg(source, item) {
     var img = new Image();
     img.src = "../imgs/" + source + ".png";
-    img.onload = () => {return true;}
-    img.onerror = () => {return false;}
+    img.onerror = () => {item.style.backgroundImage = "url(../imgs/box.png)";};
+    return true;
 }
 
 /** 
->>>>>>> c306932f68795077a241204aa40cd054980f5f33
  * Auto generate objects for each fridge item and store in VegList
  * @param {list} list - list of names of fridge contents
  */
 function populate(list) {
-    console.log(list);
     var extra = vegList.length; // slot shift
     for (var i = 0; i < list.length; i += 1) {
         if (vegList.length >= 15) {  // fridge full
@@ -195,10 +260,8 @@ function populate(list) {
         item.dataset.tag = list[i];
 
         // check if image file exist
-        if (check_img(list[i])) {
-            item.style.backgroundImage = "url(../imgs/" + list[i] + ".png)";            
-        } else {
-            item.style.backgroundImage = "url(../imgs/box.png)";
+        if (checkImg(list[i], item)) {
+            item.style.backgroundImage = "url(../imgs/" + list[i] + ".png)";                        
         }
 
         item.style.display = "block";
@@ -296,7 +359,7 @@ function delObject(object, index) {
  */
 function selectVeg(object) {
     // find the index of this item in vegList
-    index = vegList.findIndex(x => x.id == object.dataset.tag);
+    var index = searchIndex(object,vegList);
 
     if (delState == 0) { // delete is inactive, select items
         if (vegList[index].active == 1) {
@@ -319,7 +382,7 @@ function selectVeg(object) {
  */
 function hoverVeg(object, exit = 0) {
     // find the index of this item in vegList   
-    index = vegList.findIndex(x => x.id == object.dataset.tag);
+    var index = searchIndex(object,vegList);
 
     object.style.cursor = "pointer";
     if (vegList[index].active == 1) {
