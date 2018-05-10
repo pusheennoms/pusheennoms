@@ -36,6 +36,7 @@ describe("delete favourite recipes", () => {
         let favRecords = JSON.parse(fs.readFileSync(favFile));
         let record = favRecords['carson'][0];
         utils.deleteFavRecipeForUser(record, 'carson');
-        expect(favRecords['carson']).not.toContainEqual(record);
+        let newFavRecords = JSON.parse(fs.readFileSync(favFile));
+        expect(newFavRecords['carson']).not.toContainEqual(record);
     });
 });

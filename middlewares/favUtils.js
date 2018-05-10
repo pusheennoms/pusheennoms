@@ -20,7 +20,6 @@ var addToFavFile = (recipe) => {
     recipe = JSON.parse(recipe);
     var currentUser = recipe.currentUser;
 
-
     if (noRepeatFavs(recipe, currentUser)) {
         if (favRecords[currentUser]) {
             favRecords[currentUser].push(recipe);
@@ -53,6 +52,15 @@ var noRepeatFavs = (recipe, user) => {
     return !found;
 };
 
+var deleteFavRecipeForUser = (recipe, user) => {
+    for (var i = 0; i < favRecords[user].length; i++) {
+        if (favRecords[user][i].uri === recipe.uri) {
+            favRecords[user].splice(i, 1);
+            fs.writeFileSync(favouritesFile, JSON.stringify(favRecords, undefined, 2));
+            break;
+        }
+    }
+};
 
 /**
  * Get the favourite recipes of a user
@@ -66,5 +74,6 @@ var getFavRecipesForUser = (currentUser) => {
 module.exports = {
     addToFavFile,
     getFavRecipesForUser,
-    noRepeatFavs
+    noRepeatFavs,
+    deleteFavRecipeForUser
 };
