@@ -27,17 +27,17 @@ describe("testing validating registration", () => {
 
     test("user and pass empty", () => {
     	expect(utils.validateInput("", "")).toBeFalsy();
-    })
+    });
 });
 
 describe("testing no repeat users", () => {
 	test("repeat user", () => {
-        expect(utils.noRepeatUsers(chefRecords[0].username)).toBeFalsy();
-    });
+		expect(utils.noRepeatUsers(chefRecords[0].username)).toBeFalsy();
+	});
 
     test("different user", () => {
-        expect(utils.noRepeatUsers("123")).toBeTruthy();
-    })
+		expect(utils.noRepeatUsers("123")).toBeTruthy();
+    });
 });
 
 describe("testing authenticate chef", () => {
@@ -53,4 +53,3 @@ describe("testing authenticate chef", () => {
         expect(utils.authenticateChef("123", "123")).toBe("no username")
     })
 });
-

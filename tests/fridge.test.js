@@ -1,18 +1,5 @@
 const utils = require('../public/js/fridge2');
 
-
-describe("check if an input is blank or white space only", () => {
-    test("blank", () => {
-        expect(utils.checkBlank("")).toBeTruthy();
-    })
-    test("white space only", () => {
-        expect(utils.checkBlank("   ")).toBeTruthy();
-    })
-    test("non-blank input", () => {
-        expect(utils.checkBlank("abcd")).toBeFalsy();
-    })
-});
-
 describe("format a non-blank input string based on an existing array", () => {
     test("no commas, blank existing array", () => {
         expect(utils.formatInput("abcd",[])).toEqual(["abcd"]);
@@ -36,6 +23,7 @@ describe("format a non-blank input string based on an existing array", () => {
         expect(utils.formatInput("ab,cd",["ab","cd","ef"])).toEqual([]);
     })
 });
+
 
 describe("toggle a boolean variable and modify an object", () => {
     test("false input", () => {
@@ -70,5 +58,18 @@ describe("fidn row and column number of an item in the fridge based on the slot 
 describe("check if an image source exist, replace the dom object background with an default image if it doesn't", () => {
     test("function does not crash", () => {
         expect(utils.checkImg(1,object)).toBeTruthy();
+    })
+});
+
+
+describe("check if an input is blank or white space only", () => {
+    test("blank", () => {
+        expect(utils.checkBlank("")).toBeTruthy();
+    })
+    test("white space only", () => {
+        expect(utils.checkBlank("   ")).toBeTruthy();
+    })
+    test("non-blank input", () => {
+        expect(utils.checkBlank("abcd")).toBeFalsy();
     })
 });
