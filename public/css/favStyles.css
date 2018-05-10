@@ -18,18 +18,24 @@
     font-family: Marker Felt, fantasy;
     font-size: 25px;
 }
-#closeFavButt {
+.modalButts {
     width: 80px;
     color: black;
     font-size: 15px;
     font-family: Marker Felt, fantasy;
     background-color: white;
     border-radius: 10px;
-    right: 3%;
-    bottom:2%;
+    bottom:0.5%;
+}
+#closeFavButt {
+    right: 1%;
     position: absolute;
 }
+#delFavButt {
+    right: 16%;
 
+    position: absolute;
+}
 /* Style the tab */
 #favRecipeLabel {
     float: left;
@@ -37,6 +43,8 @@
     background-color: #f1f1f1;
     width: 30%;
     height: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 #favRecipeLabel button {
     display: block;
@@ -69,6 +77,8 @@
     height: 300px;
     font-size: 15px;
     font-family: "Trebuchet MS";
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 #favModalRecipe {

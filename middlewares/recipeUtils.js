@@ -5,8 +5,8 @@ const querystring = require('querystring');
 
 /**
  * The main function that does the API call to get the recipes
- * @param {list of object} params - the object from home.hbs, where the keys are the API attributes
- * @param {results of func} callback - prints the results
+ * @param {object} params - the object from home.hbs, where the keys are the API attributes
+ * @param {function} callback - prints the results
  */
 module.exports.getRecipes = (params, callback) => {
 
