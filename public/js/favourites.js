@@ -30,6 +30,14 @@ function showSavedFavRecipes() {
  * @param {object} recipe - the recipe being opened
  */
 function openRecipe(ev, recipe) {
+    hideAllContents();
+    showRecipe(ev, recipe);
+}
+
+/**
+ * Hide all contents of the favourites modal
+ */
+function hideAllContents() {
     var content = document.getElementsByClassName("favRecipeContent");
     for (i = 0; i < content.length; i++) {
         content[i].style.display = "none";
@@ -39,7 +47,6 @@ function openRecipe(ev, recipe) {
         links[i].className = links[i].className.replace(" active", "");
     }
 
-    showRecipe(ev, recipe);
 }
 
 /**
@@ -99,11 +106,44 @@ function addRecipeLabelBtn(recipe) {
     var recipeLabelBtn = document.createElement('button');
     recipeLabelBtn.className = "recipeLabelLinks";
     recipeLabelBtn.innerHTML = recipe.label;
+    recipeLabelBtn.id = recipe.uri;
     recipeLabelBtn.onclick = function (ev) {
         openRecipe(ev, recipe)
     };
 
+    var delRecipeBtn = document.createElement('a');
+    delRecipeBtn.className = "delFavBtn";
+    delRecipeBtn.innerHTML = " delete";
+    delRecipeBtn.onclick = function (ev) {
+        deleteRecipe(ev, recipe);
+        $(`#${recipe.uri}`).replaceWith($(`#${recipe.uri}`).clone());
+        hideAllContents();
+    };
+
+    recipeLabelBtn.appendChild(delRecipeBtn);
     recipeTab.appendChild(recipeLabelBtn);
+}
+
+/**
+ * Deletes the favourite recipe
+ * @param {Event} ev - the mouseclick event
+ * @param {object} recipe - the recipe to be deleted
+ */
+function deleteRecipe(ev, recipe) {
+    for (var i = 0; i < favRecipes.length; i++) {
+        if (favRecipes[i].uri === recipe.uri) {
+
+            // Delete from local storage
+            favRecipes.splice(i, 1);
+            localStorage.setItem('favRecipes', JSON.stringify(favRecipes));
+
+            // Delete label from modal
+            let elmt = document.getElementById(recipe.uri);
+            elmt.parentNode.removeChild(elmt);
+
+            break;
+        }
+    }
 }
 
 /**
