@@ -170,7 +170,6 @@ botClose.onclick = () => {
     changeDoor(1);
 };
 
-
 /**
  * Auto generate objects for each fridge item and store in VegList
  * @param {list} list - list of names of fridge contents
