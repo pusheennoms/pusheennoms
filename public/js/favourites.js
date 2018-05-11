@@ -121,8 +121,20 @@ function addRecipeLabelBtn(recipe) {
     delRecipeBtn.className = "delFavBtn";
     delRecipeBtn.innerHTML = " delete";
     delRecipeBtn.onclick = function (ev) {
-        deleteRecipe(ev, recipe);
-        hideAllContents();
+        swal('Are you sure you want to remove this recipe from favourites?', {
+            buttons: {
+                cancel: "No",
+                catch: {
+                    text: "Yes",
+                    value: "remove"
+                }
+            }
+        }).then((value) => {
+            if (value === "remove") {
+                deleteRecipe(ev, recipe);
+                hideAllContents();
+            }
+        });
     };
 
     var hiddenDel = document.createElement('input');
