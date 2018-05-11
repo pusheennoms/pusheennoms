@@ -37,17 +37,33 @@ function showSearchHistory() {
         ndiv.innerHTML = currentSearchHistory[currentUser][i].value;
         var tags = Object.values(currentSearchHistory[currentUser][i]);
         for (j = 1; j < tags.length - 1; j++) {
-            if (` ${tags[j]} `.trim() == "exclude") {
+            if (` ${tags[j]} `.trim() === "exclude") {
                 break;
             }
-            ndiv.innerHTML += ` ${tags[j]} `;
+            if (j===1) { //Health tags
+                var ntext1 = document.createElement("i");
+                ntext1.style.color = "black";
+                ntext1.innerHTML += ` ${tags[j]} `;
+                ndiv.appendChild(ntext1);
+            }
+            if (j===2) { //Diet tags
+                var ntext2 = document.createElement("i");
+                ntext2.style.color = "green";
+                ntext2.innerHTML += ` ${tags[j]} `;
+                ndiv.appendChild(ntext2);
+            }
+            if (j===3) { //Exclude tags
+                var ntext3 = document.createElement("u");
+                ntext3.style.color = "red";
+                ntext3.innerHTML += ` ${tags[j]} `;
+                ndiv.append(ntext3);
+            }
         }
 
         ndiv.className = "added-ingredients";
         ndiv.style.cursor = "pointer";
         ndiv.setAttribute('href', '/search?' + currentSearchHistory[currentUser][i].query);
         ndiv.setAttribute("id", "food-" + i);
-
         foodList.appendChild(ndiv2);
         ndiv2.appendChild(ndiv);
         ndiv2.appendChild(document.createElement('br'));
