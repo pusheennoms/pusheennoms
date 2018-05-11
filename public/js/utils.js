@@ -15,25 +15,31 @@ function submitForms() {
         dietLabels: [],
         excluded: document.getElementById('allergies-bar').value
     };
-    // Get healthLabels
-    for (var i = 0; i < healthFormElements.length; i++) {
-        if (healthFormElements[i].checked) {
-            params.healthLabels.push(healthFormElements[i].value);
-        }
-    }
-    // Get dietLabels
-    for (var i = 0; i < dietFormElements.length; i++) {
-        if (dietFormElements[i].checked) {
-            params.dietLabels.push(dietFormElements[i].value);
-        }
-    }
 
-    // Add search parameters to search history
-    addIngredient(params);
+    // Main search bar query cannot be empty
+    if (params.q && params.q.length > 0) {
+        // Get healthLabels
+        for (var i = 0; i < healthFormElements.length; i++) {
+            if (healthFormElements[i].checked) {
+                params.healthLabels.push(healthFormElements[i].value);
+            }
+        }
+        // Get dietLabels
+        for (var i = 0; i < dietFormElements.length; i++) {
+            if (dietFormElements[i].checked) {
+                params.dietLabels.push(dietFormElements[i].value);
+            }
+        }
 
-    // Submit final search form
-    document.getElementById('final-search-query').value = jQuery.param(params);
-    document.getElementById('final-form').submit();
+        // Add search parameters to search history
+        addIngredient(params);
+
+        // Submit final search form
+        document.getElementById('final-search-query').value = jQuery.param(params);
+        document.getElementById('final-form').submit();
+    } else {
+        swal('Error: Empty Query', 'Please enter at least 1 ingredient or dish in the search bar!', 'error');
+    }
 }
 
 /**
