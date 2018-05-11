@@ -200,3 +200,28 @@ hiddenpush.onclick = function () {
         showPusheen();
     }
 };
+
+var infoModal = document.getElementById("infoModal");
+
+function openInfo() {
+    infoModal.style.display = "block";
+}
+
+function closeInfo() {
+    infoModal.style.display = "none";
+}
+
+var logo = document.getElementById("logo");
+
+logo.addEventListener("click", function(){
+    openInfo();
+})
+
+/**
+ * fridge display close when clicking outside the window
+ */
+window.addEventListener("click", function(ev) {
+    if (ev.target == infoModal) {
+        infoModal.style.display = "none";
+    }
+})
