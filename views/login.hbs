@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> Recipes! </title>
-        <link rel="icon" href="../imgs/icon.png">
-        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/loginStyle.css" rel="stylesheet" type="text/css"/>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    </head>
+<head>
+    <title> Recipes! </title>
+    <link rel="icon" href="../imgs/icon.png">
+    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/loginStyle.css" rel="stylesheet" type="text/css"/>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
 
-    <body>
-        <div id="banner" >
-            <img id="titleLogo" src="../imgs/logo.png">
-            <img id="logo" src="../imgs/pusheats.png">
+<body>
+<div id="banner" >
+    <img id="titleLogo" src="../imgs/logo.png">
+    <img id="logo" src="../imgs/pusheats.png">
 
-        </div>
+</div>
 
 
-        <div id="mainbod">
-            <button onclick="login()" class="mainbutt"> Login </button>
-            
-            <div id='loginform' class="forms">
-                <br>
-                <form action="/getpass" method="post" id='credentialsForm'>
-                    Username: <input type="text" name="username"><br>
-                    Password: <input type="password" name="password"><br>
-                    <div class="submitBox">
-                        <button type="submit" value="Submit" class="submitButton">Submit</button>
-                    </div>
-                </form>
+<div id="mainbod">
+    <button onclick="login()" class="mainbutt"> Login </button>
+
+    <div id='loginform' class="forms">
+        <br>
+        <form action="/getpass" method="post" id='credentialsForm'>
+            Username: <input type="text" name="username" required oninvalid="validatingInput(this,2)" oninput="setCustomValidity('')"><br>
+            Password: <input type="password" name="password" required oninvalid="validatingInput(this,3)" oninput="setCustomValidity('')"><br>
+            <div class="submitBox">
+                <button type="submit" value="Submit" class="submitButton">Submit</button>
             </div>
+        </form>
+    </div>
 
-            <br><br>
-            <button onclick="register()" class="mainbutt"> Register </button>
+    <br><br>
+    <button onclick="register()" class="mainbutt"> Register </button>
 
-            <div id='registerform' class="forms">
-                <br>
-                <form action="/registerchef" method="post" id='newRegister' >
-                    Username: <input type="text" name="username"><br>
-                    Password: <input type="password" name="password"><br>
-                    <div class="submitBox">
-                        <button type="submit" value="Submit" class="submitButton">Create</button>
-                    </div>
-                </form>
+    <div id='registerform' class="forms" >
+        <br>
+        <form name="submitForm" action="/registerchef"  method="post" id='newRegister'>
+            Username: <input type="text" id="regUsername" name="username" pattern=".{4,}" required oninvalid="validatingInput(this,0)" oninput="setCustomValidity('')"><br>
+            Password: <input type="password" id="regPassword" name="password" pattern=".{4,}" required oninvalid="validatingInput(this,1)" oninput="setCustomValidity('')"><br>
+            <div class="submitBox">
+                <button type="submit" value="Submit" class="submitButton" >Create</button>
             </div>
-        </div>
+        </form>
+    </div>
+</div>
 
-        <script>
-        </script>
-        <script src="../js/login.js"></script>
-        <script> notifyuser({{status}})</script>
-        <script> checkCredentials({{usernameDoesNotExist}})</script>
-    </body>
+<script>
+</script>
+<script src="../js/login.js"></script>
+<script> notifyuser({{status}})</script>
+<script> checkCredentials({{usernameDoesNotExist}})</script>
+</body>
 </html>

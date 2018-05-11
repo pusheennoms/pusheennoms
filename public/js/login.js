@@ -35,7 +35,7 @@ function login() {
  */
 function checkCredentials(usernameDoesNotExist) {
     if (usernameDoesNotExist) {
-        swal('Error','Username does not exist!','error');
+        swal('Error','Username does not exist.','error');
     } 
 }
 
@@ -45,9 +45,27 @@ function notifyuser(state){
         swal('Congratulations!', 'You have created a new account.', 'success')
     }
     else if (state === 1) {
-        swal('Error', 'Username and password must have more than 3 characters.', 'error')
+        swal('Error', 'Username or password incorrect.','error')
     }
     else if (state === 2) {
         swal('Error', 'Username already exists.', 'error')
     }
+
+}
+
+function validatingInput(textbox, num){
+
+    if (textbox.value === '') {
+        textbox.setCustomValidity('Input field cannot be empty.');
+    }
+    else if (textbox.value.length <= 3 && num === 0)  {
+        textbox.setCustomValidity('Username has to be at least 4 characters.');
+    }
+    else if (textbox.value.length <= 3 && num === 1)  {
+        textbox.setCustomValidity('Password has to be at least 4 characters.');
+    }
+    else {
+        textbox.setCustomValidity('');
+    }
+    return true;
 }
