@@ -31,11 +31,7 @@
     right: 1%;
     position: absolute;
 }
-#delFavButt {
-    right: 16%;
 
-    position: absolute;
-}
 /* Style the tab */
 #favRecipeLabel {
     float: left;
