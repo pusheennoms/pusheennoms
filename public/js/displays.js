@@ -69,14 +69,14 @@ function showResults() {
 
         node.href = currentResults[i].recipe.url;
         node.innerHTML = currentResults[i].recipe.label;
-        nodeLABELS.innerHTML = "<br> HEALTH: " + currentResults[i].recipe.healthLabels + "<br> DIET: " + currentResults[i].recipe.dietLabels +
+        nodeLABELS.innerHTML = "HEALTH: " + currentResults[i].recipe.healthLabels + "<br> DIET: " + currentResults[i].recipe.dietLabels +
             "<br> INGREDIENTS: " + currentResults[i].recipe.ingredientLines;
 
         node.setAttribute('id', i.toString());
         node.setAttribute('target', '_new');
         node.className = 'searchResultsLink';
 
-        nodeLABELS.style.maxHeight = "30vh";
+        nodeLABELS.style.height = "30vh";
         nodeLABELS.style.overflowY = "auto";
         nodeIMAGE.className = 'searchResultsImgs';
         nodeIMAGE.setAttribute("src", currentResults[i].recipe.image);
@@ -115,16 +115,16 @@ function showResults() {
         saveFavBtn.className = 'saveFavBtn';
         saveFavBtn.innerHTML = 'Save to Favourites';
 
-        nDiv.appendChild(node);
-        nDiv.appendChild(document.createElement('br'));
         nDiv.appendChild(nodeIMAGE);
+        nDiv.appendChild(document.createElement('br'));
+        nDiv.appendChild(node);
         nDiv.appendChild(nodeLABELS);
         nDiv.appendChild(hiddenFavForm);
         nDiv.appendChild(saveFavBtn);
         nDiv.appendChild(document.createElement('br'));
         nDiv.appendChild(document.createElement('br'));
 
-        nDiv.className = "col-sm-6 col-md-4";
+        nDiv.className = "col-md-4 col-lg-3 col-sm-6 col-xs-12";
         nDiv.style.display = "inline-block";
         nDiv.style.float = "none";
         nDiv.style.verticalAlign = "top";

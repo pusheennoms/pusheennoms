@@ -121,8 +121,20 @@ function addRecipeLabelBtn(recipe) {
     delRecipeBtn.className = "delFavBtn";
     delRecipeBtn.innerHTML = " delete";
     delRecipeBtn.onclick = function (ev) {
-        deleteRecipe(ev, recipe);
-        hideAllContents();
+        swal('Are you sure you want to remove this recipe from favourites?', {
+            buttons: {
+                cancel: "No",
+                catch: {
+                    text: "Yes",
+                    value: "remove"
+                }
+            }
+        }).then((value) => {
+            if (value === "remove") {
+                deleteRecipe(ev, recipe);
+                hideAllContents();
+            }
+        });
     };
 
     var hiddenDel = document.createElement('input');
@@ -164,14 +176,10 @@ function deleteRecipe(ev, recipe) {
             let delForm = $('#del-' + id[1]);
             delForm.on('submit', function (e) {
                 e.preventDefault();
-
                 $.ajax({
                     type: 'POST',
                     url: '/favourite/delete',
-                    data: delForm.serialize(),
-                    success: function () {
-                        swal('deleted');
-                    }
+                    data: delForm.serialize()
                 })
             });
             delForm.submit();

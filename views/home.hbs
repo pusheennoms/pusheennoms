@@ -52,86 +52,86 @@
     <div class="food-divs" id="search-ingredients-div">
         <div class="food-divs" id="cat-ingredients-div">
             <!-- buncha ingredients dropdown -->
-             <div id="searchBar">
-                    <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
-                    <div id="food-list" style="display: none;">
-                        <b id="searchHist"> Search History </b>
-                        <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
-                    </div>
+            <div id="searchBar">
+                <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
+                <div id="food-list" style="display: none;">
+                    <b id="searchHist"> Search History </b>
+                    <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
                 </div>
+            </div>
             <div id='health-diet'>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="allbuttons col-md-4">
-                        <button class="collapsible"> HEALTH</button>
-                        <div class="content">
-                            <form id='ingredient-form'>
-                                <label class="listcontainer">No Dairy
-                                    <input type="checkbox" name="health" value='dairy-free'>
-                                    <span class="checkmark"></span>
-                                </label>
+                            <button class="collapsible"> HEALTH</button>
+                            <div class="content">
+                                <form id='ingredient-form'>
+                                    <label class="listcontainer">No Dairy
+                                        <input type="checkbox" name="health" value='dairy-free'>
+                                        <span class="checkmark"></span>
+                                    </label>
 
-                                <label class="listcontainer">No Peanuts
-                                    <input type="checkbox" name="health" value='peanut-free'>
-                                    <span class="checkmark"></span>
-                                </label>
+                                    <label class="listcontainer">No Peanuts
+                                        <input type="checkbox" name="health" value='peanut-free'>
+                                        <span class="checkmark"></span>
+                                    </label>
 
-                                <label class="listcontainer">No Soy
-                                    <input type="checkbox" name="health" value='soy-free'>
-                                    <span class="checkmark"></span>
-                                </label>
+                                    <label class="listcontainer">No Soy
+                                        <input type="checkbox" name="health" value='soy-free'>
+                                        <span class="checkmark"></span>
+                                    </label>
 
-                                <label class="listcontainer">No Pork
-                                    <input type="checkbox" name="health" value='dairy-free'>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </form>
+                                    <label class="listcontainer">No Pork
+                                        <input type="checkbox" name="health" value='dairy-free'>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </form>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="allbuttons col-md-4">
-                        <button class="collapsible"> DIET</button>
-                    <!-- <div id="enter-stuff"> -->
-                        <div class="content">
-                            <form id='ingredient-form1'>
-                                <label class="listcontainer">Balanced
-                                    <input type="checkbox" name="diet" value='balanced'>
-                                    <span class="checkmark"></span>
-                                </label>
+                        <div class="allbuttons col-md-4">
+                            <button class="collapsible"> DIET</button>
+                            <!-- <div id="enter-stuff"> -->
+                            <div class="content">
+                                <form id='ingredient-form1'>
+                                    <label class="listcontainer">Balanced
+                                        <input type="checkbox" name="diet" value='balanced'>
+                                        <span class="checkmark"></span>
+                                    </label>
 
-                                <label class="listcontainer">High Fiber
-                                    <input type="checkbox" name="diet" value='high-fiber'>
-                                    <span class="checkmark"></span>
-                                </label>
+                                    <label class="listcontainer">High Fiber
+                                        <input type="checkbox" name="diet" value='high-fiber'>
+                                        <span class="checkmark"></span>
+                                    </label>
 
-                                <label class="listcontainer" name="diet" value='high-protein'>High Protein
-                                    <input type="checkbox" name="diet" value='high-protein'>
-                                    <span class="checkmark"></span>
-                                </label>
+                                    <label class="listcontainer" name="diet" value='high-protein'>High Protein
+                                        <input type="checkbox" name="diet" value='high-protein'>
+                                        <span class="checkmark"></span>
+                                    </label>
 
-                                <label class="listcontainer">Low Fat
-                                    <input type="checkbox" name="diet" value='low-fat'>
-                                    <span class="checkmark"></span>
-                                </label>
+                                    <label class="listcontainer">Low Fat
+                                        <input type="checkbox" name="diet" value='low-fat'>
+                                        <span class="checkmark"></span>
+                                    </label>
 
-                                <label class="listcontainer">Low Sodium
-                                    <input type="checkbox" name="diet" value='low-sodium'>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </form>
+                                    <label class="listcontainer">Low Sodium
+                                        <input type="checkbox" name="diet" value='low-sodium'>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </form>
+                            </div>
                         </div>
-                    </div>                
-                    
-                    <div class="allbuttons col-md-4">
-                        <button class="collapsible"> EXCLUDE INGREDIENTS</button>
-                        <div class="content">
-                            <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
+
+                        <div class="allbuttons col-md-4">
+                            <button class="collapsible"> EXCLUDE INGREDIENTS</button>
+                            <div class="content">
+                                <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
-               
-               
+
+
 
                 <!-- Place holder for the final combination of all forms -->
                 <form id="final-form" method="get" action="/search">
@@ -139,29 +139,8 @@
                 </form>
                 <button id="submitbutt" onclick="submitForms()"> Submit</button>
 
-                <button class="collapsible" onclick="fridgeToggle()"> FRIDGE</button>
+                <button class="collapsible" onclick="fridgeOpen()"> FRIDGE</button>
 
-                <div id="fridge">
-                    <div id="tempBox"></div>
-                    <input type="text" id="inputBox">
-                    <button id="default">Default</button>
-                    <button id="fridgeDelete">Delete</button>
-
-                    <div id="fridgeDisplay">
-                        <div id="fridgeBG">
-                            <div id="topDoor"></div>
-                            <div id="botDoor"></div>
-                            <div id="topClose"></div>
-                            <div id="botClose"></div>
-                        </div>
-                        <div id="freezer">
-
-                        </div>
-                        <div id="contents">
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -183,7 +162,7 @@
 </div>
 
 <div class="listcontainer">
-        <button type="button" data-toggle="modal" data-target="#favModal" id="favbutt">
+    <button type="button" data-toggle="modal" data-target="#favModal" id="favbutt">
         Favourites
     </button>
 
@@ -204,11 +183,33 @@
             </div>
         </div>
     </div>
-
 </div>
+
+<div id="fridge">
+    <div id="tempBox"></div>
+    <input type="text" id="inputBox">
+    <button id="default">Default</button>
+    <button id="fridgeDelete">Delete</button>
+    <button type="button" class="close" aria-label="Close" onclick="fridgeClose()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+
+    <div id="fridgeDisplay">
+        <div id="fridgeBG">
+            <div id="topDoor"></div>
+            <div id="botDoor"></div>
+            <div id="topClose"></div>
+            <div id="botClose"></div>
+        </div>
+        <div id="freezer"></div>
+        <div id="contents"></div>
+    </div>
+</div>
+
 
 <script src="../js/favourites.js"></script>
 <script src="../js/displays.js"></script>
+<script src="../js/fridge2.js"></script>
 <script src="../js/fridge.js"></script>
 <script src="../js/utils.js"></script>
 <script> setFavouriteRecipes("{{favRecipes}}")</script>

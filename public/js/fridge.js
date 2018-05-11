@@ -1,10 +1,10 @@
 // contents inside fridge
 var vegList = [], // object list
     vegListImport = []; // record of created objects for faster processing
-    /* ------------------- to be changed to blank when merged with hbs ----------------- */
-    // list of items saved from elsewhere; currently just a default list of items
-    vegListSaved = ["potato","carrot","tomato","bellPepper","garlic","eggplant","corn","cucumber","beef","chicken"];
-    emptySlot = []; // un-occupied slots after delete is used
+/* ------------------- to be changed to blank when merged with hbs ----------------- */
+// list of items saved from elsewhere; currently just a default list of items
+vegListSaved = ["potato", "carrot", "tomato", "bellPepper", "garlic", "eggplant", "corn", "cucumber", "beef", "chicken"];
+emptySlot = []; // un-occupied slots after delete is used
 
 /* ---------- fridge input box ------------- */
 var fridgeInput = document.getElementById("inputBox");
@@ -13,7 +13,7 @@ var fridgeInput = document.getElementById("inputBox");
 // fridge input box event listener
 fridgeInput.onkeyup = function (ev) {
     if (ev.keyCode == 13) {
-         // disallow blank entry
+        // disallow blank entry
         if (checkBlank(this.value)) {
             return;
         }
@@ -171,7 +171,7 @@ botClose.onclick = () => {
 };
 
 
-/** 
+/**
  * Auto generate objects for each fridge item and store in VegList
  * @param {list} list - list of names of fridge contents
  */
@@ -189,7 +189,7 @@ function populate(list) {
 
         // check if image file exist
         if (checkImg(list[i], item)) {
-            item.style.backgroundImage = "url(../imgs/" + list[i] + ".png)";                        
+            item.style.backgroundImage = "url(../imgs/" + list[i] + ".png)";
         }
 
         item.style.display = "block";
@@ -340,7 +340,7 @@ function fridgeClose() {
 /**
  * fridge display close when clicking outside the window
  */
-window.onclick = function(ev) {
+window.onclick = function (ev) {
     if (ev.target == fridgeDiv) {
         fridgeClose();
     }
