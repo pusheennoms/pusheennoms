@@ -3,7 +3,7 @@
 }
 #favbutt {
     width: 130px;
-    font-size: 18px;
+    font-size: 19px;
     float: right;
     background-color: #7575a3;
     border-color: #7575a3;
@@ -11,7 +11,7 @@
     right: 20px;
     position: absolute;
     color: white;
-    font-family: Marker Felt, fantasy;
+    font-family: Swanky and Moo Moo;
     cursor:pointer;
 }
 #favModalTitle {

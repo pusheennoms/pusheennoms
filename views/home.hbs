@@ -11,7 +11,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Swanky and Moo Moo' rel='stylesheet'>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
     <script>
         /**
          * Set the results taken from the server after the search and calls the function to show results on page
@@ -26,7 +25,6 @@
             document.getElementById('welcome-user-msg').innerHTML =
                     `Welcome, ${currentUser}!`;
             showSearchHistory();
-
             if (currentResults && currentResults.length > 1) {
                 showResults();
             }
@@ -54,73 +52,86 @@
     <div class="food-divs" id="search-ingredients-div">
         <div class="food-divs" id="cat-ingredients-div">
             <!-- buncha ingredients dropdown -->
-            <div id='health-diet'>
-                <button class="collapsible"> HEALTH</button>
-                <div class="content">
-                    <form id='ingredient-form'>
-                        <label class="listcontainer">No Dairy
-                            <input type="checkbox" name="health" value='dairy-free'>
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="listcontainer">No Peanuts
-                            <input type="checkbox" name="health" value='peanut-free'>
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="listcontainer">No Soy
-                            <input type="checkbox" name="health" value='soy-free'>
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="listcontainer">No Pork
-                            <input type="checkbox" name="health" value='dairy-free'>
-                            <span class="checkmark"></span>
-                        </label>
-                    </form>
-                </div>
-                <button class="collapsible"> DIET</button>
-                <!-- <div id="enter-stuff"> -->
-                <div class="content">
-                    <form id='ingredient-form1'>
-                        <label class="listcontainer">Balanced
-                            <input type="checkbox" name="diet" value='balanced'>
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="listcontainer">High Fiber
-                            <input type="checkbox" name="diet" value='high-fiber'>
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="listcontainer" name="diet" value='high-protein'>High Protein
-                            <input type="checkbox" name="diet" value='high-protein'>
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="listcontainer">Low Fat
-                            <input type="checkbox" name="diet" value='low-fat'>
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="listcontainer">Low Sodium
-                            <input type="checkbox" name="diet" value='low-sodium'>
-                            <span class="checkmark"></span>
-                        </label>
-                    </form>
-                </div>
-                <button class="collapsible"> EXCLUDE INGREDIENTS</button>
-                <div class="content">
-                    <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
-                </div>
-                <button class="collapsible"> SEARCH</button>
-                <div class="content">
+             <div id="searchBar">
                     <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
                     <div id="food-list" style="display: none;">
                         <b id="searchHist"> Search History </b>
                         <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
                     </div>
                 </div>
+            <div id='health-diet'>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="allbuttons col-md-4">
+                        <button class="collapsible"> HEALTH</button>
+                        <div class="content">
+                            <form id='ingredient-form'>
+                                <label class="listcontainer">No Dairy
+                                    <input type="checkbox" name="health" value='dairy-free'>
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="listcontainer">No Peanuts
+                                    <input type="checkbox" name="health" value='peanut-free'>
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="listcontainer">No Soy
+                                    <input type="checkbox" name="health" value='soy-free'>
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="listcontainer">No Pork
+                                    <input type="checkbox" name="health" value='dairy-free'>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="allbuttons col-md-4">
+                        <button class="collapsible"> DIET</button>
+                    <!-- <div id="enter-stuff"> -->
+                        <div class="content">
+                            <form id='ingredient-form1'>
+                                <label class="listcontainer">Balanced
+                                    <input type="checkbox" name="diet" value='balanced'>
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="listcontainer">High Fiber
+                                    <input type="checkbox" name="diet" value='high-fiber'>
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="listcontainer" name="diet" value='high-protein'>High Protein
+                                    <input type="checkbox" name="diet" value='high-protein'>
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="listcontainer">Low Fat
+                                    <input type="checkbox" name="diet" value='low-fat'>
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <label class="listcontainer">Low Sodium
+                                    <input type="checkbox" name="diet" value='low-sodium'>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </form>
+                        </div>
+                    </div>                
+                    
+                    <div class="allbuttons col-md-4">
+                        <button class="collapsible"> EXCLUDE INGREDIENTS</button>
+                        <div class="content">
+                            <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+               
+               
 
                 <!-- Place holder for the final combination of all forms -->
                 <form id="final-form" method="get" action="/search">
