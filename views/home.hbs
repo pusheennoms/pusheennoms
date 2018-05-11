@@ -132,35 +132,15 @@
                 </div>
 
 
+
                 <!-- Place holder for the final combination of all forms -->
                 <form id="final-form" method="get" action="/search">
                     <input id="final-search-query" type="hidden" name="query">
                 </form>
                 <button id="submitbutt" onclick="submitForms()"> Submit</button>
 
-                <button class="collapsible" onclick="fridgeToggle()"> FRIDGE</button>
+                <button class="collapsible" onclick="fridgeOpen()"> FRIDGE</button>
 
-                <div id="fridge">
-                    <div id="tempBox"></div>
-                    <input type="text" id="inputBox">
-                    <button id="default">Default</button>
-                    <button id="fridgeDelete">Delete</button>
-
-                    <div id="fridgeDisplay">
-                        <div id="fridgeBG">
-                            <div id="topDoor"></div>
-                            <div id="botDoor"></div>
-                            <div id="topClose"></div>
-                            <div id="botClose"></div>
-                        </div>
-                        <div id="freezer">
-
-                        </div>
-                        <div id="contents">
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -182,7 +162,7 @@
 </div>
 
 <div class="listcontainer">
-        <button type="button" data-toggle="modal" data-target="#favModal" id="favbutt">
+    <button type="button" data-toggle="modal" data-target="#favModal" id="favbutt">
         Favourites
     </button>
 
@@ -198,16 +178,39 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="modalButts" id="delFavButt" onclick="delFavs()">Delete</button>
                     <button type="button" class="modalButts" id="closeFavButt" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
+
+<div id="fridge">
+    <div id="tempBox"></div>
+    <input type="text" id="inputBox">
+    <button id="default">Default</button>
+    <button id="fridgeDelete">Delete</button>
+    <button type="button" class="close" aria-label="Close" onclick="fridgeClose()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+
+    <div id="fridgeDisplay">
+        <div id="fridgeBG">
+            <div id="topDoor"></div>
+            <div id="botDoor"></div>
+            <div id="topClose"></div>
+            <div id="botClose"></div>
+        </div>
+        <div id="freezer"></div>
+        <div id="contents"></div>
+    </div>
+</div>
+
 
 <script src="../js/favourites.js"></script>
 <script src="../js/displays.js"></script>
+<script src="../js/fridge2.js"></script>
 <script src="../js/fridge.js"></script>
 <script src="../js/utils.js"></script>
 <script> setFavouriteRecipes("{{favRecipes}}")</script>
