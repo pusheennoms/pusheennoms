@@ -325,22 +325,25 @@ function hoverVeg(object, exit = 0) {
 }
 
 var fridgeDiv = document.getElementById("fridge")
+
 /**
  * fridge display open
  */
 function fridgeOpen() {
     fridgeDiv.style.display = "block";
 }
+
 /**
  * fridge display close
  */
 function fridgeClose() {
     fridgeDiv.style.display = "none";
 }
+
 /**
  * fridge display close when clicking outside the window
  */
-window.onclick = function(ev) {
+window.onclick = function (ev) {
     if (ev.target == fridgeDiv) {
         fridgeClose();
     }
