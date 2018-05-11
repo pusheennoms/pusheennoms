@@ -1,40 +1,45 @@
 body {
-/* style of the whole website*/
-	font-family: 'Swanky and Moo Moo';
+    /* style of the whole website*/
+    font-family: 'Swanky and Moo Moo';
     font-weight: bold;
-	background-color: #89CFF0;
-	overflow-x: hidden;
+    background-color: #89CFF0;
+    overflow-x: hidden;
 }
+
 /* classes */
 .texts {
-	text-align: center;
+    text-align: center;
     font-family: 'Swanky and Moo Moo';
     font-size: 25px;
-	/*font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;*/
+    /*font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;*/
 }
+
 .added-ingredients {
-/* style of search history */
-	text-align: center;
-	font-family: 'Swanky and Moo Moo';
-	font-size: 25px;
-	margin:1%;
+    /* style of search history */
+    text-align: center;
+    font-family: 'Swanky and Moo Moo';
+    font-size: 25px;
+    margin: 1%;
     height: 1vh;
 }
+
 .butts {
-	width: 100%;
-	margin: 2%;
+    width: 100%;
+    margin: 2%;
 }
+
 .food-divs {
-/* div of the butts */
-	top: 0.5%;
-	bottom: 0.5%;
-	height:56.5%;
-	width:95%;
-	position: relative;
-	margin: auto;
+    /* div of the butts */
+    top: 0.5%;
+    bottom: 0.5%;
+    height: 56.5%;
+    width: 95%;
+    position: relative;
+    margin: auto;
 }
+
 .collapsible {
-/* style of collapsible butts */
+    /* style of collapsible butts */
     background-color: #777;
     color: white;
     cursor: pointer;
@@ -47,12 +52,14 @@ body {
     border-radius: 12px;
     margin: 10px;
 }
+
 .active, .collapsible:hover {
-/* makes the collapsible BE COLLAPSIBLE*/
+    /* makes the collapsible BE COLLAPSIBLE*/
     background-color: #555;
 }
-.content {	
-/* transition and style of text */
+
+.content {
+    /* transition and style of text */
     padding: 0 18px;
     margin: 1%;
     max-height: 0;
@@ -62,7 +69,7 @@ body {
 }
 
 .listcontainer {
-/* The container of the collapsible list*/
+    /* The container of the collapsible list*/
     display: block;
     position: relative;
     padding-left: 35px;
@@ -76,14 +83,15 @@ body {
 }
 
 .listcontainer input {
-/* Hide the browser's default checkbox */
+    /* Hide the browser's default checkbox */
     position: absolute;
     opacity: 0;
     cursor: pointer;
 }
+
 /* Create a custom checkbox - CHECK BOX*/
 .checkmark {
-	/* position and style of the checkbox */
+    /* position and style of the checkbox */
     position: absolute;
     top: 0;
     left: 0;
@@ -93,16 +101,17 @@ body {
 }
 
 .listcontainer:hover input ~ .checkmark {
-	/*when you hover at collapsible's checkmark, it changes color to darker gray*/
-    background-color: #ccc;	
+    /*when you hover at collapsible's checkmark, it changes color to darker gray*/
+    background-color: #ccc;
 }
 
 .listcontainer input:checked ~ .checkmark {
-	/*when you click at collapsible's checkmark, it changes color to blue*/
+    /*when you click at collapsible's checkmark, it changes color to blue*/
     background-color: #2196F3;
 }
+
 .checkmark:after {
-    content: "";	/*this line shows the checkmark to be in the box*/
+    content: ""; /*this line shows the checkmark to be in the box*/
     position: absolute;
     display: none;
 }
@@ -134,26 +143,28 @@ body {
     top: 0;
     right: 0;
 }
+
 #logo {
-	position:relative;
-	height:100%;
-	float:right;
-	cursor: pointer;
+    position: relative;
+    height: 100%;
+    float: right;
+    cursor: pointer;
 }
 
 #title {
-	color: #89CFF0;
-	font-family: Marker Felt, fantasy;
-	position: fixed;
-	cursor: default;
-	text-align: left;
-	left:10%;
-	font-size: 450%;
+    color: #89CFF0;
+    font-family: Marker Felt, fantasy;
+    position: fixed;
+    cursor: default;
+    text-align: left;
+    left: 10%;
+    font-size: 450%;
 }
-#search-results{
-	display: inline;
+
+#search-results {
+    display: inline;
     position: absolute;
-	width: 100%;
+    width: 100%;
     font-family: "Trebuchet MS";
     padding: 20px 20px;
 }
@@ -175,42 +186,48 @@ body {
 
 /*control panel stuff*/
 #ctrlpanel {
-	position:fixed;
-	height:100%;
+    position: fixed;
+    height: 100%;
     width: 80%;
-	background-color: white;
-	top:0;
+    background-color: white;
+    top: 0;
     left: -80%;
-	box-shadow: 3px 0 3px #888888;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	transition: left 0.5s;
+    box-shadow: 3px 0 3px #888888;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    transition: left 0.5s;
 }
+
 #cp-banner {
-	background-color: gray;
+    background-color: gray;
 }
-#ur-ingredients /*title*/{
-	font-size: 180%;
-	position: relative;
-	margin-top: 0;
-	/*z-index: 1;*/
-	color: white;
-	font-family: Marker Felt, fantasy;
-	height: 200%;
+
+#ur-ingredients /*title*/
+{
+    font-size: 180%;
+    position: relative;
+    margin-top: 0;
+    /*z-index: 1;*/
+    color: white;
+    font-family: Marker Felt, fantasy;
+    height: 200%;
 }
+
 #ingredients-img { /*pusheen image*/
-	position: relative;
-	display: block;
+    position: relative;
+    display: block;
     margin-left: auto;
     margin-right: auto;
-	height:25%;	
+    height: 25%;
 
 }
+
 #butt-wraps {
-	display: flex;
-	justify-content: center;
+    display: flex;
+    justify-content: center;
 }
-#hiddenpusheen{
+
+#hiddenpusheen {
     position: fixed;
     top: -2%;
     height: 12%;
@@ -218,49 +235,53 @@ body {
     transition: left 0.5s;
     cursor: pointer;
 }
+
 /*search ingredients div*/
 #search-ingredients-div {
-	display:block;
+    display: block;
 }
+
 #ingredient-bar {
-	width: 90%;
-	box-sizing: border-box;
-	border-radius: 5%;
-	text-align: left;
-	font-size: 20px;
-	background-color: white;
-	padding:2%;
-	position: relative;
-	margin: 2% 2% 2%;
+    width: 90%;
+    box-sizing: border-box;
+    border-radius: 5%;
+    text-align: left;
+    font-size: 20px;
+    background-color: white;
+    padding: 2%;
+    position: relative;
+    margin: 2% 2% 2%;
 }
+
 #food-list {
-	position: relative;
-	/*background-color: blue;*/
-	height: 80%;
-	margin: 0% 3% 0% 3%;
+    position: relative;
+    /*background-color: blue;*/
+    height: 80%;
+    margin: 0% 3% 0% 3%;
     text-align: center;
 }
+
 #cat-ingredients-div {
-	/*background-color: red;*/
-	display: block;
+    /*background-color: red;*/
+    display: block;
 }
 
 /*actual page */
 #big-page-div {
-	background-color: #DCDCDC;
+    background-color: #DCDCDC;
     width: 100%;
-	height:88%;
-	right:-5px;
-	bottom:-3%;
-	z-index:-1;
-	position: fixed;
-	overflow-y: scroll;
-	transition: width .5s;
-
+    height: 88%;
+    right: -5px;
+    bottom: -3%;
+    z-index: -1;
+    position: fixed;
+    overflow-y: scroll;
+    transition: width .5s;
 
 }
+
 #bg-img {
-	opacity: 0.3;
+    opacity: 0.3;
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -271,16 +292,18 @@ body {
     max-width: 100%;
     height: 100%;
 }
+
 #welcome-div {
-	/*background-color: yellow;*/
-	position: relative;
-	margin: auto;
-	text-align: center;
-	top:15%;
-	overflow: hidden;
+    /*background-color: yellow;*/
+    position: relative;
+    margin: auto;
+    text-align: center;
+    top: 15%;
+    overflow: hidden;
 }
+
 #welcome-msg {
-	font-size: 225%;
+    font-size: 225%;
     font-family: "Swanky and Moo Moo";
     font-weight: bold;
 }
@@ -289,20 +312,22 @@ body {
     font-family: "Swanky and Moo Moo";
     font-weight: bold;
 }
+
 #food-search {
-	width: 25%;
-	border-radius: 5%;
-	text-align: left;
+    width: 25%;
+    border-radius: 5%;
+    text-align: left;
     font-size: 20%;
-	padding:1%;
-	position: relative;
+    padding: 1%;
+    position: relative;
 }
+
 #searchHist {
-	text-align: center;
+    text-align: center;
 }
 
 #submitbutt {
-	background-color: #7575a3;
+    background-color: #7575a3;
     color: white;
     cursor: pointer;
     width: 100%;
@@ -312,70 +337,73 @@ body {
     font-size: 15px;
     border-radius: 12px;
     margin: 10px;
-    padding:2px;
-   }
+    padding: 2px;
+}
+
 #clearbutt {
-	background-color: #777;
-	color: white;
-	cursor: pointer;
-	width: 30%;
-	height: 2%;
-	border: none;
-	text-align: center;
-	font-size: 15px;
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    width: 30%;
+    height: 2%;
+    border: none;
+    text-align: center;
+    font-size: 15px;
     border-radius: 12px;
     margin: 10px;
     padding: 1px 5px;
 }
 
 a {
-	font-size: 15px;
+    font-size: 15px;
 }
+
 a:link {
-	color:#4d0099;
+    color: #4d0099;
 }
 
 a:visited {
-	color:#e6005c;
+    color: #e6005c;
 }
 
 #mainbod {
-	top:50vh;
-	left:50vw;
-	width:50vw;
-	height:80vh;
-	margin:-25vh 0 0 -25vw;
-	position:absolute;
-	text-align: center;
+    top: 50vh;
+    left: 50vw;
+    width: 50vw;
+    height: 80vh;
+    margin: -25vh 0 0 -25vw;
+    position: absolute;
+    text-align: center;
 }
 
 .mainbutt {
-	display:inline-block;
-	width:50%;
-	background-color:	#FF4500;
-	border: white solid 2px;
+    display: inline-block;
+    width: 50%;
+    background-color: #FF4500;
+    border: white solid 2px;
     color: white;
     cursor: pointer;
-    padding:2px;
+    padding: 2px;
     height: 10%;
     text-align: center;
     font-size: 25px;
     border-radius: 12px;
     margin: 10px;
 }
+
 #enter-stuff {
-	/*background-color: red;*/
-	position: relative;
-	top:30%;
-	height:400%;
-	width:100%;
+    /*background-color: red;*/
+    position: relative;
+    top: 30%;
+    height: 400%;
+    width: 100%;
 }
 
 .saveFavBtn {
     background-color: #7575a3;
     color: white;
     cursor: pointer;
-	width: 180px;
+    width: 180px;
     height: 20px;
     border: none;
     text-align: center;
@@ -407,8 +435,10 @@ a:visited {
     z-index: 10;
 }
 
-#delFavBtn {
-    
+.delFavBtn {
+    color: #7b7bb0;
+    float: right;
+    font-size: 12px;
 }
 
 #searchlist {

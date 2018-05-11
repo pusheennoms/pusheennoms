@@ -119,7 +119,7 @@ function addRecipeLabelBtn(recipe) {
 
     var delRecipeBtn = document.createElement('a');
     delRecipeBtn.className = "delFavBtn";
-    delRecipeBtn.innerHTML = " delete";
+    delRecipeBtn.innerHTML = " remove";
     delRecipeBtn.onclick = function (ev) {
         swal('Are you sure you want to remove this recipe from favourites?', {
             buttons: {
