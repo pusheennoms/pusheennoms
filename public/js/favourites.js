@@ -176,14 +176,10 @@ function deleteRecipe(ev, recipe) {
             let delForm = $('#del-' + id[1]);
             delForm.on('submit', function (e) {
                 e.preventDefault();
-
                 $.ajax({
                     type: 'POST',
                     url: '/favourite/delete',
-                    data: delForm.serialize(),
-                    success: function () {
-                        swal('deleted');
-                    }
+                    data: delForm.serialize()
                 })
             });
             delForm.submit();
