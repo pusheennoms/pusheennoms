@@ -169,6 +169,12 @@ body {
     padding: 20px 20px;
 }
 
+.searchResultDiv {
+    display: inline-block;
+    height: 80vh;
+    vertical-align: top;
+}
+
 .searchResultsLink {
     display: inline-block;
     width: 100%;
@@ -411,6 +417,10 @@ a:visited {
     padding: 2px;
     border-radius: 12px;
     margin: 10px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
 }
 
 #current-user {
