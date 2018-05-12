@@ -85,14 +85,14 @@ function showResults() {
 
         node.href = currentResults[i].recipe.url;
         node.innerHTML = currentResults[i].recipe.label;
-        nodeLABELS.innerHTML = "HEALTH: " + currentResults[i].recipe.healthLabels + "<br> DIET: " + currentResults[i].recipe.dietLabels +
-            "<br> INGREDIENTS: " + currentResults[i].recipe.ingredientLines;
+        nodeLABELS.innerHTML = "HEALTH: " + currentResults[i].recipe.healthLabels + "<br>DIET: " + currentResults[i].recipe.dietLabels +
+            "<br>INGREDIENTS: " + currentResults[i].recipe.ingredientLines;
 
         node.setAttribute('id', i.toString());
         node.setAttribute('target', '_new');
         node.className = 'searchResultsLink';
 
-        nodeLABELS.style.height = "30vh";
+        nodeLABELS.style.maxHeight = "20vh";
         nodeLABELS.style.overflowY = "auto";
         nodeIMAGE.className = 'searchResultsImgs';
         nodeIMAGE.setAttribute("src", currentResults[i].recipe.image);
@@ -140,10 +140,7 @@ function showResults() {
         nDiv.appendChild(document.createElement('br'));
         nDiv.appendChild(document.createElement('br'));
 
-        nDiv.className = "col-md-4 col-lg-3 col-sm-6 col-xs-12";
-        nDiv.style.display = "inline-block";
-        nDiv.style.float = "none";
-        nDiv.style.verticalAlign = "top";
+        nDiv.className = "searchResultDiv col-md-4 col-lg-3 col-sm-6 col-xs-12";
 
         document.getElementById('search-row').appendChild(nDiv);
     }
