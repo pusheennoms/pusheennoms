@@ -12,4 +12,5 @@ router.post('/', function (req, res) {
 router.post('/delete', function (req, res) {
     utils.deleteFavRecipeForUser(req.body);
 });
+
 module.exports = router;

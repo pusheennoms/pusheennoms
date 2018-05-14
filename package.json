@@ -28,5 +28,23 @@
     "jshint": "^2.9.5",
     "path": "^0.12.7",
     "request": "^2.85.0"
+  },
+  "jshintConfig": {
+    "esversion": 6,
+    "curly": true,
+    "eqeqeq": true,
+    "undef": true,
+    "unused": true,
+    "funcscope": false,
+    "globals": {
+      "jquery": true,
+      "require": true,
+      "module": true,
+      "console": true,
+      "process": true,
+      "__dirname": true,
+      "document": true,
+      "localStorage": true
+    }
   }
 }
