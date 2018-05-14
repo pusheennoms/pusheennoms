@@ -4,11 +4,23 @@ const fs = require('fs');
 const path = require('path');
 
 const favFile = path.join(__dirname, '../data/favourites.json');
+let record = {
+    label: 'test',
+    uri: 'testuri',
+    currentUser: 'carson'
+};
+
+describe("testing adding new favourite recipe", () => {
+    test("add new recipe", () => {
+        utils.addToFavFile(JSON.stringify(record));
+        let favRecords = JSON.parse(fs.readFileSync(favFile));
+        expect(favRecords['carson']).toContainEqual(record);
+    })
+});
 
 describe("testing no repeat favourite recipes", () => {
-    const favRecords = JSON.parse(fs.readFileSync(favFile));
     test("repeat recipe", () => {
-        expect(utils.noRepeatFavs(favRecords['carson'][0], 'carson')).toBeFalsy();
+        expect(utils.noRepeatFavs(record, 'carson')).toBeFalsy();
     });
 
     test("different recipe", () => {
@@ -19,24 +31,14 @@ describe("testing no repeat favourite recipes", () => {
     })
 });
 
-describe("testing adding new favourite recipe", () => {
-    test("add new recipe", () => {
-        let record = {
-            test: 'test',
-            currentUser: 'carson'
-        };
-        utils.addToFavFile(JSON.stringify(record));
-        let favRecords = JSON.parse(fs.readFileSync(favFile));
-        expect(favRecords['carson']).toContainEqual(record);
-    })
-});
-
 describe("delete favourite recipes", () => {
     test("delete recipe", () => {
-        let favRecords = JSON.parse(fs.readFileSync(favFile));
-        let record = favRecords['carson'][0];
-        utils.deleteFavRecipeForUser(record, 'carson');
+        let delRecord = {
+            uri: record.uri,
+            user: 'carson'
+        };
+        utils.deleteFavRecipeForUser(delRecord);
         let newFavRecords = JSON.parse(fs.readFileSync(favFile));
-        expect(newFavRecords['carson']).not.toContainEqual(record);
+        expect(newFavRecords['carson']).not.toContainEqual(delRecord);
     });
 });
