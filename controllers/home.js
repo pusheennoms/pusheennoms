@@ -8,7 +8,7 @@ var resultRecipes = '';
 /**
  * Controller for queries through the address bar
  **/
-router.get('/', function (req, res, next) {
+router.get('/', function (req, res) {
     utils.getRecipes(req.query, (error, results) => {
         resultRecipes = JSON.stringify(results.recipes);
         res.render('home.hbs', {

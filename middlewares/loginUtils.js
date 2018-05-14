@@ -8,7 +8,7 @@ var chefRecords = [];
  *See if userpass.json exists on drive, if not create file, if so read contents into var chefRecords
  **/
 if (fs.existsSync(userpassFile) && fs.readFileSync(userpassFile).length !== 0) {
-    getFile = fs.readFileSync(userpassFile);
+    let getFile = fs.readFileSync(userpassFile);
     chefRecords = JSON.parse(getFile);
 }
 
@@ -49,10 +49,10 @@ var validateInput = (userInp, passInp) => {
 var noRepeatUsers = (newUser) => {
     for (var i = 0; i < chefRecords.length; i++) {
         if (chefRecords[i].username.indexOf(newUser) === 0) {
-            return false
+            return false;
         }
     }
-    return true
+    return true;
 };
 
 /**
