@@ -464,3 +464,58 @@ a:visited {
     width: 33%;
 }
 
+/* info box */
+#infoModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#infoBox {
+    position: absolute;
+    margin:auto;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    width:25%;
+    height:90%;
+    background-color: #edeff0;
+    border-radius: 5px;
+    border: #89CFF0 2px solid;
+}
+
+#closeInfo {
+    margin:15px;
+}
+
+#welcomeBox {
+    background-color: #89CFF0;
+    width:100%;
+    height:9%;
+}
+
+#welcomeText {
+    position:absolute;
+    margin-left:20px;
+    margin-top:14px;
+    font-size: 16px;
+    color:white;
+    font-family: "Trebuchet MS";
+}
+
+#textBox {
+    overflow:auto;
+    width:100%;
+    height:91%;
+}
+
+.infoText {
+    margin:20px;
+    font-family: "Trebuchet MS";
+}
