@@ -145,24 +145,25 @@ body {
 }
 
 #logo {
-    position: relative;
-    height: 100%;
-    float: right;
-    cursor: pointer;
+	position:relative;
+	height:100%;
+	float:right;
+	cursor: pointer;
+    z-index: 1;
 }
 
 #title {
-    color: #89CFF0;
-    font-family: Marker Felt, fantasy;
-    position: fixed;
-    cursor: default;
-    text-align: left;
-    left: 10%;
-    font-size: 450%;
+	color: #89CFF0;
+	font-family: Marker Felt, fantasy;
+	position: fixed;
+	cursor: default;
+	text-align: left;
+	left:10%;
+	font-size: 450%;
+    z-index: -1;
 }
-
-#search-results {
-    display: inline;
+#search-results{
+	display: inline;
     position: absolute;
     width: 100%;
     font-family: "Trebuchet MS";
@@ -336,21 +337,23 @@ body {
     background-color: #7575a3;
     color: white;
     cursor: pointer;
-    width: 100%;
-    height: 2%;
+    width: 25%;
+    height: 25%;
     border: none;
     text-align: center;
     font-size: 15px;
     border-radius: 12px;
     margin: 10px;
     padding: 2px;
+    left: 40%;
+    position: relative;
 }
 
 #clearbutt {
     background-color: #777;
     color: white;
     cursor: pointer;
-    width: 30%;
+    width: 20%;
     height: 2%;
     border: none;
     text-align: center;
@@ -358,6 +361,7 @@ body {
     border-radius: 12px;
     margin: 10px;
     padding: 1px 5px;
+
 }
 
 a {
@@ -445,6 +449,7 @@ a:visited {
     z-index: 10;
 }
 
+
 .delFavBtn {
     color: #7b7bb0;
     float: right;
@@ -463,6 +468,57 @@ a:visited {
     display: inline-block;
     width: 33%;
 }
+
+
+#iconlinks {
+    position: relative;
+    text-align: center;
+    height: 50%
+    width: 75%;
+    top: 80px; 
+    margin-bottom: 25px;
+    
+}
+
+#fridgeicon{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    cursor: pointer;
+    right: 30px;
+
+}
+
+#recipebookicon{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    cursor: pointer;
+
+}
+
+
+#searchicon{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    left: 20px;
+    cursor: pointer;
+
+}
+
+#fridgeicon:hover { 
+    background-color: white;
+}
+
+#searchicon:hover { 
+    background-color: white;
+}
+
+#recipebookicon:hover { 
+    background-color: white;
+}
+
 
 /* info box */
 #infoModal {
@@ -519,3 +575,4 @@ a:visited {
     margin:20px;
     font-family: "Trebuchet MS";
 }
+
