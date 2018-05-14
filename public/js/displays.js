@@ -143,6 +143,7 @@ function showResults() {
         nDiv.className = "searchResultDiv col-md-4 col-lg-3 col-sm-6 col-xs-12";
 
         document.getElementById('search-row').appendChild(nDiv);
+        document.getElementById("iconlinks").style.display = 'None';
     }
 }
 
@@ -198,6 +199,16 @@ hiddenpush.onclick = function () {
     }
 };
 
+
+
+document.getElementById("searchicon").addEventListener("click", function () {
+        document.getElementById("ctrlpanel").style.left = '0px';
+        hiddenpush.style.left = "77.5%";
+        pushleft = 0;
+
+});
+
+
 var infoModal = document.getElementById("infoModal");
 
 function openInfo() {
@@ -222,3 +233,4 @@ window.addEventListener("click", function(ev) {
         infoModal.style.display = "none";
     }
 })
+

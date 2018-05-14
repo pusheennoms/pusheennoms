@@ -62,7 +62,9 @@
             <div id='health-diet'>
                 <div class="container-fluid">
                     <div class="row">
+
                         <div class="allbuttons col-xs-4 col-sm-4 col-lg-4">
+
                             <button class="collapsible"> HEALTH</button>
                             <div class="content">
                                 <form id='ingredient-form'>
@@ -88,7 +90,9 @@
                                 </form>
                             </div>
                         </div>         
+
                         <div class="allbuttons col-xs-4 col-sm-4 col-lg-4">
+
                             <button class="collapsible"> DIET</button>
                             <!-- <div id="enter-stuff"> -->
                             <div class="content">
@@ -120,8 +124,10 @@
                                 </form>
                             </div>
                         </div>
+
                         
                         <div class="allbuttons col-xs-4 col-sm-4 col-lg-4">
+
                             <button class="collapsible"> EXCLUDE INGREDIENTS</button>
                             <div class="content">
                                 <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
@@ -137,8 +143,6 @@
                     <input id="final-search-query" type="hidden" name="query">
                 </form>
                 <button id="submitbutt" onclick="submitForms()"> Submit</button>
-
-                <button class="collapsible" onclick="fridgeOpen()"> FRIDGE</button>
 
             </div>
         </div>
@@ -157,8 +161,17 @@
             popular cooking websites! <br><br>
             To get started, type your ingredients from the control panel on the left.
         </p>
+    </div> 
+    <div id="iconlinksdiv">
+        <div id="iconlinks">
+            <img id="fridgeicon" onclick="fridgeOpen()" src="../imgs/fridge4.png">
+            <img id="recipebookicon" src="../imgs/recipebook1.png">
+            <img id="searchicon" src="../imgs/searchicon1.png">
+        </div>
     </div>
+    
 </div>
+
 
 <div class="listcontainer">
     <button type="button" data-toggle="modal" data-target="#favModal" id="favbutt">
