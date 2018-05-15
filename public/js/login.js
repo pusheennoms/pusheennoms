@@ -7,7 +7,7 @@ var active = [0, 1], //[0] for register, [1] for login, default has login open
 /** click register button to show registration menu, second click hide menu
  */
 function register() {
-    if (active[0] == 0) {
+    if (active[0] === 0) {
         regForm.style.display="block";
         logForm.style.display="none";
         active = [1,0];
@@ -20,7 +20,7 @@ function register() {
 /** click login button to show login menu, second click hide menu
  */
 function login() {
-    if (active[1] == 0) {
+    if (active[1] === 0) {
         regForm.style.display="none";
         logForm.style.display="block";
         active = [0,1];
@@ -50,7 +50,6 @@ function notifyuser(state){
     else if (state === 2) {
         swal('Error', 'Username already exists.', 'error')
     }
-
 }
 
 function validatingInput(textbox, num){
