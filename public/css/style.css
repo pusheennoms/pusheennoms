@@ -192,17 +192,22 @@ body {
 }
 
 /*control panel stuff*/
-#ctrlpanel {
+#outerpanel {
     position: fixed;
     height: 100%;
     width: 80%;
-    background-color: white;
     top: 0;
     left: -80%;
+    transition: left 0.5s;
+}
+
+#ctrlpanel {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: white;
     box-shadow: 3px 0 3px #888888;
     overflow-y: scroll;
-    overflow-x: hidden;
-    transition: left 0.5s;
 }
 
 #cp-banner {
@@ -235,10 +240,10 @@ body {
 }
 
 #hiddenpusheen {
-    position: fixed;
-    top: -2%;
-    height: 12%;
-    left: 0;
+    position: absolute;
+    top: -10px;
+    height: 75px;
+    right: -60px;
     transition: left 0.5s;
     cursor: pointer;
 }
