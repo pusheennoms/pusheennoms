@@ -58,5 +58,4 @@ router.post('/getpass', (request, response) => {
     }
 });
 
-
 module.exports = router;

@@ -56,7 +56,6 @@ function notifyuser(state){
     else if (state === 2) {
         swal('Error', 'Username already exists.', 'error');
     }
-
 }
 
 /**
