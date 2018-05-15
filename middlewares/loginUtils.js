@@ -48,8 +48,8 @@ var validateInput = (userInp, passInp) => {
  */
 var noRepeatUsers = (newUser) => {
     for (var i = 0; i < chefRecords.length; i++) {
-        if (chefRecords[i].username.indexOf(newUser) === 0) {
-            return false
+        if (chefRecords[i].username === newUser) {
+            return false;
         }
     }
     return true
