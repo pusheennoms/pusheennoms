@@ -47,11 +47,11 @@ router.post('/getpass', (request, response) => {
                 currentUser: inpUsername
             }]),
             favRecipes: favRecipes
-        });
+        })
     } else if (authenticationResult === 'no username') {
         response.render('login.hbs', {
             usernameDoesNotExist: true
-        });
+        })
     }
 });
 
