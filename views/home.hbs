@@ -6,6 +6,7 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     <link href="../css/favStyles.css" rel="stylesheet" type="text/css"/>
     <link href="../css/fridge.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/cookbook.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -39,6 +40,7 @@
     <p id="title" class="texts"><img id="titleLogo" src="../imgs/logo.png"></p>
 </div>
 
+
 <!-- ctrl panel -->
 <div id="outerpanel">
     <img id="hiddenpusheen" src="../imgs/hiddenpusheen.png">
@@ -60,6 +62,7 @@
                         <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
                     </div>
                 </div>
+
                 <div id='health-diet'>
                     <div class="container-fluid">
                         <div class="row">
@@ -124,11 +127,11 @@
                                         </label>
                                     </form>
                                 </div>
+
                             </div>
 
                             
                             <div class="allbuttons col-xs-4 col-sm-4 col-lg-4">
-
                                 <button class="collapsible"> EXCLUDE INGREDIENTS</button>
                                 <div class="content">
                                     <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
@@ -164,15 +167,15 @@
             popular cooking websites! <br><br>
             To get started, type your ingredients from the control panel on the left.
         </p>
-    </div> 
+    </div>
     <div id="iconlinksdiv">
         <div id="iconlinks">
             <img id="fridgeicon" onclick="fridgeOpen()" src="../imgs/fridge4.png">
-            <img id="recipebookicon" src="../imgs/recipebook1.png">
+            <img id="recipebookicon" src="../imgs/recipebook1.png" data-toggle="modal" data-target="#cookbookModal">
             <img id="searchicon" src="../imgs/searchicon1.png">
         </div>
     </div>
-    
+
 </div>
 
 
@@ -200,9 +203,38 @@
     </div>
 </div>
 
+<div class="listcontainer">
+    <div class="modal fade" id="cookbookModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="favModalTitle">Pusheen's Top Picks</h4>
+                </div>
+                <div class="modal-body" id="cookbookModal">
+                    <div id="cookbookContainer">
+                        <div class="caption-container">
+                            <a id="caption"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modalButts" id="closeFavButt" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="fridge">
+    <div id="searchBar2" style="display: none;">
+        <div id="fridgeinfo">Fridge Menu</div>
+                <input type="text" id="ingredient-bar2" name="q" placeholder="Ingredient list">
+                    <button id="submitbutt2" onclick="submitForms()"> Submit</button>
+                
+    </div>
+
     <div id="tempBox"></div>
-    <input type="text" id="inputBox">
+    <input type="text" id="inputBox" placeholder="Enter ingredients">
     <button id="default">Default</button>
     <button id="fridgeDelete">Delete</button>
     <button type="button" class="close" aria-label="Close" onclick="fridgeClose()">
@@ -261,6 +293,7 @@
 <script src="../js/displays.js"></script>
 <script src="../js/fridge2.js"></script>
 <script src="../js/fridge.js"></script>
+<script src="../js/cookbook.js"></script>
 <script src="../js/utils.js"></script>
 <script> setFavouriteRecipes("{{favRecipes}}")</script>
 </body>

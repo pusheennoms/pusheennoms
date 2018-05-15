@@ -8,7 +8,7 @@ var favRecords = {};
  *See if favourites.json exists on drive, if not create file, if so read contents into var chefRecords
  **/
 if (fs.existsSync(favouritesFile) && fs.readFileSync(favouritesFile).length !== 0) {
-    let getFile = fs.readFileSync(favouritesFile);
+   let getFile = fs.readFileSync(favouritesFile);
     favRecords = JSON.parse(getFile);
 }
 
@@ -53,7 +53,7 @@ var noRepeatFavs = (recipe, user) => {
 };
 
 /**
- * Deletes a favourite recipe for a user
+ * Delete a recipes from the favourites for a user
  * @param {object} deleting - the object containing the uri and user of the recipe being deleted
  */
 var deleteFavRecipeForUser = (deleting) => {
