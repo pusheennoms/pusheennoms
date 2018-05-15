@@ -29,5 +29,6 @@ module.exports.getRecipes = (params, callback) => {
             });
             console.log('Error beyond control');
         }
-    })
+    });
 };
+

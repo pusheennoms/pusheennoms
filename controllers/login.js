@@ -4,8 +4,9 @@ var router = express.Router();
 const utils = require('../middlewares/loginUtils');
 const favUtils = require('../middlewares/favUtils');
 
-router.get('/', function (req, res, next) {
-    res.render('login.hbs')
+
+router.get('/', function (req, res) {
+    res.render('login.hbs');
 });
 
 /**
@@ -54,6 +55,5 @@ router.post('/getpass', (request, response) => {
         })
     }
 });
-
 
 module.exports = router;
