@@ -238,6 +238,7 @@ freezer.onmouseout = (ev) => {
 
 /* -------- formatted output to be sent back to hbs --------- */
 var ingBar = document.getElementById("ingredient-bar");
+var ingBar2 = document.getElementById("ingredient-bar2");
 
 /**
  * format a string to be sent to search box
@@ -260,6 +261,7 @@ function print_list() {
 
     // formatted output to be sent to search box
     ingBar.value = temp;
+    ingBar2.value = temp;
 }
 
 /*--------------- delete feature insertion here ---------------------------*/
