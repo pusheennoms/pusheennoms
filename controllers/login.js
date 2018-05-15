@@ -32,8 +32,8 @@ router.post('/registerchef', (request, response) => {
  * Handles logging in the user
  */
 router.post('/getpass', (request, response) => {
-    inpUsername = request.body.username;
-    inpPassword = request.body.password;
+    var inpUsername = request.body.username;
+    var inpPassword = request.body.password;
 
     var authenticationResult = utils.authenticateChef(inpUsername, inpPassword);
     if (authenticationResult === 'authentication failure') {
@@ -41,7 +41,7 @@ router.post('/getpass', (request, response) => {
             status: 1
         });
     } else if (authenticationResult === 'logged in') {
-        favRecipes = JSON.stringify(favUtils.getFavRecipesForUser(inpUsername));
+        var favRecipes = JSON.stringify(favUtils.getFavRecipesForUser(inpUsername));
         response.render('home.hbs', {
             resultRecipes: JSON.stringify([{
                 currentUser: inpUsername
