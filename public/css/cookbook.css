@@ -2,6 +2,10 @@
     position: relative;
 }
 
+#caption {
+    color: white;
+}
+
 .cookbookSlides {
     display: none;
 }

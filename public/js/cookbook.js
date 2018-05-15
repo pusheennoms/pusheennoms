@@ -1,5 +1,5 @@
 const imgs = {
-    'oshi sushi': 'https://vanfoodies.files.wordpress.com/2012/06/img_6971.jpg',
+    'sushi': 'https://vanfoodies.files.wordpress.com/2012/06/img_6971.jpg',
     'coffee': 'https://c1.staticflickr.com/4/3883/14893485196_6e69e18397_b.jpg',
     'dumplings': 'https://assets.epicurious.com/photos/57aa24b3de966cd27ad74905/2:1/w_1260%2Ch_630/pork-dumplings.jpg',
     'bubble tea': 'https://media1.fdncms.com/thecoast/imager/georges-bubble-tea/u/zoom/4683750/george_sbubbletea1.jpg',
@@ -25,12 +25,15 @@ function createGallery() {
         slideNameDiv.className = 'slideName';
 
         slideNameDiv.innerHTML = '# ' + currSlide.toString();
+
+        let slideImgUrl = document.createElement('a');
+        slideImgUrl.href = '/search?q=' + x;
         let slideImg = document.createElement('img');
         slideImg.src = imgs[x];
-
         slideImg.className = 'cookbookImgs';
+        slideImgUrl.appendChild(slideImg);
         slideDiv.appendChild(slideNameDiv);
-        slideDiv.appendChild(slideImg);
+        slideDiv.appendChild(slideImgUrl);
 
         let slideColumnDiv = document.createElement('div');
         slideColumnDiv.className = 'slideColumn';
@@ -68,4 +71,5 @@ function changeSlide(idx) {
     slides[idx].style.display = "block";
     thumbs[idx].className += " active";
     captionText.innerHTML = thumbs[idx].alt;
+    captionText.href = '/search?q=' + thumbs[idx].alt;
 }
