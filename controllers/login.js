@@ -5,7 +5,7 @@ const utils = require('../middlewares/loginUtils');
 const favUtils = require('../middlewares/favUtils');
 
 router.get('/', function (req, res, next) {
-    res.render('login.hbs')
+    res.render('login.hbs');
 });
 
 /**
