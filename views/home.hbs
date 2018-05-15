@@ -6,6 +6,7 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     <link href="../css/favStyles.css" rel="stylesheet" type="text/css"/>
     <link href="../css/fridge.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/cookbook.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -89,7 +90,7 @@
                                     </label>
                                 </form>
                             </div>
-                        </div>         
+                        </div>
 
                         <div class="allbuttons col-xs-4 col-sm-4 col-lg-4">
 
@@ -125,7 +126,7 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="allbuttons col-xs-4 col-sm-4 col-lg-4">
 
                             <button class="collapsible"> EXCLUDE INGREDIENTS</button>
@@ -161,15 +162,15 @@
             popular cooking websites! <br><br>
             To get started, type your ingredients from the control panel on the left.
         </p>
-    </div> 
+    </div>
     <div id="iconlinksdiv">
         <div id="iconlinks">
             <img id="fridgeicon" onclick="fridgeOpen()" src="../imgs/fridge4.png">
-            <img id="recipebookicon" src="../imgs/recipebook1.png">
+            <img id="recipebookicon" src="../imgs/recipebook1.png" data-toggle="modal" data-target="#cookbookModal">
             <img id="searchicon" src="../imgs/searchicon1.png">
         </div>
     </div>
-    
+
 </div>
 
 
@@ -187,6 +188,32 @@
                 <div class="modal-body" id="favModal">
                     <div id="favRecipeLabel"></div>
                     <div id="favModalRecipe" class="container row">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modalButts" id="closeFavButt" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="listcontainer">
+    <div class="modal fade" id="cookbookModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="favModalTitle">Pusheen's Top Picks</h4>
+                </div>
+                <div class="modal-body" id="cookbookModal">
+                    <div id="cookbookContainer">
+                        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
+
+                        <div class="row" id="slideRow"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -258,6 +285,7 @@
 <script src="../js/displays.js"></script>
 <script src="../js/fridge2.js"></script>
 <script src="../js/fridge.js"></script>
+<script src="../js/cookbook.js"></script>
 <script src="../js/utils.js"></script>
 <script> setFavouriteRecipes("{{favRecipes}}")</script>
 </body>
