@@ -209,6 +209,13 @@ document.getElementById("searchicon").addEventListener("click", function () {
 });
 
 
+document.getElementById("fridgeicon").addEventListener("click", function () {
+        document.getElementById("searchBar2").style.display = "block";
+
+});
+
+
+
 var infoModal = document.getElementById("infoModal");
 
 function openInfo() {
