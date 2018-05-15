@@ -47,35 +47,23 @@
       "currentUser": "carson"
     },
     {
-      "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_70cd70f4d04cc83840dad8d44dcedf9e",
-      "label": "Sushi Cake",
+      "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_f695612494f458a17bc5598c905c7ac1",
+      "label": "Crazy Coffee",
       "dietLabels": [
-        "Low-Fat"
+        "Low-Carb"
       ],
       "healthLabels": [
         "Sugar-Conscious",
+        "Vegetarian",
         "Peanut-Free",
         "Tree-Nut-Free",
         "Alcohol-Free"
       ],
-      "image": "https://www.edamam.com/web-img/94c/94c5d8507284aaf5c3537452c165b24a.jpg",
+      "image": "https://www.edamam.com/web-img/d2c/d2cdd5e20582dad7ff2563b3d3b789b1.jpg",
       "ingredientLines": [
-        "1/2 cup rice-wine vinegar",
-        "1 tablespoon coarse salt",
-        "2 tablespoons sugar",
-        "3 3/4 cups water",
-        "3 cups sushi rice",
-        "2 tablespoons mayonnaise",
-        "2 teaspoons fresh chives, finely chopped",
-        "2 tablespoons powdered wasabi, mixed with two tablespoons water",
-        "1 teaspoon freshly squeezed lemon juice",
-        "Coarse salt and freshly ground pepper",
-        "4 ounces cooked large shrimp, peeled, deveined, and roughly chopped, plus several more for garnish",
-        "3 sheets nori (paper-thin dried seaweed)",
-        "2 tablespoons pickled ginger, finely shredded, plus more for garnish",
-        "1 teaspoon toasted sesame seeds, for garnish",
-        "Radish sprouts, for garnish",
-        "Wasabi Mayonnaise"
+        "12 ounces, fluid Strong Coffee, Very Hot",
+        "1 Tablespoon Coconut Oil, Unrefined",
+        "1 Tablespoon Cold Butter (unsalted Is Recommended)"
       ],
       "currentUser": "carson"
     }
