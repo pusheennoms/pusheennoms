@@ -1,10 +1,10 @@
 var active = [0, 1], //[0] for register, [1] for login, default has login open
     regForm = document.getElementById('registerform'),
-    logForm = document.getElementById('loginform'),
-    credForm = document.getElementById('credentialsForm'),
-    newReg = document.getElementById('newRegister');
+    logForm = document.getElementById('loginform');
 
-/** click register button to show registration menu, second click hide menu
+/**
+ * click register button to show registration menu
+ * second click will hide menu
  */
 function register() {
     if (active[0] === 0) {
@@ -17,7 +17,9 @@ function register() {
     }
 }
 
-/** click login button to show login menu, second click hide menu
+/**
+ * click login button to show login menu,
+ * second will click hide menu
  */
 function login() {
     if (active[1] === 0) {
@@ -30,8 +32,9 @@ function login() {
     }
 }
 
-/** attempt to log in
- *
+/**
+ * @param {boolean} usernameDoesNotExist
+ * if user does not exist, error message!
  */
 function checkCredentials(usernameDoesNotExist) {
     if (usernameDoesNotExist) {
@@ -39,7 +42,10 @@ function checkCredentials(usernameDoesNotExist) {
     } 
 }
 
-// Alert user of registration status
+/**
+ * sweet alerts for user registration and login
+ * @param {int} state - comes from controllers\login.js
+ */
 function notifyuser(state){
     if (state === 0) {
         swal('Congratulations!', 'You have created a new account.', 'success');
@@ -52,6 +58,12 @@ function notifyuser(state){
     }
 }
 
+/**
+ * validates user input for login and registration
+ * @param textbox - the text box used for login and registration input
+ * @param num - unique number of the text box
+ * @returns {boolean} true - the user input follows all rules
+ */
 function validatingInput(textbox, num){
 
     if (textbox.value === '') {

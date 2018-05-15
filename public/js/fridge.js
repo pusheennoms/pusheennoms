@@ -12,7 +12,7 @@ var fridgeInput = document.getElementById("inputBox");
 
 // fridge input box event listener
 fridgeInput.onkeyup = function (ev) {
-    if (ev.keyCode == 13) {
+    if (ev.keyCode === 13) {
         // disallow blank entry
         if (checkBlank(this.value)) {
             return;
@@ -306,7 +306,7 @@ function selectVeg(object) {
 }
 
 /**
- * click on an item in the fridge
+ * hover on an item in the fridge
  * @param {object} object - modify JSON object when the corresponding div is hovered on
  * @param {integer} exit - 0 (default) for mouseenter, 1 for mouseexit
  */
@@ -315,8 +315,8 @@ function hoverVeg(object, exit = 0) {
     var index = searchIndex(object,vegList);
 
     object.style.cursor = "pointer";
-    if (vegList[index].active == 1) {
-        if (exit == 0) {
+    if (vegList[index].active === 1) {
+        if (exit === 0) {
             object.style.opacity = 0.5;
         } else {
             object.style.opacity = 0.2;
@@ -343,7 +343,7 @@ function fridgeClose() {
  * fridge display close when clicking outside the window
  */
 window.onclick = function (ev) {
-    if (ev.target == fridgeDiv) {
+    if (ev.target === fridgeDiv) {
         fridgeClose();
     }
-}
+};

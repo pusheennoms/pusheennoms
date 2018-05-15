@@ -148,13 +148,18 @@ function showResults() {
 }
 
 /*-----------INTERACTIONS--------------*/
-
+/**
+ * once user presses enter on the ingredients search bar, the forms are submitted
+ */
 document.getElementById("ingredient-bar").addEventListener("keydown", function (ev) {
     if (ev.keyCode === 13) {
         submitForms();
     }
 });
 
+/**
+ * open collapsibles on click
+ */
 for (var i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function () {
         this.classList.toggle("active");
@@ -166,25 +171,27 @@ for (var i = 0; i < coll.length; i++) {
         }
     });
 }
-;
 
 /**
  * Opens the search panel
  */
-
 function showPusheen() {
     document.getElementById("outerpanel").style.left = '0px';
     pushleft = 0;
 }
 
 /**
- * Closes the search pangel
+ * Closes the search panel
  */
 function hidePusheen() {
     document.getElementById("outerpanel").style.left = '-80%';
     pushleft = 1;
 }
 
+/**
+ * click the cat, show or hide the control panel
+ */
+hiddenpush.onclick = function () {
 document.getElementById("hiddenpusheen").onclick = function () {
     pushleft = !pushleft;
 
@@ -223,7 +230,7 @@ var logo = document.getElementById("logo");
 
 logo.addEventListener("click", function(){
     openInfo();
-})
+});
 
 /**
  * fridge display close when clicking outside the window

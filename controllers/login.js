@@ -4,6 +4,9 @@ var router = express.Router();
 const utils = require('../middlewares/loginUtils');
 const favUtils = require('../middlewares/favUtils');
 
+/**
+ * Renders login.hbs by default
+ */
 router.get('/', function (req, res) {
     res.render('login.hbs');
 });
