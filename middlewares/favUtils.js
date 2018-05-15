@@ -44,7 +44,7 @@ var noRepeatFavs = (recipe, user) => {
     if (favRecords[user]) {
         for (var i = 0; i < favRecords[user].length; i++) {
             if (favRecords[user][i].uri === recipe.uri) {
-                found = true
+                found = true;
             }
         }
     }
