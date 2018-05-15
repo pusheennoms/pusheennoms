@@ -40,6 +40,7 @@
     <p id="title" class="texts"><img id="titleLogo" src="../imgs/logo.png"></p>
 </div>
 
+
 <!-- ctrl panel -->
 <div id="ctrlpanel">
     <img id="hiddenpusheen" src="../imgs/hiddenpusheen.png">
@@ -214,6 +215,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="modalButts" id="closeCookbookButt" data-dismiss="modal">Close</button>
+
                 </div>
             </div>
         </div>
@@ -221,8 +223,15 @@
 </div>
 
 <div id="fridge">
+    <div id="searchBar2" style="display: none;">
+        <div id="fridgeinfo">Fridge Menu</div>
+                <input type="text" id="ingredient-bar2" name="q" placeholder="Ingredient list">
+                    <button id="submitbutt2" onclick="submitForms()"> Submit</button>
+                
+    </div>
+
     <div id="tempBox"></div>
-    <input type="text" id="inputBox">
+    <input type="text" id="inputBox" placeholder="Enter ingredients">
     <button id="default">Default</button>
     <button id="fridgeDelete">Delete</button>
     <button type="button" class="close" aria-label="Close" onclick="fridgeClose()">

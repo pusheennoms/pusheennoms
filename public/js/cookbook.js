@@ -31,7 +31,6 @@ function createGallery() {
         let slideImg = document.createElement('img');
         slideImg.src = imgs[x];
         slideImg.className = 'cookbookImgs';
-
         slideImgUrl.appendChild(slideImg);
         slideDiv.appendChild(slideNameDiv);
         slideDiv.appendChild(slideImgUrl);
