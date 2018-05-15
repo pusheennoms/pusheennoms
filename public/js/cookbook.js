@@ -9,17 +9,14 @@ const imgs = {
 };
 
 createGallery();
-
-var slideIdx = 1;
-
-showSlides(slideIdx);
+changeSlide(0);
 
 function createGallery() {
     let cookbookContainer = document.getElementById('cookbookContainer');
-    let slideRowDiv = document.getElementById('slideRow');
+    let slideRowDiv = document.createElement('div');
 
     var x;
-    var currSlide = 1;
+    var currSlide = 0;
     for (x in imgs) {
         let slideDiv = document.createElement('div');
 
@@ -44,45 +41,31 @@ function createGallery() {
         slideThumb.alt = x.toUpperCase();
         slideThumb.onclick = (function (i) {
             return () => {
-                currentSlide(i);
+                changeSlide(i);
             }
         })(currSlide);
 
-        slideRowDiv.appendChild(slideColumnDiv);
-        slideColumnDiv.appendChild(slideThumb);
         cookbookContainer.appendChild(slideDiv);
-        cookbookContainer.appendChild(slideColumnDiv);
+        slideColumnDiv.appendChild(slideThumb);
+        slideRowDiv.appendChild(slideColumnDiv);
+        cookbookContainer.appendChild(slideRowDiv);
 
         currSlide += 1;
     }
 }
 
-function currentSlide(n) {
-    showSlides(slideIdx = n);
-}
-
-function changeSlide(n) {
-    showSlides(slideIdx += n);
-}
-
-function showSlides(n) {
-    var i;
+function changeSlide(idx) {
     var slides = document.getElementsByClassName("cookbookSlides");
-    var dots = document.getElementsByClassName("thumb");
+    var thumbs = document.getElementsByClassName("thumb");
     var captionText = document.getElementById("caption");
-    if (n > slides.length) {
-        slideIdx = 1
-    }
-    if (n < 1) {
-        slideIdx = slides.length
-    }
-    for (i = 0; i < slides.length; i++) {
+
+    for (var i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
+    for (var i = 0; i < thumbs.length; i++) {
+        thumbs[i].className = thumbs[i].className.replace(" active", "");
     }
-    slides[slideIdx - 1].style.display = "block";
-    dots[slideIdx - 1].className += " active";
-    captionText.innerHTML = dots[slideIdx - 1].alt;
+    slides[idx].style.display = "block";
+    thumbs[idx].className += " active";
+    captionText.innerHTML = thumbs[idx].alt;
 }
