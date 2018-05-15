@@ -172,14 +172,11 @@ for (var i = 0; i < coll.length; i++) {
     });
 }
 
-var hiddenpush = document.getElementById("hiddenpusheen");
-
 /**
  * Opens the search panel
  */
 function showPusheen() {
-    document.getElementById("ctrlpanel").style.left = '0px';
-    hiddenpush.style.left = "77.5%";
+    document.getElementById("outerpanel").style.left = '0px';
     pushleft = 0;
 }
 
@@ -187,15 +184,15 @@ function showPusheen() {
  * Closes the search panel
  */
 function hidePusheen() {
-    document.getElementById("ctrlpanel").style.left = '-80%';
-    hiddenpush.style.left = "0%";
-    pushleft = 1
+    document.getElementById("outerpanel").style.left = '-80%';
+    pushleft = 1;
 }
 
 /**
  * click the cat, show or hide the control panel
  */
 hiddenpush.onclick = function () {
+document.getElementById("hiddenpusheen").onclick = function () {
     pushleft = !pushleft;
 
     if (pushleft) {
@@ -208,10 +205,7 @@ hiddenpush.onclick = function () {
 
 
 document.getElementById("searchicon").addEventListener("click", function () {
-        document.getElementById("ctrlpanel").style.left = '0px';
-        hiddenpush.style.left = "77.5%";
-        pushleft = 0;
-
+        showPusheen();
 });
 
 
