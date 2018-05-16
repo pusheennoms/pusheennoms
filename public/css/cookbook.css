@@ -73,6 +73,10 @@
     background-repeat: no-repeat;
 }
 
+.cookbookImgs:hover {
+    opacity: 0.8;
+}
+
 #closeCookbookButt {
     position: fixed;
     top: 5%;
