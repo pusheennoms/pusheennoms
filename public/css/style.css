@@ -156,7 +156,7 @@ body {
 	color: #89CFF0;
 	font-family: Marker Felt, fantasy;
 	position: fixed;
-	cursor: default;
+    cursor: pointer;
 	text-align: left;
 	left:10%;
 	font-size: 450%;
