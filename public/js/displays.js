@@ -148,13 +148,18 @@ function showResults() {
 }
 
 /*-----------INTERACTIONS--------------*/
-
+/**
+ * once user presses enter on the ingredients search bar, the forms are submitted
+ */
 document.getElementById("ingredient-bar").addEventListener("keydown", function (ev) {
     if (ev.keyCode === 13) {
         submitForms();
     }
 });
 
+/**
+ * open collapsibles on click
+ */
 for (var i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function () {
         this.classList.toggle("active");
@@ -166,25 +171,26 @@ for (var i = 0; i < coll.length; i++) {
         }
     });
 }
-;
 
 /**
  * Opens the search panel
  */
-
 function showPusheen() {
     document.getElementById("outerpanel").style.left = '0px';
     pushleft = 0;
 }
 
 /**
- * Closes the search pangel
+ * Closes the search panel
  */
 function hidePusheen() {
     document.getElementById("outerpanel").style.left = '-80%';
     pushleft = 1;
 }
 
+/**
+ * click the cat, show or hide the control panel
+ */
 document.getElementById("hiddenpusheen").onclick = function () {
     pushleft = !pushleft;
 
@@ -196,17 +202,15 @@ document.getElementById("hiddenpusheen").onclick = function () {
 };
 
 
-
 document.getElementById("searchicon").addEventListener("click", function () {
-        showPusheen();
+    showPusheen();
 });
 
 
 document.getElementById("fridgeicon").addEventListener("click", function () {
-        document.getElementById("searchBar2").style.display = "block";
+    document.getElementById("searchBar2").style.display = "block";
 
 });
-
 
 
 var infoModal = document.getElementById("infoModal");
@@ -221,16 +225,15 @@ function closeInfo() {
 
 var logo = document.getElementById("logo");
 
-logo.addEventListener("click", function(){
+logo.addEventListener("click", function () {
     openInfo();
-})
+});
 
 /**
  * fridge display close when clicking outside the window
  */
-window.addEventListener("click", function(ev) {
-    if (ev.target == infoModal) {
+window.addEventListener("click", function (ev) {
+    if (ev.target === infoModal) {
         infoModal.style.display = "none";
     }
-})
-
+});
