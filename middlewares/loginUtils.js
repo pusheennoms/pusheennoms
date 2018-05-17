@@ -6,7 +6,7 @@ const userpassFile = path.join(__dirname, '../data/userpass.json');
 var chefRecords = [];
 
 /**
- *See if userpass.json exists on drive, if not create file, if so read contents into var chefRecords
+ * See if userpass.json exists on drive, if not create file, if so read contents into var chefRecords
  **/
 if (fs.existsSync(userpassFile) && fs.readFileSync(userpassFile).length !== 0) {
     let getFile = fs.readFileSync(userpassFile);
@@ -67,7 +67,7 @@ var noRepeatUsers = (newUser) => {
 };
 
 /**
- *Checks if username and password are in userpass.json, if not then request user to log in again
+ * Checks if username and password are in userpass.json, if not then request user to log in again
  **/
 var authenticateChef = (inpUsername, inpPassword) => {
     var usernameFound = false;
