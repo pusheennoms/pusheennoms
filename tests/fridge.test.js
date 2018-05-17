@@ -34,9 +34,10 @@ describe("toggle a boolean variable and modify an object", () => {
     })
 });
 
+var object = document.createElement('div');
+object.dataset.tag = 3;
+
 describe("search for index of a dom object in the associated object data array", () => {
-    let object = document.createElement('div');
-    object.dataset.tag = 3;
     test("slot 3 of object list", () => {
         expect(utils.searchIndex(object,['a','b','c',{id:3}])).toEqual(3);
     });
@@ -64,11 +65,11 @@ describe("check if an image source exist, replace the dom object background with
 describe("check if an input is blank or white space only", () => {
     test("blank", () => {
         expect(utils.checkBlank("")).toBeTruthy();
-    })
+    });
     test("white space only", () => {
         expect(utils.checkBlank("   ")).toBeTruthy();
-    })
+    });
     test("non-blank input", () => {
         expect(utils.checkBlank("abcd")).toBeFalsy();
-    })
+    });
 });
