@@ -13,6 +13,11 @@ if (fs.existsSync(userpassFile) && fs.readFileSync(userpassFile).length !== 0) {
     chefRecords = JSON.parse(getFile);
 }
 
+/**
+ * Hashes information
+ * @param the information that is to be hashed
+ * @returns the hashed array
+ */
 var hash_info = (info) => {
     return CryptoJS.SHA1(info)
 }
@@ -54,7 +59,7 @@ var validateInput = (userInp, passInp) => {
  */
 var noRepeatUsers = (newUser) => {
     for (var i = 0; i < chefRecords.length; i++) {
-        if (chefRecords[i].username.indexOf(newUser) === 0) {
+        if (chefRecords[i].username === newUser) {
             return false;
         }
     }
