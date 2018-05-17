@@ -188,56 +188,55 @@ function hidePusheen() {
     pushleft = 1;
 }
 
-document.getElementById("hiddenpusheen").onclick = function () {
 /**
  * click the cat, show or hide the control panel
  */
 hiddenpush.onclick = function () {
-    pushleft = !pushleft;
+    document.getElementById("hiddenpusheen").onclick = function () {
+        pushleft = !pushleft;
 
-    if (pushleft) {
-        hidePusheen();
-    } else if (!pushleft) {
+        if (pushleft) {
+            hidePusheen();
+        } else if (!pushleft) {
+            showPusheen();
+        }
+    };
+
+
+    document.getElementById("searchicon").addEventListener("click", function () {
         showPusheen();
-    }
-};
+    });
 
 
-
-document.getElementById("searchicon").addEventListener("click", function () {
-        showPusheen();
-});
-
-
-document.getElementById("fridgeicon").addEventListener("click", function () {
+    document.getElementById("fridgeicon").addEventListener("click", function () {
         document.getElementById("searchBar2").style.display = "block";
 
-});
+    });
 
 
+    var infoModal = document.getElementById("infoModal");
 
-var infoModal = document.getElementById("infoModal");
+    function openInfo() {
+        infoModal.style.display = "block";
+    }
 
-function openInfo() {
-    infoModal.style.display = "block";
-}
-
-function closeInfo() {
-    infoModal.style.display = "none";
-}
-
-var logo = document.getElementById("logo");
-
-logo.addEventListener("click", function(){
-    openInfo();
-});
-
-/**
- * fridge display close when clicking outside the window
- */
-window.addEventListener("click", function(ev) {
-    if (ev.target == infoModal) {
+    function closeInfo() {
         infoModal.style.display = "none";
     }
-})
+
+    var logo = document.getElementById("logo");
+
+    logo.addEventListener("click", function () {
+        openInfo();
+    });
+
+    /**
+     * fridge display close when clicking outside the window
+     */
+    window.addEventListener("click", function (ev) {
+        if (ev.target === infoModal) {
+            infoModal.style.display = "none";
+        }
+    })
+};
 
