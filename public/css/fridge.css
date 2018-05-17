@@ -79,3 +79,53 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
 }
+
+#searchBar2{
+    display: "none";
+    width: 60%;
+    position: fixed;
+    top: 30%;
+    left: 1%;
+}
+
+
+#inputBox{
+    position: fixed;
+    top: 20%;
+    left: 1%;
+}
+
+#default{
+    position: fixed;
+    top: 25%;
+    left: 1%;
+    border-radius: 20px 20px 20px 20px
+}
+
+#fridgeDelete{
+    position: fixed;
+    top: 25%;
+    left: 8%;
+    border-radius: 20px 20px 20px 20px
+}
+
+#submitbutt2{
+    position: fixed;
+    top: 35%;
+    left: 1%;
+    border-radius: 20px 20px 20px 20px
+}
+
+#fridgeinfo{
+    position: fixed;
+    top: 15%;
+    left: 1%;
+    font-family: "Swanky and Moo Moo";
+    font-size: 22px;
+    color: #010d01;
+
+}
+
+#ingredient-bar2{
+    width: 45%;
+}
