@@ -1,5 +1,6 @@
 #cookbookContainer {
     position: relative;
+    height: 60vh;
 }
 
 #caption {
@@ -53,7 +54,11 @@
 
 .thumb {
     opacity: 0.6;
-    width: 100%;
+    width: auto;
+    height: 50px;
+    padding: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .active,
@@ -63,4 +68,18 @@
 
 .cookbookImgs {
     width: 100%;
+    height: 60vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cookbookImgs:hover {
+    opacity: 0.8;
+}
+
+#closeCookbookButt {
+    position: fixed;
+    top: 5%;
+    height: 5%;
+    right: 5%;
 }
