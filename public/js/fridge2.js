@@ -43,12 +43,12 @@ function delToggle(state, object) {
  * returns the index of the dom object data in the object array
  */
 function searchIndex(object, objList) {
-    return objList.findIndex(x => x.id === object.dataset.tag);
+    return objList.findIndex(x => x.id == object.dataset.tag);
 }
 
 /**
  * determine the row and column slots of an object based on the slot number assigned
- * @param {slot} integer - the slot number of the object
+ * @param {int} slot - the slot number of the object
  * returns the row and column number of this slot
  */
 function findPosition(slot) {
