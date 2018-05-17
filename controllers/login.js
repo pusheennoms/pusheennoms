@@ -3,9 +3,25 @@ var router = express.Router();
 
 const utils = require('../middlewares/loginUtils');
 const favUtils = require('../middlewares/favUtils');
+var loggedIn = false;
 
-router.get('/', function (req, res, next) {
+router.get('/', function (req, res) {
+    loggedIn = false;
     res.render('login.hbs');
+});
+
+router.get('/home', function (req, res) {
+    if (loggedIn) {
+        let favRecipes = JSON.stringify(favUtils.getFavRecipesForUser(loggedIn));
+        res.render('home.hbs', {
+            resultRecipes: JSON.stringify([{
+                currentUser: loggedIn
+            }]),
+            favRecipes: favRecipes
+        });
+    } else {
+        res.redirect('/');
+    }
 });
 
 /**
@@ -41,19 +57,13 @@ router.post('/getpass', (request, response) => {
             status: 1
         });
     } else if (authenticationResult === 'logged in') {
-        var favRecipes = JSON.stringify(favUtils.getFavRecipesForUser(inpUsername));
-        response.render('home.hbs', {
-            resultRecipes: JSON.stringify([{
-                currentUser: inpUsername
-            }]),
-            favRecipes: favRecipes
-        });
+        loggedIn = inpUsername;
+        response.redirect('/home');
     } else if (authenticationResult === 'no username') {
         response.render('login.hbs', {
             usernameDoesNotExist: true
         });
     }
 });
-
 
 module.exports = router;
