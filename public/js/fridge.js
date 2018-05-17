@@ -3,7 +3,7 @@ var vegList = [], // object list
     vegListImport = []; // record of created objects for faster processing
 /* ------------------- to be changed to blank when merged with hbs ----------------- */
 // list of items saved from elsewhere; currently just a default list of items
-vegListSaved = ["potato", "carrot", "tomato", "bellPepper", "garlic", "eggplant", "corn", "cucumber", "beef", "chicken", "pork"];
+vegListSaved = ["potato", "carrot", "tomato", "bellPepper", "garlic", "eggplant", "corn", "cucumber", "beef", "chicken", "pork", "tofu", "salmon", "bread", "cheese"];
 emptySlot = []; // un-occupied slots after delete is used
 
 /* ---------- fridge input box ------------- */
