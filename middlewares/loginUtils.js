@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const CryptoJS = require("crypto-js");
+const CryptoJS = require('crypto-js');
 
 const userpassFile = path.join(__dirname, '../data/userpass.json');
 var chefRecords = [];
