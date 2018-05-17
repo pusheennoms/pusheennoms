@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const CryptoJS = require("crypto-js");
 
 const userpassFile = path.join(__dirname, '../data/userpass.json');
 var chefRecords = [];
@@ -12,15 +13,20 @@ if (fs.existsSync(userpassFile) && fs.readFileSync(userpassFile).length !== 0) {
     chefRecords = JSON.parse(getFile);
 }
 
+var hash_info = (info) => {
+    return CryptoJS.SHA1(info)
+}
+
 /**
  * Add username and password to userpass.json
  * @param username
  * @param password
  */
 var addToChefFile = (username, password) => {
+    var ciphertext = hash_info(password);
     var record = {
         "username": username,
-        "password": password
+        "password": ciphertext
     };
     chefRecords.push(record);
     var newChef = JSON.stringify(chefRecords);
@@ -48,7 +54,7 @@ var validateInput = (userInp, passInp) => {
  */
 var noRepeatUsers = (newUser) => {
     for (var i = 0; i < chefRecords.length; i++) {
-        if (chefRecords[i].username === newUser) {
+        if (chefRecords[i].username.indexOf(newUser) === 0) {
             return false;
         }
     }
@@ -60,10 +66,11 @@ var noRepeatUsers = (newUser) => {
  **/
 var authenticateChef = (inpUsername, inpPassword) => {
     var usernameFound = false;
+    var hashInpPass = hash_info(inpPassword)
     for (var i = 0; i < chefRecords.length; i++) {
         if (chefRecords[i].username === inpUsername) {
             usernameFound = true;
-            if (chefRecords[i].password === inpPassword) {
+            if (JSON.stringify(chefRecords[i].password) === JSON.stringify(hashInpPass)) {
                 return 'logged in';
             } else {
                 return 'authentication failure';
