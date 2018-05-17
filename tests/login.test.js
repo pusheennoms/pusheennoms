@@ -2,6 +2,7 @@ const utils = require('../middlewares/loginUtils');
 
 const fs = require('fs');
 const path = require('path');
+const cryptoJS = require('crypto-js');
 
 const userpassFile = path.join(__dirname, '../data/userpass.json');
 

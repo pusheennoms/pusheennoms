@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const CryptoJS = require('crypto-js');
+const cryptoJS = require('crypto-js');
 
 const userpassFile = path.join(__dirname, '../data/userpass.json');
 var chefRecords = [];
@@ -19,7 +19,7 @@ if (fs.existsSync(userpassFile) && fs.readFileSync(userpassFile).length !== 0) {
  * @returns the hashed array
  */
 var hash_info = (info) => {
-    return CryptoJS.SHA1(info)
+    return cryptoJS.SHA1(info)
 }
 
 /**
