@@ -196,6 +196,7 @@ body {
     position: fixed;
     height: 100%;
     width: 80%;
+    background-color: #EEEEEE;
     top: 0;
     left: -80%;
     transition: left 0.5s;
@@ -394,7 +395,7 @@ a:visited {
 .mainbutt {
     display: inline-block;
     width: 50%;
-    background-color: #FF4500;
+    background-color: #ff69b4;
     border: white solid 2px;
     color: white;
     cursor: pointer;
