@@ -87,6 +87,9 @@ function clearSearchHist() {
     }
 }
 
+/**
+ * log outs user and cleans the current recipes, the faved recipes, and the welcome user name
+ */
 function logout() {
     try {
         localStorage.removeItem('currentUser');
