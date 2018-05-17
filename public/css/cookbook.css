@@ -83,3 +83,17 @@
     height: 5%;
     right: 5%;
 }
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 20px;
+    margin-left: -90px;
+    margin-right: -90px;
+    color: white;
+    font-weight: bold;
+    font-size: 80px;
+}
