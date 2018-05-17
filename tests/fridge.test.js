@@ -40,7 +40,7 @@ object.dataset.tag = 3;
 describe("search for index of a dom object in the associated object data array", () => {
     test("slot 3 of object list", () => {
         expect(utils.searchIndex(object,['a','b','c',{id:3}])).toEqual(3);
-    })
+    });
     test("slot 1 of object list", () => {
         expect(utils.searchIndex(object,['a',{id:3},'b','c'])).toEqual(1);
     })
