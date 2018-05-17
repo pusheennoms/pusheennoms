@@ -40,8 +40,8 @@ body {
 
 .collapsible {
     /* style of collapsible butts */
-    background-color: #777;
-    color: white;
+    background-color: #89CFF0;
+    color: black;
     cursor: pointer;
     padding: 6%;
     width: 100%;
@@ -211,7 +211,7 @@ body {
 }
 
 #cp-banner {
-    background-color: gray;
+    background-color: #0070BB;
 }
 
 #ur-ingredients /*title*/
@@ -339,8 +339,8 @@ body {
 }
 
 #submitbutt {
-    background-color: #7575a3;
-    color: white;
+    background-color: #89CFF0;
+    color: black;
     cursor: pointer;
     width: 25%;
     height: 25%;
@@ -355,8 +355,8 @@ body {
 }
 
 #clearbutt {
-    background-color: #777;
-    color: white;
+    background-color: #89CFF0;
+    color: black;
     cursor: pointer;
     width: 20%;
     height: 2%;
