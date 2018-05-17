@@ -88,8 +88,11 @@ function clearSearchHist() {
 }
 
 function logout() {
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('currentRecipes');
-    localStorage.removeItem('favRecipes');
-    window.location.href = '/'
+    try {
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('currentRecipes');
+        localStorage.removeItem('favRecipes');
+    } finally {
+        window.location.href = '/';
+    }
 }

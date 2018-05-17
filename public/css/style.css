@@ -40,8 +40,8 @@ body {
 
 .collapsible {
     /* style of collapsible butts */
-    background-color: #777;
-    color: white;
+    background-color: #89CFF0;
+    color: black;
     cursor: pointer;
     padding: 6%;
     width: 100%;
@@ -156,7 +156,7 @@ body {
 	color: #89CFF0;
 	font-family: Marker Felt, fantasy;
 	position: fixed;
-	cursor: default;
+    	cursor: pointer;
 	text-align: left;
 	left:10%;
 	font-size: 450%;
@@ -164,10 +164,10 @@ body {
 }
 #search-results{
 	display: inline;
-    position: absolute;
-    width: 100%;
-    font-family: "Trebuchet MS";
-    padding: 20px 20px;
+	position: absolute;
+	width: 100%;
+	font-family: "Trebuchet MS";
+	padding: 20px 20px;
 }
 
 .searchResultDiv {
@@ -211,7 +211,7 @@ body {
 }
 
 #cp-banner {
-    background-color: gray;
+    background-color: #0070BB;
 }
 
 #ur-ingredients /*title*/
@@ -371,8 +371,8 @@ body {
 }
 
 #submitbutt {
-    background-color: #7575a3;
-    color: white;
+    background-color: #89CFF0;
+    color: black;
     cursor: pointer;
     width: 25%;
     height: 25%;
@@ -387,8 +387,8 @@ body {
 }
 
 #clearbutt {
-    background-color: #777;
-    color: white;
+    background-color: #89CFF0;
+    color: black;
     cursor: pointer;
     width: 20%;
     height: 2%;
