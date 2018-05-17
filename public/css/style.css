@@ -156,7 +156,7 @@ body {
 	color: #89CFF0;
 	font-family: Marker Felt, fantasy;
 	position: fixed;
-	cursor: default;
+    	cursor: pointer;
 	text-align: left;
 	left:10%;
 	font-size: 450%;
@@ -164,10 +164,10 @@ body {
 }
 #search-results{
 	display: inline;
-    position: absolute;
-    width: 100%;
-    font-family: "Trebuchet MS";
-    padding: 20px 20px;
+	position: absolute;
+	width: 100%;
+	font-family: "Trebuchet MS";
+	padding: 20px 20px;
 }
 
 .searchResultDiv {
