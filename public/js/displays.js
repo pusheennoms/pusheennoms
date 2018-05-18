@@ -12,6 +12,7 @@ showSearchHistory();
 function showSearchHistory() {
     currentSearchHistory = JSON.parse(localStorage.getItem('searchHistory'));
 
+    // Create a search history object if there isn't already one
     if (!currentSearchHistory) {
         currentSearchHistory = {};
         currentSearchHistory[currentUser] = [];
@@ -22,6 +23,7 @@ function showSearchHistory() {
 
     var foodList = document.getElementById('food-list');
 
+    // Create a list for a user if they don't already have a search history
     if (!currentSearchHistory[currentUser]) {
         currentSearchHistory[currentUser] = [];
     }
@@ -31,7 +33,7 @@ function showSearchHistory() {
     var ndiv2 = document.createElement('div');
     ndiv2.setAttribute('id', 'searchlist');
 
-
+    // Create search history items
     for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
         var ndiv = document.createElement("a");
         ndiv.innerHTML = currentSearchHistory[currentUser][i].value;
@@ -76,8 +78,10 @@ function showSearchHistory() {
 function showResults() {
     hidePusheen();
     document.getElementById('welcome-div').style.display = 'None';
+
     for (var i = 0; i < currentResults.length - 1; i++) {
 
+        // Displaying a recipe result
         var node = document.createElement('a');
         var nodeLABELS = document.createElement('div');
         var nodeIMAGE = document.createElement('img');
@@ -97,6 +101,7 @@ function showResults() {
         nodeIMAGE.className = 'searchResultsImgs';
         nodeIMAGE.setAttribute("src", currentResults[i].recipe.image);
 
+        // Save to favourites form and input
         var hiddenFavInp = document.createElement('input');
         hiddenFavInp.setAttribute('type', 'hidden');
         hiddenFavInp.setAttribute('name', 'favRecipe');
@@ -106,6 +111,8 @@ function showResults() {
         hiddenFavForm.appendChild(hiddenFavInp);
 
         var saveFavBtn = document.createElement('button');
+        saveFavBtn.className = 'saveFavBtn';
+        saveFavBtn.innerHTML = 'Save to Favourites';
 
         nDiv.appendChild(nodeIMAGE);
         nDiv.appendChild(document.createElement('br'));
@@ -121,6 +128,7 @@ function showResults() {
         document.getElementById('search-row').appendChild(nDiv);
         document.getElementById("iconlinks").style.display = 'None';
 
+        // Action for the save to favourites button
         saveFavBtn.onclick = (function (recipe) {
             return function () {
                 if (noRepeat(recipe)) {
@@ -130,8 +138,6 @@ function showResults() {
                 }
             }
         })(currentResults[i].recipe);
-        saveFavBtn.className = 'saveFavBtn';
-        saveFavBtn.innerHTML = 'Save to Favourites';
     }
 }
 

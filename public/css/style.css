@@ -250,12 +250,12 @@ body {
 }
 
 #nyatip {
-    position:absolute;
+    position: absolute;
     top: 3px;
-    right:-135px;
+    right: -135px;
     background-color: black;
     border-radius: 6px;
-    padding:1px 6px;
+    padding: 1px 6px;
     visibility: hidden;
 }
 
@@ -275,8 +275,8 @@ body {
 }
 
 #nyatext {
-    position:relative;
-    color:white;
+    position: relative;
+    color: white;
     font-family: "Swanky and Moo Moo";
     font-weight: bold;
 }
