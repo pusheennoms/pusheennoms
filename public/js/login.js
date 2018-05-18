@@ -7,7 +7,7 @@ var active = [0, 1], //[0] for register, [1] for login, default has login open
  * second click will hide menu
  */
 function register() {
-    if (active[0] == 0) {
+    if (active[0] === 0) {
         regForm.style.display="block";
         logForm.style.display="none";
         active = [1,0];
@@ -22,7 +22,7 @@ function register() {
  * second will click hide menu
  */
 function login() {
-    if (active[1] == 0) {
+    if (active[1] === 0) {
         regForm.style.display="none";
         logForm.style.display="block";
         active = [0,1];
