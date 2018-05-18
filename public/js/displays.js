@@ -42,19 +42,19 @@ function showSearchHistory() {
             if (` ${tags[j]} `.trim() === "exclude") {
                 break;
             }
-            if (j===1) { //Health tags
+            if (j === 1) { //Health tags
                 var ntext1 = document.createElement("i");
                 ntext1.style.color = "black";
                 ntext1.innerHTML += ` ${tags[j]} `;
                 ndiv.appendChild(ntext1);
             }
-            if (j===2) { //Diet tags
+            if (j === 2) { //Diet tags
                 var ntext2 = document.createElement("i");
                 ntext2.style.color = "green";
                 ntext2.innerHTML += ` ${tags[j]} `;
                 ndiv.appendChild(ntext2);
             }
-            if (j===3) { //Exclude tags
+            if (j === 3) { //Exclude tags
                 var ntext3 = document.createElement("u");
                 ntext3.style.color = "red";
                 ntext3.innerHTML += ` ${tags[j]} `;
@@ -76,8 +76,8 @@ function showSearchHistory() {
  * Display the search results
  */
 function showResults() {
+    document.getElementById('welcome-div').style.display = 'none';
     hidePusheen();
-    document.getElementById('welcome-div').style.display = 'None';
 
     for (var i = 0; i < currentResults.length - 1; i++) {
 
@@ -131,11 +131,7 @@ function showResults() {
         // Action for the save to favourites button
         saveFavBtn.onclick = (function (recipe) {
             return function () {
-                if (noRepeat(recipe)) {
-                    addToFavoritesList(recipe);
-                } else {
-                    swal('Error', `${recipe.label} is already in Favourites!`, 'error');
-                }
+                addToFavoritesList(recipe);
             }
         })(currentResults[i].recipe);
     }
