@@ -68,8 +68,8 @@
     height: 290px;
 }
 
-.fridge {
-    display: block;
+#fridge {
+    display: none;
     height: 600px;
     position: fixed;
     z-index: 1;
