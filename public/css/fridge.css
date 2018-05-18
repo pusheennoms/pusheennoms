@@ -80,13 +80,11 @@
  }
 
 #searchBar2{
-    display: none;
     width: 60%;
     position: fixed;
     top: 30%;
     left: 1%;
 }
-
 
 #inputBox{
     position: fixed;

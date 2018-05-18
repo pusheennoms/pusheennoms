@@ -3,6 +3,8 @@ var coll = document.getElementsByClassName("collapsible");
 var currentResults, currentUser, currentSearchHistory;
 var pushleft = true;
 
+const fridge = require('./fridge.js');
+
 /*-------------foodDisplay-------------*/
 showSearchHistory();
 
@@ -193,15 +195,12 @@ document.getElementById("searchicon").addEventListener("click", function () {
 
 
 document.getElementById("fridgeicon").addEventListener("click", function () {
-        document.getElementById("searchBar2").style.display = "block";
-        document.getElementById("fridge").className += "active"
-
+    fridge.fridgeOpen();
 });
 
 
 document.getElementById("fridgeiconmini").addEventListener("click", function () {
-        document.getElementById("searchBar2").style.display = "block";
-
+    fridge.fridgeOpen();
 });
 
 
