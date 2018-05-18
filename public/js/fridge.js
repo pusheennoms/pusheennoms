@@ -405,3 +405,7 @@ window.onclick = function (ev) {
     }
 };
 
+
+module.exports = {
+    fridgeOpen
+};
