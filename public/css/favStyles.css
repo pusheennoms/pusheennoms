@@ -5,12 +5,12 @@
     width: 130px;
     font-size: 19px;
     float: right;
-    background-color: #7575a3;
-    border-color: #7575a3;
+    background-color: #89CFF0;
+    border-color: #89CFF0;
     top: 90px;
     right: 20px;
     position: absolute;
-    color: white;
+    color: #9b416c;
     font-family: Swanky and Moo Moo;
     cursor:pointer;
 }
