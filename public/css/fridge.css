@@ -68,9 +68,8 @@
     height: 290px;
 }
 
-.fridge {
-    display: block;
-    height: 600px;
+#fridge {
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0; 
@@ -82,7 +81,7 @@
  }
 
 #searchBar2{
-    display: "none";
+    display: none;
     width: 60%;
     position: fixed;
     top: 30%;
