@@ -388,12 +388,14 @@ function hoverVeg(object, ev, exit = 0) {
 function fridgeOpen() {
     fridgeDiv.style.display = "block";
 }
+
 /**
  * fridge display close
  */
 function fridgeClose() {
     fridgeDiv.style.display = "none";
 }
+
 /**
  * fridge display close when clicking outside the window
  */
@@ -402,3 +404,4 @@ window.onclick = function (ev) {
         fridgeClose();
     }
 };
+
