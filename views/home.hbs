@@ -3,6 +3,7 @@
 <head>
     <title>Home</title>
     <link rel="icon" href="../imgs/icon.png">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     <link href="../css/favStyles.css" rel="stylesheet" type="text/css"/>
     <link href="../css/fridge.css" rel="stylesheet" type="text/css"/>
@@ -230,7 +231,7 @@
 </div>
 
 <div id="fridge">
-    <div id="searchBar2" style="display: block;">
+    <div id="searchBar2">
         <div id="fridgeinfo">Fridge Menu</div>
         <input type="text" id="ingredient-bar2" name="q" placeholder="Ingredient list">
         <button id="submitbutt2" onclick="submitForms()"> Submit</button>
@@ -245,7 +246,7 @@
         <span aria-hidden="true">&times;</span>
     </button>
 
-    <div id="fridgeDisplay">
+    <div id="fridgeDisplay" class="w3-animate-zoom">
         <div id="fridgeBG">
             <div id="topDoor"></div>
             <div id="botDoor"></div>
