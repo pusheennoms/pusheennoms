@@ -123,10 +123,10 @@ function showResults() {
         nDiv.appendChild(document.createElement('br'));
         nDiv.appendChild(document.createElement('br'));
 
-        nDiv.className = "searchResultDiv col-md-4 col-lg-3 col-sm-6 col-xs-12";
+        nDiv.className = "searchResultDiv  col-lg-3 col-md-4 col-sm-6 col-xs-12";
 
         document.getElementById('search-row').appendChild(nDiv);
-        document.getElementById("iconlinks").style.display = 'None';
+        document.getElementById("iconlinks").style.display = 'none';
 
         // Action for the save to favourites button
         saveFavBtn.onclick = (function (recipe) {

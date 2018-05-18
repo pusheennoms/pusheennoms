@@ -163,24 +163,21 @@
 
 <!-- THE ACTUAL PAGE -->
 <div id="big-page-div">
-    <img id="bg-img" src="../imgs/bg3.jpeg">
+    <img id="bg-img" src="../imgs/bg-new.jpg">
     <div id="search-results" class="container-fluid">
         <div id="search-row" class="row"></div>
     </div>
     <div id="welcome-div">
-        <p id="welcome-msg"> Welcome! <br><br>Add your ingredients and we will find matching recipes from the most
-            popular cooking websites! <br><br>
+        <p id="welcome-msg"><b>Welcome!</b> <br> Add your ingredients and we will find matching recipes from the most
+            popular cooking websites! <br>
             To get started, type your ingredients from the control panel on the left.
         </p>
-    </div>
-    <div id="iconlinksdiv">
         <div id="iconlinks">
-            <img id="fridgeicon" onclick="fridgeOpen()" src="../imgs/fridge4.png">
-            <img id="recipebookicon" src="../imgs/recipebook1.png" data-toggle="modal" data-target="#cookbookModal">
-            <img id="searchicon" src="../imgs/searchicon1.png">
+            <img class="icons" id="fridgeicon" onclick="fridgeOpen()" src="../imgs/fridge4.png">
+            <img class="icons" src="../imgs/recipebook1.png" data-toggle="modal" data-target="#cookbookModal">
+            <img class="icons" src="../imgs/searchicon1.png">
         </div>
     </div>
-
 </div>
 
 
@@ -230,7 +227,7 @@
 </div>
 
 <div id="fridge">
-    <div id="searchBar2" style="display: none;">
+    <div id="searchBar2" style="display: block;">
         <div id="fridgeinfo">Fridge Menu</div>
         <input type="text" id="ingredient-bar2" name="q" placeholder="Ingredient list">
         <button id="submitbutt2" onclick="submitForms()"> Submit</button>

@@ -59,7 +59,8 @@ body {
 
 .active, .collapsible:hover {
     /* makes the collapsible BE COLLAPSIBLE*/
-    background-color: #555;
+    background-color: #0070BB;
+    color: #fff;
 }
 
 .content {
@@ -171,13 +172,18 @@ body {
 	position: absolute;
 	width: 100%;
 	font-family: "Trebuchet MS";
-	padding: 20px 20px;
 }
 
 .searchResultDiv {
     display: inline-block;
     height: 80vh;
     vertical-align: top;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.95);
+    margin-top: 10px;
+    border-color: rgba(148, 224, 255, 0.25);
+    border-width: thick;
+    border-style: solid;
 }
 
 .searchResultsLink {
@@ -330,31 +336,33 @@ body {
 }
 
 #bg-img {
-    opacity: 0.3;
+    opacity: 0.5;
     position: fixed;
     width: 100%;
     bottom: 0;
     z-index: -2;
-    object-fit: cover;
-    overflow: hidden;
+    object-fit: fill;
     max-height: 100%;
     max-width: 100%;
-    height: 100%;
 }
 
 #welcome-div {
-    /*background-color: yellow;*/
+    background-color: rgba(255, 255, 255, 0.8);
     position: relative;
     margin: auto;
     text-align: center;
-    top: 15%;
+    top: 10%;
     overflow: hidden;
+    height: 65vh;
+    width: 90vw;
+    border-radius: 10px;
 }
 
 #welcome-msg {
     font-size: 225%;
     font-family: "Swanky and Moo Moo";
     font-weight: bold;
+    padding-top: 40px;
 }
 
 #welcome-user-msg {
@@ -460,7 +468,6 @@ a:visited {
     border: none;
     text-align: center;
     font-size: 15px;
-    padding: 2px;
     border-radius: 12px;
     margin: 10px;
     position: absolute;
@@ -511,60 +518,28 @@ a:visited {
     width: 33%;
 }
 
-
 #iconlinks {
     position: absolute;
     text-align: center;
     height: 50%;
-    width: 30%;
-    bottom: 10%; 
-    left: 33%;
-    
+    width: 100%;
+    bottom: 5%;
+    left: 0;
+    padding-top: 40px;
 }
 
-#fridgeicon{
+.icons {
     position: relative;
-    height: 150px;
-    width: 150px;
+    height: 160px;
+    width: 160px;
     cursor: pointer;
     right: 30px;
-
+    padding: 20px;
 }
 
-#recipebookicon{
-    position: relative;
-    height: 150px;
-    width: 150px;
-    cursor: pointer;
-
-}
-
-
-#searchicon{
-    position: relative;
-    height: 150px;
-    width: 150px;
-    left: 20px;
-    cursor: pointer;
-
-}
-
-#fridgeicon:hover { 
-    background-color: white;
-    border: solid 10px white;
-    border-radius: 50px 50px 50px 50px;
-}
-
-#searchicon:hover { 
-    background-color: white;
-    border: solid 10px white;
-    border-radius: 50px 50px 50px 50px;
-}
-
-#recipebookicon:hover { 
-    background-color: white;
-    border: solid 10px white;
-    border-radius: 50px 50px 50px 50px;
+.icons:hover {
+    background-color: rgba(148, 224, 255, 0.44);
+    border-radius: 30px;
 }
 
 
