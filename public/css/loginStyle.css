@@ -7,7 +7,7 @@
 }
 
 .submitButton {
-	background-color:#FF4500;
+    background-color: #ff69b4;
     color: white;
     cursor: pointer;
     width: 100px;
@@ -34,10 +34,10 @@ body {
 	overflow:hidden;
 }
 
-#titleLogo {
+.titleLogo {
 	position:relative;
 	height:80%;
 	left:10%;
-	cursor: pointer;
 	top:20%;
+    background: url('../imgs/logo.png');
 }

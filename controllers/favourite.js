@@ -3,14 +3,19 @@ var router = express.Router();
 
 const utils = require('../middlewares/favUtils');
 
-router.post('/', function (req, res) {
-    var recipe = req.body.favRecipe;
-    utils.addToFavFile(recipe);
-    res.redirect('back');
+/**
+ * Adds a recipe to favourites
+ */
+router.post('/', function (req) {
+    utils.addToFavFile(req.body);
 });
 
-router.post('/delete', function (req, res) {
+/**
+ * Controller to delete a favourite recipe for a user
+ */
+router.post('/delete', function (req) {
     utils.deleteFavRecipeForUser(req.body);
 });
+
 module.exports = router;
 

@@ -7,10 +7,14 @@ const imgs = {
     'hoisin salmon': 'http://thequotablekitchen.com/wp-content/uploads/2013/10/IMG_9536_2.jpg',
     'perogies': 'https://www.leannebrown.com/wp-content/uploads/2016/12/perogies-4.jpg'
 };
+var currIdx = 0;
 
 createGallery();
 changeSlide(0);
 
+/**
+ * Creates the cookbook slideshow gallery
+ */
 function createGallery() {
     let cookbookContainer = document.getElementById('cookbookContainer');
     let slideRowDiv = document.createElement('div');
@@ -57,19 +61,41 @@ function createGallery() {
     }
 }
 
+/**
+ * Changes the main slideshow img based on slide index
+ * @param {int} idx - the index of the slide image being changed to
+ */
 function changeSlide(idx) {
+    currIdx = idx;
     var slides = document.getElementsByClassName("cookbookSlides");
     var thumbs = document.getElementsByClassName("thumb");
     var captionText = document.getElementById("caption");
 
     for (var i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
-    }
-    for (var i = 0; i < thumbs.length; i++) {
         thumbs[i].className = thumbs[i].className.replace(" active", "");
     }
+
     slides[idx].style.display = "block";
-    thumbs[idx].className += " active";
+    thumbs[idx].className += " thumb active";
     captionText.innerHTML = thumbs[idx].alt;
     captionText.href = '/search?q=' + thumbs[idx].alt;
+}
+
+/**
+ * Changes to the previous slide img. If already on the first img, clicking
+ * previous slide goes to the last img.
+ */
+function prevSlide() {
+    currIdx = (((currIdx - 1) % 7) + 7) % 7;
+    changeSlide(currIdx);
+}
+
+/**
+ * Changes to the next slide img. If already on the last img, clicking
+ * next slide goes to the first img.
+ */
+function nextSlide() {
+    currIdx = (currIdx + 1) % 7;
+    changeSlide(currIdx);
 }
