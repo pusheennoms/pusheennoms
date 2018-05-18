@@ -3,7 +3,7 @@ var vegList = [], // object list
     vegListImport = []; // record of created objects for faster processing
 /* ------------------- to be changed to blank when merged with hbs ----------------- */
 // list of items saved from elsewhere; currently just a default list of items
-vegListSaved = ["potato", "carrot", "tomato", "bellPepper", "garlic", "eggplant", "corn", "cucumber", "beef", "chicken"];
+vegListSaved = ["potato", "carrot", "tomato", "bellPepper", "garlic", "eggplant", "corn", "cucumber", "beef", "chicken", "pork", "tofu", "salmon", "bread", "cheese"];
 emptySlot = []; // un-occupied slots after delete is used
 
 /* ---------- fridge input box ------------- */
@@ -12,7 +12,7 @@ var fridgeInput = document.getElementById("inputBox");
 
 // fridge input box event listener
 fridgeInput.onkeyup = function (ev) {
-    if (ev.keyCode == 13) {
+    if (ev.keyCode === 13) {
         // disallow blank entry
         if (checkBlank(this.value)) {
             return;
@@ -196,7 +196,7 @@ function populate(list) {
 
         // switch to freezer if fridge is full
         var slots = 0;
-        if (emptySlot.length == 0) {
+        if (emptySlot.length === 0) {
             slots = i + extra;
         } else {
             slots = emptySlot[0];
@@ -220,20 +220,20 @@ contents.onclick = (ev) => {
     selectVeg(ev.target);
 };
 contents.onmouseover = (ev) => {
-    hoverVeg(ev.target);
+    hoverVeg(ev.target, ev);
 };
 contents.onmouseout = (ev) => {
-    hoverVeg(ev.target, 1);
+    hoverVeg(ev.target, ev, 1);
 };
 
 freezer.onclick = (ev) => {
     selectVeg(ev.target);
 };
 freezer.onmouseover = (ev) => {
-    hoverVeg(ev.target);
+    hoverVeg(ev.target, ev);
 };
 freezer.onmouseout = (ev) => {
-    hoverVeg(ev.target, 1);
+    hoverVeg(ev.target, ev, 1);
 };
 
 /* -------- formatted output to be sent back to hbs --------- */
@@ -247,8 +247,8 @@ var ingBar2 = document.getElementById("ingredient-bar2");
 function print_list() {
     temp = "";
     for (var i = 0; i < vegList.length; i += 1) {
-        if (vegList[i].active == 2) {
-            if (temp == "") { // no comma for first item
+        if (vegList[i].active === 2) {
+            if (temp === "") { // no comma for first item
                 temp += vegList[i].id;
             } else {
                 temp += ", " + vegList[i].id;
@@ -291,8 +291,8 @@ function selectVeg(object) {
     // find the index of this item in vegList
     var index = searchIndex(object,vegList);
 
-    if (delState == 0) { // delete is inactive, select items
-        if (vegList[index].active == 1) {
+    if (delState === 0) { // delete is inactive, select items
+        if (vegList[index].active === 1) {
             object.style.opacity = 1.0;
             vegList[index].active = 2;
         } else {
@@ -305,18 +305,74 @@ function selectVeg(object) {
     print_list();
 }
 
+var fridgeDiv = document.getElementById("fridge")
+
+var timer = null,
+    tooltip = document.createElement("div");
+
+
 /**
- * click on an item in the fridge
- * @param {object} object - modify JSON object when the corresponding div is hovered on
- * @param {integer} exit - 0 (default) for mouseenter, 1 for mouseexit
+ * create the fridge tooltip div
  */
-function hoverVeg(object, exit = 0) {
+function initializeTooltips() {
+    tooltip.className = "tooltip";
+    fridgeDiv.appendChild(tooltip);
+    tooltip.innerText = "none";
+}
+
+// create the tooltip div (should be done in hbs, but done here to avoid merge conflicts)
+initializeTooltips();
+
+/**
+ * show the tooltip div when mouse hover over an object, with 1s delay
+ * @param {string} name - name of object to go in the tooltip
+ * @param {int} posX - x position of mouse when enter object
+ * @param {int} posY - y position of mouse when enter object
+ */
+function displayTooltip(name, posX, posY) {
+    timer = setTimeout(() => {
+        tooltip.style.display = "block";
+        tooltip.style.left = posX + 10 + "px";
+        tooltip.style.top = posY + 10 + "px";
+        tooltip.style.opacity = 1;
+
+        // bell pepper is a special case due to file name
+        name = name.replace("bellPepper", "bell pepper");
+        tooltip.innerText = name;
+    }, 1000);
+}
+
+/**
+ * hide the tooltip div after mouse leave
+ */
+function clearTooltip() {
+    clearTimeout(timer);
+    tooltip.style.opacity = 0;
+    timer = setTimeout(() => {
+        tooltip.style.display = "none";
+    }, 1000);
+}
+
+/**
+ * hover on an item in the fridge
+ * @param {object} object - modify JSON object when the corresponding div is hovered on
+ * @param {object} ev - event listener for mouse position
+ * @param {int} exit - 0 (default) for mouseenter, 1 for mouseexit
+ */
+function hoverVeg(object, ev, exit = 0) {
     // find the index of this item in vegList   
     var index = searchIndex(object,vegList);
 
     object.style.cursor = "pointer";
-    if (vegList[index].active == 1) {
-        if (exit == 0) {
+
+    if (exit === 0) {
+        displayTooltip(object.dataset.tag, ev.pageX, ev.pageY);
+    } else {
+        clearTooltip();
+    }
+
+    if (vegList[index].active === 1) {
+        if (exit === 0) {
             object.style.opacity = 0.5;
         } else {
             object.style.opacity = 0.2;
@@ -326,7 +382,6 @@ function hoverVeg(object, exit = 0) {
     print_list();
 }
 
-var fridgeDiv = document.getElementById("fridge")
 /**
  * fridge display open
  */
@@ -343,7 +398,7 @@ function fridgeClose() {
  * fridge display close when clicking outside the window
  */
 window.onclick = function (ev) {
-    if (ev.target == fridgeDiv) {
+    if (ev.target === fridgeDiv) {
         fridgeClose();
     }
-}
+};

@@ -181,7 +181,7 @@ function addRecipeLabelBtn(recipe) {
 
 /**
  * Deletes the favourite recipe
- * @param {Event} ev - the mouseclick event
+ * @param {Event} ev - the mouse click event
  * @param {object} recipe - the recipe to be deleted
  */
 function deleteRecipe(ev, recipe) {
