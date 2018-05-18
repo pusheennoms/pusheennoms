@@ -17,7 +17,6 @@ if (fs.existsSync(favouritesFile) && fs.readFileSync(favouritesFile).length !== 
  * @param recipe
  */
 var addToFavFile = (recipe) => {
-    recipe = JSON.parse(recipe);
     var currentUser = recipe.currentUser;
 
     if (noRepeatFavs(recipe, currentUser)) {

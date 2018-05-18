@@ -102,34 +102,10 @@ function showResults() {
         hiddenFavInp.setAttribute('name', 'favRecipe');
 
         var hiddenFavForm = document.createElement('form');
-        hiddenFavForm.setAttribute('method', 'POST');
-        hiddenFavForm.setAttribute('action', '/favourite');
+        hiddenFavForm.id = 'save-' + i.toString();
         hiddenFavForm.appendChild(hiddenFavInp);
 
         var saveFavBtn = document.createElement('button');
-        saveFavBtn.onclick = (function (recipe) {
-            return function () {
-                if (noRepeat(recipe)) {
-                    addToFavoritesList(recipe);
-                    hiddenFavInp.value = JSON.stringify({
-                        uri: recipe.uri,
-                        label: recipe.label,
-                        dietLabels: recipe.dietLabels,
-                        healthLabels: recipe.healthLabels,
-                        image: recipe.image,
-                        ingredientLines: recipe.ingredientLines,
-                        currentUser: currentUser
-                    });
-                   swal('Success', `Added ${recipe.label} to Favourites!`, 'success').then(() => {
-                        hiddenFavForm.submit()
-                    });
-                } else {
-                    swal('Error', `${recipe.label} is already in Favourites!`, 'error');
-                }
-            }
-        })(currentResults[i].recipe);
-        saveFavBtn.className = 'saveFavBtn';
-        saveFavBtn.innerHTML = 'Save to Favourites';
 
         nDiv.appendChild(nodeIMAGE);
         nDiv.appendChild(document.createElement('br'));
@@ -144,6 +120,18 @@ function showResults() {
 
         document.getElementById('search-row').appendChild(nDiv);
         document.getElementById("iconlinks").style.display = 'None';
+
+        saveFavBtn.onclick = (function (recipe) {
+            return function () {
+                if (noRepeat(recipe)) {
+                    addToFavoritesList(recipe);
+                } else {
+                    swal('Error', `${recipe.label} is already in Favourites!`, 'error');
+                }
+            }
+        })(currentResults[i].recipe);
+        saveFavBtn.className = 'saveFavBtn';
+        saveFavBtn.innerHTML = 'Save to Favourites';
     }
 }
 
