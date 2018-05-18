@@ -48,13 +48,13 @@ function checkCredentials(usernameDoesNotExist) {
  */
 function notifyuser(state){
     if (state === 0) {
-        swal('Congratulations!', 'You have created a new account.', 'success')
+        swal('Congratulations!', 'You have created a new account.', 'success');
     }
     else if (state === 1) {
-        swal('Error', 'Username or password incorrect.','error')
+        swal('Error', 'Username or password incorrect.','error');
     }
     else if (state === 2) {
-        swal('Error', 'Username already exists.', 'error')
+        swal('Error', 'Username already exists.', 'error');
     }
 }
 
