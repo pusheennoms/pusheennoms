@@ -91,9 +91,37 @@ function showRecipe(ev, recipe) {
  * @param {object} recipe - the recipe being added
  */
 function addToFavoritesList(recipe) {
-    favRecipes.push(recipe);
-    localStorage.setItem('favRecipes', JSON.stringify(favRecipes));
-    addRecipeLabelBtn(recipe);
+
+    if (noRepeat(recipe)) {
+
+        // Add to favourites modal and local storage
+        favRecipes.push(recipe);
+        localStorage.setItem('favRecipes', JSON.stringify(favRecipes));
+        addRecipeLabelBtn(recipe);
+
+        // Also post recipe to backend
+        let favForm = $('#save-' + i.toString());
+        favForm.on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/favourite',
+                data: {
+                    uri: recipe.uri,
+                    label: recipe.label,
+                    dietLabels: recipe.dietLabels,
+                    healthLabels: recipe.healthLabels,
+                    image: recipe.image,
+                    ingredientLines: recipe.ingredientLines,
+                    currentUser: currentUser
+                }
+            });
+            swal('Success', `Added ${recipe.label} to Favourites!`, 'success');
+        });
+        favForm.submit()
+    } else {
+        swal('Error', `${recipe.label} is already in Favourites!`, 'error');
+    }
 }
 
 /**
@@ -177,7 +205,6 @@ function deleteRecipe(ev, recipe) {
             let delForm = $('#del-' + id[1]);
             delForm.on('submit', function (e) {
                 e.preventDefault();
-
                 $.ajax({
                     type: 'POST',
                     url: '/favourite/delete',
