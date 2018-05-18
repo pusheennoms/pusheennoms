@@ -102,13 +102,8 @@ function showResults() {
         nodeIMAGE.setAttribute("src", currentResults[i].recipe.image);
 
         // Save to favourites form and input
-        var hiddenFavInp = document.createElement('input');
-        hiddenFavInp.setAttribute('type', 'hidden');
-        hiddenFavInp.setAttribute('name', 'favRecipe');
-
         var hiddenFavForm = document.createElement('form');
         hiddenFavForm.id = 'save-' + i.toString();
-        hiddenFavForm.appendChild(hiddenFavInp);
 
         var saveFavBtn = document.createElement('button');
         saveFavBtn.className = 'saveFavBtn';
@@ -198,7 +193,14 @@ document.getElementById("searchicon").addEventListener("click", function () {
 
 
 document.getElementById("fridgeicon").addEventListener("click", function () {
-    document.getElementById("searchBar2").style.display = "block";
+        document.getElementById("searchBar2").style.display = "block";
+        document.getElementById("fridge").className += "active"
+
+});
+
+
+document.getElementById("fridgeiconmini").addEventListener("click", function () {
+        document.getElementById("searchBar2").style.display = "block";
 
 });
 
