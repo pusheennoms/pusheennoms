@@ -291,7 +291,7 @@ function selectVeg(object) {
     // find the index of this item in vegList
     var index = searchIndex(object,vegList);
 
-    if (delState === 0) { // delete is inactive, select items
+    if (delState === false) { // delete is inactive, select items
         if (vegList[index].active === 1) {
             object.style.opacity = 1.0;
             vegList[index].active = 2;
