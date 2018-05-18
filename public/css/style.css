@@ -433,13 +433,15 @@ a:visited {
 }
 
 #current-user {
-    position: relative;
+    position: fixed;
     height: 50%;
     float: right;
     padding-right: 50px;
-    padding-top: 10px;
+    top: -17px;
+    left: 77%;
     margin: auto;
     font-family: Marker Felt, fantasy;
+    z-index: -1;
 }
 
 #logoutbutt {
@@ -530,6 +532,40 @@ a:visited {
     border-radius: 50px 50px 50px 50px;
 }
 
+#fridgeiconmini{
+    right: 30px;
+
+}
+
+#recipebookiconmini{
+    right: 30px;
+
+}
+
+#searchiconmini{
+    right: 30px;
+
+}
+
+
+.miniicons{
+    position: relative;
+    height: 35px;
+    width: 35px;
+    float: right;
+    top: 40px;
+    margin: auto;
+    cursor: pointer;
+
+}
+
+
+.miniicons:hover { 
+    border: solid 1px white;
+    border-radius: 5px 5px 5px 5px;
+    height: 50px;
+    width: 50px;
+}
 
 /* info box */
 #infoModal {

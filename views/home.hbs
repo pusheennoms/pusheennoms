@@ -36,6 +36,9 @@
 <!-- TOP border -->
 <div id="banner">
     <img id="logo" src="../imgs/pusheats.png" onload="setCurrentResults({{resultRecipes}})">
+    <img id="fridgeiconmini" class="miniicons" onclick="fridgeOpen()" src="../imgs/fridge4.png">
+    <img id="recipebookiconmini" class="miniicons" src="../imgs/recipebook1.png" data-toggle="modal" data-target="#cookbookModal">
+    <img id="searchiconmini" class="miniicons" onclick="showPusheen()" src="../imgs/searchicon1.png">
     <div id="current-user"><h2 id="welcome-user-msg"></h2></div>
     <a href="/home" id="title" class="texts"><img id="titleLogo" src="../imgs/logo.png"></a>
 </div>
@@ -227,7 +230,7 @@
     </div>
 </div>
 
-<div id="fridge">
+<div id="fridge" class="fridge">
     <div id="searchBar2" style="display: none;">
         <div id="fridgeinfo">Fridge Menu</div>
                 <input type="text" id="ingredient-bar2" name="q" placeholder="Ingredient list">
