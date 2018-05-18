@@ -22,7 +22,7 @@ module.exports.getRecipes = (params, callback) => {
         } else if (body && body.hits) {
             callback(undefined, {
                 recipes: body.hits
-            })
+            });
         } else {
             callback(undefined, {
                 recipes: {}
