@@ -44,6 +44,10 @@
 <!-- ctrl panel -->
 <div id="outerpanel">
     <img id="hiddenpusheen" src="../imgs/hiddenpusheen.png">
+    <div id="nyatip">
+        <div id="nyaarrow"></div>
+        <div id="nyatext">Click me nyaa~</div>
+    </div>
     <div id="ctrlpanel">
         <div id="cp-banner">
             <img src="http://simpleicon.com/wp-content/uploads/powe-symbol-4.png" type="button" id="logoutbutt"
@@ -62,6 +66,7 @@
                         <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
                     </div>
                 </div>
+
 
                 <div id='health-diet'>
                     <div class="container-fluid">
@@ -93,7 +98,7 @@
                                         </label>
                                     </form>
                                 </div>
-                            </div>         
+                            </div>
 
                             <div class="allbuttons col-xs-4 col-sm-4 col-lg-4">
 
@@ -130,16 +135,16 @@
 
                             </div>
 
-                            
+
                             <div class="allbuttons col-xs-4 col-sm-4 col-lg-4">
                                 <button class="collapsible"> EXCLUDE INGREDIENTS</button>
                                 <div class="content">
-                                    <input type="text" id="allergies-bar" name="excluded" placeholder="Enter restrictions">
+                                    <input type="text" id="allergies-bar" name="excluded"
+                                           placeholder="Enter restrictions">
                                 </div>
                             </div>
                         </div>
                     </div>
-
 
 
                     <!-- Place holder for the final combination of all forms -->
@@ -179,48 +184,46 @@
 </div>
 
 
-<div class="listcontainer">
-    <button type="button" data-toggle="modal" data-target="#favModal" id="favbutt">
-        Favourites
-    </button>
+<button type="button" data-toggle="modal" data-target="#favModal" id="favbutt">
+    Favourites
+</button>
 
-    <div class="modal fade" id="favModal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 id="favModalTitle">My Favourite Recipes</h4>
+<div class="modal fade" id="favModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="favModalTitle">My Favourite Recipes</h4>
+            </div>
+            <div class="modal-body" id="favModal">
+                <div id="favRecipeLabel"></div>
+                <div id="favModalRecipe" class="container row">
                 </div>
-                <div class="modal-body" id="favModal">
-                    <div id="favRecipeLabel"></div>
-                    <div id="favModalRecipe" class="container row">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="modalButts" id="closeFavButt" data-dismiss="modal">Close</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modalButts" id="closeFavButt" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
 
-<div class="listcontainer">
-    <div class="modal fade" id="cookbookModal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 id="favModalTitle">Pusheen's Top Picks</h4>
-                </div>
-                <div class="modal-body" id="cookbookModal">
-                    <div id="cookbookContainer">
-                        <div class="caption-container">
-                            <a id="caption"></a>
-                        </div>
+<div class="modal fade" id="cookbookModal" role="dialog">
+    <div class="modal-dialog" style="width: 60vw;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="favModalTitle">Pusheen's Top Picks</h4>
+            </div>
+            <div class="modal-body" id="cookbookModal">
+                <div id="cookbookContainer">
+                    <a class="prev" onclick="prevSlide()">&#10094;</a>
+                    <a class="next" onclick="nextSlide()">&#10095;</a>
+                    <div class="caption-container">
+                        <a id="caption"></a>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="modalButts" id="closeCookbookButt" data-dismiss="modal">Close</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modalButts" id="closeCookbookButt" data-dismiss="modal">Close</button>
 
-                </div>
             </div>
         </div>
     </div>
@@ -229,9 +232,9 @@
 <div id="fridge">
     <div id="searchBar2" style="display: none;">
         <div id="fridgeinfo">Fridge Menu</div>
-                <input type="text" id="ingredient-bar2" name="q" placeholder="Ingredient list">
-                    <button id="submitbutt2" onclick="submitForms()"> Submit</button>
-                
+        <input type="text" id="ingredient-bar2" name="q" placeholder="Ingredient list">
+        <button id="submitbutt2" onclick="submitForms()"> Submit</button>
+
     </div>
 
     <div id="tempBox"></div>

@@ -5,7 +5,7 @@ const favouritesFile = path.join(__dirname, '../data/favourites.json');
 var favRecords = {};
 
 /**
- *See if favourites.json exists on drive, if not create file, if so read contents into var chefRecords
+ * See if favourites.json exists on drive, if not create file, if so read contents into var chefRecords
  **/
 if (fs.existsSync(favouritesFile) && fs.readFileSync(favouritesFile).length !== 0) {
    let getFile = fs.readFileSync(favouritesFile);
@@ -36,7 +36,7 @@ var addToFavFile = (recipe) => {
  * Check to see no duplicate favourite recipe
  * @param recipe
  * @param user
- * @returns false if user already exists
+ * @returns false if faved food already exists
  */
 var noRepeatFavs = (recipe, user) => {
     var found = false;
