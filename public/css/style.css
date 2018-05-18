@@ -263,7 +263,7 @@ body {
     position: absolute;
     top: 3px;
     right: -135px;
-    background-color: black;
+    background-color: #BDADA0;
     border-radius: 6px;
     padding: 1px 6px;
     visibility: hidden;
@@ -281,12 +281,12 @@ body {
     margin-left: -5px;
     border-width: 17px 25px 0px 0px;
     border-style: solid;
-    border-color: black transparent transparent transparent;
+    border-color: #BDADA0 transparent transparent transparent;
 }
 
 #nyatext {
     position: relative;
-    color: white;
+    color: #34180a;
     font-family: "Swanky and Moo Moo";
     font-weight: bold;
 }
