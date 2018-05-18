@@ -43,7 +43,7 @@ var noRepeatFavs = (recipe, user) => {
     if (favRecords[user]) {
         for (var i = 0; i < favRecords[user].length; i++) {
             if (favRecords[user][i].uri === recipe.uri) {
-                found = true
+                found = true;
             }
         }
     }
@@ -53,12 +53,7 @@ var noRepeatFavs = (recipe, user) => {
 
 /**
  * Delete a recipes from the favourites for a user
-<<<<<<< HEAD
- * @param recipe - the recipe to be deleted
- * @param user - the user the recipe is deleting for
-=======
  * @param {object} deleting - the object containing the uri and user of the recipe being deleted
->>>>>>> 504737332d2324711bd6e44e0446f503cf526764
  */
 var deleteFavRecipeForUser = (deleting) => {
     for (var i = 0; i < favRecords[deleting.user].length; i++) {
