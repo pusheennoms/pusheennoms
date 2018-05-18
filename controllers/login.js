@@ -65,7 +65,7 @@ router.post('/getpass', (request, response) => {
     } else if (authenticationResult === 'no username') {
         response.render('login.hbs', {
             usernameDoesNotExist: true
-        })
+        });
     }
 });
 
