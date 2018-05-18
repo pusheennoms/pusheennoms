@@ -73,12 +73,11 @@ function changeSlide(idx) {
 
     for (var i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
-    }
-    for (var i = 0; i < thumbs.length; i++) {
         thumbs[i].className = thumbs[i].className.replace(" active", "");
     }
+
     slides[idx].style.display = "block";
-    thumbs[idx].className += " active";
+    thumbs[idx].className += " thumb active";
     captionText.innerHTML = thumbs[idx].alt;
     captionText.href = '/search?q=' + thumbs[idx].alt;
 }
