@@ -51,8 +51,8 @@ router.post('/registerchef', (request, response) => {
  * Handles logging in the user
  */
 router.post('/getpass', (request, response) => {
-    inpUsername = request.body.username;
-    inpPassword = request.body.password;
+    var inpUsername = request.body.username;
+    var inpPassword = request.body.password;
 
     var authenticationResult = utils.authenticateChef(inpUsername, inpPassword);
     if (authenticationResult === 'authentication failure') {
@@ -65,7 +65,7 @@ router.post('/getpass', (request, response) => {
     } else if (authenticationResult === 'no username') {
         response.render('login.hbs', {
             usernameDoesNotExist: true
-        })
+        });
     }
 });
 
