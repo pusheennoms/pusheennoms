@@ -193,7 +193,14 @@ document.getElementById("searchicon").addEventListener("click", function () {
 
 
 document.getElementById("fridgeicon").addEventListener("click", function () {
-    document.getElementById("searchBar2").style.display = "block";
+        document.getElementById("searchBar2").style.display = "block";
+        document.getElementById("fridge").className += "active"
+
+});
+
+
+document.getElementById("fridgeiconmini").addEventListener("click", function () {
+        document.getElementById("searchBar2").style.display = "block";
 
 });
 
