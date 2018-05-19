@@ -3,8 +3,6 @@ var coll = document.getElementsByClassName("collapsible");
 var currentResults, currentUser, currentSearchHistory;
 var pushleft = true;
 
-const fridge = require('./fridge.js');
-
 /*-------------foodDisplay-------------*/
 showSearchHistory();
 
@@ -187,21 +185,6 @@ document.getElementById("hiddenpusheen").onclick = function () {
         showPusheen();
     }
 };
-
-
-document.getElementById("searchicon").addEventListener("click", function () {
-    showPusheen();
-});
-
-
-document.getElementById("fridgeicon").addEventListener("click", function () {
-    fridge.fridgeOpen();
-});
-
-
-document.getElementById("fridgeiconmini").addEventListener("click", function () {
-    fridge.fridgeOpen();
-});
 
 
 var infoModal = document.getElementById("infoModal");
