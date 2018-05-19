@@ -544,23 +544,7 @@ a:visited {
     border-radius: 30px;
 }
 
-#fridgeiconmini{
-    right: 30px;
-
-}
-
-#recipebookiconmini{
-    right: 30px;
-
-}
-
-#searchiconmini{
-    right: 30px;
-
-}
-
-
-.miniicons{
+.miniicons {
     position: relative;
     height: 35px;
     width: 35px;
@@ -568,9 +552,8 @@ a:visited {
     top: 40px;
     margin: auto;
     cursor: pointer;
-
+    right: 30px;
 }
-
 
 .miniicons:hover {
     border: solid 1px white;
