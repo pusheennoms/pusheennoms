@@ -405,7 +405,11 @@ window.onclick = function (ev) {
     }
 };
 
+document.getElementById("fridgeicon").addEventListener("click", function () {
+    fridgeOpen();
+});
 
-module.exports = {
-    fridgeOpen
-};
+
+document.getElementById("fridgeiconmini").addEventListener("click", function () {
+    fridgeOpen();
+});
