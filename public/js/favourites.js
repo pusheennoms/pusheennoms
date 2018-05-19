@@ -6,8 +6,8 @@ var favRecipes;
  */
 function setFavouriteRecipes(fr) {
     let decodedRecipe = fr.replace(/&quot;/g, '\"');
-    favRecipes = JSON.parse(localStorage.getItem('favRecipes') ? localStorage.getItem('favRecipes') : '[]');
-    if (!favRecipes || favRecipes.length <= 0) {
+    favRecipes = JSON.parse(localStorage.getItem('favRecipes')) ? JSON.parse(localStorage.getItem('favRecipes')) : [];
+    if (favRecipes.length <= 0) {
         localStorage.setItem('favRecipes', decodedRecipe);
         favRecipes = JSON.parse(localStorage.getItem('favRecipes'));
     }
