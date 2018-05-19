@@ -263,7 +263,7 @@ body {
     position: absolute;
     top: 3px;
     right: -135px;
-    background-color: black;
+    background-color: #BDADA0;
     border-radius: 6px;
     padding: 1px 6px;
     visibility: hidden;
@@ -281,12 +281,12 @@ body {
     margin-left: -5px;
     border-width: 17px 25px 0px 0px;
     border-style: solid;
-    border-color: black transparent transparent transparent;
+    border-color: #BDADA0 transparent transparent transparent;
 }
 
 #nyatext {
     position: relative;
-    color: white;
+    color: #34180a;
     font-family: "Swanky and Moo Moo";
     font-weight: bold;
 }
@@ -477,13 +477,15 @@ a:visited {
 }
 
 #current-user {
-    position: relative;
+    position: fixed;
     height: 50%;
     float: right;
     padding-right: 50px;
-    padding-top: 10px;
+    top: -17px;
+    left: 77%;
     margin: auto;
     font-family: Marker Felt, fantasy;
+    z-index: -1;
 }
 
 #logoutbutt {
@@ -542,6 +544,40 @@ a:visited {
     border-radius: 30px;
 }
 
+#fridgeiconmini{
+    right: 30px;
+
+}
+
+#recipebookiconmini{
+    right: 30px;
+
+}
+
+#searchiconmini{
+    right: 30px;
+
+}
+
+
+.miniicons{
+    position: relative;
+    height: 35px;
+    width: 35px;
+    float: right;
+    top: 40px;
+    margin: auto;
+    cursor: pointer;
+
+}
+
+
+.miniicons:hover {
+    border: solid 1px white;
+    border-radius: 5px 5px 5px 5px;
+    height: 50px;
+    width: 50px;
+}
 
 /* info box */
 #infoModal {
@@ -598,5 +634,3 @@ a:visited {
     margin:20px;
     font-family: "Trebuchet MS";
 }
-
-

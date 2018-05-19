@@ -3,6 +3,7 @@
 <head>
     <title>Home</title>
     <link rel="icon" href="../imgs/icon.png">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     <link href="../css/favStyles.css" rel="stylesheet" type="text/css"/>
     <link href="../css/fridge.css" rel="stylesheet" type="text/css"/>
@@ -36,6 +37,9 @@
 <!-- TOP border -->
 <div id="banner">
     <img id="logo" src="../imgs/pusheats.png" onload="setCurrentResults({{resultRecipes}})">
+    <img id="fridgeiconmini" class="miniicons" onclick="fridgeOpen()" src="../imgs/fridge4.png">
+    <img id="recipebookiconmini" class="miniicons" src="../imgs/recipebook1.png" data-toggle="modal" data-target="#cookbookModal">
+    <img id="searchiconmini" class="miniicons" onclick="showPusheen()" src="../imgs/searchicon1.png">
     <div id="current-user"><h2 id="welcome-user-msg"></h2></div>
     <a href="/home" id="title" class="texts"><img class="titleLogo" src="../imgs/logo.png"></a>
 </div>
@@ -175,7 +179,7 @@
         <div id="iconlinks">
             <img class="icons" id="fridgeicon" onclick="fridgeOpen()" src="../imgs/fridge4.png">
             <img class="icons" src="../imgs/recipebook1.png" data-toggle="modal" data-target="#cookbookModal">
-            <img class="icons" src="../imgs/searchicon1.png">
+            <img class="icons" id="searchicon" onclick="showPusheen()" src="../imgs/searchicon1.png">
         </div>
     </div>
 </div>
@@ -227,7 +231,7 @@
 </div>
 
 <div id="fridge">
-    <div id="searchBar2" style="display: block;">
+    <div id="searchBar2">
         <div id="fridgeinfo">Fridge Menu</div>
         <input type="text" id="ingredient-bar2" name="q" placeholder="Ingredient list">
         <button id="submitbutt2" onclick="submitForms()"> Submit</button>
@@ -242,7 +246,7 @@
         <span aria-hidden="true">&times;</span>
     </button>
 
-    <div id="fridgeDisplay">
+    <div id="fridgeDisplay" class="w3-animate-zoom">
         <div id="fridgeBG">
             <div id="topDoor"></div>
             <div id="botDoor"></div>
