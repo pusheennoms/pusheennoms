@@ -1,21 +1,16 @@
 /**
  * check if the input string is blank or white space only
- * @param {str} string - the input string
+ * @param {string} str - the input string
  * returns true if blank
- * returns false if it has content
  */
 function checkBlank(str) {
-    if (str.trim() == "") {
-        return true;
-    } else {
-        return false;
-    }
+    return str.trim() === "";
 }
 
 /**
  * change a non-blank input into an arrary format
- * @param {text} string - the input string
- * @param {list} array - the array that contains existing inputs
+ * @param {string} text - the input string
+ * @param {array} list - the array that contains existing inputs
  * returns the formatted string with duplicate entries removed as an array
  */
 function formatInput(text, list) {
@@ -27,7 +22,7 @@ function formatInput(text, list) {
 
 /**
  * toggle background color of a dom object based on a boolean variable
- * @param {state} boolean - the boolean variable in question
+ * @param {boolean} state - the boolean variable in question
  * @param {object} object - the dom object to be manipulated
  * returns the flipped boolean state
  */
@@ -44,7 +39,7 @@ function delToggle(state, object) {
 /**
  * find the index of the object in an object array that matches a custom variable in a dom object
  * @param {object} object - the target dom object
- * @param {objList} array - the object data array to search through
+ * @param {array} objList - the object data array to search through
  * returns the index of the dom object data in the object array
  */
 function searchIndex(object, objList) {
@@ -53,7 +48,7 @@ function searchIndex(object, objList) {
 
 /**
  * determine the row and column slots of an object based on the slot number assigned
- * @param {slot} integer - the slot number of the object
+ * @param {int} slot - the slot number of the object
  * returns the row and column number of this slot
  */
 function findPosition(slot) {
@@ -64,8 +59,8 @@ function findPosition(slot) {
 
 /**
  * Check if an image file exists
- * @param {source} string - name of the image file
- * @param {item} object - the dom object to attach image to
+ * @param {string} source - name of the image file
+ * @param {object} item - the dom object to attach image to
  */
 function checkImg(source, item) {
     var img = new Image();
@@ -81,4 +76,4 @@ module.exports = {
     searchIndex,
     findPosition,
     checkImg
-}
+};

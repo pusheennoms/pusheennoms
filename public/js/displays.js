@@ -12,6 +12,7 @@ showSearchHistory();
 function showSearchHistory() {
     currentSearchHistory = JSON.parse(localStorage.getItem('searchHistory'));
 
+    // Create a search history object if there isn't already one
     if (!currentSearchHistory) {
         currentSearchHistory = {};
         currentSearchHistory[currentUser] = [];
@@ -22,6 +23,7 @@ function showSearchHistory() {
 
     var foodList = document.getElementById('food-list');
 
+    // Create a list for a user if they don't already have a search history
     if (!currentSearchHistory[currentUser]) {
         currentSearchHistory[currentUser] = [];
     }
@@ -31,7 +33,7 @@ function showSearchHistory() {
     var ndiv2 = document.createElement('div');
     ndiv2.setAttribute('id', 'searchlist');
 
-
+    // Create search history items
     for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
         var ndiv = document.createElement("a");
         ndiv.innerHTML = currentSearchHistory[currentUser][i].value;
@@ -40,19 +42,19 @@ function showSearchHistory() {
             if (` ${tags[j]} `.trim() === "exclude") {
                 break;
             }
-            if (j===1) { //Health tags
+            if (j === 1) { //Health tags
                 var ntext1 = document.createElement("i");
                 ntext1.style.color = "black";
                 ntext1.innerHTML += ` ${tags[j]} `;
                 ndiv.appendChild(ntext1);
             }
-            if (j===2) { //Diet tags
+            if (j === 2) { //Diet tags
                 var ntext2 = document.createElement("i");
                 ntext2.style.color = "green";
                 ntext2.innerHTML += ` ${tags[j]} `;
                 ndiv.appendChild(ntext2);
             }
-            if (j===3) { //Exclude tags
+            if (j === 3) { //Exclude tags
                 var ntext3 = document.createElement("u");
                 ntext3.style.color = "red";
                 ntext3.innerHTML += ` ${tags[j]} `;
@@ -74,10 +76,12 @@ function showSearchHistory() {
  * Display the search results
  */
 function showResults() {
+    document.getElementById('welcome-div').style.display = 'none';
     hidePusheen();
-    document.getElementById('welcome-div').style.display = 'None';
+
     for (var i = 0; i < currentResults.length - 1; i++) {
 
+        // Displaying a recipe result
         var node = document.createElement('a');
         var nodeLABELS = document.createElement('div');
         var nodeIMAGE = document.createElement('img');
@@ -97,37 +101,11 @@ function showResults() {
         nodeIMAGE.className = 'searchResultsImgs';
         nodeIMAGE.setAttribute("src", currentResults[i].recipe.image);
 
-        var hiddenFavInp = document.createElement('input');
-        hiddenFavInp.setAttribute('type', 'hidden');
-        hiddenFavInp.setAttribute('name', 'favRecipe');
-
+        // Save to favourites form and input
         var hiddenFavForm = document.createElement('form');
-        hiddenFavForm.setAttribute('method', 'POST');
-        hiddenFavForm.setAttribute('action', '/favourite');
-        hiddenFavForm.appendChild(hiddenFavInp);
+        hiddenFavForm.id = 'save-' + i.toString();
 
         var saveFavBtn = document.createElement('button');
-        saveFavBtn.onclick = (function (recipe) {
-            return function () {
-                if (noRepeat(recipe)) {
-                    addToFavoritesList(recipe);
-                    hiddenFavInp.value = JSON.stringify({
-                        uri: recipe.uri,
-                        label: recipe.label,
-                        dietLabels: recipe.dietLabels,
-                        healthLabels: recipe.healthLabels,
-                        image: recipe.image,
-                        ingredientLines: recipe.ingredientLines,
-                        currentUser: currentUser
-                    });
-                   swal('Success', `Added ${recipe.label} to Favourites!`, 'success').then(() => {
-                        hiddenFavForm.submit()
-                    });
-                } else {
-                    swal('Error', `${recipe.label} is already in Favourites!`, 'error');
-                }
-            }
-        })(currentResults[i].recipe);
         saveFavBtn.className = 'saveFavBtn';
         saveFavBtn.innerHTML = 'Save to Favourites';
 
@@ -140,21 +118,33 @@ function showResults() {
         nDiv.appendChild(document.createElement('br'));
         nDiv.appendChild(document.createElement('br'));
 
-        nDiv.className = "searchResultDiv col-md-4 col-lg-3 col-sm-6 col-xs-12";
+        nDiv.className = "searchResultDiv  col-lg-3 col-md-4 col-sm-6 col-xs-12";
 
         document.getElementById('search-row').appendChild(nDiv);
-        document.getElementById("iconlinks").style.display = 'None';
+        document.getElementById("iconlinks").style.display = 'none';
+
+        // Action for the save to favourites button
+        saveFavBtn.onclick = (function (recipe) {
+            return function () {
+                addToFavoritesList(recipe);
+            }
+        })(currentResults[i].recipe);
     }
 }
 
 /*-----------INTERACTIONS--------------*/
-
+/**
+ * once user presses enter on the ingredients search bar, the forms are submitted
+ */
 document.getElementById("ingredient-bar").addEventListener("keydown", function (ev) {
     if (ev.keyCode === 13) {
         submitForms();
     }
 });
 
+/**
+ * open collapsibles on click
+ */
 for (var i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function () {
         this.classList.toggle("active");
@@ -166,25 +156,26 @@ for (var i = 0; i < coll.length; i++) {
         }
     });
 }
-;
 
 /**
  * Opens the search panel
  */
-
 function showPusheen() {
     document.getElementById("outerpanel").style.left = '0px';
     pushleft = 0;
 }
 
 /**
- * Closes the search pangel
+ * Closes the search panel
  */
 function hidePusheen() {
     document.getElementById("outerpanel").style.left = '-80%';
     pushleft = 1;
 }
 
+/**
+ * click the cat, show or hide the control panel
+ */
 document.getElementById("hiddenpusheen").onclick = function () {
     pushleft = !pushleft;
 
@@ -194,19 +185,6 @@ document.getElementById("hiddenpusheen").onclick = function () {
         showPusheen();
     }
 };
-
-
-
-document.getElementById("searchicon").addEventListener("click", function () {
-        showPusheen();
-});
-
-
-document.getElementById("fridgeicon").addEventListener("click", function () {
-        document.getElementById("searchBar2").style.display = "block";
-
-});
-
 
 
 var infoModal = document.getElementById("infoModal");
@@ -221,16 +199,15 @@ function closeInfo() {
 
 var logo = document.getElementById("logo");
 
-logo.addEventListener("click", function(){
+logo.addEventListener("click", function () {
     openInfo();
-})
+});
 
 /**
  * fridge display close when clicking outside the window
  */
-window.addEventListener("click", function(ev) {
-    if (ev.target == infoModal) {
+window.addEventListener("click", function (ev) {
+    if (ev.target === infoModal) {
         infoModal.style.display = "none";
     }
-})
-
+});

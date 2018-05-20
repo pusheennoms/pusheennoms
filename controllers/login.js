@@ -5,6 +5,9 @@ const utils = require('../middlewares/loginUtils');
 const favUtils = require('../middlewares/favUtils');
 var loggedIn = false;
 
+/**
+ * Renders login.hbs by default
+ */
 router.get('/', function (req, res) {
     loggedIn = false;
     res.render('login.hbs');

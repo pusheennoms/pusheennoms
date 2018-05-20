@@ -12,7 +12,7 @@ let record = {
 
 describe("testing adding new favourite recipe", () => {
     test("add new recipe", () => {
-        utils.addToFavFile(JSON.stringify(record));
+        utils.addToFavFile(record);
         let favRecords = JSON.parse(fs.readFileSync(favFile));
         expect(favRecords['carson']).toContainEqual(record);
     })
