@@ -24,6 +24,31 @@ fridgeInput.onkeyup = function (ev) {
     }
 };
 
+var IngredientSub = document.getElementById('submitIng')
+
+IngredientSub.onclick = function(){
+    if (checkBlank(fridgeInput.value)){
+        return;
+    }
+    var temp = formatInput(fridgeInput.value, vegListImport);
+    vegListImport = vegListImport.concat(temp);
+    populate(temp); // create objects associated with non-duplicate entries
+};
+
+fridgeInput.onkeyup = function (ev) {
+    if (ev.keyCode === 13) {
+        // disallow blank entry
+        if (checkBlank(this.value)) {
+            return;
+        }
+        // add non-duplicate entries into existing array
+        var temp = formatInput(this.value, vegListImport);
+        vegListImport = vegListImport.concat(temp);
+        populate(temp); // create objects associated with non-duplicate entries
+    }
+};
+
+
 /* ----------- allow for loading previous saved configurations, currently just a default button --------- */
 var saved = document.getElementById("default");
 saved.onclick = function () {
