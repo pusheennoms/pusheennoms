@@ -92,17 +92,24 @@
     left: 1%;
 }
 
-#default{
+#submitIng {
     position: fixed;
     top: 25%;
     left: 1%;
+    border-radius: 20px 20px 20px 20px;
+}
+
+#default{
+    position: fixed;
+    top: 25%;
+    left: 5%;
     border-radius: 20px 20px 20px 20px
 }
 
 #fridgeDelete{
     position: fixed;
     top: 25%;
-    left: 8%;
+    left: 15%;
     border-radius: 20px 20px 20px 20px
 }
 
