@@ -102,14 +102,14 @@
 #default{
     position: fixed;
     top: 25%;
-    left: 7%;
+    left: 5%;
     border-radius: 20px 20px 20px 20px
 }
 
 #fridgeDelete{
     position: fixed;
     top: 25%;
-    left: 22%;
+    left: 15%;
     border-radius: 20px 20px 20px 20px
 }
 
