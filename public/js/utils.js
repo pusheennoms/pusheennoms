@@ -3,6 +3,26 @@ if (currentResults && currentResults.length > 1) {
 }
 
 /**
+ * Set the results taken from the server after the search and calls the function to show results on page
+ * @param {string} res - the stringified JSON object from the search results
+ */
+function setCurrentResults(res) {
+    currentResults = JSON.parse(res.replace(/&quot;/g, '\"'));
+    debugger;
+    if (currentResults && currentResults.length) {
+        if (currentResults[currentResults.length - 1].currentUser) {
+            localStorage.setItem('currentUser', JSON.stringify(currentResults[currentResults.length - 1].currentUser));
+        } else {
+            showResults();
+
+        }
+    }
+    currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    document.getElementById('welcome-user-msg').innerHTML =
+        `Welcome, ${currentUser}!`;
+}
+
+/**
  * Gets all the search form values and populate into object to be POSTED to the server.
  * Also adds the search query to the search history
  */
