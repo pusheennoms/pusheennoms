@@ -5,6 +5,10 @@
 
 #caption {
     color: white;
+    font-family: "Swanky and Moo Moo";
+    font-weight: bolder;
+    letter-spacing: 4px;
+    font-size: 35px;
 }
 
 .cookbookSlides {
@@ -31,7 +35,7 @@
 
 .caption-container {
     text-align: center;
-    background-color: #222;
+    background-color: #222222d1;
     padding: 2px 16px;
     color: white;
     bottom: 0px;
