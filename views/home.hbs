@@ -61,23 +61,43 @@
                                 <button class="collapsible"> HEALTH</button>
                                 <div class="content">
                                     <form id='ingredient-form'>
+                                        <label class="listcontainer">Vegetarian
+                                            <input type="checkbox" name="health" value='vegetarian'>
+                                            <span class="checkmark"></span>
+                                        </label>
+
+                                        <label class="listcontainer">Vegan
+                                            <input type="checkbox" name="health" value='vegan'>
+                                            <span class="checkmark"></span>
+                                        </label>
+
                                         <label class="listcontainer">No Dairy
                                             <input type="checkbox" name="health" value='dairy-free'>
                                             <span class="checkmark"></span>
                                         </label>
 
-                                        <label class="listcontainer">No Peanuts
-                                            <input type="checkbox" name="health" value='peanut-free'>
+                                        <label class="listcontainer">No Gluten
+                                            <input type="checkbox" name="health" value='gluten-free'>
                                             <span class="checkmark"></span>
                                         </label>
 
-                                        <label class="listcontainer">No Soy
-                                            <input type="checkbox" name="health" value='soy-free'>
+                                        <label class="listcontainer">No Red Meat
+                                            <input type="checkbox" name="health" value='red-meat-free'>
                                             <span class="checkmark"></span>
                                         </label>
 
-                                        <label class="listcontainer">No Pork
-                                            <input type="checkbox" name="health" value='dairy-free'>
+                                        <label class="listcontainer">No Wheat
+                                            <input type="checkbox" name="health" value='wheat'>
+                                            <span class="checkmark"></span>
+                                        </label>
+
+                                        <label class="listcontainer">Kidney Friendly
+                                            <input type="checkbox" name="health" value='kidney-friendly'>
+                                            <span class="checkmark"></span>
+                                        </label>
+
+                                        <label class="listcontainer">Sugar Conscious
+                                            <input type="checkbox" name="health" value='sugar-conscious'>
                                             <span class="checkmark"></span>
                                         </label>
                                     </form>
@@ -114,6 +134,11 @@
                                             <input type="checkbox" name="diet" value='low-sodium'>
                                             <span class="checkmark"></span>
                                         </label>
+
+                                        <label class="listcontainer">Low Carb
+                                            <input type="checkbox" name="diet" value='low-carb'>
+                                            <span class="checkmark"></span>
+                                        </label>
                                     </form>
                                 </div>
 
@@ -124,7 +149,7 @@
                                 <button class="collapsible"> EXCLUDE INGREDIENTS</button>
                                 <div class="content">
                                     <input type="text" id="allergies-bar" name="excluded"
-                                           placeholder="Enter restrictions">
+                                           placeholder="Enter restrictions" style="margin: 5px; padding: 10px;">
                                 </div>
                             </div>
                         </div>
