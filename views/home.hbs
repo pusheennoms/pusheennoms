@@ -13,30 +13,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Swanky and Moo Moo' rel='stylesheet'>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        /**
-         * Set the results taken from the server after the search and calls the function to show results on page
-         * @param {string} res - the stringified JSON object from the search results
-         */
-        function setCurrentResults(res) {
-            currentResults = res;
-            if (res && res.length > 0 && res[res.length - 1].currentUser) {
-                localStorage.setItem('currentUser', JSON.stringify(res[res.length - 1].currentUser));
-            }
-            currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            document.getElementById('welcome-user-msg').innerHTML =
-                    `Welcome, ${currentUser}!`;
-            showSearchHistory();
-            if (currentResults && currentResults.length > 1) {
-                showResults();
-            }
-        }
-    </script>
 </head>
 <body>
 <!-- TOP border -->
 <div id="banner">
-    <img id="logo" src="../imgs/pusheats.png" onload="setCurrentResults({{resultRecipes}})">
+    <img id="logo" src="../imgs/pusheats.png">
     <img id="fridgeiconmini" class="miniicons" onclick="fridgeOpen()" src="../imgs/fridge4.png">
     <img id="recipebookiconmini" class="miniicons" src="../imgs/recipebook1.png" data-toggle="modal"
          data-target="#cookbookModal">
@@ -235,13 +216,14 @@
     <div id="searchBar2">
         <div id="fridgeinfo">Fridge Menu</div>
         <input type="text" id="ingredient-bar2" name="q" placeholder="Ingredient list">
-        <button id="submitbutt2" onclick="submitForms()"> Submit</button>
+        <button id="submitbutt2" onclick="submitForms()">Cook!</button>
 
     </div>
 
     <div id="tempBox"></div>
-    <input type="text" id="inputBox" placeholder="Enter ingredients">
-    <button id="default">Default</button>
+    <input type="text" id="inputBox" placeholder="Enter your own ingredients"></br>
+    <button type="button" id="submitIng">Submit</button>
+    <button id="default">Add Default Ingredients</button>
     <button id="fridgeDelete">Delete</button>
     <button type="button" class="close" aria-label="Close" onclick="fridgeClose()">
         <span aria-hidden="true">&times;</span>
@@ -293,14 +275,16 @@
         </div>
     </div>
 </div>
-
-
 <script src="../js/favourites.js"></script>
 <script src="../js/displays.js"></script>
 <script src="../js/fridge2.js"></script>
 <script src="../js/fridge.js"></script>
 <script src="../js/cookbook.js"></script>
 <script src="../js/utils.js"></script>
-<script> setFavouriteRecipes("{{favRecipes}}")</script>
+<script>
+    setCurrentResults("{{resultRecipes}}");
+    setFavouriteRecipes("{{favRecipes}}");
+    showSearchHistory()
+</script>
 </body>
 </html>
