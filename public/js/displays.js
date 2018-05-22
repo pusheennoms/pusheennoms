@@ -3,9 +3,6 @@ var coll = document.getElementsByClassName("collapsible");
 var currentResults, currentUser, currentSearchHistory;
 var pushleft = true;
 
-/*-------------foodDisplay-------------*/
-showSearchHistory();
-
 /**
  * Displays the search history below search bar
  */
@@ -79,7 +76,7 @@ function showResults() {
     document.getElementById('welcome-div').style.display = 'none';
     hidePusheen();
 
-    for (var i = 0; i < currentResults.length - 1; i++) {
+    for (var i = 0; i < currentResults.length; i++) {
 
         // Displaying a recipe result
         var node = document.createElement('a');
