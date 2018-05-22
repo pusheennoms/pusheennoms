@@ -489,17 +489,44 @@ a:visited {
 }
 
 #logoutbutt {
-    position: absolute;
-    height: 3%;
-    top: 0.5%;
-    left: 0.5%;
-    margin: auto;
+    position: fixed;
+    bottom: 0px;
+    right: 10px;
     cursor: pointer;
-    font-family: Marker Felt, fantasy;
-    color: #DCDCDC;
-    z-index: 10;
+    width:100px;
 }
 
+#outtip {
+    position: fixed;
+    bottom: 50px;
+    right: 105px;
+    background-color: #BDADA0;
+    border-radius: 6px;
+    padding: 1px 6px;
+    visibility: hidden;
+}
+
+#logoutbutt:hover + #outtip {
+    visibility: visible;
+}
+
+#outarrow {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    margin-right: -5px;
+    border-width: 17px 0px 0px 25px;
+    border-style: solid;
+    border-color: #BDADA0 transparent transparent transparent;
+}
+
+#outtext {
+    position: relative;
+    color: #34180a;
+    font-family: "Swanky and Moo Moo";
+    font-weight: bold;
+}
 
 .delFavBtn {
     color: #7b7bb0;
