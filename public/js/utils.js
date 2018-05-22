@@ -8,7 +8,6 @@ if (currentResults && currentResults.length > 1) {
  */
 function setCurrentResults(res) {
     currentResults = JSON.parse(res.replace(/&quot;/g, '\"'));
-    debugger;
     if (currentResults && currentResults.length) {
         if (currentResults[currentResults.length - 1].currentUser) {
             localStorage.setItem('currentUser', JSON.stringify(currentResults[currentResults.length - 1].currentUser));
