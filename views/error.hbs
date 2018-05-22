@@ -20,15 +20,16 @@
     <img id="bg-img" src="../imgs/bg3.jpeg">
     <div id="welcome-div">
         <p id="welcome-msg"> Oh no! <br><br> You seem to be lost. <br>
-            Click the button below to login.
+            {{errorMsg}}
         </p>
         <img id="err-img" src="../imgs/error_img.png">
-        <form method="get" action="/">
+        <form method="get" action="/home">
             <button id="backbutt">Back</button>
         </form>
     </div>
 </div>
-
+<script src="../js/favourites.js"></script>
+<script src="../js/displays.js"></script>
 <script src="../js/utils.js"></script>
 </body>
 </html>

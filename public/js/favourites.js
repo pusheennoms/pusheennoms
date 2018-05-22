@@ -1,4 +1,4 @@
-var favRecipes;
+var favRecipes = [];
 
 /**
  * Sets and shows favourite recipes for the current signed in user
@@ -6,11 +6,15 @@ var favRecipes;
  */
 function setFavouriteRecipes(fr) {
     let decodedRecipe = fr.replace(/&quot;/g, '\"');
-    favRecipes = JSON.parse(localStorage.getItem('favRecipes')) ? JSON.parse(localStorage.getItem('favRecipes')) : [];
-    if (favRecipes.length <= 0) {
+
+    if (decodedRecipe.length > 0) {
         localStorage.setItem('favRecipes', decodedRecipe);
-        favRecipes = JSON.parse(localStorage.getItem('favRecipes'));
     }
+
+    if (localStorage.getItem('favRecipes') && localStorage.getItem('favRecipes').length > 0) {
+        favRecipes = JSON.parse(localStorage.getItem('favRecipes'))
+    }
+
     showSavedFavRecipes();
 }
 
