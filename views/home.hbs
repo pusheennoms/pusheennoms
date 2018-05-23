@@ -51,29 +51,40 @@
                                     <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-6">
-                                <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
-                            </div>
-                            <div class="col-md-3 col-lg-3">
-                                <form id="final-form" method="get" action="/search">
-                                    <input id="final-search-query" type="hidden" name="query">
-                                </form>
-                                <button id="submitbutt" onclick="submitForms()"> SUBMIT</button>
-                            </div>
-                            <div class="row col-md-9" style="padding-top: 1%">
-                                <div class="allbuttons col-md-4 col-lg-4" style="height: 0px;">
+                            <div class="col-md-9" style="padding-top: 1%">
+                                <div class="col-md-6 col-lg-6">
+                                    <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
+                                </div>
+                                <div class="col-md-6 col-lg-6" style="padding-bottom: 4%;">
+                                    <form id="final-form" method="get" action="/search">
+                                        <input id="final-search-query" type="hidden" name="query">
+                                    </form>
+                                    <button id="submitbutt" onclick="submitForms()"> SUBMIT</button>
+                                </div>
+                                <div class="allbuttons col-md-3 col-lg-3" style="height: 0px;">
                                     <button class="collapsible"> Health</button>
                                     <div class="content">
                                         <form id='ingredient-form'></form>
                                     </div>
                                 </div>
-                                <div class="allbuttons col-md-4 col-lg-4" style="height: 0px;">
+                                <div class="allbuttons col-md-3 col-lg-3" style="height: 0px;">
                                     <button class="collapsible"> Diet</button>
                                     <div class="content">
                                         <form id='ingredient-form1'></form>
                                     </div>
                                 </div>
-                                <div class="allbuttons col-md-4 col-lg-4" style="height: 0px;">
+                                <div class="allbuttons col-md-3 col-lg-3" style="height: 0px;">
+                                    <button class="collapsible"> Calories (kCal)</button>
+                                    <div class="content">
+                                        <form id='ingredient-form2'>
+                                            Min <input type="number" name="calories-min"
+                                                       style="margin: 5px; padding: 10px; width: 100%;">
+                                            Max <input type="number" name="calories-max"
+                                                       style="margin: 5px; padding: 10px; width: 100%;">
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="allbuttons col-md-3 col-lg-3" style="height: 0px;">
                                     <button class="collapsible"> Exclude Ingredients</button>
                                     <div class="content">
                                         <input type="text" id="allergies-bar" name="excluded"
@@ -94,6 +105,7 @@
 <div id="big-page-div">
     <img id="bg-img" src="../imgs/bg-new.jpg">
     <div id="search-results" class="container-fluid">
+        <form id="savFavForm"></form>
         <div id="search-row" class="row"></div>
     </div>
     <div id="welcome-div">

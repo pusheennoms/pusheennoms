@@ -304,7 +304,7 @@ body {
     background-color: white;
     padding: 2%;
     position: relative;
-    margin: 2% 2% 2%;
+    margin: 0% 2% 2%;
 }
 
 #food-list {
@@ -385,8 +385,7 @@ body {
     text-align: center;
     font-size: 15px;
     border-radius: 12px;
-    padding: 6% 0;
-    margin-top: 10px;
+    padding: 1% 0;
     left: 0%;
     position: relative;
 }

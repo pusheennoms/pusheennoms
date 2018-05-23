@@ -51,8 +51,10 @@ function showResults() {
 
         node.href = currentResults[i].recipe.url;
         node.innerHTML = currentResults[i].recipe.label;
-        nodeLABELS.innerHTML = "HEALTH: " + currentResults[i].recipe.healthLabels + "<br>DIET: " + currentResults[i].recipe.dietLabels +
-            "<br>INGREDIENTS: " + currentResults[i].recipe.ingredientLines;
+        nodeLABELS.innerHTML = "HEALTH: " + currentResults[i].recipe.healthLabels +
+            "<br><br>DIET: " + currentResults[i].recipe.dietLabels +
+            "<br><br> CALORIES: " + Math.round(currentResults[i].recipe.calories) + " kCAL" +
+            "<br><br>INGREDIENTS: " + currentResults[i].recipe.ingredientLines;
 
         node.setAttribute('id', i.toString());
         node.setAttribute('target', '_new');
@@ -63,10 +65,7 @@ function showResults() {
         nodeIMAGE.className = 'searchResultsImgs';
         nodeIMAGE.setAttribute("src", currentResults[i].recipe.image);
 
-        // Save to favourites form and input
-        var hiddenFavForm = document.createElement('form');
-        hiddenFavForm.id = 'save-' + i.toString();
-
+        // Save to favourites
         var saveFavBtn = document.createElement('button');
         saveFavBtn.className = 'saveFavBtn';
         saveFavBtn.innerHTML = 'Save to Favourites';
@@ -75,7 +74,6 @@ function showResults() {
         nDiv.appendChild(document.createElement('br'));
         nDiv.appendChild(node);
         nDiv.appendChild(nodeLABELS);
-        nDiv.appendChild(hiddenFavForm);
         nDiv.appendChild(saveFavBtn);
         nDiv.appendChild(document.createElement('br'));
         nDiv.appendChild(document.createElement('br'));

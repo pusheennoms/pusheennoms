@@ -7,6 +7,8 @@ var pushleft = true;
 function submitForms() {
     var healthFormElements = document.getElementById('ingredient-form').elements;
     var dietFormElements = document.getElementById('ingredient-form1').elements;
+    var caloriesFormElements = document.getElementById('ingredient-form2').elements;
+
     var params = {
         q: document.getElementById('ingredient-bar').value,
         healthLabels: [],
@@ -27,6 +29,10 @@ function submitForms() {
             if (dietFormElements[i].checked) {
                 params.dietLabels.push(dietFormElements[i].value);
             }
+        }
+        // Get calories range; it cannot have an empty value
+        if (caloriesFormElements[0].value && caloriesFormElements[0].value) {
+            params.calories = (`${caloriesFormElements[0].value}-${caloriesFormElements[0].value}`);
         }
 
         // Add search parameters to search history
@@ -58,13 +64,8 @@ function addIngredient(queryParams) {
         }
     }
     if (!duplicateSearch) {
-        currentSearchHistory[currentUser].push({
-            value: `${queryParams.q}`,
-            healthLabels: `${queryParams.healthLabels}`,
-            dietLabels: `${queryParams.dietLabels}`,
-            excluded: `exclude ${queryParams.excluded}`,
-            query: queryStr
-        })
+        queryParams.query = queryStr;
+        currentSearchHistory[currentUser].push(queryParams)
     }
 
     localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
@@ -100,30 +101,35 @@ function showSearchHistory() {
     // Create search history items
     for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
         var ndiv = document.createElement("a");
-        ndiv.innerHTML = currentSearchHistory[currentUser][i].value;
-        var tags = Object.values(currentSearchHistory[currentUser][i]);
-        for (j = 1; j < tags.length - 1; j++) {
-            if (` ${tags[j]} `.trim() === "exclude") {
-                break;
-            }
-            if (j === 1) { //Health tags
-                var ntext1 = document.createElement("i");
-                ntext1.style.color = "black";
-                ntext1.innerHTML += ` ${tags[j]} `;
-                ndiv.appendChild(ntext1);
-            }
-            if (j === 2) { //Diet tags
-                var ntext2 = document.createElement("i");
-                ntext2.style.color = "green";
-                ntext2.innerHTML += ` ${tags[j]} `;
-                ndiv.appendChild(ntext2);
-            }
-            if (j === 3) { //Exclude tags
-                var ntext3 = document.createElement("i");
-                ntext3.style.color = "red";
-                ntext3.innerHTML += ` ${tags[j]} `;
-                ndiv.append(ntext3);
-            }
+        ndiv.innerHTML = currentSearchHistory[currentUser][i].q;
+
+        var tags = currentSearchHistory[currentUser][i];
+        if (tags.healthLabels.length > 0) {
+            var ntext1 = document.createElement("i");
+            ntext1.style.color = "black";
+            ntext1.innerHTML += ` ${tags.healthLabels.join(' ')} `;
+            ndiv.appendChild(ntext1);
+        }
+
+        if (tags.dietLabels.length > 0) {
+            var ntext2 = document.createElement("i");
+            ntext2.style.color = "green";
+            ntext2.innerHTML += ` ${tags.dietLabels.join(' ')} `;
+            ndiv.appendChild(ntext2);
+        }
+
+        if (tags.calories && tags.calories.length > 0) {
+            var ntext4 = document.createElement("i");
+            ntext4.style.color = "orange";
+            ntext4.innerHTML += ` ${tags.calories} kcal`;
+            ndiv.appendChild(ntext4);
+        }
+
+        if (tags.excluded.length > 0) {
+            var ntext3 = document.createElement("i");
+            ntext3.style.color = "red";
+            ntext3.innerHTML += ` exclude ${tags.excluded} `;
+            ndiv.append(ntext3);
         }
 
         var seperator = document.createElement("b");

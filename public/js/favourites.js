@@ -75,7 +75,8 @@ function showRecipe(ev, recipe) {
     node.href = recipe.url;
     node.innerHTML = "Link to recipe";
     nodeLABELS.className = 'col-md-6';
-    nodeLABELS.innerHTML = `<b>HEALTH: </b> ${recipe.healthLabels } <br> <b>DIET: </b> ${recipe.dietLabels}<br>`;
+    nodeLABELS.innerHTML = `<b>HEALTH: </b> ${recipe.healthLabels } <br> <br><b>DIET: </b> ${recipe.dietLabels}
+<br><br><b>CALORIES: </b> ${Math.round(recipe.calories)} kCal `;
     nodeIngredients.innerHTML = `<b> INGREDIENTS: </b> ${recipe.ingredientLines}`;
 
     node.style.display = 'inline-block';
@@ -104,7 +105,7 @@ function addToFavoritesList(recipe) {
         addRecipeLabelBtn(recipe);
 
         // Also post recipe to backend
-        let favForm = $('#save-' + i.toString());
+        let favForm = $('#savFavForm');
         favForm.on('submit', function (e) {
             e.preventDefault();
             $.ajax({
@@ -115,6 +116,7 @@ function addToFavoritesList(recipe) {
                     label: recipe.label,
                     dietLabels: recipe.dietLabels,
                     healthLabels: recipe.healthLabels,
+                    calories: recipe.calories,
                     image: recipe.image,
                     ingredientLines: recipe.ingredientLines,
                     currentUser: currentUser
