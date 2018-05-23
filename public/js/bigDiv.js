@@ -7,7 +7,7 @@ var currentResults, currentUser, currentSearchHistory;
  * @param {string} res - the stringified JSON object from the search results
  */
 function setCurrentResults(res) {
-    currentResults = JSON.parse(res.replace(/&quot;/g, '\"'));
+    currentResults = res;
     if (currentResults && currentResults.length) {
         if (currentResults[currentResults.length - 1].currentUser) {
             localStorage.setItem('currentUser', JSON.stringify(currentResults[currentResults.length - 1].currentUser));

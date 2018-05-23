@@ -5,16 +5,12 @@ var favRecipes = [];
  * @param {list} fr - Favourite recipes of the user passed from server
  */
 function setFavouriteRecipes(fr) {
-    let decodedRecipe = fr.replace(/&quot;/g, '\"');
-
-    if (decodedRecipe.length > 0) {
-        localStorage.setItem('favRecipes', decodedRecipe);
+    if (fr && fr.length > 0) {
+        localStorage.setItem('favRecipes', JSON.stringify(fr));
     }
-
     if (localStorage.getItem('favRecipes') && localStorage.getItem('favRecipes').length > 0) {
         favRecipes = JSON.parse(localStorage.getItem('favRecipes'))
     }
-
     showSavedFavRecipes();
 }
 
