@@ -41,54 +41,53 @@
         <img id="ingredients-img" src="../imgs/ingredients.gif">
         <div class="texts"> Select the health options you prefer and type in what you have, then press Submit.</div>
         <div class="food-divs" id="search-ingredients-div">
-            <div class="food-divs" id="cat-ingredients-div">
-                <div id="searchBar">
-                    <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
-                    <div id="food-list" style="display: none;">
-                        <b id="searchHist"> Search History </b>
-                        <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
-                    </div>
-                </div>
-                <div id='health-diet'>
-                    <div class="container-fluid">
+            <div id="searchBar">
+                <div class="container-fluid">
+                    <div class="row">
                         <div class="row">
-
-                            <div class="allbuttons col-xs-4 col-sm-4 col-lg-4">
-                                <button class="collapsible"> HEALTH</button>
-                                <div class="content">
-                                    <form id='ingredient-form'></form>
+                            <div class="col-md-3 col-lg-3">
+                                <div id="food-list">
+                                    <b id="searchHist"> Search History </b>
+                                    <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
                                 </div>
                             </div>
-
-                            <div class="allbuttons col-xs-4 col-sm-4 col-lg-4">
-                                <button class="collapsible"> DIET</button>
-                                <div class="content">
-                                    <form id='ingredient-form1'></form>
-                                </div>
+                            <div class="col-md-6 col-lg-6">
+                                <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
                             </div>
-
-
-                            <div class="allbuttons col-xs-4 col-sm-4 col-lg-4">
-                                <button class="collapsible"> EXCLUDE INGREDIENTS</button>
-                                <div class="content">
-                                    <input type="text" id="allergies-bar" name="excluded"
-                                           placeholder="Enter restrictions" style="margin: 5px; padding: 10px;">
+                            <div class="col-md-3 col-lg-3">
+                                <form id="final-form" method="get" action="/search">
+                                    <input id="final-search-query" type="hidden" name="query">
+                                </form>
+                                <button id="submitbutt" onclick="submitForms()"> SUBMIT</button>
+                            </div>
+                            <div class="row col-md-9" style="padding-top: 1%">
+                                <div class="allbuttons col-md-4 col-lg-4" style="height: 0px;">
+                                    <button class="collapsible"> Health</button>
+                                    <div class="content">
+                                        <form id='ingredient-form'></form>
+                                    </div>
+                                </div>
+                                <div class="allbuttons col-md-4 col-lg-4" style="height: 0px;">
+                                    <button class="collapsible"> Diet</button>
+                                    <div class="content">
+                                        <form id='ingredient-form1'></form>
+                                    </div>
+                                </div>
+                                <div class="allbuttons col-md-4 col-lg-4" style="height: 0px;">
+                                    <button class="collapsible"> Exclude Ingredients</button>
+                                    <div class="content">
+                                        <input type="text" id="allergies-bar" name="excluded"
+                                               placeholder="Enter restrictions"
+                                               style="margin: 5px; padding: 10px; width: 100%;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Place holder for the final combination of all forms -->
-                    <form id="final-form" method="get" action="/search">
-                        <input id="final-search-query" type="hidden" name="query">
-                    </form>
-                    <button id="submitbutt" onclick="submitForms()"> Submit</button>
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
 
 <!-- THE ACTUAL PAGE -->
@@ -230,7 +229,7 @@
 <script>
     setCurrentResults("{{resultRecipes}}");
     setFavouriteRecipes("{{favRecipes}}");
-    showSearchHistory()
+    showSearchHistory();
 </script>
 </body>
 </html>

@@ -70,6 +70,76 @@ function addIngredient(queryParams) {
     localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
 }
 
+/**
+ * Displays the search history below search bar
+ */
+function showSearchHistory() {
+    currentSearchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+
+    // Create a search history object if there isn't already one
+    if (!currentSearchHistory) {
+        currentSearchHistory = {};
+        currentSearchHistory[currentUser] = [];
+
+        localStorage.setItem('searchHistory', JSON.stringify(currentSearchHistory));
+        currentSearchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+    }
+
+    var foodList = document.getElementById('food-list');
+
+    // Create a list for a user if they don't already have a search history
+    if (!currentSearchHistory[currentUser]) {
+        currentSearchHistory[currentUser] = [];
+    }
+
+    foodList.style.display = 'block';
+
+    var ndiv2 = document.createElement('div');
+    ndiv2.setAttribute('id', 'searchlist');
+
+    // Create search history items
+    for (i = 0; i < currentSearchHistory[currentUser].length; i++) {
+        var ndiv = document.createElement("a");
+        ndiv.innerHTML = currentSearchHistory[currentUser][i].value;
+        var tags = Object.values(currentSearchHistory[currentUser][i]);
+        for (j = 1; j < tags.length - 1; j++) {
+            if (` ${tags[j]} `.trim() === "exclude") {
+                break;
+            }
+            if (j === 1) { //Health tags
+                var ntext1 = document.createElement("i");
+                ntext1.style.color = "black";
+                ntext1.innerHTML += ` ${tags[j]} `;
+                ndiv.appendChild(ntext1);
+            }
+            if (j === 2) { //Diet tags
+                var ntext2 = document.createElement("i");
+                ntext2.style.color = "green";
+                ntext2.innerHTML += ` ${tags[j]} `;
+                ndiv.appendChild(ntext2);
+            }
+            if (j === 3) { //Exclude tags
+                var ntext3 = document.createElement("i");
+                ntext3.style.color = "red";
+                ntext3.innerHTML += ` ${tags[j]} `;
+                ndiv.append(ntext3);
+            }
+        }
+
+        var seperator = document.createElement("b");
+        seperator.style.color = "blue";
+        seperator.innerHTML = '***';
+
+        ndiv.className = "added-ingredients";
+        ndiv.style.cursor = "pointer";
+        ndiv.setAttribute('href', '/search?' + currentSearchHistory[currentUser][i].query);
+        foodList.appendChild(ndiv2);
+        ndiv2.appendChild(ndiv);
+        ndiv2.appendChild(document.createElement('br'));
+        ndiv2.appendChild(seperator);
+        ndiv2.appendChild(document.createElement('br'));
+    }
+}
 
 /**
  * Clears the search history
@@ -95,12 +165,12 @@ function generateFilter(list, type, form) {
     for (var i = 0; i < list.length; i++) {
         let label = document.createElement('label');
         label.className = 'listcontainer';
-        label.innerHTML = healthFilters[i];
+        label.innerHTML = list[i];
 
         let input = document.createElement('input');
         input.setAttribute('type', 'checkbox');
         input.setAttribute('name', type);
-        input.setAttribute('value', healthFilters[i].replace(/ /g, '-'));
+        input.setAttribute('value', list[i].replace(/ /g, '-'));
 
         let span = document.createElement('span');
         span.className = 'checkmark';
