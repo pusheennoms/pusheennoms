@@ -44,7 +44,6 @@
         <div class="texts"> Select the health options you prefer and type in what you have, then press Submit.</div>
         <div class="food-divs" id="search-ingredients-div">
             <div class="food-divs" id="cat-ingredients-div">
-                <!-- buncha ingredients dropdown -->
                 <div id="searchBar">
                     <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
                     <div id="food-list" style="display: none;">
@@ -52,98 +51,22 @@
                         <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
                     </div>
                 </div>
-
-
                 <div id='health-diet'>
                     <div class="container-fluid">
                         <div class="row">
 
                             <div class="allbuttons col-xs-4 col-sm-4 col-lg-4">
-
                                 <button class="collapsible"> HEALTH</button>
                                 <div class="content">
-                                    <form id='ingredient-form'>
-                                        <label class="listcontainer">Vegetarian
-                                            <input type="checkbox" name="health" value='vegetarian'>
-                                            <span class="checkmark"></span>
-                                        </label>
-
-                                        <label class="listcontainer">Vegan
-                                            <input type="checkbox" name="health" value='vegan'>
-                                            <span class="checkmark"></span>
-                                        </label>
-
-                                        <label class="listcontainer">No Dairy
-                                            <input type="checkbox" name="health" value='dairy-free'>
-                                            <span class="checkmark"></span>
-                                        </label>
-
-                                        <label class="listcontainer">No Gluten
-                                            <input type="checkbox" name="health" value='gluten-free'>
-                                            <span class="checkmark"></span>
-                                        </label>
-
-                                        <label class="listcontainer">No Red Meat
-                                            <input type="checkbox" name="health" value='red-meat-free'>
-                                            <span class="checkmark"></span>
-                                        </label>
-
-                                        <label class="listcontainer">No Wheat
-                                            <input type="checkbox" name="health" value='wheat'>
-                                            <span class="checkmark"></span>
-                                        </label>
-
-                                        <label class="listcontainer">Kidney Friendly
-                                            <input type="checkbox" name="health" value='kidney-friendly'>
-                                            <span class="checkmark"></span>
-                                        </label>
-
-                                        <label class="listcontainer">Sugar Conscious
-                                            <input type="checkbox" name="health" value='sugar-conscious'>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </form>
+                                    <form id='ingredient-form'></form>
                                 </div>
                             </div>
 
                             <div class="allbuttons col-xs-4 col-sm-4 col-lg-4">
-
                                 <button class="collapsible"> DIET</button>
-                                <!-- <div id="enter-stuff"> -->
                                 <div class="content">
-                                    <form id='ingredient-form1'>
-                                        <label class="listcontainer">Balanced
-                                            <input type="checkbox" name="diet" value='balanced'>
-                                            <span class="checkmark"></span>
-                                        </label>
-
-                                        <label class="listcontainer">High Fiber
-                                            <input type="checkbox" name="diet" value='high-fiber'>
-                                            <span class="checkmark"></span>
-                                        </label>
-
-                                        <label class="listcontainer" name="diet" value='high-protein'>High Protein
-                                            <input type="checkbox" name="diet" value='high-protein'>
-                                            <span class="checkmark"></span>
-                                        </label>
-
-                                        <label class="listcontainer">Low Fat
-                                            <input type="checkbox" name="diet" value='low-fat'>
-                                            <span class="checkmark"></span>
-                                        </label>
-
-                                        <label class="listcontainer">Low Sodium
-                                            <input type="checkbox" name="diet" value='low-sodium'>
-                                            <span class="checkmark"></span>
-                                        </label>
-
-                                        <label class="listcontainer">Low Carb
-                                            <input type="checkbox" name="diet" value='low-carb'>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </form>
+                                    <form id='ingredient-form1'></form>
                                 </div>
-
                             </div>
 
 
@@ -157,13 +80,11 @@
                         </div>
                     </div>
 
-
                     <!-- Place holder for the final combination of all forms -->
                     <form id="final-form" method="get" action="/search">
                         <input id="final-search-query" type="hidden" name="query">
                     </form>
                     <button id="submitbutt" onclick="submitForms()"> Submit</button>
-
                 </div>
             </div>
         </div>
@@ -192,10 +113,7 @@
 </div>
 
 
-<button type="button" data-toggle="modal" data-target="#favModal" id="favbutt">
-    Favourites
-</button>
-
+<button type="button" data-toggle="modal" data-target="#favModal" id="favbutt">Favourites</button>
 <div class="modal fade" id="favModal" role="dialog">
     <div class="modal-dialog" style="width: 50vw; top: 10%;">
         <div class="modal-content">
@@ -301,11 +219,11 @@
     </div>
 </div>
 <script src="../js/favourites.js"></script>
-<script src="../js/displays.js"></script>
+<script src="../js/bigDiv.js"></script>
+<script src="../js/searchPanel.js"></script>
 <script src="../js/fridge2.js"></script>
 <script src="../js/fridge.js"></script>
 <script src="../js/cookbook.js"></script>
-<script src="../js/utils.js"></script>
 <script>
     setCurrentResults("{{resultRecipes}}");
     setFavouriteRecipes("{{favRecipes}}");

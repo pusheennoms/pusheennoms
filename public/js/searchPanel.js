@@ -1,25 +1,4 @@
-if (currentResults && currentResults.length > 1) {
-    showResults();
-}
-
-/**
- * Set the results taken from the server after the search and calls the function to show results on page
- * @param {string} res - the stringified JSON object from the search results
- */
-function setCurrentResults(res) {
-    currentResults = JSON.parse(res.replace(/&quot;/g, '\"'));
-    if (currentResults && currentResults.length) {
-        if (currentResults[currentResults.length - 1].currentUser) {
-            localStorage.setItem('currentUser', JSON.stringify(currentResults[currentResults.length - 1].currentUser));
-        } else {
-            showResults();
-
-        }
-    }
-    currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    document.getElementById('welcome-user-msg').innerHTML =
-        `Welcome, ${currentUser}!`;
-}
+var pushleft = true;
 
 /**
  * Gets all the search form values and populate into object to be POSTED to the server.
@@ -107,14 +86,88 @@ function clearSearchHist() {
 }
 
 /**
- * log outs user and cleans the current recipes, the faved recipes, and the welcome user name
+ * Generate dropdown filters
+ * @param {list} list - list of filters
+ * @param {string} type - name of filter
+ * @param {string} form - id of the form the filter belongs to
  */
-function logout() {
-    try {
-        localStorage.removeItem('currentUser');
-        localStorage.removeItem('currentRecipes');
-        localStorage.removeItem('favRecipes');
-    } finally {
-        window.location.href = '/';
+function generateFilter(list, type, form) {
+    for (var i = 0; i < list.length; i++) {
+        let label = document.createElement('label');
+        label.className = 'listcontainer';
+        label.innerHTML = healthFilters[i];
+
+        let input = document.createElement('input');
+        input.setAttribute('type', 'checkbox');
+        input.setAttribute('name', type);
+        input.setAttribute('value', healthFilters[i].replace(/ /g, '-'));
+
+        let span = document.createElement('span');
+        span.className = 'checkmark';
+
+        label.appendChild(input);
+        label.appendChild(span);
+        document.getElementById(form).appendChild(label);
     }
+
 }
+
+
+// ========== INTERACTIONS & DISPLAYS ================
+var healthFilters = ['Vegetarian', 'Vegan', 'Dairy Free', 'Gluten Free', 'Red Meat Free', 'Wheat Free', 'Kidney Friendly', 'Sugar Conscious', 'Alcohol Free'];
+var dietFilters = ['Balanced', 'High Fiber', 'High Protein', 'Low Fat', 'Low Sodium', 'Low Carb'];
+generateFilter(healthFilters, 'health', 'ingredient-form');
+generateFilter(dietFilters, 'diet', 'ingredient-form1');
+
+/**
+ * once user presses enter on the ingredients search bar, the forms are submitted
+ */
+document.getElementById("ingredient-bar").addEventListener("keydown", function (ev) {
+    if (ev.keyCode === 13) {
+        submitForms();
+    }
+});
+
+/**
+ * open collapsibles on click
+ */
+for (var i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
+}
+
+/**
+ * Opens the search panel
+ */
+function showPusheen() {
+    document.getElementById("outerpanel").style.left = '0px';
+    pushleft = 0;
+}
+
+/**
+ * Closes the search panel
+ */
+function hidePusheen() {
+    document.getElementById("outerpanel").style.left = '-80%';
+    pushleft = 1;
+}
+
+/**
+ * click the cat, show or hide the control panel
+ */
+document.getElementById("hiddenpusheen").onclick = function () {
+    pushleft = !pushleft;
+
+    if (pushleft) {
+        hidePusheen();
+    } else if (!pushleft) {
+        showPusheen();
+    }
+};

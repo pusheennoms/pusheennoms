@@ -1,7 +1,38 @@
 /*--------------variables--------------*/
 var coll = document.getElementsByClassName("collapsible");
 var currentResults, currentUser, currentSearchHistory;
-var pushleft = true;
+
+/**
+ * Set the results taken from the server after the search and calls the function to show results on page
+ * @param {string} res - the stringified JSON object from the search results
+ */
+function setCurrentResults(res) {
+    currentResults = JSON.parse(res.replace(/&quot;/g, '\"'));
+    if (currentResults && currentResults.length) {
+        if (currentResults[currentResults.length - 1].currentUser) {
+            localStorage.setItem('currentUser', JSON.stringify(currentResults[currentResults.length - 1].currentUser));
+        } else {
+            showResults();
+
+        }
+    }
+    currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    document.getElementById('welcome-user-msg').innerHTML =
+        `Welcome, ${currentUser}!`;
+}
+
+/**
+ * log outs user and cleans the current recipes, the faved recipes, and the welcome user name
+ */
+function logout() {
+    try {
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('currentRecipes');
+        localStorage.removeItem('favRecipes');
+    } finally {
+        window.location.href = '/';
+    }
+}
 
 /**
  * Displays the search history below search bar
@@ -130,60 +161,6 @@ function showResults() {
 }
 
 /*-----------INTERACTIONS--------------*/
-/**
- * once user presses enter on the ingredients search bar, the forms are submitted
- */
-document.getElementById("ingredient-bar").addEventListener("keydown", function (ev) {
-    if (ev.keyCode === 13) {
-        submitForms();
-    }
-});
-
-/**
- * open collapsibles on click
- */
-for (var i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-        } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-        }
-    });
-}
-
-/**
- * Opens the search panel
- */
-function showPusheen() {
-    document.getElementById("outerpanel").style.left = '0px';
-    pushleft = 0;
-}
-
-/**
- * Closes the search panel
- */
-function hidePusheen() {
-    document.getElementById("outerpanel").style.left = '-80%';
-    pushleft = 1;
-}
-
-/**
- * click the cat, show or hide the control panel
- */
-document.getElementById("hiddenpusheen").onclick = function () {
-    pushleft = !pushleft;
-
-    if (pushleft) {
-        hidePusheen();
-    } else if (!pushleft) {
-        showPusheen();
-    }
-};
-
-
 var infoModal = document.getElementById("infoModal");
 
 function openInfo() {

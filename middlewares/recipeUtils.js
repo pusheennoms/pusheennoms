@@ -18,7 +18,9 @@ module.exports.getRecipes = (params, callback) => {
         json: true
     }, (error, response, body) => {
         if (error) {
-            callback("Cannot connect to API");
+            callback("Cannot connect to API", {
+                recipes: {}
+            });
         } else if (body && body.hits) {
             callback(undefined, {
                 recipes: body.hits
