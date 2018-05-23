@@ -27,7 +27,6 @@ module.exports.getRecipes = (params, callback) => {
             callback(undefined, {
                 recipes: {}
             });
-            console.log('Error beyond control');
         }
     });
 };
