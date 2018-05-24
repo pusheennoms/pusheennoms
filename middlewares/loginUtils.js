@@ -20,7 +20,7 @@ if (fs.existsSync(userpassFile) && fs.readFileSync(userpassFile).length !== 0) {
  */
 var hash_info = (info) => {
     return cryptoJS.SHA1(info)
-}
+};
 
 /**
  * Add username and password to userpass.json
@@ -44,7 +44,7 @@ var addToChefFile = (username, password) => {
  * @returns {boolean}
  */
 var validateInput = (userInp, passInp) => {
-    return ((userInp.length <= 3) || (passInp.length <= 3 || userInp.length > 12))
+    return userInp.length >= 4 && passInp.length >= 4 && userInp.length < 12;
 };
 
 /**

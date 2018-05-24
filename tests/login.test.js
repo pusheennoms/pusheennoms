@@ -21,6 +21,10 @@ describe("testing validating registration", () => {
     	expect(utils.validateInput("1234","password")).toBeTruthy();
     });
 
+    test("username 12 chars", () => {
+        expect(utils.validateInput("123456789011123", "password")).toBeFalsy();
+    });
+
     test("password 4 chars", () => {
     	expect(utils.validateInput("username", "123")).toBeFalsy();
     	expect(utils.validateInput("username", "1234")).toBeTruthy();
