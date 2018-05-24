@@ -134,7 +134,7 @@ function showSearchHistory() {
 
         var seperator = document.createElement("center");
         seperator.className = 'searchHistSep';
-        seperator.innerHTML = '***';
+        seperator.innerHTML = '---';
 
         ndiv.className = "added-ingredients";
         ndiv.style.cursor = "pointer";

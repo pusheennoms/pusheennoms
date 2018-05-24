@@ -21,8 +21,8 @@ body {
 .added-ingredients {
     /* style of search history */
     text-align: center;
-    font-family: 'Swanky and Moo Moo';
-    font-size: 23px;
+    font-family: "Trebuchet MS";
+    font-size: 17px;
     margin: 1%;
     line-height: 1px;
 }
@@ -386,6 +386,8 @@ body {
 
 #searchHist {
     text-align: center;
+    font-family: "Swanky and Moo Moo";
+    font-size: 32px;
 }
 
 #submitbutt {
@@ -414,6 +416,7 @@ body {
     border: none;
     text-align: center;
     font-size: 15px;
+    font-family: "Trebuchet MS";
     border-radius: 12px;
     margin: 10px;
     padding: 1px 5px;
@@ -541,9 +544,11 @@ a:visited {
 }
 
 .searchHistSep {
-    color: blue;
-    font-size: 24px;
+    color: rgba(0, 0, 255, 0.18);
+    font-size: 20px;
     letter-spacing: 5px;
+    margin: -10px 0 1px 0;
+}
 }
 
 .allbuttons {
