@@ -36,11 +36,12 @@ describe("testing validating registration", () => {
 });
 
 describe("testing no repeat users", () => {
-	test("repeat user", () => {
-		expect(utils.noRepeatUsers(chefRecords[0].username)).toBeFalsy();
+    utils.addToChefFile('user', 'password');
+    test("repeat user", () => {
+        expect(utils.noRepeatUsers('user')).toBeFalsy();
 	});
     test("different user", () => {
-		expect(utils.noRepeatUsers("123")).toBeTruthy();
+        expect(utils.noRepeatUsers('uzer')).toBeTruthy();
     });
 });
 
@@ -49,9 +50,9 @@ describe("testing authenticate chef", () => {
         expect(utils.authenticateChef(chefRecords[0].username, chefRecords[0].password)).toBe("logged in")
     });
     test("wrong password", () => {
-        expect(utils.authenticateChef(chefRecords[0].username, "123")).toBe("authentication failure")
+        expect(utils.authenticateChef('user', "123")).toBe("authentication failure")
     });
     test("nonexisting user", () => {
-        expect(utils.authenticateChef("123", "123")).toBe("no username")
+        expect(utils.authenticateChef("uzer", "password")).toBe("no username")
     });
 });
