@@ -21,10 +21,10 @@ body {
 .added-ingredients {
     /* style of search history */
     text-align: center;
-    font-family: 'Swanky and Moo Moo';
-    font-size: 25px;
+    font-family: "Trebuchet MS";
+    font-size: 17px;
     margin: 1%;
-    height: 1vh;
+    line-height: 1px;
 }
 
 .butts {
@@ -43,48 +43,47 @@ body {
 }
 
 .collapsible {
-    /* style of collapsible butts */
-    background-color: #89CFF0;
-    color: black;
-    cursor: pointer;
-    padding: 6%;
-    width: 100%;
+    color: #002742;
+    background-color: #d1f1ff;
     border: none;
-    text-align: center;
-    font-size: 15px;
-    height: 10%;
     border-radius: 12px;
-    margin: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-family: "Trebuchet MS";
 }
 
 .active, .collapsible:hover {
     /* makes the collapsible BE COLLAPSIBLE*/
-    background-color: #0070BB;
-    color: #fff;
+    background-color: #fff;
+    border: #0070bb solid 3px;
 }
 
 .content {
     /* transition and style of text */
-    padding: 0 18px;
+    padding: 0 1px;
     margin: 1%;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
+    font-family: "Trebuchet MS";
 }
 
 .listcontainer {
     /* The container of the collapsible list*/
     display: block;
     position: relative;
-    padding-left: 35px;
+    padding-left: 28px;
     margin-bottom: 5px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 15px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    line-height: 140%;
 }
 
 .listcontainer input {
@@ -96,13 +95,19 @@ body {
 
 /* Create a custom checkbox - CHECK BOX*/
 .checkmark {
-    /* position and style of the checkbox */
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     background-color: #eee;
+}
+
+#allergies-bar {
+    padding: 10px;
+    width: 90%;
+    margin: 3px 10px;
+    font-size: 12px;
 }
 
 .listcontainer:hover input ~ .checkmark {
@@ -179,11 +184,12 @@ body {
     height: 80vh;
     vertical-align: top;
     padding: 5px;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.8);
     margin-top: 10px;
     border-color: #ebdbce;
     border-width: thick;
     border-style: solid;
+    line-height: 15px;
 }
 
 .searchResultsLink {
@@ -191,6 +197,7 @@ body {
     width: 100%;
     text-align: center;
     font-size: 20px;
+    padding: 10px 0;
 }
 
 .searchResultsImgs {
@@ -297,7 +304,8 @@ body {
 }
 
 #ingredient-bar {
-    width: 90%;
+    width: 100%;
+    height: 8%;
     box-sizing: border-box;
     border-radius: 5%;
     text-align: left;
@@ -305,20 +313,13 @@ body {
     background-color: white;
     padding: 2%;
     position: relative;
-    margin: 2% 2% 2%;
+    margin: 0% 2% 2%;
 }
 
 #food-list {
     position: relative;
-    /*background-color: blue;*/
-    height: 80%;
-    margin: 0% 3% 0% 3%;
     text-align: center;
-}
-
-#cat-ingredients-div {
-    /*background-color: red;*/
-    display: block;
+    left: 0px;
 }
 
 /*actual page */
@@ -347,7 +348,7 @@ body {
 }
 
 #welcome-div {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.6);
     position: relative;
     margin: auto;
     text-align: center;
@@ -368,6 +369,10 @@ body {
 #welcome-user-msg {
     font-family: "Swanky and Moo Moo";
     font-weight: bold;
+    text-align: right;
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 
 #food-search {
@@ -381,21 +386,24 @@ body {
 
 #searchHist {
     text-align: center;
+    font-family: "Swanky and Moo Moo";
+    font-size: 32px;
 }
 
 #submitbutt {
     background-color: #89CFF0;
     color: black;
     cursor: pointer;
-    width: 25%;
-    height: 25%;
+    width: 30%;
+    height: 100%;
     border: none;
     text-align: center;
-    font-size: 15px;
+    font-size: 25px;
     border-radius: 12px;
-    margin: 10px;
-    padding: 2px;
-    left: 40%;
+    padding: 1% 0;
+    left: 0%;
+    font-family: "Swanky and Moo Moo";
+    letter-spacing: 1px;
     position: relative;
 }
 
@@ -408,6 +416,7 @@ body {
     border: none;
     text-align: center;
     font-size: 15px;
+    font-family: "Trebuchet MS";
     border-radius: 12px;
     margin: 10px;
     padding: 1px 5px;
@@ -451,14 +460,6 @@ a:visited {
     margin: 10px;
 }
 
-#enter-stuff {
-    /*background-color: red;*/
-    position: relative;
-    top: 30%;
-    height: 400%;
-    width: 100%;
-}
-
 .saveFavBtn {
     background-color: #0070BB;
     color: white;
@@ -493,7 +494,7 @@ a:visited {
     bottom: 0px;
     right: 10px;
     cursor: pointer;
-    width:100px;
+    width: 100px;
 }
 
 #outtip {
@@ -535,16 +536,25 @@ a:visited {
 }
 
 #searchlist {
-    text-align: center;
+    text-align: left;
     position: relative;
     overflow-y: scroll;
     overflow-x: hidden;
-    max-height: 20vh;
+    max-height: 50vh;
+}
+
+.searchHistSep {
+    color: rgba(0, 0, 255, 0.18);
+    font-size: 20px;
+    letter-spacing: 5px;
+    margin: -10px 0 1px 0;
+}
 }
 
 .allbuttons {
     display: inline-block;
-    width: 33%;
+    left: 0px;
+    height: 1%;
 }
 
 #iconlinks {
