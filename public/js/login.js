@@ -65,12 +65,14 @@ function notifyuser(state){
  * @returns {boolean} true - the user input follows all rules
  */
 function validatingInput(textbox, num){
-
     if (textbox.value === '') {
         textbox.setCustomValidity('Input field cannot be empty.');
     }
     else if (textbox.value.length <= 3 && num === 0)  {
         textbox.setCustomValidity('Username has to be at least 4 characters.');
+    }
+    else if (textbox.value.length > 12 && num === 0) {
+        textbox.setCustomValidity('Username cannot be longer than 12 characters.')
     }
     else if (textbox.value.length <= 3 && num === 1)  {
         textbox.setCustomValidity('Password has to be at least 4 characters.');

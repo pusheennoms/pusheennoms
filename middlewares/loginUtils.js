@@ -20,7 +20,7 @@ if (fs.existsSync(userpassFile) && fs.readFileSync(userpassFile).length !== 0) {
  */
 var hash_info = (info) => {
     return cryptoJS.SHA1(info)
-}
+};
 
 /**
  * Add username and password to userpass.json
@@ -44,12 +44,7 @@ var addToChefFile = (username, password) => {
  * @returns {boolean}
  */
 var validateInput = (userInp, passInp) => {
-    if ((userInp.length <= 3) || (passInp.length <= 3)) {
-        return false;
-    }
-    else {
-        return true;
-    }
+    return userInp.length >= 4 && passInp.length >= 4 && userInp.length < 12;
 };
 
 /**
@@ -71,9 +66,9 @@ var noRepeatUsers = (newUser) => {
  **/
 var authenticateChef = (inpUsername, inpPassword) => {
     var usernameFound = false;
-    var hashInpPass = hash_info(inpPassword)
+    var hashInpPass = hash_info(inpPassword);
     for (var i = 0; i < chefRecords.length; i++) {
-        if (chefRecords[i].username === inpUsername) {
+        if (chefRecords[i].username.toLowerCase() === inpUsername.toLowerCase()) {
             usernameFound = true;
             if (JSON.stringify(chefRecords[i].password) === JSON.stringify(hashInpPass)) {
                 return 'logged in';
