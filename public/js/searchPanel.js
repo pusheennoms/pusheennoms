@@ -132,8 +132,8 @@ function showSearchHistory() {
             ndiv.append(ntext3);
         }
 
-        var seperator = document.createElement("b");
-        seperator.style.color = "blue";
+        var seperator = document.createElement("center");
+        seperator.className = 'searchHistSep';
         seperator.innerHTML = '***';
 
         ndiv.className = "added-ingredients";
@@ -143,7 +143,6 @@ function showSearchHistory() {
         ndiv2.appendChild(ndiv);
         ndiv2.appendChild(document.createElement('br'));
         ndiv2.appendChild(seperator);
-        ndiv2.appendChild(document.createElement('br'));
     }
 }
 

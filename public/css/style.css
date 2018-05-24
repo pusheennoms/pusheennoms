@@ -533,11 +533,17 @@ a:visited {
 }
 
 #searchlist {
-    text-align: center;
+    text-align: left;
     position: relative;
     overflow-y: scroll;
     overflow-x: hidden;
     max-height: 50vh;
+}
+
+.searchHistSep {
+    color: blue;
+    font-size: 24px;
+    letter-spacing: 5px;
 }
 
 .allbuttons {
