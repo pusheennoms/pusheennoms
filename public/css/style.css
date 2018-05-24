@@ -338,9 +338,9 @@ body {
 #bg-img {
     opacity: 0.5;
     position: fixed;
-    width: 100%;
+    width: 99%;
     bottom: 0;
-    z-index: -2;
+    z-index: -5;
     object-fit: fill;
     max-height: 100%;
     max-width: 100%;
