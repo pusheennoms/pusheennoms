@@ -44,12 +44,7 @@ var addToChefFile = (username, password) => {
  * @returns {boolean}
  */
 var validateInput = (userInp, passInp) => {
-    if ((userInp.length <= 3) || (passInp.length <= 3)) {
-        return false;
-    }
-    else {
-        return true;
-    }
+    return ((userInp.length <= 3) || (passInp.length <= 3 || userInp.length > 12))
 };
 
 /**
@@ -71,9 +66,9 @@ var noRepeatUsers = (newUser) => {
  **/
 var authenticateChef = (inpUsername, inpPassword) => {
     var usernameFound = false;
-    var hashInpPass = hash_info(inpPassword)
+    var hashInpPass = hash_info(inpPassword);
     for (var i = 0; i < chefRecords.length; i++) {
-        if (chefRecords[i].username === inpUsername) {
+        if (chefRecords[i].username.toLowerCase() === inpUsername.toLowerCase()) {
             usernameFound = true;
             if (JSON.stringify(chefRecords[i].password) === JSON.stringify(hashInpPass)) {
                 return 'logged in';

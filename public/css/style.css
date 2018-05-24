@@ -369,6 +369,10 @@ body {
 #welcome-user-msg {
     font-family: "Swanky and Moo Moo";
     font-weight: bold;
+    text-align: right;
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 
 #food-search {
