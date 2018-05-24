@@ -31,8 +31,8 @@ function submitForms() {
             }
         }
         // Get calories range; it cannot have an empty value
-        if (caloriesFormElements[0].value && caloriesFormElements[0].value) {
-            params.calories = (`${caloriesFormElements[0].value}-${caloriesFormElements[0].value}`);
+        if (caloriesFormElements[0].value && caloriesFormElements[1].value) {
+            params.calories = (`${caloriesFormElements[0].value}-${caloriesFormElements[1].value}`);
         }
 
         // Add search parameters to search history

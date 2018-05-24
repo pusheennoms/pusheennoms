@@ -52,7 +52,7 @@ function showResults() {
         node.innerHTML = currentResults[i].recipe.label;
         nodeLABELS.innerHTML = "HEALTH: " + currentResults[i].recipe.healthLabels +
             "<br><br>DIET: " + currentResults[i].recipe.dietLabels +
-            "<br><br> CALORIES: " + Math.round(currentResults[i].recipe.calories) + " kCAL" +
+            "<br><br> CALORIES: " + Math.round(currentResults[i].recipe.calories / currentResults[i].recipe.yield) + " kCAL" +
             "<br><br>INGREDIENTS: " + currentResults[i].recipe.ingredientLines;
 
         node.setAttribute('id', i.toString());

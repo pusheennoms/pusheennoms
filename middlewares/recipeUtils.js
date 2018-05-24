@@ -12,7 +12,6 @@ module.exports.getRecipes = (params, callback) => {
 
     // Stringify the params if it is not already a query string
     var paramStr = params.query ? params.query : querystring.stringify(params);
-
     request({
         url: `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${APP_KEY}&${paramStr}`,
         json: true

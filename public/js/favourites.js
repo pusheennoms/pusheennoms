@@ -71,9 +71,10 @@ function showRecipe(ev, recipe) {
     node.href = recipe.url;
     node.innerHTML = "Link to recipe";
     nodeLABELS.className = 'col-md-6';
-    nodeLABELS.innerHTML = `<b>HEALTH: </b> ${recipe.healthLabels } <br> <br><b>DIET: </b> ${recipe.dietLabels}
-<br><br><b>CALORIES: </b> ${Math.round(recipe.calories)} kCal `;
-    nodeIngredients.innerHTML = `<b> INGREDIENTS: </b> ${recipe.ingredientLines}`;
+    nodeLABELS.innerHTML = `HEALTH: ${recipe.healthLabels } <br><br>
+                            DIET: ${recipe.dietLabels}<br><br>
+                            CALORIES: ${Math.round(recipe.calories)} kCal `;
+    nodeIngredients.innerHTML = `INGREDIENTS: ${recipe.ingredientLines}`;
 
     node.style.display = 'inline-block';
     node.setAttribute('id', i.toString());
@@ -112,7 +113,7 @@ function addToFavoritesList(recipe) {
                     label: recipe.label,
                     dietLabels: recipe.dietLabels,
                     healthLabels: recipe.healthLabels,
-                    calories: recipe.calories,
+                    calories: recipe.calories / recipe.yield,
                     image: recipe.image,
                     ingredientLines: recipe.ingredientLines,
                     currentUser: currentUser
