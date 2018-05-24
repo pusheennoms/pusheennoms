@@ -27,7 +27,6 @@ function setCurrentResults(res) {
 function logout() {
     try {
         localStorage.removeItem('currentUser');
-        localStorage.removeItem('currentRecipes');
         localStorage.removeItem('favRecipes');
     } finally {
         window.location.href = '/';
@@ -60,7 +59,7 @@ function showResults() {
         node.setAttribute('target', '_new');
         node.className = 'searchResultsLink';
 
-        nodeLABELS.style.maxHeight = "20vh";
+        nodeLABELS.style.maxHeight = "23vh";
         nodeLABELS.style.overflowY = "auto";
         nodeIMAGE.className = 'searchResultsImgs';
         nodeIMAGE.setAttribute("src", currentResults[i].recipe.image);

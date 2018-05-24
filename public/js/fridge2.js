@@ -68,12 +68,3 @@ function checkImg(source, item) {
     img.onerror = () => {item.style.backgroundImage = "url(../imgs/box.png)";};
     return true;
 }
-
-module.exports = {
-    checkBlank,
-    formatInput,
-    delToggle,
-    searchIndex,
-    findPosition,
-    checkImg
-};

@@ -45,13 +45,13 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="row">
-                            <div class="col-md-3 col-lg-3">
+                            <div class="col-md-4 col-lg-4">
                                 <div id="food-list">
                                     <b id="searchHist"> Search History </b>
                                     <button id="clearbutt" onclick="clearSearchHist()"> Clear</button>
                                 </div>
                             </div>
-                            <div class="col-md-9" style="padding-top: 1%">
+                            <div class="col-md-8 col-lg-8" style="padding-top: 1%">
                                 <div class="col-md-6 col-lg-6">
                                     <input type="text" id="ingredient-bar" name="q" placeholder="Enter ingredients">
                                 </div>
@@ -73,23 +73,22 @@
                                         <form id='ingredient-form1'></form>
                                     </div>
                                 </div>
-                                <div class="allbuttons col-md-3 col-lg-3" style="height: 0px;">
-                                    <button class="collapsible"> Calories (kCal)</button>
+                                <div class="allbuttons col-md-2 col-lg-2" style="height: 0px;">
+                                    <button class="collapsible"> Calories</button>
                                     <div class="content">
                                         <form id='ingredient-form2'>
                                             Min <input type="number" name="calories-min"
-                                                       style="margin: 5px; padding: 10px; width: 100%;">
+                                                       style="padding: 10px; width: 100%;">
                                             Max <input type="number" name="calories-max"
-                                                       style="margin: 5px; padding: 10px; width: 100%;">
+                                                       style="padding: 10px; width: 100%;">
                                         </form>
                                     </div>
                                 </div>
-                                <div class="allbuttons col-md-3 col-lg-3" style="height: 0px;">
-                                    <button class="collapsible"> Exclude Ingredients</button>
+                                <div class="allbuttons col-md-4 col-lg-4" style="height: 0px;">
+                                    <button class="collapsible"> Exclude</button>
                                     <div class="content">
                                         <input type="text" id="allergies-bar" name="excluded"
-                                               placeholder="Enter restrictions"
-                                               style="margin: 5px; padding: 10px; width: 100%;">
+                                               placeholder="Exclude ingredients">
                                     </div>
                                 </div>
                             </div>
