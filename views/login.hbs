@@ -36,7 +36,7 @@
     <div id='registerform' class="forms" >
         <br>
         <form name="submitForm" action="/registerchef"  method="post" id='newRegister'>
-            Username: <input type="text" id="regUsername" name="username" pattern=".{4,12}" required
+            Username: <input type="text" id="regUsername" name="username" pattern=".{4,11}" required
                              oninvalid="validatingInput(this,0)" oninput="setCustomValidity('')"><br>
             Password: <input type="password" id="regPassword" name="password" pattern=".{4,}" required oninvalid="validatingInput(this,1)" oninput="setCustomValidity('')"><br>
             <div class="submitBox">

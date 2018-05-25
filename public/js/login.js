@@ -71,7 +71,7 @@ function validatingInput(textbox, num){
     else if (textbox.value.length <= 3 && num === 0)  {
         textbox.setCustomValidity('Username has to be at least 4 characters.');
     }
-    else if (textbox.value.length > 12 && num === 0) {
+    else if (textbox.value.length >= 12 && num === 0) {
         textbox.setCustomValidity('Username cannot be longer than 12 characters.')
     }
     else if (textbox.value.length <= 3 && num === 1)  {
