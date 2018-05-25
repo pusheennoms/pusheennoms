@@ -20,12 +20,12 @@ function submitForms() {
     if (!params.q || params.q.length <= 0) {
         swal('Empty Query', 'Please enter at least 1 ingredient or dish in the search bar!', 'error');
     } else if (caloriesFormElements[0].value && caloriesFormElements[1].value
-        && caloriesFormElements[0].value > caloriesFormElements[1].value) {
+        && parseFloat(caloriesFormElements[0].value) > parseFloat(caloriesFormElements[1].value)) {
         swal('Invalid Calories', 'Maximum calories need to be greater than minimum calories!', 'error');
     } else if (caloriesFormElements[0].value && !caloriesFormElements[1].value ||
         caloriesFormElements[1].value && !caloriesFormElements[0].value) {
         swal('Invalid Calories', 'Fill out both max and min!', 'error')
-    } else if (caloriesFormElements[0].value < 0 || caloriesFormElements[1].value < 0) {
+    } else if (parseFloat(caloriesFormElements[0].value) < 0 || parseFloat(caloriesFormElements[1].value) < 0) {
         swal('Invalid Calories', 'Calories need to be positive numbers!', 'error')
     } else {
 
