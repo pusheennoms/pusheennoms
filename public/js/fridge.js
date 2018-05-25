@@ -364,7 +364,7 @@ function displayTooltip(name, posX, posY) {
         // bell pepper is a special case due to file name
         name = name.replace("bellPepper", "bell pepper");
         tooltip.innerText = name;
-    }, 1000);
+    }, 200);
 }
 
 /**
@@ -375,7 +375,7 @@ function clearTooltip() {
     tooltip.style.opacity = 0;
     timer = setTimeout(() => {
         tooltip.style.display = "none";
-    }, 1000);
+    }, 200);
 }
 
 /**
