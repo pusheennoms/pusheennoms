@@ -17,7 +17,18 @@ function submitForms() {
     };
 
     // Main search bar query cannot be empty
-    if (params.q && params.q.length > 0) {
+    if (!params.q || params.q.length <= 0) {
+        swal('Empty Query', 'Please enter at least 1 ingredient or dish in the search bar!', 'error');
+    } else if (caloriesFormElements[0].value && caloriesFormElements[1].value
+        && caloriesFormElements[0].value > caloriesFormElements[1].value) {
+        swal('Invalid Calories', 'Maximum calories need to be greater than minimum calories!', 'error');
+    } else if (caloriesFormElements[0].value && !caloriesFormElements[1].value ||
+        caloriesFormElements[1].value && !caloriesFormElements[0].value) {
+        swal('Invalid Calories', 'Fill out both max and min!', 'error')
+    } else if (caloriesFormElements[0].value < 0 || caloriesFormElements[1].value < 0) {
+        swal('Invalid Calories', 'Calories need to be positive numbers!', 'error')
+    } else {
+
         // Get healthLabels
         for (var i = 0; i < healthFormElements.length; i++) {
             if (healthFormElements[i].checked) {
@@ -30,7 +41,7 @@ function submitForms() {
                 params.dietLabels.push(dietFormElements[i].value);
             }
         }
-        // Get calories range; it cannot have an empty value
+        // Get calories range; it cannot submit an empty value
         if (caloriesFormElements[0].value && caloriesFormElements[1].value) {
             params.calories = (`${caloriesFormElements[0].value}-${caloriesFormElements[1].value}`);
         }
@@ -41,8 +52,6 @@ function submitForms() {
         // Submit final search form
         document.getElementById('final-search-query').value = jQuery.param(params);
         document.getElementById('final-form').submit();
-    } else {
-        swal('Error: Empty Query', 'Please enter at least 1 ingredient or dish in the search bar!', 'error');
     }
 }
 
