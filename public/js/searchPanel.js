@@ -25,6 +25,8 @@ function submitForms() {
     } else if (caloriesFormElements[0].value && !caloriesFormElements[1].value ||
         caloriesFormElements[1].value && !caloriesFormElements[0].value) {
         swal('Invalid Calories', 'Fill out both max and min!', 'error')
+    } else if (caloriesFormElements[0].value < 0 || caloriesFormElements[1].value < 0) {
+        swal('Invalid Calories', 'Calories need to be positive numbers!', 'error')
     } else {
 
         // Get healthLabels
